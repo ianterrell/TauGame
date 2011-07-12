@@ -46,18 +46,37 @@
   mage.shape = mageBodyTriangle;
   mage.shape.parent = mage;
   mage.name = @"Mage";
-  mage.translation = GLKVector2Make(3.0, 0.0);
-  mage.rotation = 0.25 * M_TAU;
+  mage.scale = 2.0;
   
   TEEllipse *mageBodyHead = [[TEEllipse alloc] init];
   mageBodyHead.color = GLKVector4Make(0.3, 0.5, 0.2, 1.0);
   mageBodyHead.scale = 0.5;
-  mageBodyHead.translation = GLKVector2Make(0.0, 1.0);
+  mageBodyHead.translation = GLKVector2Make(0.0, 1.25);
   TENode *mageBodyHeadNode = [[TENode alloc] init];
   mageBodyHeadNode.name = @"Head";
   mageBodyHeadNode.shape = mageBodyHead;
   mageBodyHeadNode.shape.parent = mageBodyHeadNode;
   [mage addChild:mageBodyHeadNode];
+  
+  TERectangle *mageBodyLeftHand = [[TERectangle alloc] init];
+  mageBodyLeftHand.color = GLKVector4Make(0.4, 0.1, 0.4, 1.0);
+  mageBodyLeftHand.scale = 0.5;
+  mageBodyLeftHand.translation = GLKVector2Make(-2.5, -1.0);
+  TENode *mageBodyLeftHandNode = [[TENode alloc] init];
+  mageBodyLeftHandNode.name = @"LeftHand";
+  mageBodyLeftHandNode.shape = mageBodyLeftHand;
+  mageBodyLeftHandNode.shape.parent = mageBodyLeftHandNode;
+  [mage addChild:mageBodyLeftHandNode];
+  
+  TERectangle *mageBodyRightHand = [[TERectangle alloc] init];
+  mageBodyRightHand.color = GLKVector4Make(0.4, 0.1, 0.4, 1.0);
+  mageBodyRightHand.scale = 0.5;
+  mageBodyRightHand.translation = GLKVector2Make(2.5, -1.0);
+  TENode *mageBodyRightHandNode = [[TENode alloc] init];
+  mageBodyRightHandNode.name = @"RightHand";
+  mageBodyRightHandNode.shape = mageBodyRightHand;
+  mageBodyRightHandNode.shape.parent = mageBodyRightHandNode;
+  [mage addChild:mageBodyRightHandNode];
   
   TEScene *scene = view.scene;
   [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];

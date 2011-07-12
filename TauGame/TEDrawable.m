@@ -25,7 +25,6 @@
 }
 
 -(void)renderInScene:(TEScene *)scene {
-  NSLog(@"%@ renderInScene", self);
   self.effect = [scene constantColorEffect];
   self.effect.transform.modelviewMatrix = [self modelViewMatrix];
   self.effect.transform.projectionMatrix = [scene projectionMatrix];

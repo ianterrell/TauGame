@@ -22,4 +22,7 @@
   return self;
 }
 
+-(void)updateVertices {
+}
+
 @end

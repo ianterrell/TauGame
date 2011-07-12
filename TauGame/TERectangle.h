@@ -10,6 +10,9 @@
 
 @interface TERectangle : TEShape {
   GLfloat height, width;
+  GLfloat vertices[8];
 }
+
+@property GLfloat height, width;
 
 @end

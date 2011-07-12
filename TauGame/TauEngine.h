@@ -8,6 +8,9 @@
 
 #define M_TAU (2*M_PI)
 
+#define TE_ELLIPSE_RESOLUTION 62
+#define TE_ELLIPSE_NUM_VERTICES (TE_ELLIPSE_RESOLUTION + 2)
+
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 

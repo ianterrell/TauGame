@@ -23,7 +23,6 @@
 }
 
 -(void)renderInScene:(TEScene *)scene {
-  NSLog(@"Here in TENode render");
   [super renderInScene:scene];
   
   [shape renderInScene:scene];

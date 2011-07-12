@@ -9,7 +9,7 @@
 #import "TEShape.h"
 
 @interface TETriangle : TEShape {
-  GLKVector2 vertex0, vertex1, vertex2;
+  GLfloat vertices[6];
 }
 
 @property GLKVector2 vertex0, vertex1, vertex2;

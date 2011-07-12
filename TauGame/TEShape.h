@@ -16,4 +16,6 @@
 
 @property GLKVector4 color;
 
+-(void)updateVertices;
+
 @end

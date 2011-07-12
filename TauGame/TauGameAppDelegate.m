@@ -32,7 +32,6 @@
   self.window.rootViewController = glkViewController;
   [self.window makeKeyAndVisible];
   
-  
   // Let's build a test scene!
   
   // def need yaml or Ruby! verbose bullshit!

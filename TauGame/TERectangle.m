@@ -34,14 +34,14 @@
 }
 
 -(void)updateVertices {
-  vertices[0] = width/2;
-  vertices[1] = -height/2;
-  vertices[2] = width/2;
-  vertices[3] = height/2;
-  vertices[4] = -width/2;
-  vertices[5] = height/2;
-  vertices[6] = -width/2;
-  vertices[7] =-height/2;
+  vertices[0] = width/2.0;
+  vertices[1] = -height/2.0;
+  vertices[2] = width/2.0;
+  vertices[3] = height/2.0;
+  vertices[4] = -width/2.0;
+  vertices[5] = height/2.0;
+  vertices[6] = -width/2.0;
+  vertices[7] =-height/2.0;
 }
 
 -(GLfloat)height {
@@ -49,7 +49,7 @@
 }
 
 -(void)setHeight:(GLfloat)_height {
-  self.height = _height;
+  height = _height;
   [self updateVertices];
 }
 
@@ -58,7 +58,7 @@
 }
 
 -(void)setWidth:(GLfloat)_width {
-  self.width = _width;
+  width = _width;
   [self updateVertices];
 }
 

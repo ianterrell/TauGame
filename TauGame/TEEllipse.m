@@ -49,7 +49,7 @@
 }
 
 -(void)setRadiusX:(GLfloat)_radiusX {
-  self.radiusX = _radiusX;
+  radiusX = _radiusX;
   [self updateVertices];
 }
 
@@ -58,7 +58,7 @@
 }
 
 -(void)setRadiusY:(GLfloat)_radiusY {
-  self.radiusY = _radiusY;
+  radiusY = _radiusY;
   [self updateVertices];
 }
 

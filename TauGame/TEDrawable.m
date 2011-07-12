@@ -31,7 +31,7 @@
 }
 
 -(GLKMatrix4)modelViewMatrix {
-  GLKMatrix4 mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeScale(scale, scale, 1.0), GLKMatrix4MakeTranslation(translation.x, translation.y, 0.0));
+  GLKMatrix4 mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(translation.x, translation.y, 0.0),GLKMatrix4MakeScale(scale, scale, 1.0));
   mvMatrix = GLKMatrix4Multiply(mvMatrix, GLKMatrix4MakeZRotation(rotation));
   if (parent)
     mvMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], mvMatrix);

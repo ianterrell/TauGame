@@ -61,7 +61,7 @@
               "width": 0.5,
               "height": 0.75,
               "color": [0.812, 0.455, 0.11, 1.0],
-              "translation": [-2.5, 0.0],
+              "translation": [-1.25, 0.0],
               "scale": 0.5
             }
           },
@@ -71,7 +71,7 @@
               "width": 0.5,
               "height": 0.75,
               "color": [0.812, 0.455, 0.11, 1.0],
-              "translation": [2.5, 0.0],
+              "translation": [1.25, 0.0],
               "scale": 0.5
             }
           }

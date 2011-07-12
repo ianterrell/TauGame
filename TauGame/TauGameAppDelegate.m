@@ -7,6 +7,7 @@
 //
 
 #import "TauGameAppDelegate.h"
+#import "TauEngine.h"
 
 @implementation TauGameAppDelegate
 
@@ -14,11 +15,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    return YES;
+  NSLog(@"starting up");
+  
+  EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+  glkViewController = [[GLKViewController alloc] initWithNibName:@"GLKViewController" bundle:nil];
+  
+  TESceneView *view = [[TESceneView alloc] initWithFrame:[[UIScreen mainScreen] bounds] context:context];
+  
+  [EAGLContext setCurrentContext:context];
+  
+  glkViewController.view = view;
+  glkViewController.delegate = view.scene;
+  glkViewController.preferredFramesPerSecond = 60;
+  
+  view.drawableMultisample = GLKViewDrawableMultisample4X;
+    
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window.rootViewController = glkViewController;
+  [self.window makeKeyAndVisible];
+  
+  NSLog(@"done with startup");
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

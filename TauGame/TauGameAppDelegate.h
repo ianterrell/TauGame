@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
-@interface TauGameAppDelegate : UIResponder <UIApplicationDelegate>
+@interface TauGameAppDelegate : UIResponder <UIApplicationDelegate> {
+  GLKViewController *glkViewController;
+  UILabel *label;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

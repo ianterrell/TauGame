@@ -8,10 +8,6 @@
 
 #import "TENode.h"
 
-@interface TECharacter : NSObject {
-  NSString *name;
-  TENode *rootNode;
-  GLKVector2 position;
-}
+@interface TECharacter : TENode
 
 @end

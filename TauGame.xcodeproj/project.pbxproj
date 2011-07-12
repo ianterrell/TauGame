@@ -30,6 +30,8 @@
 		3CB0488C13CBD6940029875B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488913CBD6940029875B /* GLKit.framework */; };
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
+		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
+		3CB0489413CBDBF10029875B /* TESceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489313CBDBF00029875B /* TESceneView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,10 @@
 		3CB0488913CBD6940029875B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		3CB0488A13CBD6940029875B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
+		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
+		3CB0489213CBDBEF0029875B /* TESceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneView.h; sourceTree = "<group>"; };
+		3CB0489313CBDBF00029875B /* TESceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,12 +193,12 @@
 			isa = PBXGroup;
 			children = (
 				3CB0488613CBD6670029875B /* TauEngine.h */,
-				3CB0488013CBD5FD0029875B /* TECharacter.h */,
-				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
 				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3CB0487113CBD5C70029875B /* TENode.h */,
 				3CB0487213CBD5C70029875B /* TENode.m */,
+				3CB0488013CBD5FD0029875B /* TECharacter.h */,
+				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3CB0487413CBD5D20029875B /* TEShape.h */,
 				3CB0487513CBD5D20029875B /* TEShape.m */,
 				3CB0487713CBD5DF0029875B /* TETriangle.h */,
@@ -201,6 +207,10 @@
 				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
 				3CB0487D13CBD5F20029875B /* TERectangle.h */,
 				3CB0487E13CBD5F20029875B /* TERectangle.m */,
+				3CB0488F13CBDB440029875B /* TEScene.h */,
+				3CB0489013CBDB440029875B /* TEScene.m */,
+				3CB0489213CBDBEF0029875B /* TESceneView.h */,
+				3CB0489313CBDBF00029875B /* TESceneView.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -320,6 +330,8 @@
 				3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */,
 				3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */,
 				3CB0488213CBD5FE0029875B /* TECharacter.m in Sources */,
+				3CB0489113CBDB440029875B /* TEScene.m in Sources */,
+				3CB0489413CBDBF10029875B /* TESceneView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

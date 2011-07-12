@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-#import "TECharacter.h"
 #import "TEDrawable.h"
 #import "TENode.h"
+#import "TECharacter.h"
 #import "TEShape.h"
 #import "TETriangle.h"
 #import "TEEllipse.h"
 #import "TERectangle.h"
-#import "TEAnimation.h"
+
+#import "TEScene.h"
+#import "TESceneView.h"

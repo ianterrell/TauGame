@@ -49,9 +49,11 @@
 }
 
 - (GLKBaseEffect *)constantColorEffect {
-  GLKBaseEffect *effect = [[GLKBaseEffect alloc] init];
-  effect.useConstantColor = GL_TRUE;
-  return effect;
+  if (!constantColorEffect) {
+    constantColorEffect = [[GLKBaseEffect alloc] init];
+    constantColorEffect.useConstantColor = GL_TRUE;
+  }
+  return constantColorEffect;
 }
 
 -(GLKMatrix4)projectionMatrix {

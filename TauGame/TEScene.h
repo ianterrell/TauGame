@@ -12,12 +12,14 @@
 @interface TEScene : NSObject <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
   GLKVector4 clearColor;
+  GLKBaseEffect *constantColorEffect;
   NSMutableArray *characters;
 }
 
 @property GLfloat left, right, bottom, top;
 @property GLKVector4 clearColor;
 @property(strong, nonatomic) NSMutableArray *characters;
+@property(readonly) GLKBaseEffect *constantColorEffect;
 
 # pragma mark Scene Setup
 
@@ -26,7 +28,6 @@
 # pragma mark Rendering
 
 -(void)render;
-- (GLKBaseEffect *)constantColorEffect;
 -(GLKMatrix4)projectionMatrix;
 
 @end

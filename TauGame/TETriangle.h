@@ -12,4 +12,6 @@
   GLKVector2 vertex0, vertex1, vertex2;
 }
 
+@property GLKVector2 vertex0, vertex1, vertex2;
+
 @end

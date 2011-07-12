@@ -6,6 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#define M_TAU (2*M_PI)
+
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 

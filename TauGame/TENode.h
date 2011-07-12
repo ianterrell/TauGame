@@ -15,4 +15,8 @@
   NSMutableArray *children;
 }
 
+@property(strong, nonatomic) NSString *name;
+@property(strong, nonatomic) TEShape *shape;
+@property(strong, nonatomic) NSMutableArray *children;
+
 @end

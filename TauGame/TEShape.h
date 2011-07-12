@@ -12,4 +12,6 @@
   GLKVector4 color;
 }
 
+@property GLKVector4 color;
+
 @end

@@ -10,14 +10,16 @@
 
 @implementation TEShape
 
+@synthesize color;
+
 - (id)init
 {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+  self = [super init];
+  if (self) {
+    // Initialization code here.
+  }
+  
+  return self;
 }
 
 @end

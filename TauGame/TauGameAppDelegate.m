@@ -15,8 +15,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSLog(@"starting up");
-  
   EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
   glkViewController = [[GLKViewController alloc] initWithNibName:@"GLKViewController" bundle:nil];
   
@@ -34,7 +32,35 @@
   self.window.rootViewController = glkViewController;
   [self.window makeKeyAndVisible];
   
-  NSLog(@"done with startup");
+  
+  // Let's build a test scene!
+  
+  // def need yaml or Ruby! verbose bullshit!
+  TETriangle *mageBodyTriangle = [[TETriangle alloc] init];
+  mageBodyTriangle.vertex0 = GLKVector2Make(0.0, -3.0);
+  mageBodyTriangle.vertex1 = GLKVector2Make(1.0, 0.0);
+  mageBodyTriangle.vertex2 = GLKVector2Make(-1.0, 0.0);
+  mageBodyTriangle.color = GLKVector4Make(0.1, 0.1, 0.9, 1.0);
+  
+  TECharacter *mage = [[TECharacter alloc] init];
+  mage.shape = mageBodyTriangle;
+  mage.name = @"Mage";
+  mage.translation = GLKVector2Make(1.0, 0.0);
+  
+  TEEllipse *mageBodyHead = [[TEEllipse alloc] init];
+  mageBodyHead.color = GLKVector4Make(0.3, 0.5, 0.2, 1.0);
+  mageBodyHead.scale = 0.5;
+  mageBodyHead.translation = GLKVector2Make(0.0, 1.0);
+  TENode *mageBodyHeadNode = [[TENode alloc] init];
+  mageBodyHeadNode.name = @"Head";
+  mageBodyHeadNode.shape = mageBodyHead;
+  [mage.children addObject:mageBodyHeadNode];
+  
+  TEScene *scene = view.scene;
+  [scene setLeft:-5.0 right:5.0 bottom:-5.0 top:5.0];
+  scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
+  [scene.characters addObject:mage];
+  
   return YES;
 }
 

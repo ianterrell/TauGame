@@ -20,6 +20,14 @@
 		3CB0486013CBD5970029875B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0485E13CBD5970029875B /* InfoPlist.strings */; };
 		3CB0486213CBD5970029875B /* TauGameTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0486113CBD5970029875B /* TauGameTests.h */; };
 		3CB0486413CBD5970029875B /* TauGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486313CBD5970029875B /* TauGameTests.m */; };
+		3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486F13CBD5B80029875B /* TEDrawable.m */; };
+		3CB0487313CBD5C70029875B /* TENode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487213CBD5C70029875B /* TENode.m */; };
+		3CB0487613CBD5D20029875B /* TEShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487513CBD5D20029875B /* TEShape.m */; };
+		3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487813CBD5DF0029875B /* TETriangle.m */; };
+		3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487B13CBD5E90029875B /* TEEllipse.m */; };
+		3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487E13CBD5F20029875B /* TERectangle.m */; };
+		3CB0488213CBD5FE0029875B /* TECharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0488113CBD5FD0029875B /* TECharacter.m */; };
+		3CB0488513CBD6140029875B /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0488413CBD6140029875B /* TEAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,18 +45,34 @@
 		3CB0483C13CBD5960029875B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CB0483E13CBD5960029875B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CB0484013CBD5960029875B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3CB0484413CBD5960029875B /* TauGame-Info.plist */ = {isa = PBXFileReference; path = "TauGame-Info.plist"; sourceTree = "<group>"; };
+		3CB0484413CBD5960029875B /* TauGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TauGame-Info.plist"; sourceTree = "<group>"; };
 		3CB0484613CBD5960029875B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CB0484813CBD5960029875B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3CB0484A13CBD5960029875B /* TauGame-Prefix.pch */ = {isa = PBXFileReference; path = "TauGame-Prefix.pch"; sourceTree = "<group>"; };
-		3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */ = {isa = PBXFileReference; path = TauGameAppDelegate.h; sourceTree = "<group>"; };
+		3CB0484A13CBD5960029875B /* TauGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TauGame-Prefix.pch"; sourceTree = "<group>"; };
+		3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TauGameAppDelegate.h; sourceTree = "<group>"; };
 		3CB0484C13CBD5960029875B /* TauGameAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TauGameAppDelegate.m; sourceTree = "<group>"; };
 		3CB0485313CBD5970029875B /* TauGameTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TauGameTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0485413CBD5970029875B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		3CB0485D13CBD5970029875B /* TauGameTests-Info.plist */ = {isa = PBXFileReference; path = "TauGameTests-Info.plist"; sourceTree = "<group>"; };
+		3CB0485D13CBD5970029875B /* TauGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TauGameTests-Info.plist"; sourceTree = "<group>"; };
 		3CB0485F13CBD5970029875B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CB0486113CBD5970029875B /* TauGameTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TauGameTests.h; sourceTree = "<group>"; };
 		3CB0486313CBD5970029875B /* TauGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TauGameTests.m; sourceTree = "<group>"; };
+		3CB0486E13CBD5B80029875B /* TEDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEDrawable.h; sourceTree = "<group>"; };
+		3CB0486F13CBD5B80029875B /* TEDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDrawable.m; sourceTree = "<group>"; };
+		3CB0487113CBD5C70029875B /* TENode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENode.h; sourceTree = "<group>"; };
+		3CB0487213CBD5C70029875B /* TENode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENode.m; sourceTree = "<group>"; };
+		3CB0487413CBD5D20029875B /* TEShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShape.h; sourceTree = "<group>"; };
+		3CB0487513CBD5D20029875B /* TEShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEShape.m; sourceTree = "<group>"; };
+		3CB0487713CBD5DF0029875B /* TETriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETriangle.h; sourceTree = "<group>"; };
+		3CB0487813CBD5DF0029875B /* TETriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETriangle.m; sourceTree = "<group>"; };
+		3CB0487A13CBD5E90029875B /* TEEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEEllipse.h; sourceTree = "<group>"; };
+		3CB0487B13CBD5E90029875B /* TEEllipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEEllipse.m; sourceTree = "<group>"; };
+		3CB0487D13CBD5F20029875B /* TERectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERectangle.h; sourceTree = "<group>"; };
+		3CB0487E13CBD5F20029875B /* TERectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERectangle.m; sourceTree = "<group>"; };
+		3CB0488013CBD5FD0029875B /* TECharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacter.h; sourceTree = "<group>"; };
+		3CB0488113CBD5FD0029875B /* TECharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacter.m; sourceTree = "<group>"; };
+		3CB0488313CBD6140029875B /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
+		3CB0488413CBD6140029875B /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +133,7 @@
 		3CB0484213CBD5960029875B /* TauGame */ = {
 			isa = PBXGroup;
 			children = (
+				3CB0486D13CBD5A10029875B /* TauEngine */,
 				3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */,
 				3CB0484C13CBD5960029875B /* TauGameAppDelegate.m */,
 				3CB0484313CBD5960029875B /* Supporting Files */,
@@ -144,6 +169,29 @@
 				3CB0485E13CBD5970029875B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CB0486D13CBD5A10029875B /* TauEngine */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0488013CBD5FD0029875B /* TECharacter.h */,
+				3CB0488113CBD5FD0029875B /* TECharacter.m */,
+				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
+				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
+				3CB0487113CBD5C70029875B /* TENode.h */,
+				3CB0487213CBD5C70029875B /* TENode.m */,
+				3CB0487413CBD5D20029875B /* TEShape.h */,
+				3CB0487513CBD5D20029875B /* TEShape.m */,
+				3CB0487713CBD5DF0029875B /* TETriangle.h */,
+				3CB0487813CBD5DF0029875B /* TETriangle.m */,
+				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
+				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
+				3CB0487D13CBD5F20029875B /* TERectangle.h */,
+				3CB0487E13CBD5F20029875B /* TERectangle.m */,
+				3CB0488313CBD6140029875B /* TEAnimation.h */,
+				3CB0488413CBD6140029875B /* TEAnimation.m */,
+			);
+			name = TauEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +302,14 @@
 			files = (
 				3CB0484913CBD5960029875B /* main.m in Sources */,
 				3CB0484D13CBD5960029875B /* TauGameAppDelegate.m in Sources */,
+				3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */,
+				3CB0487313CBD5C70029875B /* TENode.m in Sources */,
+				3CB0487613CBD5D20029875B /* TEShape.m in Sources */,
+				3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */,
+				3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */,
+				3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */,
+				3CB0488213CBD5FE0029875B /* TECharacter.m in Sources */,
+				3CB0488513CBD6140029875B /* TEAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

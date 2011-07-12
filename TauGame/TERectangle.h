@@ -8,6 +8,8 @@
 
 #import "TEShape.h"
 
-@interface TERectangle : TEShape
+@interface TERectangle : TEShape {
+  GLfloat height, width;
+}
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
 
-@interface TEDrawable : NSObject
+@interface TEDrawable : NSObject {
+  GLKVector2 translation;
+  GLfloat scale;
+  GLfloat rotation;
+}
+
+-(void)render;
 
 @end

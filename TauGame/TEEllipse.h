@@ -8,6 +8,8 @@
 
 #import "TEShape.h"
 
-@interface TEEllipse : TEShape
+@interface TEEllipse : TEShape {
+  GLfloat radiusX, radiusY;
+}
 
 @end

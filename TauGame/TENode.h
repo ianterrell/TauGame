@@ -7,7 +7,12 @@
 //
 
 #import "TEDrawable.h"
+#import "TEShape.h"
 
-@interface TENode : TEDrawable
+@interface TENode : TEDrawable {
+  NSString *name;
+  TEShape *shape;
+  NSMutableArray *children;
+}
 
 @end

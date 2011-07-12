@@ -6,8 +6,12 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "TENode.h"
 
-@interface TECharacter : NSObject
+@interface TECharacter : NSObject {
+  NSString *name;
+  TENode *rootNode;
+  GLKVector2 position;
+}
 
 @end

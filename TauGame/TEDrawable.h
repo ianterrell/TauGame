@@ -11,12 +11,14 @@
 #import "TEScene.h"
 
 @interface TEDrawable : NSObject {
+  TEDrawable *parent;
   GLKBaseEffect *effect;
   GLKVector2 translation;
   GLfloat scale;
   GLfloat rotation;
 }
 
+@property(strong, nonatomic) TEDrawable *parent;
 @property(strong, nonatomic) GLKBaseEffect *effect;
 @property GLKVector2 translation;
 @property GLfloat scale;

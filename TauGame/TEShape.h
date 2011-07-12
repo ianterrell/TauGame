@@ -8,6 +8,8 @@
 
 #import "TEDrawable.h"
 
+@class TENode;
+
 @interface TEShape : TEDrawable {
   GLKVector4 color;
 }

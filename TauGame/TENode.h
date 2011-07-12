@@ -19,4 +19,8 @@
 @property(strong, nonatomic) TEShape *shape;
 @property(strong, nonatomic) NSMutableArray *children;
 
+# pragma mark Tree Methods
+
+-(void)addChild:(TENode *)child;
+
 @end

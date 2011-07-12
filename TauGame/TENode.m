@@ -30,4 +30,11 @@
   [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
 }
 
+# pragma mark Tree Methods
+
+-(void)addChild:(TENode *)child {
+  child.parent = self;
+  [self.children addObject:child];
+}
+
 @end

@@ -44,8 +44,10 @@
   
   TECharacter *mage = [[TECharacter alloc] init];
   mage.shape = mageBodyTriangle;
+  mage.shape.parent = mage;
   mage.name = @"Mage";
-  mage.translation = GLKVector2Make(1.0, 0.0);
+  mage.translation = GLKVector2Make(3.0, 0.0);
+  mage.rotation = 0.25 * M_TAU;
   
   TEEllipse *mageBodyHead = [[TEEllipse alloc] init];
   mageBodyHead.color = GLKVector4Make(0.3, 0.5, 0.2, 1.0);
@@ -54,10 +56,11 @@
   TENode *mageBodyHeadNode = [[TENode alloc] init];
   mageBodyHeadNode.name = @"Head";
   mageBodyHeadNode.shape = mageBodyHead;
-  [mage.children addObject:mageBodyHeadNode];
+  mageBodyHeadNode.shape.parent = mageBodyHeadNode;
+  [mage addChild:mageBodyHeadNode];
   
   TEScene *scene = view.scene;
-  [scene setLeft:-5.0 right:5.0 bottom:-5.0 top:5.0];
+  [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];
   scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
   [scene.characters addObject:mage];
   

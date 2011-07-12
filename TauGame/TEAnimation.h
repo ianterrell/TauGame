@@ -27,6 +27,7 @@ typedef enum {
   GLfloat value0, value1;
   double elapsedTime, duration;
   int repeat;
+  BOOL remove;
 }
 
 @property TEAnimationType type;
@@ -34,7 +35,9 @@ typedef enum {
 @property GLfloat value0, value1;
 @property double elapsedTime, duration;
 @property int repeat;
+@property BOOL remove;
 
 -(GLKMatrix4)modelViewMatrix;
+-(void)incrementElapsedTime:(double)time;
 
 @end

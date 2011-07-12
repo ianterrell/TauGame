@@ -10,7 +10,7 @@
 
 @implementation TEAnimation
 
-@synthesize type, elapsedTime, duration, value0, value1, repeat, easing;
+@synthesize type, elapsedTime, duration, value0, value1, repeat, easing, remove;
 
 - (id)init
 {
@@ -23,20 +23,43 @@
   return self;
 }
 
--(GLKMatrix4)modelViewMatrix {
-  GLKMatrix4 mvMatrix;
++(float)modifiedScaleValue:(float)finalValue {
+  if (finalValue > 1.0)
+    return finalValue - 1.0;
+  else
+    return 1.0 - finalValue;
+}
+
+-(float)easedValueFor:(float)finalValue atPercent:(float)percentDone {
+  float easedValue;
   
-  GLfloat easedValue0, easedValue1;
-  double percentDone = elapsedTime*10000/duration; // FIXME: time sent should be in seconds, this is bizarre
+  if (type == TEAnimationScale)
+    finalValue = [TEAnimation modifiedScaleValue:value0];
   
   switch (easing) {
     case TEAnimationEasingLinear:
-      easedValue0 = percentDone * value0;
-      easedValue1 = percentDone * value1;
+      easedValue = percentDone * finalValue;
       break;
     default:
       break;
   }
+  
+  if (type == TEAnimationScale)
+    easedValue += 1.0;
+  
+  return easedValue;
+}
+
+-(GLKMatrix4)modelViewMatrix {
+  GLKMatrix4 mvMatrix;
+  
+  double percentDone = elapsedTime/duration; 
+  if (percentDone > 1.0)
+    percentDone = 1.0;
+  
+  GLfloat easedValue0 = [self easedValueFor:value0 atPercent:percentDone];
+  GLfloat easedValue1 = [self easedValueFor:value1 atPercent:percentDone];
+  
   switch (type) {
     case TEAnimationScale:
       mvMatrix = GLKMatrix4MakeScale(easedValue0, easedValue0, easedValue0);
@@ -51,6 +74,19 @@
   }
   
   return mvMatrix;
+}
+
+-(void)incrementElapsedTime:(double)time {
+  elapsedTime += time;
+  if (elapsedTime >= duration) {
+    if (repeat > 0 || repeat == TEAnimationRepeatForever) {
+      elapsedTime -= duration;
+      if (repeat > 0)
+        repeat -= 1;
+    } else {
+      remove = YES;
+    }
+  }
 }
 
 @end

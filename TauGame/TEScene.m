@@ -26,15 +26,17 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-//  NSLog(@"FPS: %d", [controller framesPerSecond]);
-  
+//  NSLog(@"FPS: %d, %f", [controller framesPerSecond], [controller timeSinceLastUpdate]);
   GLfloat timeSince = [controller timeSinceLastUpdate];
   
   // Update animations
   [self.characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {
+    // Remove animations that are done
+    [node.currentAnimations filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id animation, NSDictionary *bindings) {
+      return !((TEAnimation *)animation).remove;
+    }]];
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {
-//      NSLog(@"updating animation time");
-      ((TEAnimation *)animation).elapsedTime += timeSince;
+      [((TEAnimation *)animation) incrementElapsedTime:timeSince*10000]; // FIXME: time sent should be in seconds, this is bizarre
     }];
   }];
 }

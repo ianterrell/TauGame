@@ -44,8 +44,14 @@
   grow.type = TEAnimationScale;
   grow.value0 = 1.5;
   grow.duration = 2.0;
-  
   [mage.currentAnimations addObject:grow];
+  
+  TEAnimation *spin = [[TEAnimation alloc] init];
+  spin.type = TEAnimationRotate;
+  spin.value0 = M_TAU;
+  spin.duration = 2.0;
+  spin.repeat = 1;
+  [mage.currentAnimations addObject:spin];
   
   [mage traverseUsingBlock:^(TENode *node){
     NSLog(@"Node %@ has %d animations", node.name, [node.currentAnimations count]);

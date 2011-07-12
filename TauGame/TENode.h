@@ -22,5 +22,6 @@
 # pragma mark Tree Methods
 
 -(void)addChild:(TENode *)child;
+-(void)traverseUsingBlock:(void (^)(TENode *))block;
 
 @end

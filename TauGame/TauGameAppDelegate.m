@@ -40,15 +40,28 @@
   TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
   [scene.characters addObject:mage];
   
-  TECharacter *mage2 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-  mage2.scale = 0.5;
-  mage2.translation = GLKVector2Make(-3.0, -3.0);
-  [scene.characters addObject:mage2];
+  TEAnimation *grow = [[TEAnimation alloc] init];
+  grow.type = TEAnimationScale;
+  grow.value0 = 1.5;
+  grow.duration = 2.0;
   
-  TECharacter *mage3 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-  mage3.scale = 2;
-  mage3.translation = GLKVector2Make(3.0, 3.0);
-  [scene.characters addObject:mage3];
+  [mage.currentAnimations addObject:grow];
+  
+  [mage traverseUsingBlock:^(TENode *node){
+    NSLog(@"Node %@ has %d animations", node.name, [node.currentAnimations count]);
+  }];
+  
+//  TECharacter *mage2 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+//  mage2.scale = 0.5;
+//  mage2.translation = GLKVector2Make(-3.0, -3.0);
+//  mage2.rotation = 0.25*M_TAU;
+//  [scene.characters addObject:mage2];
+//  
+//  TECharacter *mage3 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+//  mage3.scale = 2;
+//  mage3.translation = GLKVector2Make(3.0, 3.0);
+//  mage3.rotation = -0.5*M_TAU;
+//  [scene.characters addObject:mage3];
   
   return YES;
 }

@@ -26,3 +26,5 @@
 #import "TESceneView.h"
 
 #import "TECharacterLoader.h"
+
+#import "TEAnimation.h"

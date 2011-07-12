@@ -36,4 +36,9 @@
   [self.children addObject:child];
 }
 
+-(void)traverseUsingBlock:(void (^)(TENode *))block {
+  block(self);
+  [self.children makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:block];
+}
+
 @end

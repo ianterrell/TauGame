@@ -16,6 +16,7 @@
   GLKVector2 translation;
   GLfloat scale;
   GLfloat rotation;
+  NSMutableArray *currentAnimations;
 }
 
 @property(strong, nonatomic) TEDrawable *parent;
@@ -23,6 +24,7 @@
 @property GLKVector2 translation;
 @property GLfloat scale;
 @property GLfloat rotation;
+@property(strong, nonatomic) NSMutableArray *currentAnimations;
 
 -(void)renderInScene:(TEScene *)scene;
 -(GLKMatrix4)modelViewMatrix;

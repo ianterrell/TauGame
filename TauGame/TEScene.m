@@ -7,6 +7,8 @@
 //
 
 #import "TEScene.h"
+#import "TENode.h"
+#import "TEAnimation.h"
 
 @implementation TEScene
 
@@ -24,6 +26,17 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
+//  NSLog(@"FPS: %d", [controller framesPerSecond]);
+  
+  GLfloat timeSince = [controller timeSinceLastUpdate];
+  
+  // Update animations
+  [self.characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {
+    [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {
+//      NSLog(@"updating animation time");
+      ((TEAnimation *)animation).elapsedTime += timeSince;
+    }];
+  }];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {

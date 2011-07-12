@@ -24,3 +24,5 @@
 
 #import "TEScene.h"
 #import "TESceneView.h"
+
+#import "TECharacterLoader.h"

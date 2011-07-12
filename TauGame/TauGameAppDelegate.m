@@ -33,93 +33,22 @@
   [self.window makeKeyAndVisible];
   
   // Let's build a test scene!
-  
-  // def need yaml or Ruby! verbose bullshit!
-  TETriangle *mageBodyTriangle = [[TETriangle alloc] init];
-  mageBodyTriangle.vertex0 = GLKVector2Make(0.0, -2.0);
-  mageBodyTriangle.vertex1 = GLKVector2Make(1.0, 0.0);
-  mageBodyTriangle.vertex2 = GLKVector2Make(-1.0, 0.0);
-  mageBodyTriangle.color = GLKVector4Make(0.0, 0.082, 0.416, 1.0);
-  
-  TECharacter *mage = [[TECharacter alloc] init];
-  mage.shape = mageBodyTriangle;
-  mage.shape.parent = mage;
-  mage.name = @"Mage";
-  mage.scale = 2.0;
-  
-  TEEllipse *mageBodyHead = [[TEEllipse alloc] init];
-  mageBodyHead.color = GLKVector4Make(0.0, 0.0, 0.0, 1.0);
-  mageBodyHead.scale = 0.65;
-  TENode *mageBodyHeadNode = [[TENode alloc] init];
-  mageBodyHeadNode.name = @"Head";
-  mageBodyHeadNode.shape = mageBodyHead;
-  mageBodyHeadNode.shape.parent = mageBodyHeadNode;
-  mageBodyHeadNode.translation = GLKVector2Make(0.0, 0.45);
-  
-  TETriangle *mageBodyHat = [[TETriangle alloc] init];
-  mageBodyHat.vertex0 = GLKVector2Make(0.0, 0.6);
-  mageBodyHat.vertex1 = GLKVector2Make(1.0, 0.0);
-  mageBodyHat.vertex2 = GLKVector2Make(-1.0, 0.0);
-  mageBodyHat.color = GLKVector4Make(0.812, 0.455, 0.11, 1.0);
-  TENode *mageBodyHatNode = [[TENode alloc] init];
-  mageBodyHatNode.name = @"Hat";
-  mageBodyHatNode.shape = mageBodyHat;
-  mageBodyHatNode.translation = GLKVector2Make(0.0, 0.45);
-  mageBodyHatNode.shape.parent = mageBodyHatNode;
-  [mageBodyHeadNode addChild:mageBodyHatNode];
-  
-  TERectangle *mageBodyLeftEye = [[TERectangle alloc] init];
-  mageBodyLeftEye.width = 0.1;
-  mageBodyLeftEye.height = 0.25;
-  mageBodyLeftEye.color = GLKVector4Make(0.812, 0.455, 0.11, 1.0);
-  mageBodyLeftEye.translation = GLKVector2Make(-0.2, 0.1);
-  TENode *mageBodyLeftEyeNode = [[TENode alloc] init];
-  mageBodyLeftEyeNode.name = @"LeftEye";
-  mageBodyLeftEyeNode.shape = mageBodyLeftEye;
-  mageBodyLeftEyeNode.shape.parent = mageBodyLeftEyeNode;
-  [mageBodyHeadNode addChild:mageBodyLeftEyeNode];
-  
-  TERectangle *mageBodyRightEye = [[TERectangle alloc] init];
-  mageBodyRightEye.width = 0.1;
-  mageBodyRightEye.height = 0.25;
-  mageBodyRightEye.color = GLKVector4Make(0.812, 0.455, 0.11, 1.0);
-  mageBodyRightEye.translation = GLKVector2Make(0.2, 0.1);
-  TENode *mageBodyRightEyeNode = [[TENode alloc] init];
-  mageBodyRightEyeNode.name = @"RightEye";
-  mageBodyRightEyeNode.shape = mageBodyRightEye;
-  mageBodyRightEyeNode.shape.parent = mageBodyRightEyeNode;
-  [mageBodyHeadNode addChild:mageBodyRightEyeNode];
-  
-  [mage addChild:mageBodyHeadNode];
-  
-  TERectangle *mageBodyLeftHand = [[TERectangle alloc] init];
-  mageBodyLeftHand.color = GLKVector4Make(0.812, 0.455, 0.11, 1.0);
-  mageBodyLeftHand.width = 0.5;
-  mageBodyLeftHand.height = 0.75;
-  mageBodyLeftHand.scale = 0.5;
-  mageBodyLeftHand.translation = GLKVector2Make(-2.5, -1.0);
-  TENode *mageBodyLeftHandNode = [[TENode alloc] init];
-  mageBodyLeftHandNode.name = @"LeftHand";
-  mageBodyLeftHandNode.shape = mageBodyLeftHand;
-  mageBodyLeftHandNode.shape.parent = mageBodyLeftHandNode;
-  [mage addChild:mageBodyLeftHandNode];
-  
-  TERectangle *mageBodyRightHand = [[TERectangle alloc] init];
-  mageBodyRightHand.color = GLKVector4Make(0.812, 0.455, 0.11, 1.0);
-  mageBodyRightHand.width = 0.5;
-  mageBodyRightHand.height = 0.75;
-  mageBodyRightHand.scale = 0.5;
-  mageBodyRightHand.translation = GLKVector2Make(2.5, -1.0);
-  TENode *mageBodyRightHandNode = [[TENode alloc] init];
-  mageBodyRightHandNode.name = @"RightHand";
-  mageBodyRightHandNode.shape = mageBodyRightHand;
-  mageBodyRightHandNode.shape.parent = mageBodyRightHandNode;
-  [mage addChild:mageBodyRightHandNode];
-  
   TEScene *scene = view.scene;
   [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];
   scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
+  
+  TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
   [scene.characters addObject:mage];
+  
+  TECharacter *mage2 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+  mage2.scale = 0.5;
+  mage2.translation = GLKVector2Make(-3.0, -3.0);
+  [scene.characters addObject:mage2];
+  
+  TECharacter *mage3 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+  mage3.scale = 2;
+  mage3.translation = GLKVector2Make(3.0, 3.0);
+  [scene.characters addObject:mage3];
   
   return YES;
 }

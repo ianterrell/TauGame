@@ -7,13 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TauEngine.h"
-
-typedef enum {
-  TEAnimationScale,
-  TEAnimationRotate,
-  TEAnimationTranslate
-} TEAnimationType;
 
 typedef enum {
   TEAnimationEasingLinear,
@@ -22,22 +15,20 @@ typedef enum {
 #define TEAnimationRepeatForever -1
 
 @interface TEAnimation : NSObject {
-  TEAnimationType type;
   TEAnimationEasingType easing;
-  GLfloat value0, value1;
   double elapsedTime, duration;
   int repeat;
   BOOL remove;
 }
 
-@property TEAnimationType type;
 @property TEAnimationEasingType easing;
-@property GLfloat value0, value1;
 @property double elapsedTime, duration;
 @property int repeat;
 @property BOOL remove;
 
--(GLKMatrix4)modelViewMatrix;
+@property(readonly) float percentDone;
+@property(readonly) float easingFactor;
+
 -(void)incrementElapsedTime:(double)time;
 
 @end

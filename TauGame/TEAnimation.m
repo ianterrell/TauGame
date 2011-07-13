@@ -10,7 +10,7 @@
 
 @implementation TEAnimation
 
-@synthesize type, elapsedTime, duration, value0, value1, repeat, easing, remove;
+@synthesize elapsedTime, duration, repeat, easing, remove;
 
 - (id)init
 {
@@ -23,57 +23,17 @@
   return self;
 }
 
-+(float)modifiedScaleValue:(float)finalValue {
-  if (finalValue > 1.0)
-    return finalValue - 1.0;
-  else
-    return 1.0 - finalValue;
+-(float)percentDone {
+  return elapsedTime/duration;
 }
 
--(float)easedValueFor:(float)finalValue atPercent:(float)percentDone {
-  float easedValue;
-  
-  if (type == TEAnimationScale)
-    finalValue = [TEAnimation modifiedScaleValue:value0];
-  
+-(float)easingFactor {
   switch (easing) {
     case TEAnimationEasingLinear:
-      easedValue = percentDone * finalValue;
-      break;
+      return self.percentDone;
     default:
-      break;
+      return 0.0;
   }
-  
-  if (type == TEAnimationScale)
-    easedValue += 1.0;
-  
-  return easedValue;
-}
-
--(GLKMatrix4)modelViewMatrix {
-  GLKMatrix4 mvMatrix;
-  
-  double percentDone = elapsedTime/duration; 
-  if (percentDone > 1.0)
-    percentDone = 1.0;
-  
-  GLfloat easedValue0 = [self easedValueFor:value0 atPercent:percentDone];
-  GLfloat easedValue1 = [self easedValueFor:value1 atPercent:percentDone];
-  
-  switch (type) {
-    case TEAnimationScale:
-      mvMatrix = GLKMatrix4MakeScale(easedValue0, easedValue0, easedValue0);
-      break;
-    case TEAnimationRotate:
-      mvMatrix = GLKMatrix4MakeZRotation(easedValue0);
-      break;
-    case TEAnimationTranslate:
-      mvMatrix = GLKMatrix4MakeTranslation(easedValue0, easedValue1, 0.0);
-    default:
-      break;
-  }
-  
-  return mvMatrix;
 }
 
 -(void)incrementElapsedTime:(double)time {

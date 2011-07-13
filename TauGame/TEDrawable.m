@@ -7,6 +7,7 @@
 //
 
 #import "TEDrawable.h"
+#import "TauEngine.h"
 
 @implementation TEDrawable
 
@@ -16,10 +17,10 @@
 {
   self = [super init];
   if (self) {
-    self.scale = 1.0;
-    self.rotation = 0.0;
-    self.translation = GLKVector2Make(0.0, 0.0);
-    self.currentAnimations = [[NSMutableArray alloc] init];
+    scale = 1.0;
+    rotation = 0.0;
+    translation = GLKVector2Make(0.0, 0.0);
+    currentAnimations = [[NSMutableArray alloc] init];
   }
   
   return self;
@@ -32,15 +33,21 @@
 }
 
 -(GLKMatrix4)modelViewMatrix {
-  __block GLKMatrix4 mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(translation.x, translation.y, 0.0),GLKMatrix4MakeScale(scale, scale, 1.0));
-  mvMatrix = GLKMatrix4Multiply(mvMatrix, GLKMatrix4MakeZRotation(rotation));
+  __block GLKVector2 mvTranslation = translation;
+  __block GLfloat mvScale = scale;
+  __block GLfloat mvRotation = rotation;
+  
   [currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
-    // Undo the translation, then reapply it after animating to ensure rotations happen around the centerpoint.
-    // It might make more sense (or be much more performant for large scenes) to store different types of translations separately; maybe a queue or stack per scaling, rotation, translation; that include all object and animation translations
-    mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(-translation.x, -translation.y, 0.0), mvMatrix);
-    mvMatrix = GLKMatrix4Multiply([animation modelViewMatrix], mvMatrix);
-    mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(translation.x, translation.y, 0.0), mvMatrix);
+    if ([animation isKindOfClass:[TETranslateAnimation class]])
+      mvTranslation = GLKVector2Add(mvTranslation, ((TETranslateAnimation *)animation).easedTranslation);
+    else if ([animation isKindOfClass:[TERotateAnimation class]])
+      mvRotation += ((TERotateAnimation *)animation).easedRotation;
+    else if ([animation isKindOfClass:[TEScaleAnimation class]])
+      mvScale *= ((TEScaleAnimation *)animation).easedScale;
   }];
+
+  GLKMatrix4 mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
+  mvMatrix = GLKMatrix4Multiply(mvMatrix, GLKMatrix4MakeZRotation(mvRotation));
   if (parent)
     mvMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], mvMatrix);
   return mvMatrix;

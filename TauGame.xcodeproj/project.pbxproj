@@ -13,6 +13,12 @@
 		3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
+		3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
+		3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
+		3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
+		3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
+		3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
+		3C8F913D13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
 		3CB0483D13CBD5960029875B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0483C13CBD5960029875B /* UIKit.framework */; };
 		3CB0483F13CBD5960029875B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0483E13CBD5960029875B /* Foundation.framework */; };
 		3CB0484113CBD5960029875B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0484013CBD5960029875B /* CoreGraphics.framework */; };
@@ -56,6 +62,12 @@
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
 		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
+		3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScaleAnimation.h; sourceTree = "<group>"; };
+		3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScaleAnimation.m; sourceTree = "<group>"; };
+		3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERotateAnimation.h; sourceTree = "<group>"; };
+		3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERotateAnimation.m; sourceTree = "<group>"; };
+		3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETranslateAnimation.h; sourceTree = "<group>"; };
+		3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETranslateAnimation.m; sourceTree = "<group>"; };
 		3CB0483813CBD5960029875B /* TauGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TauGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0483C13CBD5960029875B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CB0483E13CBD5960029875B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,6 +248,12 @@
 				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
 				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
 				3C138B9513CCC7E0002FC701 /* TEAnimation.m */,
+				3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */,
+				3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */,
+				3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */,
+				3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */,
+				3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */,
+				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -361,6 +379,9 @@
 				3CB0489413CBDBF10029875B /* TESceneView.m in Sources */,
 				3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */,
 				3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */,
+				3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
+				3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
+				3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +392,9 @@
 				3CB0486413CBD5970029875B /* TauGameTests.m in Sources */,
 				3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */,
 				3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */,
+				3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
+				3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
+				3C8F913D13CDE30900820FC5 /* TETranslateAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

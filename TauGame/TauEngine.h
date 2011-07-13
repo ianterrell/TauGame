@@ -28,3 +28,6 @@
 #import "TECharacterLoader.h"
 
 #import "TEAnimation.h"
+#import "TEScaleAnimation.h"
+#import "TETranslateAnimation.h"
+#import "TERotateAnimation.h"

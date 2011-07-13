@@ -26,8 +26,8 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-//  NSLog(@"FPS: %d", [controller framesPerSecond]);//, [controller timeSinceLastUpdate]);
-  GLfloat timeSince = [controller timeSinceLastUpdate];
+//  NSLog(@"FPS: %d, %f", [controller framesPerSecond], [controller timeSinceLastDraw]);
+  GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
   // Update animations
   [self.characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {
@@ -36,7 +36,7 @@
       return !((TEAnimation *)animation).remove;
     }]];
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {
-      [((TEAnimation *)animation) incrementElapsedTime:timeSince*10000]; // FIXME: time sent should be in seconds, this is bizarre
+      [((TEAnimation *)animation) incrementElapsedTime:timeSince];
     }];
   }];
 }

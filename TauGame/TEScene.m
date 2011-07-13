@@ -26,7 +26,7 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-//  NSLog(@"FPS: %d, %f", [controller framesPerSecond], [controller timeSinceLastDraw]);
+  NSLog(@"FPS: %d, %f, %f", [controller framesPerSecond], [controller timeSinceLastDraw], [controller timeSinceLastUpdate]);
   GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
   // Update animations

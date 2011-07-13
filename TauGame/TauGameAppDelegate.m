@@ -37,23 +37,24 @@
   [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];
   scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
   
-  int row = 24, col = 32;
+  int turns[] = {-2,-1,1,2};
+  int row = 3, col = 4;
   float space = 6.4*2/row;
   for (int i = 0; i < row; i++) {
     for (int j = 0; j < col; j++) {
       TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-      mage.scale = 0.1;
+      mage.scale = 0.4;
       mage.translation = GLKVector2Make(-6.4 + i*space, -8.3 + j*space);
       
       TEScaleAnimation *grow = [[TEScaleAnimation alloc] init];
-      grow.scale = 1.5;
-      grow.duration = 1.0;
+      grow.scale = 3*((float)arc4random())/RAND_MAX;
+      grow.duration = 5*((float)arc4random())/RAND_MAX;;
       grow.repeat = TEAnimationRepeatForever;
       [mage.currentAnimations addObject:grow];
       
       TERotateAnimation *spin = [[TERotateAnimation alloc] init];
-      spin.rotation = M_TAU;
-      spin.duration = 5.0;
+      spin.rotation = turns[arc4random() % 4]*M_TAU;
+      spin.duration = 5*((float)arc4random())/RAND_MAX;;
       spin.repeat = TEAnimationRepeatForever;
       [mage.currentAnimations addObject:spin];
       

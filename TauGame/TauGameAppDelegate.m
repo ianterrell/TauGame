@@ -37,25 +37,48 @@
   [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];
   scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
   
-  TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-  [scene.characters addObject:mage];
-  
-  TEAnimation *grow = [[TEAnimation alloc] init];
-  grow.type = TEAnimationScale;
-  grow.value0 = 1.5;
-  grow.duration = 2.0;
-  [mage.currentAnimations addObject:grow];
-  
-  TEAnimation *spin = [[TEAnimation alloc] init];
-  spin.type = TEAnimationRotate;
-  spin.value0 = M_TAU;
-  spin.duration = 2.0;
-  spin.repeat = 1;
-  [mage.currentAnimations addObject:spin];
-  
-  [mage traverseUsingBlock:^(TENode *node){
-    NSLog(@"Node %@ has %d animations", node.name, [node.currentAnimations count]);
-  }];
+  for (int i = 0; i < 15; i++) {
+    for (int j = 0; j < 20; j++) {
+      TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+      mage.scale = 0.3;
+      mage.translation = GLKVector2Make(-6 + i*0.853, -8 + j*0.853);
+      
+      TEAnimation *grow = [[TEAnimation alloc] init];
+      grow.type = TEAnimationScale;
+      grow.value0 = 0.5;
+      grow.duration = 1.0;
+      grow.repeat = TEAnimationRepeatForever;
+      [mage.currentAnimations addObject:grow];
+      
+      TEAnimation *spin = [[TEAnimation alloc] init];
+      spin.type = TEAnimationRotate;
+      spin.value0 = M_TAU;
+      spin.duration = 1.0;
+      spin.repeat = TEAnimationRepeatForever;
+      [mage.currentAnimations addObject:spin];
+      
+      [scene.characters addObject:mage];
+    }
+  }
+//  TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
+//  [scene.characters addObject:mage];
+//  
+//  TEAnimation *grow = [[TEAnimation alloc] init];
+//  grow.type = TEAnimationScale;
+//  grow.value0 = 1.5;
+//  grow.duration = 2.0;
+//  [mage.currentAnimations addObject:grow];
+//  
+//  TEAnimation *spin = [[TEAnimation alloc] init];
+//  spin.type = TEAnimationRotate;
+//  spin.value0 = M_TAU;
+//  spin.duration = 2.0;
+//  spin.repeat = 1;
+//  [mage.currentAnimations addObject:spin];
+//  
+//  [mage traverseUsingBlock:^(TENode *node){
+//    NSLog(@"Node %@ has %d animations", node.name, [node.currentAnimations count]);
+//  }];
   
 //  TECharacter *mage2 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
 //  mage2.scale = 0.5;

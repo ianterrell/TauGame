@@ -26,7 +26,7 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-//  NSLog(@"FPS: %d, %f", [controller framesPerSecond], [controller timeSinceLastUpdate]);
+//  NSLog(@"FPS: %d", [controller framesPerSecond]);//, [controller timeSinceLastUpdate]);
   GLfloat timeSince = [controller timeSinceLastUpdate];
   
   // Update animations

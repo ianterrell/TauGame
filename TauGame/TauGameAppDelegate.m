@@ -8,10 +8,12 @@
 
 #import "TauGameAppDelegate.h"
 #import "TauEngine.h"
+#import "TestScene.h"
 
 @implementation TauGameAppDelegate
 
 @synthesize window = _window;
+@synthesize motionManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -19,6 +21,11 @@
   glkViewController = [[GLKViewController alloc] initWithNibName:@"GLKViewController" bundle:nil];
   
   TESceneView *view = [[TESceneView alloc] initWithFrame:[[UIScreen mainScreen] bounds] context:context];
+  
+  // Going to use a custom scene. Probably need to refactor SceneView away -- what is it doing?
+  TEScene *testScene = [[TestScene alloc] init];
+  view.scene = testScene;
+  view.delegate = testScene;
   
   [EAGLContext setCurrentContext:context];
   
@@ -32,67 +39,13 @@
   self.window.rootViewController = glkViewController;
   [self.window makeKeyAndVisible];
   
-  // Let's build a test scene!
-  TEScene *scene = view.scene;
-  [scene setLeft:-6.4 right:6.4 bottom:-8.53 top:8.53];
-  scene.clearColor = GLKVector4Make(0.5, 0.6, 0.5, 0.5);
+  // Let's work with motion
+  motionManager = [[CMMotionManager alloc] init];
+  [motionManager startDeviceMotionUpdates];
   
-  int turns[] = {-2,-1,1,2};
-  int row = 3, col = 4;
-  float space = 6.4*2/row;
-  for (int i = 0; i < row; i++) {
-    for (int j = 0; j < col; j++) {
-      TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-      mage.scale = 0.4;
-      mage.translation = GLKVector2Make(-6.4 + i*space, -8.3 + j*space);
-      
-      TEScaleAnimation *grow = [[TEScaleAnimation alloc] init];
-      grow.scale = 3*((float)arc4random())/RAND_MAX;
-      grow.duration = 5*((float)arc4random())/RAND_MAX;;
-      grow.repeat = TEAnimationRepeatForever;
-      [mage.currentAnimations addObject:grow];
-      
-      TERotateAnimation *spin = [[TERotateAnimation alloc] init];
-      spin.rotation = turns[arc4random() % 4]*M_TAU;
-      spin.duration = 5*((float)arc4random())/RAND_MAX;;
-      spin.repeat = TEAnimationRepeatForever;
-      [mage.currentAnimations addObject:spin];
-      
-      [scene.characters addObject:mage];
-    }
-  }
-//  TECharacter *mage = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-//  [scene.characters addObject:mage];
-//  
-//  TEAnimation *grow = [[TEAnimation alloc] init];
-//  grow.type = TEAnimationScale;
-//  grow.value0 = 1.5;
-//  grow.duration = 2.0;
-//  [mage.currentAnimations addObject:grow];
-//  
-//  TEAnimation *spin = [[TEAnimation alloc] init];
-//  spin.type = TEAnimationRotate;
-//  spin.value0 = M_TAU;
-//  spin.duration = 2.0;
-//  spin.repeat = 1;
-//  [mage.currentAnimations addObject:spin];
-//  
-//  [mage traverseUsingBlock:^(TENode *node){
-//    NSLog(@"Node %@ has %d animations", node.name, [node.currentAnimations count]);
-//  }];
-  
-//  TECharacter *mage2 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-//  mage2.scale = 0.5;
-//  mage2.translation = GLKVector2Make(-3.0, -3.0);
-//  mage2.rotation = 0.25*M_TAU;
-//  [scene.characters addObject:mage2];
-//  
-//  TECharacter *mage3 = [TECharacterLoader loadCharacterFromJSONFile:@"mage"];
-//  mage3.scale = 2;
-//  mage3.translation = GLKVector2Make(3.0, 3.0);
-//  mage3.rotation = -0.5*M_TAU;
-//  [scene.characters addObject:mage3];
-  
+  // Test collisions...
+  [[[TECollisionDetector alloc] init] test];
+    
   return YES;
 }
 

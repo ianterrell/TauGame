@@ -31,3 +31,5 @@
 #import "TEScaleAnimation.h"
 #import "TETranslateAnimation.h"
 #import "TERotateAnimation.h"
+
+#import "TECollisionDetector.h"

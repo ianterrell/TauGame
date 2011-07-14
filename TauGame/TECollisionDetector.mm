@@ -93,7 +93,7 @@
     NSLog(@"box and circle collide with box at 6.1");
   }
   
-  transform2.Set(b2Vec2(0.0, 6.1), 1.0/8.0*M_TAU);
+  transform1.Set(b2Vec2(0.0, 6.1), 1.0/8.0*M_TAU);
   transform2.Set(b2Vec2(0.0, 0.0), 0.0);
   b2CollidePolygonAndCircle(&manifold, &box, transform1, &circle1, transform2);
   if (manifold.pointCount > 0){

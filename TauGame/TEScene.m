@@ -19,6 +19,10 @@
 - (id)init {
   self = [super init];
   if (self) {
+    // OPTIMIZATION: configurable multisample
+    self.frame = [[UIScreen mainScreen] bounds];
+    self.delegate = self;
+    self.drawableMultisample = GLKViewDrawableMultisample4X;
     self.characters = [[NSMutableArray alloc] init];
   }
   

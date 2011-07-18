@@ -23,7 +23,7 @@
 #import "TERectangle.h"
 
 #import "TEScene.h"
-#import "TESceneView.h"
+#import "TESceneController.h"
 
 #import "TECharacterLoader.h"
 

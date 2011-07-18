@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import "TauEngine.h"
 
 @interface TauGameAppDelegate : UIResponder <UIApplicationDelegate> {
-  GLKViewController *glkViewController;
-  UILabel *label;
+  TESceneController *controller;
   CMMotionManager *motionManager;
 }
 

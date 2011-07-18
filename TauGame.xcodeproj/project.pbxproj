@@ -85,13 +85,16 @@
 		3C55079313CE093100585C40 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55074C13CE093100585C40 /* b2WeldJoint.cpp */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
-		3C55079E13CE0D2300585C40 /* TestScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.mm */; };
-		3C55079F13CE0D2300585C40 /* TestScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.mm */; };
+		3C55079E13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
+		3C55079F13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
 		3C5507A113CE198900585C40 /* obstacle.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
 		3C5507A213CE198900585C40 /* obstacle.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
 		3C5507A313CE19CB00585C40 /* obstacle.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
 		3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
 		3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
+		3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6013D478CC00061EC7 /* TestScene2.m */; };
+		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
+		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
 		3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
 		3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
@@ -122,7 +125,6 @@
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
-		3CB0489413CBDBF10029875B /* TESceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489313CBDBF00029875B /* TESceneView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,10 +217,14 @@
 		3C55074D13CE093100585C40 /* b2WeldJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2WeldJoint.h; sourceTree = "<group>"; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3C55079C13CE0D2300585C40 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
-		3C55079D13CE0D2300585C40 /* TestScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestScene.mm; sourceTree = "<group>"; };
+		3C55079D13CE0D2300585C40 /* TestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene.m; sourceTree = "<group>"; };
 		3C5507A013CE198900585C40 /* obstacle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = obstacle.js; sourceTree = "<group>"; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
 		3C5507A513CE237D00585C40 /* TECollisionDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TECollisionDetector.mm; sourceTree = "<group>"; };
+		3C6B2A5F13D478CB00061EC7 /* TestScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene2.h; sourceTree = "<group>"; };
+		3C6B2A6013D478CC00061EC7 /* TestScene2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene2.m; sourceTree = "<group>"; };
+		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
+		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScaleAnimation.h; sourceTree = "<group>"; };
 		3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScaleAnimation.m; sourceTree = "<group>"; };
 		3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERotateAnimation.h; sourceTree = "<group>"; };
@@ -261,8 +267,6 @@
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
-		3CB0489213CBDBEF0029875B /* TESceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneView.h; sourceTree = "<group>"; };
-		3CB0489313CBDBF00029875B /* TESceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,7 +448,9 @@
 			isa = PBXGroup;
 			children = (
 				3C55079C13CE0D2300585C40 /* TestScene.h */,
-				3C55079D13CE0D2300585C40 /* TestScene.mm */,
+				3C55079D13CE0D2300585C40 /* TestScene.m */,
+				3C6B2A5F13D478CB00061EC7 /* TestScene2.h */,
+				3C6B2A6013D478CC00061EC7 /* TestScene2.m */,
 			);
 			name = TestGame;
 			sourceTree = "<group>";
@@ -548,10 +554,6 @@
 				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
 				3CB0487D13CBD5F20029875B /* TERectangle.h */,
 				3CB0487E13CBD5F20029875B /* TERectangle.m */,
-				3CB0488F13CBDB440029875B /* TEScene.h */,
-				3CB0489013CBDB440029875B /* TEScene.m */,
-				3CB0489213CBDBEF0029875B /* TESceneView.h */,
-				3CB0489313CBDBF00029875B /* TESceneView.m */,
 				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
 				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
 				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
@@ -564,6 +566,10 @@
 				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
 				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
 				3C5507A513CE237D00585C40 /* TECollisionDetector.mm */,
+				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
+				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
+				3CB0488F13CBDB440029875B /* TEScene.h */,
+				3CB0489013CBDB440029875B /* TEScene.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -687,7 +693,6 @@
 				3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */,
 				3CB0488213CBD5FE0029875B /* TECharacter.m in Sources */,
 				3CB0489113CBDB440029875B /* TEScene.m in Sources */,
-				3CB0489413CBDBF10029875B /* TESceneView.m in Sources */,
 				3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */,
 				3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */,
 				3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
@@ -728,9 +733,11 @@
 				3C55078E13CE093100585C40 /* b2PulleyJoint.cpp in Sources */,
 				3C55079013CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079213CE093100585C40 /* b2WeldJoint.cpp in Sources */,
-				3C55079E13CE0D2300585C40 /* TestScene.mm in Sources */,
+				3C55079E13CE0D2300585C40 /* TestScene.m in Sources */,
 				3C5507A113CE198900585C40 /* obstacle.js in Sources */,
 				3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */,
+				3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */,
+				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,9 +786,10 @@
 				3C55078F13CE093100585C40 /* b2PulleyJoint.cpp in Sources */,
 				3C55079113CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079313CE093100585C40 /* b2WeldJoint.cpp in Sources */,
-				3C55079F13CE0D2300585C40 /* TestScene.mm in Sources */,
+				3C55079F13CE0D2300585C40 /* TestScene.m in Sources */,
 				3C5507A213CE198900585C40 /* obstacle.js in Sources */,
 				3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */,
+				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

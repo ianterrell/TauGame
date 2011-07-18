@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-@interface TEScene : NSObject <GLKViewDelegate, GLKViewControllerDelegate> {
+@interface TEScene : GLKView <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
   GLKVector4 clearColor;
   GLKBaseEffect *constantColorEffect;

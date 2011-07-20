@@ -69,7 +69,7 @@
   GLKMatrix4 translation = GLKMatrix4MakeTranslation((left-right)/2.0, (bottom-top)/2.0, 0);
   GLKMatrix4 rotation = GLKMatrix4MakeZRotation([self turnsForOrientation]*M_TAU);
   GLKMatrix4 revertTranslation = GLKMatrix4MakeTranslation((right-left)/2.0, (top-bottom)/2.0, 0);
-  orientationRotationMatrix = rotation;//GLKMatrix4Multiply(revertTranslation, GLKMatrix4Multiply(rotation, translation));
+  orientationRotationMatrix = GLKMatrix4Multiply(revertTranslation, GLKMatrix4Multiply(rotation, translation));
 }
 
 -(float)turnsForOrientation {

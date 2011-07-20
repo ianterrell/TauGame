@@ -21,6 +21,9 @@
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     [EAGLContext setCurrentContext:context];
     self.preferredFramesPerSecond = 60;
+    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
   }
   
   return self;
@@ -50,6 +53,14 @@
   currentScene = [scenes objectForKey:name];
   self.delegate = currentScene;
   self.view = currentScene;
+}
+
+# pragma mark Device Orientation
+
+-(void)deviceOrientationChanged:(NSNotification *)notification {
+  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+  if ([currentScene orientationSupported:orientation])
+    [currentScene orientationChangedTo:orientation];
 }
 
 @end

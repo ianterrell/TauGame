@@ -50,7 +50,11 @@
   mvMatrix = GLKMatrix4Multiply(mvMatrix, GLKMatrix4MakeZRotation(mvRotation));
   if (parent)
     mvMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], mvMatrix);
+  else { // final orientation rotation
+    mvMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, mvMatrix);
+  }
   return mvMatrix;
 }
+
 
 @end

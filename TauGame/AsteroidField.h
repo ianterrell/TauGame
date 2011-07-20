@@ -13,4 +13,6 @@
   Fighter *fighter;
 }
 
+-(void)setupCoordinateSystem;
+
 @end

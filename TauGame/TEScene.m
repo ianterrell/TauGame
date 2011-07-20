@@ -7,14 +7,14 @@
 //
 
 #import "TEScene.h"
-#import "TENode.h"
-#import "TEAnimation.h"
+#import "TauEngine.h"
 
 @implementation TEScene
 
 @synthesize left, right, bottom, top;
 @synthesize clearColor;
 @synthesize characters;
+@synthesize currentOrientation, orientationRotationMatrix;
 
 - (id)init {
   self = [super init];
@@ -56,6 +56,33 @@
   self.right = _right;
   self.bottom = _bottom;
   self.top = _top;
+}
+
+# pragma mark Orientation
+
+-(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
+  return orientation == UIDeviceOrientationLandscapeLeft;
+}
+
+-(void)orientationChangedTo:(UIDeviceOrientation)orientation {
+  currentOrientation = orientation;
+  GLKMatrix4 translation = GLKMatrix4MakeTranslation((left-right)/2.0, (bottom-top)/2.0, 0);
+  GLKMatrix4 rotation = GLKMatrix4MakeZRotation([self turnsForOrientation]*M_TAU);
+  GLKMatrix4 revertTranslation = GLKMatrix4MakeTranslation((right-left)/2.0, (top-bottom)/2.0, 0);
+  orientationRotationMatrix = rotation;//GLKMatrix4Multiply(revertTranslation, GLKMatrix4Multiply(rotation, translation));
+}
+
+-(float)turnsForOrientation {
+  switch (currentOrientation) {
+    case UIDeviceOrientationLandscapeLeft:
+      return -0.25;
+    case UIDeviceOrientationLandscapeRight:
+      return 0.25;
+    case UIDeviceOrientationPortraitUpsideDown:
+      return 0.5;
+    default:
+      return 0.0;
+  }
 }
 
 # pragma mark Rendering

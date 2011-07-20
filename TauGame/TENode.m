@@ -11,7 +11,7 @@
 @implementation TENode
 
 @synthesize name, shape, children;
-@synthesize velocity, acceleration;
+@synthesize maxVelocity, maxAcceleration;
 
 - (id)init
 {
@@ -19,6 +19,8 @@
   if (self) {
     velocity = GLKVector2Make(0, 0);
     acceleration = GLKVector2Make(0, 0);
+    maxVelocity = INFINITY;
+    maxAcceleration = INFINITY;
     self.children = [[NSMutableArray alloc] init];
   }
   
@@ -35,9 +37,32 @@
 # pragma mark Motion Methods
 
 -(void)updatePosition:(NSTimeInterval)dt {
-  velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
+  self.velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
   position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
 }
+
+-(GLKVector2)velocity {
+  return velocity;
+}
+
+-(GLKVector2)acceleration {
+  return acceleration;
+}
+
+-(void)setVelocity:(GLKVector2)newVelocity {
+  if (GLKVector2Length(newVelocity) > maxVelocity)
+    velocity = GLKVector2MultiplyScalar(GLKVector2Normalize(newVelocity), maxVelocity);
+  else
+    velocity = newVelocity;
+}
+
+-(void)setAcceleration:(GLKVector2)newAcceleration {
+  if (GLKVector2Length(newAcceleration) > maxAcceleration)
+    acceleration = GLKVector2MultiplyScalar(GLKVector2Normalize(newAcceleration), maxAcceleration);
+  else
+    acceleration = newAcceleration;
+}
+
 
 # pragma mark Tree Methods
 

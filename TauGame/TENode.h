@@ -15,12 +15,14 @@
   NSMutableArray *children;
   
   GLKVector2 velocity, acceleration;
+  float maxVelocity, maxAcceleration;
 }
 
 @property(strong, nonatomic) NSString *name;
 @property(strong, nonatomic) TEShape *shape;
 @property(strong, nonatomic) NSMutableArray *children;
 @property GLKVector2 velocity, acceleration;
+@property float maxVelocity, maxAcceleration;
 
 # pragma mark Motion Methods
 -(void)updatePosition:(NSTimeInterval)dt;

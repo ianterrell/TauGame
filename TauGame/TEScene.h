@@ -20,6 +20,7 @@
 }
 
 @property GLfloat left, right, bottom, top;
+@property(readonly) float width, height;
 @property GLKVector4 clearColor;
 @property(strong, nonatomic) NSMutableArray *characters;
 @property(readonly) GLKBaseEffect *constantColorEffect;
@@ -29,12 +30,15 @@
 # pragma mark Scene Setup
 
 -(void)setLeft:(GLfloat)left right:(GLfloat)right bottom:(GLfloat)bottom top:(GLfloat)top;
+-(GLKVector2)bottomLeftVisible;
+-(GLKVector2)topRightVisible;
 
 # pragma mark Orientation
 
 -(BOOL)orientationSupported:(UIDeviceOrientation)orientation;
 -(void)orientationChangedTo:(UIDeviceOrientation)orientation;
 -(float)turnsForOrientation;
+-(float)orientationOffset;
 
 # pragma mark Rendering
 

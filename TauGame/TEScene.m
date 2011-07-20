@@ -58,6 +58,24 @@
   self.top = _top;
 }
 
+-(float)width {
+  return right-left;
+}
+
+-(float)height {
+  return top-bottom;
+}
+
+-(GLKVector2)bottomLeftVisible {
+  float offset = [self orientationOffset];
+  return GLKVector2Make(left-offset, bottom+offset);
+}
+
+-(GLKVector2)topRightVisible {
+  float offset = [self orientationOffset];
+  return GLKVector2Make(right+offset, top-offset);
+}
+
 # pragma mark Orientation
 
 -(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
@@ -83,6 +101,13 @@
     default:
       return 0.0;
   }
+}
+
+-(float)orientationOffset {
+  float offset = 0.0;
+  if (UIDeviceOrientationIsLandscape(currentOrientation))
+    offset = (self.height-self.width)/2.0;
+  return offset;
 }
 
 # pragma mark Rendering

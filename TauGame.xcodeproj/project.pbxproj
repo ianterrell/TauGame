@@ -96,6 +96,8 @@
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
+		3C6E948913D76D53000F7988 /* bullet.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C6E948813D76D53000F7988 /* bullet.json */; };
+		3C6E948C13D771A7000F7988 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948B13D771A7000F7988 /* Bullet.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282D13D70C9400BB0011 /* MainMenu.m */; };
@@ -239,6 +241,9 @@
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
 		3C6E948513D74DB6000F7988 /* TEAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAccelerometer.m; sourceTree = "<group>"; };
+		3C6E948813D76D53000F7988 /* bullet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bullet.json; sourceTree = "<group>"; };
+		3C6E948A13D771A7000F7988 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		3C6E948B13D771A7000F7988 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3C8A282C13D70C9400BB0011 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
@@ -327,6 +332,7 @@
 				3C138B8D13CCAD9D002FC701 /* mage.json */,
 				3C5507A013CE198900585C40 /* obstacle.json */,
 				3C8A283713D70D6200BB0011 /* fighter.json */,
+				3C6E948813D76D53000F7988 /* bullet.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -492,6 +498,8 @@
 			children = (
 				3C8A282613D70B4200BB0011 /* Fighter.h */,
 				3C8A282713D70B4200BB0011 /* Fighter.m */,
+				3C6E948A13D771A7000F7988 /* Bullet.h */,
+				3C6E948B13D771A7000F7988 /* Bullet.m */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -706,6 +714,7 @@
 				3C5507A313CE19CB00585C40 /* obstacle.json in Resources */,
 				3CB0484713CBD5960029875B /* InfoPlist.strings in Resources */,
 				3C138B8E13CCAD9D002FC701 /* mage.json in Resources */,
+				3C6E948913D76D53000F7988 /* bullet.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +811,7 @@
 				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
 				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
 				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
+				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

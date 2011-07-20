@@ -33,6 +33,10 @@
 //  NSLog(@"FPS: %d, %f, %f", [controller framesPerSecond], [controller timeSinceLastDraw], [controller timeSinceLastUpdate]);
   GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
+  // Update positions
+  for (id character in characters)
+    [(TECharacter *)character updatePosition:timeSince];
+  
   // Update animations
   [self.characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {
     // Remove animations that are done

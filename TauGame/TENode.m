@@ -11,11 +11,14 @@
 @implementation TENode
 
 @synthesize name, shape, children;
+@synthesize velocity, acceleration;
 
 - (id)init
 {
   self = [super init];
   if (self) {
+    velocity = GLKVector2Make(0, 0);
+    acceleration = GLKVector2Make(0, 0);
     self.children = [[NSMutableArray alloc] init];
   }
   
@@ -27,6 +30,13 @@
   
   [shape renderInScene:scene];
   [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
+}
+
+# pragma mark Motion Methods
+
+-(void)updatePosition:(NSTimeInterval)dt {
+  velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
+  position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
 }
 
 # pragma mark Tree Methods

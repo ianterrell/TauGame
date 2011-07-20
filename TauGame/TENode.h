@@ -13,11 +13,17 @@
   NSString *name;
   TEShape *shape;
   NSMutableArray *children;
+  
+  GLKVector2 velocity, acceleration;
 }
 
 @property(strong, nonatomic) NSString *name;
 @property(strong, nonatomic) TEShape *shape;
 @property(strong, nonatomic) NSMutableArray *children;
+@property GLKVector2 velocity, acceleration;
+
+# pragma mark Motion Methods
+-(void)updatePosition:(NSTimeInterval)dt;
 
 # pragma mark Tree Methods
 

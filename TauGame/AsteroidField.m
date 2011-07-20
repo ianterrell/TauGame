@@ -22,7 +22,8 @@
     
     // Set up fighter
     fighter = [[Fighter alloc] init];
-    fighter.position = GLKVector2Make(10, 15);
+    fighter.position = GLKVector2Make(0, 0);
+    fighter.acceleration = GLKVector2Make(2,3);
     [characters addObject:fighter];
   }
   

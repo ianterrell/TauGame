@@ -11,6 +11,7 @@
 
 @interface TECharacterLoader : NSObject
 
++(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName;
 +(TECharacter *)loadCharacterFromJSONFile:(NSString *)fileName;
 
 @end

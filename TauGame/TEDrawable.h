@@ -13,7 +13,7 @@
 @interface TEDrawable : NSObject {
   TEDrawable *parent;
   GLKBaseEffect *effect;
-  GLKVector2 translation;
+  GLKVector2 position;
   GLfloat scale;
   GLfloat rotation;
   NSMutableArray *currentAnimations;
@@ -21,7 +21,7 @@
 
 @property(strong, nonatomic) TEDrawable *parent;
 @property(strong, nonatomic) GLKBaseEffect *effect;
-@property GLKVector2 translation;
+@property GLKVector2 position;
 @property GLfloat scale;
 @property GLfloat rotation;
 @property(strong, nonatomic) NSMutableArray *currentAnimations;

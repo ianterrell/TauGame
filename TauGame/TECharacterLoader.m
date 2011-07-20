@@ -16,7 +16,7 @@
     if ([key isEqualToString:@"scale"]) {
       node.scale = [obj floatValue];
     } else if ([key isEqualToString:@"translation"]) {
-      node.translation = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
+      node.position = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
     } else if ([key isEqualToString:@"rotation"]) {
       node.rotation = [obj floatValue];
     } 
@@ -83,22 +83,26 @@
   }];
 }
 
-+(TECharacter *)loadCharacterFromJSONFile:(NSString *)fileName {
++(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName {
   NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"js"];
   NSData *data = [NSData dataWithContentsOfFile:filePath];
-
+  
   NSError *error;
   NSDictionary *characterData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
   if (!characterData) {
     NSLog(@"Could not load character data, error is %@", error);
-    return nil;
+    return;
   }
   
-  TECharacter *character = [[TECharacter alloc] init];
   character.name = [[characterData allKeys] objectAtIndex:0];
   [self parseNode:character attributes:[characterData objectForKey:character.name]];
-  
+}
+
++(TECharacter *)loadCharacterFromJSONFile:(NSString *)fileName {
+  TECharacter *character = [[TECharacter alloc] init];
+  [self loadCharacter:character fromJSONFile:fileName];
   return character;
 }
+
    
 @end

@@ -31,8 +31,8 @@
   CMAttitude *attitude = ((TauGameAppDelegate *)[UIApplication sharedApplication].delegate).motionManager.deviceMotion.attitude;
 //  NSLog(@"Roll %f, pitch %f, yaw %f", attitude.roll, attitude.pitch, attitude.yaw);
 
-  float x = mage.translation.x + attitude.roll;
-  float y = mage.translation.y - attitude.pitch;
+  float x = mage.position.x + attitude.roll;
+  float y = mage.position.y - attitude.pitch;
   
   if (x > right)
     x = left;
@@ -43,7 +43,7 @@
   else if (y < bottom)
     y = top;
   
-  mage.translation = GLKVector2Make(x, y);
+  mage.position = GLKVector2Make(x, y);
   [super glkViewControllerUpdate:controller];
 }
 

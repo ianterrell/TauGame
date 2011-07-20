@@ -8,8 +8,7 @@
 
 #import "TauGameAppDelegate.h"
 #import "TauEngine.h"
-#import "TestScene.h"
-#import "TestScene2.h"
+#import "AsteroidField.h"
 
 @implementation TauGameAppDelegate
 
@@ -20,10 +19,8 @@
 {
   controller = [TESceneController sharedController];
   
-  [controller addScene:[[TestScene alloc] init] named:@"first"];
-  [controller addScene:[[TestScene2 alloc] init] named:@"second"];
-  
-  [controller displayScene:@"first"];
+  [controller addScene:[[AsteroidField alloc] init] named:@"asteroids"];
+  [controller displayScene:@"asteroids"];
     
   // Let's work with motion
   motionManager = [[CMMotionManager alloc] init];

@@ -11,7 +11,7 @@
 
 @implementation TEDrawable
 
-@synthesize parent, effect, translation, scale, rotation, currentAnimations;
+@synthesize parent, effect, position, scale, rotation, currentAnimations;
 
 - (id)init
 {
@@ -19,7 +19,7 @@
   if (self) {
     scale = 1.0;
     rotation = 0.0;
-    translation = GLKVector2Make(0.0, 0.0);
+    position = GLKVector2Make(0.0, 0.0);
     currentAnimations = [[NSMutableArray alloc] init];
   }
   
@@ -33,7 +33,7 @@
 }
 
 -(GLKMatrix4)modelViewMatrix {
-  __block GLKVector2 mvTranslation = translation;
+  __block GLKVector2 mvTranslation = position;
   __block GLfloat mvScale = scale;
   __block GLfloat mvRotation = rotation;
   

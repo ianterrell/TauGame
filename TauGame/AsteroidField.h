@@ -8,9 +8,11 @@
 
 #import "TEScene.h"
 #import "Fighter.h"
+#import "TauEngine.h"
 
 @interface AsteroidField : TEScene {
   Fighter *fighter;
+  TEAdjustedAttitude *attitude;
 }
 
 @end

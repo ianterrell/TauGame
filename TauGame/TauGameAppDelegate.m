@@ -13,7 +13,6 @@
 @implementation TauGameAppDelegate
 
 @synthesize window = _window;
-@synthesize motionManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,10 +20,6 @@
   
   [controller addScene:[[AsteroidField alloc] init] named:@"asteroids"];
   [controller displayScene:@"asteroids"];
-    
-  // Let's work with motion
-  motionManager = [[CMMotionManager alloc] init];
-  [motionManager startDeviceMotionUpdates];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = controller;

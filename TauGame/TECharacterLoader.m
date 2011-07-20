@@ -84,7 +84,7 @@
 }
 
 +(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName {
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"js"];
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"json"];
   NSData *data = [NSData dataWithContentsOfFile:filePath];
   
   NSError *error;

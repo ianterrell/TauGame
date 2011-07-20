@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C138B8E13CCAD9D002FC701 /* mage.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.js */; };
-		3C138B8F13CCAD9D002FC701 /* mage.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.js */; };
+		3C138B8E13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
+		3C138B8F13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
 		3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
@@ -87,23 +87,23 @@
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079E13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
 		3C55079F13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
-		3C5507A113CE198900585C40 /* obstacle.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
-		3C5507A213CE198900585C40 /* obstacle.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
-		3C5507A313CE19CB00585C40 /* obstacle.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.js */; };
+		3C5507A213CE198900585C40 /* obstacle.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
+		3C5507A313CE19CB00585C40 /* obstacle.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
 		3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
 		3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
+		3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */; };
 		3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6013D478CC00061EC7 /* TestScene2.m */; };
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
+		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282D13D70C9400BB0011 /* MainMenu.m */; };
 		3C8A282F13D70C9400BB0011 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282D13D70C9400BB0011 /* MainMenu.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
-		3C8A283813D70D6200BB0011 /* fighter.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.js */; };
-		3C8A283913D70D6200BB0011 /* fighter.js in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.js */; };
-		3C8A283A13D70D9E00BB0011 /* fighter.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.js */; };
+		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
+		3C8A283A13D70D9E00BB0011 /* fighter.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
 		3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
 		3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
 		3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
@@ -134,6 +134,7 @@
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
+		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +148,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3C138B8D13CCAD9D002FC701 /* mage.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mage.js; sourceTree = "<group>"; };
+		3C138B8D13CCAD9D002FC701 /* mage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mage.json; sourceTree = "<group>"; };
 		3C138B9013CCB15A002FC701 /* TECharacterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacterLoader.h; sourceTree = "<group>"; };
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
@@ -227,20 +228,24 @@
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3C55079C13CE0D2300585C40 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		3C55079D13CE0D2300585C40 /* TestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene.m; sourceTree = "<group>"; };
-		3C5507A013CE198900585C40 /* obstacle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = obstacle.js; sourceTree = "<group>"; };
+		3C5507A013CE198900585C40 /* obstacle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = obstacle.json; sourceTree = "<group>"; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
 		3C5507A513CE237D00585C40 /* TECollisionDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TECollisionDetector.mm; sourceTree = "<group>"; };
+		3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAdjustedAttitude.h; sourceTree = "<group>"; };
+		3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAdjustedAttitude.m; sourceTree = "<group>"; };
 		3C6B2A5F13D478CB00061EC7 /* TestScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene2.h; sourceTree = "<group>"; };
 		3C6B2A6013D478CC00061EC7 /* TestScene2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene2.m; sourceTree = "<group>"; };
 		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
+		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
+		3C6E948513D74DB6000F7988 /* TEAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAccelerometer.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3C8A282C13D70C9400BB0011 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
 		3C8A282D13D70C9400BB0011 /* MainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenu.m; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
-		3C8A283713D70D6200BB0011 /* fighter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = fighter.js; sourceTree = "<group>"; };
+		3C8A283713D70D6200BB0011 /* fighter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fighter.json; sourceTree = "<group>"; };
 		3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScaleAnimation.h; sourceTree = "<group>"; };
 		3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScaleAnimation.m; sourceTree = "<group>"; };
 		3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERotateAnimation.h; sourceTree = "<group>"; };
@@ -283,6 +288,7 @@
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
+		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,9 +324,9 @@
 		3C138B8C13CCAD94002FC701 /* Character Files */ = {
 			isa = PBXGroup;
 			children = (
-				3C138B8D13CCAD9D002FC701 /* mage.js */,
-				3C5507A013CE198900585C40 /* obstacle.js */,
-				3C8A283713D70D6200BB0011 /* fighter.js */,
+				3C138B8D13CCAD9D002FC701 /* mage.json */,
+				3C5507A013CE198900585C40 /* obstacle.json */,
+				3C8A283713D70D6200BB0011 /* fighter.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 			children = (
 				3C55065F13CE07B600585C40 /* External */,
 				3CB0488613CBD6670029875B /* TauEngine.h */,
+				3CFC90D513D72F6F00100C21 /* TauEngine.m */,
 				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
 				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3CB0487113CBD5C70029875B /* TENode.h */,
@@ -617,6 +624,10 @@
 				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
 				3CB0488F13CBDB440029875B /* TEScene.h */,
 				3CB0489013CBDB440029875B /* TEScene.m */,
+				3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */,
+				3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */,
+				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
+				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -691,10 +702,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C8A283A13D70D9E00BB0011 /* fighter.js in Resources */,
-				3C5507A313CE19CB00585C40 /* obstacle.js in Resources */,
+				3C8A283A13D70D9E00BB0011 /* fighter.json in Resources */,
+				3C5507A313CE19CB00585C40 /* obstacle.json in Resources */,
 				3CB0484713CBD5960029875B /* InfoPlist.strings in Resources */,
-				3C138B8E13CCAD9D002FC701 /* mage.js in Resources */,
+				3C138B8E13CCAD9D002FC701 /* mage.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +715,7 @@
 			files = (
 				3CB0486013CBD5970029875B /* InfoPlist.strings in Resources */,
 				3CB0486213CBD5970029875B /* TauGameTests.h in Resources */,
-				3C138B8F13CCAD9D002FC701 /* mage.js in Resources */,
+				3C138B8F13CCAD9D002FC701 /* mage.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,14 +793,15 @@
 				3C55079013CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079213CE093100585C40 /* b2WeldJoint.cpp in Sources */,
 				3C55079E13CE0D2300585C40 /* TestScene.m in Sources */,
-				3C5507A113CE198900585C40 /* obstacle.js in Sources */,
 				3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */,
 				3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */,
 				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A282813D70B4200BB0011 /* Fighter.m in Sources */,
 				3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */,
 				3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */,
-				3C8A283813D70D6200BB0011 /* fighter.js in Sources */,
+				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
+				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
+				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,13 +851,13 @@
 				3C55079113CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079313CE093100585C40 /* b2WeldJoint.cpp in Sources */,
 				3C55079F13CE0D2300585C40 /* TestScene.m in Sources */,
-				3C5507A213CE198900585C40 /* obstacle.js in Sources */,
+				3C5507A213CE198900585C40 /* obstacle.json in Sources */,
 				3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */,
 				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A282913D70B4200BB0011 /* Fighter.m in Sources */,
 				3C8A282F13D70C9400BB0011 /* MainMenu.m in Sources */,
 				3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */,
-				3C8A283913D70D6200BB0011 /* fighter.js in Sources */,
+				3C8A283913D70D6200BB0011 /* fighter.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

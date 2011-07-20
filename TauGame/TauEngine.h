@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
+#import <CoreMotion/CoreMotion.h>
 
 #import "TEDrawable.h"
 #import "TENode.h"
@@ -33,3 +34,15 @@
 #import "TERotateAnimation.h"
 
 #import "TECollisionDetector.h"
+
+#import "TEAdjustedAttitude.h"
+#import "TEAccelerometer.h"
+
+@interface TauEngine : NSObject {
+  CMMotionManager *motionManager;
+}
+
++(CMMotionManager *)motionManager;
+
+@end
+

@@ -6,9 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TauGameAppDelegate.h"
 #import "TestScene2.h"
-#import "TECharacterLoader.h"
+#import "TauEngine.h"
 
 @implementation TestScene2
 
@@ -29,7 +28,7 @@
 -(void)glkViewControllerUpdate:(GLKViewController *)controller {
   //  NSLog(@"Stuff: %@", ((TauGameAppDelegate *)[UIApplication sharedApplication].delegate).motionManager.deviceMotion);
   //  CMAcceleration accel = ((TauGameAppDelegate *)[UIApplication sharedApplication].delegate).motionManager.deviceMotion.userAcceleration;
-  CMAttitude *attitude = ((TauGameAppDelegate *)[UIApplication sharedApplication].delegate).motionManager.deviceMotion.attitude;
+  CMAttitude *attitude = [TauEngine motionManager].deviceMotion.attitude;
   //  NSLog(@"Roll %f, pitch %f, yaw %f", attitude.roll, attitude.pitch, attitude.yaw);
   
   float x = mage.position.x + attitude.roll;

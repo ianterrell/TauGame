@@ -30,8 +30,8 @@
 # pragma mark Scene Setup
 
 -(void)setLeft:(GLfloat)left right:(GLfloat)right bottom:(GLfloat)bottom top:(GLfloat)top;
--(GLKVector2)bottomLeftVisible;
--(GLKVector2)topRightVisible;
+@property(readonly) GLKVector2 bottomLeftVisible;
+@property(readonly) GLKVector2 topRightVisible;
 
 # pragma mark Orientation
 

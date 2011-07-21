@@ -37,9 +37,16 @@
     [character update:timeSince inScene:self];
 
   // Remove any who declared they need removed
+  NSMutableArray *removed = [[NSMutableArray alloc] init];
   [characters filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TECharacter *character, NSDictionary *bindings) {
-    return !character.remove;
+    if (character.remove) {
+      [removed addObject:character];
+      return NO;
+    } else
+      return YES;
   }]];
+  for (TECharacter *character in removed)
+    [character onRemovalFromScene:self];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
@@ -61,6 +68,14 @@
 
 -(float)height {
   return top-bottom;
+}
+
+-(float)visibleWidth {
+  return self.topRightVisible.x - self.bottomLeftVisible.x;
+}
+
+-(float)visibleHeight {
+  return self.topRightVisible.y - self.bottomLeftVisible.y;
 }
 
 -(GLKVector2)bottomLeftVisible {

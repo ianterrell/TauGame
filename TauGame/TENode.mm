@@ -25,6 +25,7 @@
     acceleration = GLKVector2Make(0, 0);
     maxVelocity = INFINITY;
     maxAcceleration = INFINITY;
+    remove = NO;
     self.children = [[NSMutableArray alloc] init];
   }
   
@@ -132,6 +133,22 @@
 
 -(void)setCollisionShape:(void *)_collisionShape {
   collisionShape = _collisionShape;
+}
+
+# pragma mark Callbacks
+
+-(void)onRemovalFromScene:(TEScene *)scene {
+}
+
+# pragma mark Cleanup
+
+-(void)dealloc {
+  if (collisionShape != nil) {
+    if ([shape isPolygon])
+      delete (b2PolygonShape *)collisionShape;
+    else
+      delete (b2CircleShape *)collisionShape;
+  }
 }
 
 @end

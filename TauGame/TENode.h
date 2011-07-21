@@ -52,4 +52,7 @@
 -(void)addChild:(TENode *)child;
 -(void)traverseUsingBlock:(void (^)(TENode *))block;
 
+# pragma mark Callbacks
+-(void)onRemovalFromScene:(TEScene *)scene;
+
 @end

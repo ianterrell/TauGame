@@ -8,6 +8,7 @@
 
 #import "Baddie.h"
 #import "TECharacterLoader.h"
+#import "AsteroidField.h"
 
 @implementation Baddie
 
@@ -21,5 +22,13 @@
   return self;
 }
 
+-(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
+  [super update:dt inScene:scene];
+  [self wraparoundInScene:scene];
+}
+
+-(void)onRemovalFromScene:(TEScene *)scene {
+  [(AsteroidField *)scene addRandomBaddie];
+}
 
 @end

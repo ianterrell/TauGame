@@ -30,6 +30,7 @@
 # pragma mark Scene Setup
 
 -(void)setLeft:(GLfloat)left right:(GLfloat)right bottom:(GLfloat)bottom top:(GLfloat)top;
+@property(readonly) float visibleWidth, visibleHeight;
 @property(readonly) GLKVector2 bottomLeftVisible;
 @property(readonly) GLKVector2 topRightVisible;
 

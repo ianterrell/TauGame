@@ -16,4 +16,7 @@
   Fighter *fighter;
 }
 
+-(void)shoot;
+-(void)addRandomBaddie;
+
 @end

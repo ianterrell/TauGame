@@ -28,9 +28,9 @@
     [characters addObject:fighter];
     
     // Set up a baddie
-    Baddie *baddie = [[Baddie alloc] init];
-    baddie.position = GLKVector2Make(6, 8);
-    [characters addObject:baddie];
+    [self addRandomBaddie];
+    [self addRandomBaddie];
+    [self addRandomBaddie];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
@@ -54,22 +54,33 @@
   // Detect collisions
   NSArray *collisions = [TECollisionDetector collisionsIn:characters maxPerNode:1];
   for (NSArray *pair in collisions) {
-    NSLog(@"Removing pair!");
-    // Only bullets can collide currently
+    // Only bullets can collide currently -- well, not quite, oh well -- baddies can spawn on one another
     ((TENode *)[pair objectAtIndex:0]).remove = YES;
     ((TENode *)[pair objectAtIndex:1]).remove = YES;
   }
+  // better to keep multiple arrays and add another collision method
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
-  NSLog(@"tapped at (%f,%f)", [gestureRecognizer locationInView:self].x, [gestureRecognizer locationInView:self].y);
-  NSLog(@"%d characters on screen", [characters count]);
-  
-  // Shoot
+  [self shoot];
+}
+
+-(void) shoot {
   TECharacter *bullet = [[Bullet alloc] init];
   bullet.position = GLKVector2Make(fighter.position.x, fighter.position.y + 1.01);
   bullet.velocity = GLKVector2Make(0, 5);
   [characters addObject:bullet];
+}
+
+-(void)addRandomBaddie {
+  Baddie *baddie = [[Baddie alloc] init];
+  
+  float randX = ((float)rand()/RAND_MAX) * self.visibleWidth + self.bottomLeftVisible.x;
+  float randY = ((float)rand()/RAND_MAX) * (self.visibleHeight - 3) + self.bottomLeftVisible.y + 3;
+  float randVelocity = (float)rand()/RAND_MAX * 10.0;
+  baddie.position = GLKVector2Make(randX, randY);
+  baddie.velocity = GLKVector2Make(randVelocity,0);
+  [self.characters addObject:baddie];
 }
 
 @end

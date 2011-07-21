@@ -10,6 +10,10 @@
 #import "TauEngine.h"
 #import "Box2D.h"
 
+static b2Manifold manifold;
+static b2Transform transform1;
+static b2Transform transform2;
+
 typedef enum {
   TECollisionTypePolygonPolygon,
   TECollisionTypePolygonCircle,
@@ -19,10 +23,6 @@ typedef enum {
 @implementation TECollisionDetector
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
-  b2Manifold manifold;
-  b2Transform transform1;
-  b2Transform transform2;
-  
   // TODO SCALE THE OBJECTS
   transform1.Set(b2Vec2(node1.position.x, node1.position.y), node1.rotation);
   transform2.Set(b2Vec2(node2.position.x, node2.position.y), node2.rotation);

@@ -87,14 +87,11 @@
 		3C55079313CE093100585C40 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55074C13CE093100585C40 /* b2WeldJoint.cpp */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
-		3C55079E13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
-		3C55079F13CE0D2300585C40 /* TestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C55079D13CE0D2300585C40 /* TestScene.m */; };
 		3C5507A213CE198900585C40 /* obstacle.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
 		3C5507A313CE19CB00585C40 /* obstacle.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
 		3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
 		3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.mm */; };
 		3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */; };
-		3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6013D478CC00061EC7 /* TestScene2.m */; };
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
@@ -233,15 +230,11 @@
 		3C55074C13CE093100585C40 /* b2WeldJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2WeldJoint.cpp; sourceTree = "<group>"; };
 		3C55074D13CE093100585C40 /* b2WeldJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2WeldJoint.h; sourceTree = "<group>"; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		3C55079C13CE0D2300585C40 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
-		3C55079D13CE0D2300585C40 /* TestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene.m; sourceTree = "<group>"; };
 		3C5507A013CE198900585C40 /* obstacle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = obstacle.json; sourceTree = "<group>"; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
 		3C5507A513CE237D00585C40 /* TECollisionDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TECollisionDetector.mm; sourceTree = "<group>"; };
 		3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAdjustedAttitude.h; sourceTree = "<group>"; };
 		3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAdjustedAttitude.m; sourceTree = "<group>"; };
-		3C6B2A5F13D478CB00061EC7 /* TestScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene2.h; sourceTree = "<group>"; };
-		3C6B2A6013D478CC00061EC7 /* TestScene2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScene2.m; sourceTree = "<group>"; };
 		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
@@ -479,17 +472,6 @@
 			path = Joints;
 			sourceTree = "<group>";
 		};
-		3C55079713CE0C2400585C40 /* TestGame */ = {
-			isa = PBXGroup;
-			children = (
-				3C55079C13CE0D2300585C40 /* TestScene.h */,
-				3C55079D13CE0D2300585C40 /* TestScene.m */,
-				3C6B2A5F13D478CB00061EC7 /* TestScene2.h */,
-				3C6B2A6013D478CC00061EC7 /* TestScene2.m */,
-			);
-			name = TestGame;
-			sourceTree = "<group>";
-		};
 		3C8A282413D70AC300BB0011 /* Fighter */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,7 +547,6 @@
 			isa = PBXGroup;
 			children = (
 				3CB0486D13CBD5A10029875B /* TauEngine */,
-				3C55079713CE0C2400585C40 /* TestGame */,
 				3C8A282413D70AC300BB0011 /* Fighter */,
 				3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */,
 				3CB0484C13CBD5960029875B /* TauGameAppDelegate.m */,
@@ -810,9 +791,7 @@
 				3C55078E13CE093100585C40 /* b2PulleyJoint.cpp in Sources */,
 				3C55079013CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079213CE093100585C40 /* b2WeldJoint.cpp in Sources */,
-				3C55079E13CE0D2300585C40 /* TestScene.m in Sources */,
 				3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */,
-				3C6B2A6113D478CC00061EC7 /* TestScene2.m in Sources */,
 				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A282813D70B4200BB0011 /* Fighter.m in Sources */,
 				3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */,
@@ -870,7 +849,6 @@
 				3C55078F13CE093100585C40 /* b2PulleyJoint.cpp in Sources */,
 				3C55079113CE093100585C40 /* b2RevoluteJoint.cpp in Sources */,
 				3C55079313CE093100585C40 /* b2WeldJoint.cpp in Sources */,
-				3C55079F13CE0D2300585C40 /* TestScene.m in Sources */,
 				3C5507A213CE198900585C40 /* obstacle.json in Sources */,
 				3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */,
 				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,

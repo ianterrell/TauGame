@@ -28,6 +28,7 @@
 }
 
 -(void)onRemovalFromScene:(TEScene *)scene {
+  [((AsteroidField *)scene).ships removeObject:self];
   [(AsteroidField *)scene addRandomBaddie];
 }
 

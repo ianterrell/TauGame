@@ -63,6 +63,17 @@ typedef enum {
                                 
 +(NSMutableArray *)collisionsIn:(NSArray *)nodes maxPerNode:(int)n {
   NSMutableArray *collisions = [[NSMutableArray alloc] init];
+  [self collisionsIn:nodes maxPerNode:n withBlock:^(TENode *node1, TENode *node2) {
+    [collisions addObject:[[NSArray alloc] initWithObjects:node1, node2, nil]];
+  }];
+  return collisions;
+}
+
++(void)collisionsIn:(NSArray *)nodes withBlock:(void (^)(TENode *, TENode *))block {
+  return [self collisionsIn:nodes maxPerNode:0 withBlock:block];
+}
+
++(void)collisionsIn:(NSArray *)nodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
   int size = [nodes count];
   for (int i = 0; i < size; i++) {
     int count = 0;
@@ -70,13 +81,41 @@ typedef enum {
       TENode *node1 = (TENode *)[nodes objectAtIndex:i];
       TENode *node2 = (TENode *)[nodes objectAtIndex:j];
       if ([self node:node1 collidesWithNode:node2]) {
-        [collisions addObject:[[NSArray alloc] initWithObjects:node1, node2, nil]];
+        block(node1,node2);
         if (n > 0 && ++count >= n)
           break;
       }
     }
   }
+}
+
++(NSMutableArray *)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes {
+  return [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:0];
+}
+
++(NSMutableArray *)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes maxPerNode:(int)n {
+  NSMutableArray *collisions = [[NSMutableArray alloc] init];
+  [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:n withBlock:^(TENode *node1, TENode *node2) {
+    [collisions addObject:[[NSArray alloc] initWithObjects:node1, node2, nil]];
+  }];
   return collisions;
+}
+
++(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes withBlock:(void (^)(TENode *, TENode *))block {
+  return [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:0 withBlock:block];
+}
+
++(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
+  for (TENode *node1 in nodes) {
+    int count = 0;
+    for (TENode *node2 in moreNodes) {
+      if ([self node:node1 collidesWithNode:node2]) {
+        block(node1,node2);
+        if (n > 0 && ++count >= n)
+          break;
+      }
+    }
+  }
 }
 
 -(void)test {

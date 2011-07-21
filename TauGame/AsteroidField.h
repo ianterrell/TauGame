@@ -14,7 +14,11 @@
 
 @interface AsteroidField : TEScene {
   Fighter *fighter;
+  NSMutableArray *bullets;
+  NSMutableArray *ships;
 }
+
+@property(strong) NSMutableArray *bullets, *ships;
 
 -(void)shoot;
 -(void)addRandomBaddie;

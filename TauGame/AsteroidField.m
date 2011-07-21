@@ -10,6 +10,8 @@
 
 @implementation AsteroidField
 
+@synthesize bullets, ships;
+
 - (id)init
 {
   self = [super init];
@@ -20,12 +22,17 @@
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
     
+    // Set up our special character arrays for collision detection
+    bullets = [[NSMutableArray alloc] initWithCapacity:20];
+    ships = [[NSMutableArray alloc] initWithCapacity:5];
+    
     // Set up fighter
     fighter = [[Fighter alloc] init];
     fighter.position = GLKVector2Make(6, 0.1);
     fighter.maxVelocity = 20;
     fighter.maxAcceleration = 40;
     [characters addObject:fighter];
+    [ships addObject:fighter];
     
     // Set up a baddie
     [self addRandomBaddie];
@@ -52,13 +59,10 @@
   [super glkViewControllerUpdate:controller];
   
   // Detect collisions
-  NSArray *collisions = [TECollisionDetector collisionsIn:characters maxPerNode:1];
-  for (NSArray *pair in collisions) {
-    // Only bullets can collide currently -- well, not quite, oh well -- baddies can spawn on one another
-    ((TENode *)[pair objectAtIndex:0]).remove = YES;
-    ((TENode *)[pair objectAtIndex:1]).remove = YES;
-  }
-  // better to keep multiple arrays and add another collision method
+  [TECollisionDetector collisionsBetween:bullets andNodes:ships maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
+    bullet.remove = YES;
+    ship.remove = YES;
+  }];
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
@@ -67,9 +71,10 @@
 
 -(void) shoot {
   TECharacter *bullet = [[Bullet alloc] init];
-  bullet.position = GLKVector2Make(fighter.position.x, fighter.position.y + 1.01);
+  bullet.position = GLKVector2Make(fighter.position.x, fighter.position.y + 1.1);
   bullet.velocity = GLKVector2Make(0, 5);
   [characters addObject:bullet];
+  [bullets addObject:bullet];
 }
 
 -(void)addRandomBaddie {
@@ -81,6 +86,7 @@
   baddie.position = GLKVector2Make(randX, randY);
   baddie.velocity = GLKVector2Make(randVelocity,0);
   [self.characters addObject:baddie];
+  [ships addObject:baddie];
 }
 
 @end

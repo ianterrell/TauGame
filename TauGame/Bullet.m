@@ -8,6 +8,7 @@
 
 #import "Bullet.h"
 #import "TECharacterLoader.h"
+#import "AsteroidField.h"
 
 @implementation Bullet
 
@@ -23,6 +24,10 @@
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   [self removeOutOfScene:scene buffer:1.0];
+}
+
+-(void)onRemovalFromScene:(TEScene *)scene {
+  [((AsteroidField *)scene).bullets removeObject:self];
 }
 
 @end

@@ -7,11 +7,13 @@
 //
 
 #import "TENode.h"
+#import "TEAnimation.h"
 
 @implementation TENode
 
 @synthesize name, shape, children;
 @synthesize maxVelocity, maxAcceleration;
+@synthesize remove;
 
 - (id)init
 {
@@ -34,9 +36,27 @@
   [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
 }
 
+# pragma mark Update
+
+-(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
+  // Update positions
+  [self updatePosition:dt inScene:scene];
+  
+  // Update animations
+  [self traverseUsingBlock:^(TENode *node) {
+    // Remove animations that are done
+    [node.currentAnimations filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id animation, NSDictionary *bindings) {
+      return !((TEAnimation *)animation).remove;
+    }]];
+    [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {
+      [((TEAnimation *)animation) incrementElapsedTime:dt];
+    }];
+  }];
+}
+
 # pragma mark Motion Methods
 
--(void)updatePosition:(NSTimeInterval)dt {
+-(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene {
   self.velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
   position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
 }
@@ -63,6 +83,32 @@
     acceleration = newAcceleration;
 }
 
+# pragma mark Position Shortcuts
+
+-(void)wraparoundInScene:(TEScene *)scene {
+  [self wraparoundXInScene:scene];
+  [self wraparoundYInScene:scene];
+}
+
+-(void)wraparoundXInScene:(TEScene *)scene {
+  if (self.position.x > scene.topRightVisible.x)
+    self.position = GLKVector2Make(scene.bottomLeftVisible.x, self.position.y);
+  else if (self.position.x < scene.bottomLeftVisible.x)
+    self.position = GLKVector2Make(scene.topRightVisible.x, self.position.y);
+}
+
+-(void)wraparoundYInScene:(TEScene *)scene {
+  if (self.position.y > scene.topRightVisible.y)
+    self.position = GLKVector2Make(self.position.x, scene.bottomLeftVisible.y);
+  else if (self.position.y < scene.bottomLeftVisible.y)
+    self.position = GLKVector2Make(self.position.x, scene.topRightVisible.y);
+}
+
+-(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer {
+  if (self.position.y < scene.bottomLeftVisible.y - buffer || self.position.y > scene.topRightVisible.y + buffer ||
+      self.position.x < scene.bottomLeftVisible.x - buffer || self.position.x > scene.topRightVisible.x + buffer)
+    self.remove = YES;
+}
 
 # pragma mark Tree Methods
 

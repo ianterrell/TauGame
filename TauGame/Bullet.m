@@ -11,14 +11,18 @@
 
 @implementation Bullet
 
-- (id)init
-{
+- (id)init {
   self = [super init];
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"bullet"];
   }
   
   return self;
+}
+
+-(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
+  [super update:dt inScene:scene];
+  [self removeOutOfScene:scene buffer:1.0];
 }
 
 @end

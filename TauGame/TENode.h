@@ -8,6 +8,7 @@
 
 #import "TEDrawable.h"
 #import "TEShape.h"
+#import "TEScene.h"
 
 @interface TENode : TEDrawable {
   NSString *name;
@@ -16,6 +17,8 @@
   
   GLKVector2 velocity, acceleration;
   float maxVelocity, maxAcceleration;
+
+  BOOL remove;
 }
 
 @property(strong, nonatomic) NSString *name;
@@ -23,9 +26,20 @@
 @property(strong, nonatomic) NSMutableArray *children;
 @property GLKVector2 velocity, acceleration;
 @property float maxVelocity, maxAcceleration;
+@property BOOL remove;
+
+# pragma mark Update
+-(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene;
 
 # pragma mark Motion Methods
--(void)updatePosition:(NSTimeInterval)dt;
+-(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene;
+
+# pragma mark Position Shortcuts
+-(void)wraparoundInScene:(TEScene *)scene;
+-(void)wraparoundXInScene:(TEScene *)scene;
+-(void)wraparoundYInScene:(TEScene *)scene;
+
+-(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer;
 
 # pragma mark Tree Methods
 

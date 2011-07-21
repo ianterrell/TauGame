@@ -7,7 +7,10 @@
 //
 
 #import "TECharacter.h"
+#import "TEAdjustedAttitude.h"
 
-@interface Fighter : TECharacter
+@interface Fighter : TECharacter {
+  TEAdjustedAttitude *attitude;
+}
 
 @end

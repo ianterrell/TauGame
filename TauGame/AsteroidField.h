@@ -15,7 +15,6 @@
 
 @interface AsteroidField : TEScene {
   Fighter *fighter;
-  TEAdjustedAttitude *attitude;
 }
 
 @end

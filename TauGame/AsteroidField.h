@@ -6,9 +6,12 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TEScene.h"
-#import "Fighter.h"
 #import "TauEngine.h"
+#import "TEScene.h"
+
+#import "Fighter.h"
+#import "Bullet.h"
+#import "Baddie.h"
 
 @interface AsteroidField : TEScene {
   Fighter *fighter;

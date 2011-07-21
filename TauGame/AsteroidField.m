@@ -7,7 +7,6 @@
 //
 
 #import "AsteroidField.h"
-#import "Bullet.h"
 
 @implementation AsteroidField
 
@@ -30,6 +29,12 @@
     fighter.maxVelocity = 20;
     fighter.maxAcceleration = 40;
     [characters addObject:fighter];
+    
+    // Set up a baddie
+    Baddie *baddie = [[Baddie alloc] init];
+    baddie.position = GLKVector2Make(6, 8);
+    baddie.scale = 0.33;
+    [characters addObject:baddie];
     
     [attitude zero];
     

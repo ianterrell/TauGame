@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C01190713D86090004808DA /* Baddie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C01190613D86090004808DA /* Baddie.m */; };
+		3C01190813D8612E004808DA /* baddie.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C01190313D85DDF004808DA /* baddie.json */; };
 		3C138B8E13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B8F13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
@@ -150,6 +152,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C01190313D85DDF004808DA /* baddie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = baddie.json; sourceTree = "<group>"; };
+		3C01190513D86090004808DA /* Baddie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baddie.h; sourceTree = "<group>"; };
+		3C01190613D86090004808DA /* Baddie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baddie.m; sourceTree = "<group>"; };
 		3C138B8D13CCAD9D002FC701 /* mage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mage.json; sourceTree = "<group>"; };
 		3C138B9013CCB15A002FC701 /* TECharacterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacterLoader.h; sourceTree = "<group>"; };
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
@@ -333,6 +338,7 @@
 				3C5507A013CE198900585C40 /* obstacle.json */,
 				3C8A283713D70D6200BB0011 /* fighter.json */,
 				3C6E948813D76D53000F7988 /* bullet.json */,
+				3C01190313D85DDF004808DA /* baddie.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -500,6 +506,8 @@
 				3C8A282713D70B4200BB0011 /* Fighter.m */,
 				3C6E948A13D771A7000F7988 /* Bullet.h */,
 				3C6E948B13D771A7000F7988 /* Bullet.m */,
+				3C01190513D86090004808DA /* Baddie.h */,
+				3C01190613D86090004808DA /* Baddie.m */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -710,6 +718,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C01190813D8612E004808DA /* baddie.json in Resources */,
 				3C8A283A13D70D9E00BB0011 /* fighter.json in Resources */,
 				3C5507A313CE19CB00585C40 /* obstacle.json in Resources */,
 				3CB0484713CBD5960029875B /* InfoPlist.strings in Resources */,
@@ -812,6 +821,7 @@
 				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
 				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
 				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
+				3C01190713D86090004808DA /* Baddie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

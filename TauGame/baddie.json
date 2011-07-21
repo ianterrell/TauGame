@@ -1,0 +1,46 @@
+{
+  "baddie": {
+    "shape": {
+      "geometry": "rectangle",
+      "width": 3,
+      "height": 2,
+      "color": [1.0, 0.0, 0.0, 1.0]
+    },
+    "children": {
+      "eyes": {
+        "translation": [0.0, 0.4],
+        "children": {
+          "left eye": {
+            "shape": {
+              "geometry": "rectangle",
+              "width": 0.75,
+              "height": 0.2,
+              "color": [1.0, 1.0, 1.0, 1.0]
+            },
+            "rotation": -0.523598333,
+            "translation": [-0.8, 0.0]
+          },
+          "right eye": {
+            "shape": {
+              "geometry": "rectangle",
+              "width": 0.75,
+              "height": 0.2,
+              "color": [1.0, 1.0, 1.0, 1.0]
+            },
+            "rotation": 0.523598333,
+            "translation": [0.8, 0.0]
+          }
+        }
+      },
+      "mouth": {
+        "translation": [0.0, -0.4],
+        "shape": {
+          "geometry": "rectangle",
+          "width": 2.2,
+          "height": 0.2,
+          "color": [0.7, 0.0, 0.0, 1.0]
+        },
+      }
+    }
+  }
+}

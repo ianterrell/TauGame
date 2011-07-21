@@ -7,7 +7,6 @@
 //
 
 #import "TauEngine.h"
-#import "TEScene.h"
 
 #import "Fighter.h"
 #import "Bullet.h"

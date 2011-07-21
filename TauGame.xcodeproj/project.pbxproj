@@ -11,8 +11,8 @@
 		3C01190813D8612E004808DA /* baddie.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C01190313D85DDF004808DA /* baddie.json */; };
 		3C138B8E13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B8F13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
-		3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
-		3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
+		3C138B9213CCB15B002FC701 /* TECharacterLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */; };
+		3C138B9313CCB15B002FC701 /* TECharacterLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C55074E13CE093100585C40 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55070213CE093100585C40 /* b2BroadPhase.cpp */; };
@@ -128,7 +128,7 @@
 		3CB0486213CBD5970029875B /* TauGameTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0486113CBD5970029875B /* TauGameTests.h */; };
 		3CB0486413CBD5970029875B /* TauGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486313CBD5970029875B /* TauGameTests.m */; };
 		3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486F13CBD5B80029875B /* TEDrawable.m */; };
-		3CB0487313CBD5C70029875B /* TENode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487213CBD5C70029875B /* TENode.m */; };
+		3CB0487313CBD5C70029875B /* TENode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487213CBD5C70029875B /* TENode.mm */; };
 		3CB0487613CBD5D20029875B /* TEShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487513CBD5D20029875B /* TEShape.m */; };
 		3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487813CBD5DF0029875B /* TETriangle.m */; };
 		3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487B13CBD5E90029875B /* TEEllipse.m */; };
@@ -157,7 +157,7 @@
 		3C01190613D86090004808DA /* Baddie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baddie.m; sourceTree = "<group>"; };
 		3C138B8D13CCAD9D002FC701 /* mage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mage.json; sourceTree = "<group>"; };
 		3C138B9013CCB15A002FC701 /* TECharacterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacterLoader.h; sourceTree = "<group>"; };
-		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
+		3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TECharacterLoader.mm; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
 		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
 		3C55070013CE093100585C40 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 		3CB0486E13CBD5B80029875B /* TEDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEDrawable.h; sourceTree = "<group>"; };
 		3CB0486F13CBD5B80029875B /* TEDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDrawable.m; sourceTree = "<group>"; };
 		3CB0487113CBD5C70029875B /* TENode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENode.h; sourceTree = "<group>"; };
-		3CB0487213CBD5C70029875B /* TENode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENode.m; sourceTree = "<group>"; };
+		3CB0487213CBD5C70029875B /* TENode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TENode.mm; sourceTree = "<group>"; };
 		3CB0487413CBD5D20029875B /* TEShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShape.h; sourceTree = "<group>"; };
 		3CB0487513CBD5D20029875B /* TEShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEShape.m; sourceTree = "<group>"; };
 		3CB0487713CBD5DF0029875B /* TETriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETriangle.h; sourceTree = "<group>"; };
@@ -495,6 +495,7 @@
 			children = (
 				3C8A282B13D70C7E00BB0011 /* Scenes */,
 				3C8A282A13D70C7300BB0011 /* Characters */,
+				3C138B8C13CCAD94002FC701 /* Character Files */,
 			);
 			name = Fighter;
 			sourceTree = "<group>";
@@ -568,7 +569,6 @@
 				3C8A282413D70AC300BB0011 /* Fighter */,
 				3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */,
 				3CB0484C13CBD5960029875B /* TauGameAppDelegate.m */,
-				3C138B8C13CCAD94002FC701 /* Character Files */,
 				3CB0484313CBD5960029875B /* Supporting Files */,
 			);
 			path = TauGame;
@@ -613,7 +613,7 @@
 				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
 				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3CB0487113CBD5C70029875B /* TENode.h */,
-				3CB0487213CBD5C70029875B /* TENode.m */,
+				3CB0487213CBD5C70029875B /* TENode.mm */,
 				3CB0488013CBD5FD0029875B /* TECharacter.h */,
 				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3CB0487413CBD5D20029875B /* TEShape.h */,
@@ -625,7 +625,7 @@
 				3CB0487D13CBD5F20029875B /* TERectangle.h */,
 				3CB0487E13CBD5F20029875B /* TERectangle.m */,
 				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
-				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
+				3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */,
 				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
 				3C138B9513CCC7E0002FC701 /* TEAnimation.m */,
 				3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */,
@@ -763,14 +763,14 @@
 				3CB0484913CBD5960029875B /* main.m in Sources */,
 				3CB0484D13CBD5960029875B /* TauGameAppDelegate.m in Sources */,
 				3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */,
-				3CB0487313CBD5C70029875B /* TENode.m in Sources */,
+				3CB0487313CBD5C70029875B /* TENode.mm in Sources */,
 				3CB0487613CBD5D20029875B /* TEShape.m in Sources */,
 				3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */,
 				3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */,
 				3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */,
 				3CB0488213CBD5FE0029875B /* TECharacter.m in Sources */,
 				3CB0489113CBDB440029875B /* TEScene.m in Sources */,
-				3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */,
+				3C138B9213CCB15B002FC701 /* TECharacterLoader.mm in Sources */,
 				3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */,
 				3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
 				3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
@@ -830,7 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB0486413CBD5970029875B /* TauGameTests.m in Sources */,
-				3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */,
+				3C138B9313CCB15B002FC701 /* TECharacterLoader.mm in Sources */,
 				3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */,
 				3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
 				3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
@@ -961,8 +961,12 @@
 		3CB0486813CBD5970029875B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TauGame/TauGame-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"libs/**",
 					"./**",
@@ -976,8 +980,12 @@
 		3CB0486913CBD5970029875B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TauGame/TauGame-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"libs/**",
 					"./**",

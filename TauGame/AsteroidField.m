@@ -30,7 +30,6 @@
     // Set up a baddie
     Baddie *baddie = [[Baddie alloc] init];
     baddie.position = GLKVector2Make(6, 8);
-    baddie.scale = 0.33;
     [characters addObject:baddie];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
@@ -51,6 +50,15 @@
 
 -(void)glkViewControllerUpdate:(GLKViewController *)controller {  
   [super glkViewControllerUpdate:controller];
+  
+  // Detect collisions
+  NSArray *collisions = [TECollisionDetector collisionsIn:characters maxPerNode:1];
+  for (NSArray *pair in collisions) {
+    NSLog(@"Removing pair!");
+    // Only bullets can collide currently
+    ((TENode *)[pair objectAtIndex:0]).remove = YES;
+    ((TENode *)[pair objectAtIndex:1]).remove = YES;
+  }
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {

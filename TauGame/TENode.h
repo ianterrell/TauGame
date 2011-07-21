@@ -13,12 +13,16 @@
 @interface TENode : TEDrawable {
   NSString *name;
   TEShape *shape;
+  
   NSMutableArray *children;
   
   GLKVector2 velocity, acceleration;
   float maxVelocity, maxAcceleration;
 
   BOOL remove;
+  
+  BOOL collide;
+  void *collisionShape;
 }
 
 @property(strong, nonatomic) NSString *name;
@@ -27,6 +31,8 @@
 @property GLKVector2 velocity, acceleration;
 @property float maxVelocity, maxAcceleration;
 @property BOOL remove;
+@property BOOL collide;
+@property void *collisionShape;
 
 # pragma mark Update
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene;

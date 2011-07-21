@@ -18,4 +18,7 @@
 
 -(void)updateVertices;
 
+-(BOOL)isPolygon;
+-(BOOL)isCircle;
+
 @end

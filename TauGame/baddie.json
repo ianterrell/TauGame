@@ -1,5 +1,6 @@
 {
   "baddie": {
+    "collide": "yes",
     "shape": {
       "geometry": "rectangle",
       "width": 3,

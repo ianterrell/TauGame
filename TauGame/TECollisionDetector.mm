@@ -10,16 +10,73 @@
 #import "TauEngine.h"
 #import "Box2D.h"
 
+typedef enum {
+  TECollisionTypePolygonPolygon,
+  TECollisionTypePolygonCircle,
+  TECollisionTypeCircleCircle
+} TECollisionType;
+
 @implementation TECollisionDetector
 
-- (id)init
-{
-  self = [super init];
-  if (self) {
-    // Initialization code here.
++(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
+  b2Manifold manifold;
+  b2Transform transform1;
+  b2Transform transform2;
+  
+  // TODO SCALE THE OBJECTS
+  transform1.Set(b2Vec2(node1.position.x, node1.position.y), node1.rotation);
+  transform2.Set(b2Vec2(node2.position.x, node2.position.y), node2.rotation);
+  
+  if (type == TECollisionTypePolygonPolygon) {
+    b2CollidePolygons(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2PolygonShape*)node2.collisionShape, transform2);
+  } else if (type == TECollisionTypePolygonCircle) {
+    b2CollidePolygonAndCircle(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
+  } else if (type == TECollisionTypeCircleCircle) {
+    b2CollideCircles(&manifold, (b2CircleShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
   }
   
-  return self;
+  return manifold.pointCount > 0;
+}
+
+
++(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 {
+  if (!node1.collide || !node2.collide) {
+    return NO;
+  } else {
+    if ([node1.shape isPolygon]) {
+      if ([node2.shape isPolygon])
+        return [self node:node1 collidesWithNode:node2 type:TECollisionTypePolygonPolygon];
+      else
+        return [self node:node1 collidesWithNode:node2 type:TECollisionTypePolygonCircle];
+    } else {
+      if ([node2.shape isPolygon])
+        return [self node:node2 collidesWithNode:node1 type:TECollisionTypePolygonCircle];
+      else
+        return [self node:node1 collidesWithNode:node2 type:TECollisionTypeCircleCircle];
+    }
+  }
+}
+
++(NSMutableArray *)collisionsIn:(NSArray *)nodes {
+  return [self collisionsIn:nodes maxPerNode:0];
+}
+                                
++(NSMutableArray *)collisionsIn:(NSArray *)nodes maxPerNode:(int)n {
+  NSMutableArray *collisions = [[NSMutableArray alloc] init];
+  int size = [nodes count];
+  for (int i = 0; i < size; i++) {
+    int count = 0;
+    for (int j = i + 1; j < size; j++) {
+      TENode *node1 = (TENode *)[nodes objectAtIndex:i];
+      TENode *node2 = (TENode *)[nodes objectAtIndex:j];
+      if ([self node:node1 collidesWithNode:node2]) {
+        [collisions addObject:[[NSArray alloc] initWithObjects:node1, node2, nil]];
+        if (n > 0 && ++count >= n)
+          break;
+      }
+    }
+  }
+  return collisions;
 }
 
 -(void)test {
@@ -32,7 +89,6 @@
   
   b2CircleShape circle2;
   circle2.m_radius = 5.0;
-  b2Vec2 circle2Pos(0.0, 0.0);
   
   b2PolygonShape triangle;
   b2Vec2 vertices[3];
@@ -98,6 +154,14 @@
   b2CollidePolygonAndCircle(&manifold, &box, transform1, &circle1, transform2);
   if (manifold.pointCount > 0){
     NSLog(@"box and circle collide with box at 6.1 rotated 1/8 tau");
+  }
+  
+  NSLog(@"YO BOYS IT'S OBJ-C++ TIME");
+  TENode *node = [[TENode alloc] init];
+  node.collisionShape = &circle1;
+  b2CollidePolygonAndCircle(&manifold, &box, transform1, (b2CircleShape*)node.collisionShape, transform2);
+  if (manifold.pointCount > 0){
+    NSLog(@"TOTALLY COLLIDED RIGHT");
   }
 }
 

@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TauEngine.h"
 
 @interface TECollisionDetector : NSObject
 
--(void)test;
++(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2;
+
++(NSMutableArray *)collisionsIn:(NSArray *)nodes;
++(NSMutableArray *)collisionsIn:(NSArray *)nodes maxPerNode:(int)n;
 
 @end

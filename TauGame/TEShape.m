@@ -7,6 +7,7 @@
 //
 
 #import "TEShape.h"
+#import "TEEllipse.h"
 
 @implementation TEShape
 
@@ -23,6 +24,14 @@
 }
 
 -(void)updateVertices {
+}
+
+-(BOOL)isPolygon {
+  return ![self isCircle];
+}
+
+-(BOOL)isCircle {
+  return [self isKindOfClass:[TEEllipse class]];
 }
 
 @end

@@ -43,7 +43,7 @@
 }
 
 -(GLKVector2)vertex2 {
-  return GLKVector2Make(vertices[4],vertices[4]);
+  return GLKVector2Make(vertices[4],vertices[5]);
 }
 
 -(void)setVertex0:(GLKVector2)vertex {

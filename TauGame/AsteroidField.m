@@ -112,3 +112,14 @@
 }
 
 @end
+
+// Scratch code!
+
+//// Set up a label!
+//UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 30)];
+//title.text = @"Alien Invasion";
+//title.backgroundColor = [UIColor clearColor];
+//title.textColor = [UIColor whiteColor];
+//title.transform = CGAffineTransformMakeRotation(-0.25*M_TAU);
+//[self addSubview:title];    
+//[self bringSubviewToFront:title];

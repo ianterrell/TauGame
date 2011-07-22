@@ -15,6 +15,9 @@
 		3C138B9313CCB15B002FC701 /* TECharacterLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
+		3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */; };
+		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
+		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
 		3C55074E13CE093100585C40 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55070213CE093100585C40 /* b2BroadPhase.cpp */; };
 		3C55074F13CE093100585C40 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55070213CE093100585C40 /* b2BroadPhase.cpp */; };
 		3C55075013CE093100585C40 /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C55070413CE093100585C40 /* b2CollideCircle.cpp */; };
@@ -99,8 +102,6 @@
 		3C6E948C13D771A7000F7988 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948B13D771A7000F7988 /* Bullet.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
-		3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282D13D70C9400BB0011 /* MainMenu.m */; };
-		3C8A282F13D70C9400BB0011 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282D13D70C9400BB0011 /* MainMenu.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
@@ -157,6 +158,10 @@
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TECharacterLoader.mm; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
 		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
+		3C2DE86413D9CB9D000237D2 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
+		3C2DE86913D9DAA3000237D2 /* credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credits.txt; sourceTree = "<group>"; };
 		3C55070013CE093100585C40 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		3C55070213CE093100585C40 /* b2BroadPhase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2BroadPhase.cpp; sourceTree = "<group>"; };
 		3C55070313CE093100585C40 /* b2BroadPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2BroadPhase.h; sourceTree = "<group>"; };
@@ -244,8 +249,6 @@
 		3C6E948B13D771A7000F7988 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
-		3C8A282C13D70C9400BB0011 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
-		3C8A282D13D70C9400BB0011 /* MainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenu.m; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
 		3C8A283713D70D6200BB0011 /* fighter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fighter.json; sourceTree = "<group>"; };
@@ -334,6 +337,15 @@
 				3C01190313D85DDF004808DA /* baddie.json */,
 			);
 			name = "Character Files";
+			sourceTree = "<group>";
+		};
+		3C2DE85813D9C2D2000237D2 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				3C2DE86413D9CB9D000237D2 /* MainMenuViewController.h */,
+				3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		3C55065F13CE07B600585C40 /* External */ = {
@@ -475,6 +487,7 @@
 		3C8A282413D70AC300BB0011 /* Fighter */ = {
 			isa = PBXGroup;
 			children = (
+				3C2DE85813D9C2D2000237D2 /* Menu */,
 				3C8A282B13D70C7E00BB0011 /* Scenes */,
 				3C8A282A13D70C7300BB0011 /* Characters */,
 				3C138B8C13CCAD94002FC701 /* Character Files */,
@@ -498,8 +511,6 @@
 		3C8A282B13D70C7E00BB0011 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3C8A282C13D70C9400BB0011 /* MainMenu.h */,
-				3C8A282D13D70C9400BB0011 /* MainMenu.m */,
 				3C8A283013D70CBC00BB0011 /* AsteroidField.h */,
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 			);
@@ -558,10 +569,12 @@
 		3CB0484313CBD5960029875B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */,
 				3CB0484413CBD5960029875B /* TauGame-Info.plist */,
 				3CB0484513CBD5960029875B /* InfoPlist.strings */,
 				3CB0484813CBD5960029875B /* main.m */,
 				3CB0484A13CBD5960029875B /* TauGame-Prefix.pch */,
+				3C2DE86913D9DAA3000237D2 /* credits.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -705,6 +718,8 @@
 				3CB0484713CBD5960029875B /* InfoPlist.strings in Resources */,
 				3C138B8E13CCAD9D002FC701 /* mage.json in Resources */,
 				3C6E948913D76D53000F7988 /* bullet.json in Resources */,
+				3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */,
+				3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,13 +809,13 @@
 				3C5507A613CE237D00585C40 /* TECollisionDetector.mm in Sources */,
 				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A282813D70B4200BB0011 /* Fighter.m in Sources */,
-				3C8A282E13D70C9400BB0011 /* MainMenu.m in Sources */,
 				3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
 				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
 				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
 				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
 				3C01190713D86090004808DA /* Baddie.m in Sources */,
+				3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,7 +868,6 @@
 				3C5507A713CE237D00585C40 /* TECollisionDetector.mm in Sources */,
 				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A282913D70B4200BB0011 /* Fighter.m in Sources */,
-				3C8A282F13D70C9400BB0011 /* MainMenu.m in Sources */,
 				3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3C8A283913D70D6200BB0011 /* fighter.json in Sources */,
 			);

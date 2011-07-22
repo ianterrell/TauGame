@@ -9,11 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "TauEngine.h"
+#import "MainMenuViewController.h"
 
 @interface TauGameAppDelegate : UIResponder <UIApplicationDelegate> {
-  TESceneController *controller;
+  TESceneController *sceneController;
+  MainMenuViewController *mainMenuController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
+
+-(void)showSceneController;
+-(void)showMainMenuController;
 
 @end

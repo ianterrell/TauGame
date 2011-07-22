@@ -7,7 +7,6 @@
 //
 
 #import "TauGameAppDelegate.h"
-#import "TauEngine.h"
 #import "AsteroidField.h"
 
 @implementation TauGameAppDelegate
@@ -16,16 +15,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  controller = [TESceneController sharedController];
+  sceneController = [TESceneController sharedController];
+  [sceneController addScene:[[AsteroidField alloc] init] named:@"asteroids"];
+  [sceneController displayScene:@"asteroids"];
   
-  [controller addScene:[[AsteroidField alloc] init] named:@"asteroids"];
-  [controller displayScene:@"asteroids"];
+  mainMenuController = [[MainMenuViewController alloc] initWithNibName:nil bundle:nil];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = controller;
+  self.window.rootViewController = mainMenuController;
   [self.window makeKeyAndVisible];
-    
+  
   return YES;
+}
+
+-(void)showSceneController {
+  self.window.rootViewController = sceneController;
+}
+
+-(void)showMainMenuController {
+  self.window.rootViewController = mainMenuController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

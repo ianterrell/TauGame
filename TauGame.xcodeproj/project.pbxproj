@@ -687,6 +687,7 @@
 		3CB0482F13CBD5960029875B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Ian Terrell";
 			};
 			buildConfigurationList = 3CB0483213CBD5960029875B /* Build configuration list for PBXProject "TauGame" */;

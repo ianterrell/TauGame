@@ -29,7 +29,15 @@
 }
 
 -(void)showSceneController {
-  self.window.rootViewController = sceneController;
+  sceneController.view.alpha = 0.0;
+  [UIView animateWithDuration:2.0 animations:^(void) {
+    mainMenuController.view.alpha = 0.0;
+  } completion:^(BOOL finished) {
+    self.window.rootViewController = sceneController;
+    [UIView animateWithDuration:1.0 animations:^(void) {
+      sceneController.view.alpha = 1.0;
+    }];
+  }];
 }
 
 -(void)showMainMenuController {

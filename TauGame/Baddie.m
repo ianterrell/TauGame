@@ -16,6 +16,7 @@
 {
   self = [super init];
   if (self) {
+    hitPoints = 3;
     [TECharacterLoader loadCharacter:self fromJSONFile:@"baddie"];
   }
   
@@ -30,6 +31,34 @@
 -(void)onRemovalFromScene:(TEScene *)scene {
   [((AsteroidField *)scene).ships removeObject:self];
   [(AsteroidField *)scene addRandomBaddie];
+}
+
+-(void)registerHit {
+  hitPoints--;
+  
+  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
+  highlight.color = GLKVector4Make(1, 1, 1, 1);
+  highlight.duration = 0.1;
+
+  if (hitPoints == 0) {
+    self.collide = NO;
+    highlight.onRemoval = ^(){
+      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+      scaleAnimation.scale = 0.0;
+      scaleAnimation.duration = 0.5;
+      scaleAnimation.onRemoval= ^(){
+        self.remove = YES;
+      };
+      [self.currentAnimations addObject:scaleAnimation];
+      
+      TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+      rotateAnimation.rotation = (float)rand()/RAND_MAX * 2 * M_TAU;
+      rotateAnimation.duration = 0.5;
+      [self.currentAnimations addObject:rotateAnimation];
+    };
+  }
+  
+  [self.currentAnimations addObject:highlight];
 }
 
 @end

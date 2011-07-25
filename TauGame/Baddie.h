@@ -8,6 +8,10 @@
 
 #import "TECharacter.h"
 
-@interface Baddie : TECharacter
+@interface Baddie : TECharacter {
+  int hitPoints;
+}
+
+-(void)registerHit;
 
 @end

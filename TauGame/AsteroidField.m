@@ -73,15 +73,7 @@
     // Remove the bullet
     bullet.remove = YES;
     
-    // Highlight a hit
-    TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:ship];
-    highlight.color = GLKVector4Make(1, 1, 1, 1);
-    highlight.duration = 0.1;
-    highlight.onRemoval = ^(){
-      ship.remove = YES;
-    };
-    
-    [ship.currentAnimations addObject:highlight];
+    [(Baddie *)ship registerHit];
   }];
 }
 

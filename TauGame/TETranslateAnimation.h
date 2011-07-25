@@ -7,7 +7,6 @@
 //
 
 #import "TEAnimation.h"
-#import <GLKit/GLKit.h>
 
 @interface TETranslateAnimation : TEAnimation {
   GLKVector2 translation;

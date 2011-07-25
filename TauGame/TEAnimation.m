@@ -10,7 +10,7 @@
 
 @implementation TEAnimation
 
-@synthesize elapsedTime, duration, repeat, easing, remove;
+@synthesize node, elapsedTime, duration, repeat, easing, remove;
 
 - (id)init
 {
@@ -18,6 +18,16 @@
   if (self) {
     easing = TEAnimationEasingLinear;
     elapsedTime = 0.0;
+  }
+  
+  return self;
+}
+
+-(id)initWithNode:(TENode *)_node
+{
+  self = [super init];
+  if (self) {
+    self.node = _node;
   }
   
   return self;

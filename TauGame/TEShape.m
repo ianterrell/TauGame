@@ -26,6 +26,23 @@
 -(void)updateVertices {
 }
 
+-(void)renderInScene:(TEScene *)scene forNode:(TENode *)node {
+  // Set up matrices
+  [super renderInScene:scene];
+  
+  // Set the color
+  self.effect.constantColor = self.color;
+  [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
+    if ([animation isKindOfClass:[TEColorAnimation class]]) {
+      TEColorAnimation *colorAnimation = (TEColorAnimation *)animation;
+      self.effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
+    }
+  }];
+  
+  // Finalize effect
+  [self.effect prepareToDraw];
+}
+
 -(BOOL)isPolygon {
   return ![self isCircle];
 }

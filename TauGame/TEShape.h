@@ -16,6 +16,8 @@
 
 @property GLKVector4 color;
 
+-(void)renderInScene:(TEScene *)scene forNode:(TENode *)node;
+
 -(void)updateVertices;
 
 -(BOOL)isPolygon;

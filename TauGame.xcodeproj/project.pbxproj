@@ -136,6 +136,7 @@
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
+		3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -294,6 +295,8 @@
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
+		3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEColorAnimation.h; sourceTree = "<group>"; };
+		3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEColorAnimation.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -628,6 +631,8 @@
 				3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */,
 				3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */,
 				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
+				3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */,
+				3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */,
 				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
 				3C5507A513CE237D00585C40 /* TECollisionDetector.mm */,
 				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
@@ -817,6 +822,7 @@
 				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
 				3C01190713D86090004808DA /* Baddie.m in Sources */,
 				3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */,
+				3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

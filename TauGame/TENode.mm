@@ -35,7 +35,7 @@
 -(void)renderInScene:(TEScene *)scene {
   [super renderInScene:scene];
   
-  [shape renderInScene:scene];
+  [shape renderInScene:scene forNode:self];
   [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
 }
 

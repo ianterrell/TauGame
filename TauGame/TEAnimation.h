@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
+#import "TENode.h"
 
 typedef enum {
   TEAnimationEasingLinear,
@@ -15,12 +17,14 @@ typedef enum {
 #define TEAnimationRepeatForever -1
 
 @interface TEAnimation : NSObject {
+  TENode *node;
   TEAnimationEasingType easing;
   double elapsedTime, duration;
   int repeat;
   BOOL remove;
 }
 
+@property(strong) TENode *node;
 @property TEAnimationEasingType easing;
 @property double elapsedTime, duration;
 @property int repeat;
@@ -28,6 +32,8 @@ typedef enum {
 
 @property(readonly) float percentDone;
 @property(readonly) float easingFactor;
+
+-(id)initWithNode:(TENode *)_node;
 
 -(void)incrementElapsedTime:(double)time;
 

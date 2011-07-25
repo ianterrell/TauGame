@@ -61,8 +61,17 @@
   
   // Detect collisions
   [TECollisionDetector collisionsBetween:bullets andNodes:ships maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
+    // We've hit a baddie!
+    
+    // Remove the bullet
     bullet.remove = YES;
-    ship.remove = YES;
+    
+    // Highlight a hit
+    TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:ship];
+    highlight.color = GLKVector4Make(1, 1, 1, 1);
+    highlight.duration = 0.1;
+    [ship.currentAnimations addObject:highlight];
+//    ship.remove = YES;
   }];
 }
 

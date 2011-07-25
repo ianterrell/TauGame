@@ -10,7 +10,7 @@
 
 @implementation TEAnimation
 
-@synthesize node, elapsedTime, duration, repeat, easing, remove;
+@synthesize node, elapsedTime, duration, repeat, easing, remove, onRemoval;
 
 - (id)init
 {

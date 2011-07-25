@@ -22,6 +22,7 @@ typedef enum {
   double elapsedTime, duration;
   int repeat;
   BOOL remove;
+  void (^onRemoval)(void);
 }
 
 @property(strong) TENode *node;
@@ -29,6 +30,7 @@ typedef enum {
 @property double elapsedTime, duration;
 @property int repeat;
 @property BOOL remove;
+@property(nonatomic,copy) void (^onRemoval)(void);
 
 @property(readonly) float percentDone;
 @property(readonly) float easingFactor;

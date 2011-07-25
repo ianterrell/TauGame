@@ -57,6 +57,36 @@ typedef enum {
   }
 }
 
++(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight {
+  __block BOOL collision = NO;
+  
+  if (recurseLeft) {
+    [node1 traverseUsingBlock:^(TENode *leftNode) {
+      if (recurseRight) {
+        [node2 traverseUsingBlock:^(TENode *rightNode) {
+          if (!collision && [self node:leftNode collidesWithNode:rightNode]) // TODO: no need for !collision if we had a BOOL* break in traverseUsingBlock:
+            collision = YES;
+        }];
+      } else {
+        if (!collision && [self node:leftNode collidesWithNode:node2])
+          collision = YES;
+      }
+    }];
+  } else {
+    if (recurseRight) {
+      [node2 traverseUsingBlock:^(TENode *rightNode) {
+        if (!collision && [self node:node1 collidesWithNode:rightNode])
+          collision = YES;
+      }];
+    } else {
+      if (!collision && [self node:node1 collidesWithNode:node2])
+        collision = YES;
+    }
+  }
+
+  return collision;
+}
+
 +(NSMutableArray *)collisionsIn:(NSArray *)nodes {
   return [self collisionsIn:nodes maxPerNode:0];
 }
@@ -74,13 +104,17 @@ typedef enum {
 }
 
 +(void)collisionsIn:(NSArray *)nodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
+  [self collisionsIn:nodes recurseLeft:NO recurseRight:NO maxPerNode:n withBlock:block];
+}
+
++(void)collisionsIn:(NSArray *)nodes recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
   int size = [nodes count];
   for (int i = 0; i < size; i++) {
     int count = 0;
     for (int j = i + 1; j < size; j++) {
       TENode *node1 = (TENode *)[nodes objectAtIndex:i];
       TENode *node2 = (TENode *)[nodes objectAtIndex:j];
-      if ([self node:node1 collidesWithNode:node2]) {
+      if ([self node:node1 collidesWithNode:node2 recurseLeft:recurseLeft recurseRight:recurseRight]) {
         block(node1,node2);
         if (n > 0 && ++count >= n)
           break;
@@ -106,101 +140,19 @@ typedef enum {
 }
 
 +(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
+  [self collisionsBetween:nodes andNodes:moreNodes recurseLeft:NO recurseRight:NO maxPerNode:n withBlock:block];
+}
+
++(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
   for (TENode *node1 in nodes) {
     int count = 0;
     for (TENode *node2 in moreNodes) {
-      if ([self node:node1 collidesWithNode:node2]) {
+      if ([self node:node1 collidesWithNode:node2 recurseLeft:recurseLeft recurseRight:recurseRight]) {
         block(node1,node2);
         if (n > 0 && ++count >= n)
           break;
       }
     }
-  }
-}
-
--(void)test {
-  b2Manifold manifold;
-  b2Transform transform1;
-  b2Transform transform2;
-  
-  b2CircleShape circle1;
-  circle1.m_radius = 5.0;
-  
-  b2CircleShape circle2;
-  circle2.m_radius = 5.0;
-  
-  b2PolygonShape triangle;
-  b2Vec2 vertices[3];
-  vertices[0] = b2Vec2(0.0, 0.0);
-  vertices[1] = b2Vec2(2.0, 0.0);
-  vertices[2] = b2Vec2(0.0, 2.0);
-  triangle.Set(vertices, 3);
-  
-  b2PolygonShape box;
-  box.SetAsBox(1.0, 1.0, b2Vec2(0.0, 0.0), 0.0);
-  
-  transform1.Set(b2Vec2(0.0, 0.0), 0.0);
-  transform2.Set(b2Vec2(9.0, 0.0), 0.0);
-  b2CollideCircles(&manifold, &circle1, transform1, &circle2, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"circles collide at 0.0 and 9.0");
-  }
-  
-  transform1.Set(b2Vec2(0.0, 0.0), 0.0);
-  transform2.Set(b2Vec2(11.0, 0.0), 0.0);
-  b2CollideCircles(&manifold, &circle1, transform1, &circle2, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"circles collide at 0.0 and 11.0");
-  }  
-  
-  transform1.Set(b2Vec2(0.0, 0.0), 0.0);
-  transform2.Set(b2Vec2(0.0, 2.0), 0.0);
-  b2CollidePolygons(&manifold, &triangle, transform1, &box, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"triangle and box collide with box at 2.0");
-  }
-  
-  transform1.Set(b2Vec2(0.0, 0.0), 0.0);
-  transform2.Set(b2Vec2(0.0, 3.1), 0.0);
-  b2CollidePolygons(&manifold, &triangle, transform1, &box, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"triangle and box collide with box at 3.1");
-  }
-  
-  transform1.Set(b2Vec2(0.0, 0.0), 0.0);
-  transform2.Set(b2Vec2(0.0, 3.1), 1.0/8.0*M_TAU);
-  b2CollidePolygons(&manifold, &triangle, transform1, &box, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"triangle and box collide with box at 3.1 rotated 1/8 tau");
-  }
-
-  transform1.Set(b2Vec2(0.0, 5.0), 0.0);
-  transform2.Set(b2Vec2(0.0, 0.0), 0.0);
-  b2CollidePolygonAndCircle(&manifold, &box, transform1, &circle1, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"box and circle collide with box at 5.0");
-  }
-  
-  transform1.Set(b2Vec2(0.0, 6.1), 0.0);
-  transform2.Set(b2Vec2(0.0, 0.0), 0.0);
-  b2CollidePolygonAndCircle(&manifold, &box, transform1, &circle1, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"box and circle collide with box at 6.1");
-  }
-  
-  transform1.Set(b2Vec2(0.0, 6.1), 1.0/8.0*M_TAU);
-  transform2.Set(b2Vec2(0.0, 0.0), 0.0);
-  b2CollidePolygonAndCircle(&manifold, &box, transform1, &circle1, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"box and circle collide with box at 6.1 rotated 1/8 tau");
-  }
-  
-  NSLog(@"YO BOYS IT'S OBJ-C++ TIME");
-  TENode *node = [[TENode alloc] init];
-  node.collisionShape = &circle1;
-  b2CollidePolygonAndCircle(&manifold, &box, transform1, (b2CircleShape*)node.collisionShape, transform2);
-  if (manifold.pointCount > 0){
-    NSLog(@"TOTALLY COLLIDED RIGHT");
   }
 }
 

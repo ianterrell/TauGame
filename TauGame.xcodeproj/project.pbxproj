@@ -140,6 +140,7 @@
 		3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93913DDCF0000F6F035 /* hurt.wav */; };
 		3CD1F93C13DDCF0000F6F035 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93A13DDCF0000F6F035 /* shoot.wav */; };
 		3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */; };
+		3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94013DDD33F00F6F035 /* TESoundManager.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -303,6 +304,8 @@
 		3CD1F93913DDCF0000F6F035 /* hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt.wav; sourceTree = "<group>"; };
 		3CD1F93A13DDCF0000F6F035 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
 		3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESoundManager.h; sourceTree = "<group>"; };
+		3CD1F94013DDD33F00F6F035 /* TESoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESoundManager.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -652,6 +655,8 @@
 				3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */,
 				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
 				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
+				3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */,
+				3CD1F94013DDD33F00F6F035 /* TESoundManager.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 				3C01190713D86090004808DA /* Baddie.m in Sources */,
 				3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */,
 				3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */,
+				3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

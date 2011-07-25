@@ -16,6 +16,8 @@
   Fighter *fighter;
   NSMutableArray *bullets;
   NSMutableArray *ships;
+  
+  TESoundManager *sounds;
 }
 
 @property(strong) NSMutableArray *bullets, *ships;

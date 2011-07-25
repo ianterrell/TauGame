@@ -39,6 +39,8 @@
 #import "TEAdjustedAttitude.h"
 #import "TEAccelerometer.h"
 
+#import "TESoundManager.h"
+
 @interface TauEngine : NSObject {
   CMMotionManager *motionManager;
 }

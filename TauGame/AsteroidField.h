@@ -8,21 +8,6 @@
 
 #import "TauEngine.h"
 
-#import "Fighter.h"
-#import "Bullet.h"
-#import "Baddie.h"
-
-@interface AsteroidField : TEScene {
-  Fighter *fighter;
-  NSMutableArray *bullets;
-  NSMutableArray *ships;
-  
-  TESoundManager *sounds;
-}
-
-@property(strong) NSMutableArray *bullets, *ships;
-
--(void)shoot;
--(void)addRandomBaddie;
+@interface AsteroidField : TEScene 
 
 @end

@@ -8,7 +8,7 @@
 
 #import "Baddie.h"
 #import "TECharacterLoader.h"
-#import "AsteroidField.h"
+#import "BaddieField.h"
 
 @implementation Baddie
 
@@ -29,8 +29,8 @@
 }
 
 -(void)onRemovalFromScene:(TEScene *)scene {
-  [((AsteroidField *)scene).ships removeObject:self];
-  [(AsteroidField *)scene addRandomBaddie];
+  [((BaddieField *)scene).ships removeObject:self];
+  [(BaddieField *)scene addRandomBaddie];
 }
 
 -(void)registerHit {

@@ -8,7 +8,7 @@
 
 #import "Bullet.h"
 #import "TECharacterLoader.h"
-#import "AsteroidField.h"
+#import "BaddieField.h"
 
 @implementation Bullet
 
@@ -27,7 +27,7 @@
 }
 
 -(void)onRemovalFromScene:(TEScene *)scene {
-  [((AsteroidField *)scene).bullets removeObject:self];
+  [((BaddieField *)scene).bullets removeObject:self];
 }
 
 @end

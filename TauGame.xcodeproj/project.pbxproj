@@ -137,6 +137,9 @@
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
 		3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */; };
+		3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93913DDCF0000F6F035 /* hurt.wav */; };
+		3CD1F93C13DDCF0000F6F035 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93A13DDCF0000F6F035 /* shoot.wav */; };
+		3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -297,6 +300,9 @@
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
 		3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEColorAnimation.h; sourceTree = "<group>"; };
 		3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEColorAnimation.m; sourceTree = "<group>"; };
+		3CD1F93913DDCF0000F6F035 /* hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt.wav; sourceTree = "<group>"; };
+		3CD1F93A13DDCF0000F6F035 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
+		3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */,
 				3CB0483D13CBD5960029875B /* UIKit.framework in Frameworks */,
 				3CB0483F13CBD5960029875B /* Foundation.framework in Frameworks */,
 				3CB0484113CBD5960029875B /* CoreGraphics.framework in Frameworks */,
@@ -494,6 +501,7 @@
 				3C8A282B13D70C7E00BB0011 /* Scenes */,
 				3C8A282A13D70C7300BB0011 /* Characters */,
 				3C138B8C13CCAD94002FC701 /* Character Files */,
+				3CD1F93813DDCEE600F6F035 /* Sounds */,
 			);
 			name = Fighter;
 			sourceTree = "<group>";
@@ -545,6 +553,7 @@
 		3CB0483B13CBD5960029875B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */,
 				3C55079413CE0B8D00585C40 /* CoreMotion.framework */,
 				3CB0488913CBD6940029875B /* GLKit.framework */,
 				3CB0488A13CBD6940029875B /* OpenGLES.framework */,
@@ -647,6 +656,15 @@
 			name = TauEngine;
 			sourceTree = "<group>";
 		};
+		3CD1F93813DDCEE600F6F035 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3CD1F93913DDCF0000F6F035 /* hurt.wav */,
+				3CD1F93A13DDCF0000F6F035 /* shoot.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -726,6 +744,8 @@
 				3C6E948913D76D53000F7988 /* bullet.json in Resources */,
 				3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */,
 				3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */,
+				3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */,
+				3CD1F93C13DDCF0000F6F035 /* shoot.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

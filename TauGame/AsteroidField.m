@@ -7,6 +7,10 @@
 //
 
 #import "AsteroidField.h"
+#import <AudioToolbox/AudioServices.h>
+
+SystemSoundID shootSound;
+SystemSoundID hurtSound;
 
 @implementation AsteroidField
 
@@ -40,8 +44,13 @@
     [self addRandomBaddie];
     [self addRandomBaddie];
     
+    // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
+    
+    // Set up sounds
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"shoot" ofType:@"wav"]], &shootSound);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"hurt" ofType:@"wav"]], &hurtSound);
   }
   
   return self;
@@ -62,6 +71,7 @@
   // Detect collisions
   [TECollisionDetector collisionsBetween:bullets andNodes:ships maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
     // We've hit a baddie!
+    AudioServicesPlaySystemSound(hurtSound);
     
     // Remove the bullet
     bullet.remove = YES;
@@ -83,6 +93,8 @@
 }
 
 -(void) shoot {
+  AudioServicesPlaySystemSound(shootSound);
+  
   TECharacter *bullet = [[Bullet alloc] init];
   bullet.position = GLKVector2Make(fighter.position.x, fighter.position.y + 1.1);
   bullet.velocity = GLKVector2Make(0, 5);

@@ -10,60 +10,47 @@
 
 @implementation AsteroidField
 
+@synthesize asteroids;
+
 - (id)init
 {
   self = [super init];
   if (self) {
-    // Set up coordinates
-    [self setLeft:0 right:8 bottom:0 top:12];
-    [self orientationChangedTo:UIDeviceOrientationLandscapeLeft];
-    
-    // Set up background
-    clearColor = GLKVector4Make(0, 0, 0, 1);
-
-    [self newAsteroid];
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(newAsteroid)];
-    [self addGestureRecognizer:tapRecognizer];
+    asteroids = [[NSMutableArray alloc] initWithCapacity:20];
   }
   
   return self;
 }
 
--(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
-  return orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight;
-}
-
--(void)orientationChangedTo:(UIDeviceOrientation)orientation {
-  [super orientationChangedTo:orientation];
-}
--(float)point {
-  return 0.5+((float)rand()/RAND_MAX);
-}
--(void)newAsteroid {
-  [characters removeAllObjects];
-  
-  Asteroid *asteroid = [[Asteroid alloc] init];
-  for (int i = 0; i < 5; i++) {
-    TENode *triangleNode = [[TENode alloc] init];
-    TETriangle *triangleShape = [[TETriangle alloc] init];
-    
-    triangleShape.color = GLKVector4Make(1, 1, 1, 1);
-    triangleShape.vertex0 = GLKVector2Make(0, [self point]);
-    triangleShape.vertex1 = GLKVector2Make(-1*[self point], 0);
-    triangleShape.vertex2 = GLKVector2Make([self point], 0);
-    triangleShape.parent = triangleNode;
-
-    triangleNode.shape = triangleShape;
-    triangleNode.parent = asteroid;
-    triangleNode.rotation = ((float)rand()/RAND_MAX)*M_TAU;
-    [asteroid.children addObject:triangleNode];
+-(void)glkViewControllerUpdate:(GLKViewController *)controller {  
+  [super glkViewControllerUpdate:controller];
+  if ([controller framesDisplayed] % [TERandom rollDiceWithSides:300] == 0) {
+    [self newAsteroid];
   }
+  
+  // Detect collisions
+  [TECollisionDetector collisionsBetween:bullets andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
+    NSLog(@"hit!");
+    // We've hit an asteroid!
+    [sounds play:@"hurt"];
+    
+    // Remove the bullet
+    bullet.remove = YES;
+  }];
+}
 
-  asteroid.position = GLKVector2Make(6, 4);//(self.topRightVisible.x - self.bottomLeftVisible.x)/2.0, (self.topRightVisible.y - self.bottomLeftVisible.y)/2.0);
+-(void)newAsteroid {
+  Asteroid *asteroid = [[Asteroid alloc] init];
+  
+//  asteroid.position = GLKVector2Make(6, 4);//(self.topRightVisible.x - self.bottomLeftVisible.x)/2.0, (self.topRightVisible.y - self.bottomLeftVisible.y)/2.0);
   asteroid.scale = MAX(0.25,((float)rand()/RAND_MAX));
-  asteroid.angularVelocity = MIN(0.2,((float)rand()/RAND_MAX))*M_TAU;
+  asteroid.angularVelocity = [TERandom randomFraction]*M_TAU;
+
+  asteroid.position = GLKVector2Make([TERandom randomFractionFrom:self.bottomLeftVisible.x to:self.topRightVisible.x], self.topRightVisible.y);
+  asteroid.velocity = GLKVector2Make(0, [TERandom randomFractionFrom:-3.0 to:-1.0]);
+  
   [characters addObject:asteroid];
+  [asteroids addObject:asteroid];
 }
 
 

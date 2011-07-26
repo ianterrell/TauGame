@@ -6,23 +6,16 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TauEngine.h"
+#import "FighterScene.h"
 
-#import "Fighter.h"
-#import "Bullet.h"
 #import "Baddie.h"
 
-@interface BaddieField : TEScene {
-  Fighter *fighter;
-  NSMutableArray *bullets;
+@interface BaddieField : FighterScene {
   NSMutableArray *ships;
-  
-  TESoundManager *sounds;
 }
 
-@property(strong) NSMutableArray *bullets, *ships;
+@property(strong) NSMutableArray *ships;
 
--(void)shoot;
 -(void)addRandomBaddie;
 
 @end

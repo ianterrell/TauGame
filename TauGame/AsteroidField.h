@@ -7,11 +7,15 @@
 //
 
 #import "TauEngine.h"
+#import "FighterScene.h"
 #import "Asteroid.h"
-#import "Fighter.h"
 
-@interface AsteroidField : TEScene {
-  Fighter *fighter;
+@interface AsteroidField : FighterScene {
+  NSMutableArray *asteroids;
 }
+
+@property(strong) NSMutableArray *asteroids;
+
 -(void)newAsteroid;
+
 @end

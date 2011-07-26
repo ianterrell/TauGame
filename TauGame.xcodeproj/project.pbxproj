@@ -143,6 +143,8 @@
 		3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94013DDD33F00F6F035 /* TESoundManager.m */; };
 		3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94313DE311F00F6F035 /* Asteroid.m */; };
 		3CD1F94713DE313A00F6F035 /* BaddieField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94613DE313A00F6F035 /* BaddieField.m */; };
+		3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94913DF03CB00F6F035 /* TERandom.m */; };
+		3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94C13DF0E3200F6F035 /* FighterScene.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -312,6 +314,10 @@
 		3CD1F94313DE311F00F6F035 /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		3CD1F94513DE313A00F6F035 /* BaddieField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaddieField.h; sourceTree = "<group>"; };
 		3CD1F94613DE313A00F6F035 /* BaddieField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaddieField.m; sourceTree = "<group>"; };
+		3CD1F94813DF03C600F6F035 /* TERandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandom.h; sourceTree = "<group>"; };
+		3CD1F94913DF03CB00F6F035 /* TERandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandom.m; sourceTree = "<group>"; };
+		3CD1F94B13DF0E3200F6F035 /* FighterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FighterScene.h; sourceTree = "<group>"; };
+		3CD1F94C13DF0E3200F6F035 /* FighterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FighterScene.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -533,6 +539,8 @@
 		3C8A282B13D70C7E00BB0011 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3CD1F94B13DF0E3200F6F035 /* FighterScene.h */,
+				3CD1F94C13DF0E3200F6F035 /* FighterScene.m */,
 				3C8A283013D70CBC00BB0011 /* AsteroidField.h */,
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 				3CD1F94513DE313A00F6F035 /* BaddieField.h */,
@@ -667,6 +675,8 @@
 				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
 				3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */,
 				3CD1F94013DDD33F00F6F035 /* TESoundManager.m */,
+				3CD1F94813DF03C600F6F035 /* TERandom.h */,
+				3CD1F94913DF03CB00F6F035 /* TERandom.m */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -861,6 +871,8 @@
 				3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */,
 				3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */,
 				3CD1F94713DE313A00F6F035 /* BaddieField.m in Sources */,
+				3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */,
+				3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

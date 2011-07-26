@@ -41,6 +41,8 @@
 
 #import "TESoundManager.h"
 
+#import "TERandom.h"
+
 @interface TauEngine : NSObject {
   CMMotionManager *motionManager;
 }

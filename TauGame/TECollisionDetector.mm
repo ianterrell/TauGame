@@ -23,9 +23,26 @@ typedef enum {
 @implementation TECollisionDetector
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
-  // TODO SCALE THE OBJECTS
+  // TODO SCALE THE OBJECT
+  
   transform1.Set(b2Vec2(node1.position.x, node1.position.y), node1.rotation);
   transform2.Set(b2Vec2(node2.position.x, node2.position.y), node2.rotation);
+  
+//  __block float x1, y1, rotation1, x2, y2, rotation2 = 0;
+//  [node1 crawlUpWithBlock:^(TEDrawable *drawable) {
+//    x1 += drawable.position.x;
+//    y1 += drawable.position.y;
+//    rotation1 += drawable.rotation; // THIS IS WRONG
+//  }];
+//  [node2 crawlUpWithBlock:^(TEDrawable *drawable) {
+//    x2 += drawable.position.x;
+//    y2 += drawable.position.y;
+//    rotation2 += drawable.rotation; // THIS IS WRONG
+//  }];  
+//  NSLog(@"%f,%f,%f %f,%f,%f", x1, y1, rotation1, x2, y2, rotation2);
+//  
+//  transform1.Set(b2Vec2(x1, y1), rotation1);
+//  transform2.Set(b2Vec2(x2, y2), rotation1);
   
   if (type == TECollisionTypePolygonPolygon) {
     b2CollidePolygons(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2PolygonShape*)node2.collisionShape, transform2);
@@ -40,7 +57,7 @@ typedef enum {
 
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 {
-  if (!node1.collide || !node2.collide) {
+  if (!node1.collide || !node2.collide || node1.shape == nil || node2.shape == nil) {
     return NO;
   } else {
     if ([node1.shape isPolygon]) {

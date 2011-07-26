@@ -57,4 +57,11 @@
 }
 
 
+-(void)crawlUpWithBlock:(void (^)(TEDrawable *))block {
+  block(self);
+  if (parent != nil)
+    [parent crawlUpWithBlock:block];
+}
+
+
 @end

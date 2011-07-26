@@ -24,6 +24,7 @@
 
 -(void)glkViewControllerUpdate:(GLKViewController *)controller {  
   [super glkViewControllerUpdate:controller];
+  
   if ([controller framesDisplayed] % [TERandom rollDiceWithSides:300] == 0) {
     [self newAsteroid];
   }

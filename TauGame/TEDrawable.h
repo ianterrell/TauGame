@@ -29,5 +29,8 @@
 -(void)renderInScene:(TEScene *)scene;
 -(GLKMatrix4)modelViewMatrix;
 
+// TODO: should parents be TENodes? Node-Shape smell here again
+-(void)crawlUpWithBlock:(void (^)(TEDrawable *))block;
+
 
 @end

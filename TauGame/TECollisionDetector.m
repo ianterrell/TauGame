@@ -32,11 +32,18 @@ typedef struct {
 #pragma mark - Collision detection between two circles
 
 +(BOOL)circle:(TENode *)node1 collidesWithCircle:(TENode *)node2 {
-  GLKVector2 circle1Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node1.shape];
-  GLKVector2 circle2Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node2.shape];
+  GLKVector2 circle1Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:node1.shape];
+  GLKVector2 pointOnCircle1 = [self transformedPoint:GLKVector2Make(0,node1.shape.radius) fromShape:node1.shape];
+  float radius1 = GLKVector2Length(GLKVector2Subtract(pointOnCircle1, circle1Center));
+  
+  GLKVector2 circle2Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:node2.shape];
+  GLKVector2 pointOnCircle2 = [self transformedPoint:GLKVector2Make(0,node2.shape.radius) fromShape:node2.shape];
+  float radius2 = GLKVector2Length(GLKVector2Subtract(pointOnCircle2, circle2Center));
+  
   GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
-  float length = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
-  return length <= (node1.shape.radius + node2.shape.radius);
+  float distance = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
+  
+  return distance <= (radius1 + radius2);
 }
 
 #pragma mark - Collision detection between two polygons

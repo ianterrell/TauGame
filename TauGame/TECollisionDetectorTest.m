@@ -87,7 +87,12 @@ static int count = 0;
   circle1.position = GLKVector2Make(3,0);
   [self node:circle1 shouldNotCollideWith:circle2 label:@"Circles not touching"];
   
-  circle1.position = GLKVector2Make(0,0);//reset
+  
+  circle1.scale = 5;
+  [self node:circle1 shouldCollideWith:circle2 label:@"Circles scaled up touching"];
+  
+  circle1.position = GLKVector2Make(0,0);
+  circle1.scale = 1.0;//reset
   
   circle1.shape.position = GLKVector2Make(0.5,0);
   [self node:circle1 shouldCollideWith:circle2 label:@"Circles overlapping some; repositioned in shape"];

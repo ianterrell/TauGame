@@ -18,6 +18,8 @@
   
   GLKVector2 velocity, acceleration;
   float maxVelocity, maxAcceleration;
+  
+  float angularVelocity, angularAcceleration, maxAngularVelocity, maxAngularAcceleration;
 
   BOOL remove;
   
@@ -30,6 +32,7 @@
 @property(strong, nonatomic) NSMutableArray *children;
 @property GLKVector2 velocity, acceleration;
 @property float maxVelocity, maxAcceleration;
+@property float angularVelocity, angularAcceleration, maxAngularVelocity, maxAngularAcceleration;
 @property BOOL remove;
 @property BOOL collide;
 @property void *collisionShape;

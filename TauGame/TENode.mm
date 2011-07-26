@@ -14,6 +14,7 @@
 
 @synthesize name, shape, children;
 @synthesize maxVelocity, maxAcceleration;
+@synthesize maxAngularVelocity, maxAngularAcceleration;
 @synthesize remove;
 @synthesize collide;
 
@@ -25,6 +26,10 @@
     acceleration = GLKVector2Make(0, 0);
     maxVelocity = INFINITY;
     maxAcceleration = INFINITY;
+    
+    angularVelocity = angularAcceleration = 0;
+    maxAngularVelocity = maxAngularAcceleration = INFINITY;
+    
     remove = NO;
     self.children = [[NSMutableArray alloc] init];
   }
@@ -70,6 +75,9 @@
 -(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene {
   self.velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
   position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
+  
+  self.angularVelocity += angularAcceleration * dt;
+  self.rotation += self.angularVelocity * dt;
 }
 
 -(GLKVector2)velocity {
@@ -93,6 +101,23 @@
   else
     acceleration = newAcceleration;
 }
+
+-(float)angularVelocity {
+  return angularVelocity;
+}
+
+-(float)angularAcceleration {
+  return angularAcceleration;
+}
+
+-(void)setAngularVelocity:(float)newAngularVelocity {
+  angularVelocity = MIN(maxAngularVelocity, newAngularVelocity);
+}
+
+-(void)setAngularAcceleration:(float)newAngularAcceleration {
+  angularAcceleration = MIN(maxAngularAcceleration, newAngularAcceleration);
+}
+
 
 # pragma mark Position Shortcuts
 

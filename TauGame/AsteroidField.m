@@ -62,6 +62,7 @@
 
   asteroid.position = GLKVector2Make(6, 4);//(self.topRightVisible.x - self.bottomLeftVisible.x)/2.0, (self.topRightVisible.y - self.bottomLeftVisible.y)/2.0);
   asteroid.scale = MAX(0.25,((float)rand()/RAND_MAX));
+  asteroid.angularVelocity = MIN(0.2,((float)rand()/RAND_MAX))*M_TAU;
   [characters addObject:asteroid];
 }
 

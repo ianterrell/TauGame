@@ -17,7 +17,7 @@
   
   UIDeviceOrientation currentOrientation;
   GLKMatrix4 orientationRotationMatrix, cachedProjectionMatrix;
-  BOOL dirtyProjectionMatrix, dirtyOrientationMatrix;
+  BOOL dirtyProjectionMatrix;
 }
 
 @property(readonly) GLfloat left, right, bottom, top;
@@ -27,7 +27,6 @@
 @property(readonly) GLKBaseEffect *constantColorEffect;
 @property UIDeviceOrientation currentOrientation;
 @property GLKMatrix4 orientationRotationMatrix;
-@property BOOL dirtyOrientationMatrix;
 
 # pragma mark Scene Setup
 
@@ -46,6 +45,7 @@
 # pragma mark Rendering
 
 -(void)render;
+-(void)markChildrensFullMatricesDirty;
 -(GLKMatrix4)projectionMatrix;
 
 @end

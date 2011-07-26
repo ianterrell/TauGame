@@ -26,7 +26,6 @@
   self.adjustedAttitude = [TauEngine motionManager].deviceMotion.attitude;
   if (self.referenceAttitude != nil)
     [self.adjustedAttitude multiplyByInverseOfAttitude:self.referenceAttitude];
-//  NSLog(@"Roll %f, pitch %f, yaw %f", self.adjustedAttitude.roll, self.adjustedAttitude.pitch, self.adjustedAttitude.yaw);
 }
 
 -(void)zero {

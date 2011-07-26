@@ -100,7 +100,7 @@
   float randX = ((float)rand()/RAND_MAX) * self.visibleWidth + self.bottomLeftVisible.x;
   float randY = ((float)rand()/RAND_MAX) * (self.visibleHeight - 3) + self.bottomLeftVisible.y + 3;
   float randVelocity = -10.0 + (float)rand()/RAND_MAX * 20.0;
-  NSLog(@"y is %f", randY);
+  
   baddie.position = GLKVector2Make(randX, randY);
   baddie.velocity = GLKVector2Make(randVelocity,0);
   baddie.shape.color = GLKVector4Make(((float)rand()/RAND_MAX), ((float)rand()/RAND_MAX), ((float)rand()/RAND_MAX), 1.0);

@@ -7,7 +7,11 @@
 //
 
 #import "TauEngine.h"
+#import "Asteroid.h"
+#import "Fighter.h"
 
-@interface AsteroidField : TEScene 
-
+@interface AsteroidField : TEScene {
+  Fighter *fighter;
+}
+-(void)newAsteroid;
 @end

@@ -12,12 +12,12 @@
 
 - (id)init
 {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
+  self = [super init];
+  if (self) {
     
-    return self;
+  }
+  
+  return self;
 }
 
 @end

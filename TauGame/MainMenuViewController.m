@@ -90,7 +90,6 @@
   float width = windowBounds.size.width;
   float height = windowBounds.size.height;
   int numPages = 0;
-  NSLog(@"width is %f, height is %f", width, height);
   
   // Setup top level view
   UIView *view = [[UIView alloc] initWithFrame:windowBounds];

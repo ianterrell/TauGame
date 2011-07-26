@@ -7,6 +7,7 @@
 //
 
 #import "TauGameAppDelegate.h"
+#import "AsteroidField.h"
 #import "BaddieField.h"
 
 @implementation TauGameAppDelegate
@@ -16,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   sceneController = [TESceneController sharedController];
-  [sceneController addScene:[[BaddieField alloc] init] named:@"baddies"];
+  [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
   [sceneController displayScene:@"baddies"];
   
   mainMenuController = [[MainMenuViewController alloc] initWithNibName:nil bundle:nil];

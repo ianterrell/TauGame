@@ -8,10 +8,10 @@
 
 #import "TEDrawable.h"
 #import "TauEngine.h"
-
+static int count = 0;
 @implementation TEDrawable
 
-@synthesize parent, effect, currentAnimations, dirtyModelViewMatrix;
+@synthesize parent, effect, currentAnimations, dirtyFullModelViewMatrix;
 
 - (id)init
 {
@@ -22,7 +22,7 @@
     position = GLKVector2Make(0.0, 0.0);
     currentAnimations = [[NSMutableArray alloc] init];
     
-    dirtyModelViewMatrix = YES;
+    dirtyObjectModelViewMatrix = YES;
   }
   
   return self;
@@ -35,10 +35,7 @@
 }
 
 -(GLKMatrix4)modelViewMatrix {
-  if ([currentAnimations count] > 0)
-    dirtyModelViewMatrix = YES;
-  
-  if (dirtyModelViewMatrix) {
+  if (dirtyObjectModelViewMatrix) {
     __block GLKVector2 mvTranslation = position;
     __block GLfloat mvScale = scale;
     __block GLfloat mvRotation = rotation;
@@ -51,25 +48,33 @@
       else if ([animation isKindOfClass:[TEScaleAnimation class]])
         mvScale *= ((TEScaleAnimation *)animation).easedScale;
     }];
+    
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0)); count++;
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation)); count++;
+    
+    dirtyObjectModelViewMatrix = [currentAnimations count] > 0;
+    dirtyFullModelViewMatrix = YES;
+  }
 
-    GLKMatrix4 mvMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
-    mvMatrix = GLKMatrix4Multiply(mvMatrix, GLKMatrix4MakeZRotation(mvRotation));
-    if (parent)
-      mvMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], mvMatrix);
-    else { // final orientation rotation
-      TEScene *currentScene = [TESceneController sharedController].currentScene;
-      if (currentScene != nil)
-        mvMatrix = GLKMatrix4Multiply(currentScene.orientationRotationMatrix, mvMatrix);
+  if (dirtyFullModelViewMatrix) {
+    if (parent) {
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], cachedObjectModelViewMatrix); count++;
+    }
+    else if ([TESceneController sharedController].currentScene != nil) {
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, cachedObjectModelViewMatrix); count++;
+    } else {
+      cachedFullModelViewMatrix = cachedObjectModelViewMatrix;
     }
     
-    cachedModelViewMatrix = mvMatrix;
-    dirtyModelViewMatrix = NO;
+//    dirtyFullModelViewMatrix = NO; // not sure where to mark this! if at all!
   }
-  return cachedModelViewMatrix;
+  
+  return cachedFullModelViewMatrix;
 }
 
 -(void)markModelViewMatrixDirty {
-  dirtyModelViewMatrix = YES;
+  dirtyObjectModelViewMatrix = YES;
+  dirtyFullModelViewMatrix = YES;
 }
 
 -(GLKVector2)position {
@@ -98,6 +103,11 @@
   rotation = _rotation;
   [self markModelViewMatrixDirty];
 }
+
++(void)displayCount {
+  NSLog(@"calculated %d matrices", count);
+}
+
 
 -(void)crawlUpWithBlock:(void (^)(TEDrawable *))block {
   block(self);

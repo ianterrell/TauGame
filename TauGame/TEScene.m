@@ -14,7 +14,7 @@
 @synthesize left, right, bottom, top;
 @synthesize clearColor;
 @synthesize characters;
-@synthesize currentOrientation, orientationRotationMatrix;
+@synthesize currentOrientation, orientationRotationMatrix, dirtyOrientationMatrix;
 
 - (id)init {
   self = [super init];
@@ -32,6 +32,10 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
+  if ([controller framesDisplayed] % 60 == 0) {
+    NSLog(@"After %d frames", [controller framesDisplayed]);
+    [TEDrawable displayCount];
+  }
   GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
   // Update all characters
@@ -53,6 +57,7 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
   [self render];
+  dirtyOrientationMatrix = NO;
 }
 
 # pragma mark Scene Setup
@@ -103,6 +108,7 @@
   GLKMatrix4 rotation = GLKMatrix4MakeZRotation([self turnsForOrientation]*M_TAU);
   GLKMatrix4 revertTranslation = GLKMatrix4MakeTranslation((right-left)/2.0, (top-bottom)/2.0, 0);
   orientationRotationMatrix = GLKMatrix4Multiply(revertTranslation, GLKMatrix4Multiply(rotation, translation));
+  dirtyOrientationMatrix = YES;
 }
 
 -(float)turnsForOrientation {

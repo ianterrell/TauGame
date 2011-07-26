@@ -74,7 +74,7 @@
 
 -(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene {
   self.velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
-  position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
+  self.position = GLKVector2Add(position, GLKVector2MultiplyScalar(velocity, dt));
   
   self.angularVelocity += angularAcceleration * dt;
   self.rotation += self.angularVelocity * dt;
@@ -121,10 +121,13 @@
 # pragma mark Mark all children dirty
 
 -(void)markModelViewMatrixDirty {
+  [super markModelViewMatrixDirty];
+  
+  BOOL tmpSelfValue = self.dirtyFullModelViewMatrix;
   [self traverseUsingBlock:^(TENode *node) {
-    node.dirtyModelViewMatrix = YES;
-    node.shape.dirtyModelViewMatrix = YES;
+    node.dirtyFullModelViewMatrix = YES;
   }];
+  self.dirtyFullModelViewMatrix = tmpSelfValue;
 }
 
 # pragma mark Position Shortcuts

@@ -35,6 +35,9 @@
 }
 
 -(GLKMatrix4)modelViewMatrix {
+  if ([currentAnimations count] > 0)
+    dirtyModelViewMatrix = YES;
+  
   if (dirtyModelViewMatrix) {
     __block GLKVector2 mvTranslation = position;
     __block GLfloat mvScale = scale;

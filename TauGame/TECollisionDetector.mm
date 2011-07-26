@@ -22,6 +22,19 @@ typedef enum {
 
 @implementation TECollisionDetector
 
++(GLKVector2)transformedPoint:(GLKVector2)point fromShape:(TEShape*)shape {
+  GLKVector4 transformedPoint = GLKMatrix4MultiplyVector4(shape.modelViewMatrix, GLKVector4Make(point.x,point.y,0,1));
+  return GLKVector2Make(transformedPoint.x, transformedPoint.y);
+}
+
++(BOOL)circle:(TENode *)node1 collidesWithCircle:(TENode *)node2 {
+  GLKVector2 circle1Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node1.shape];
+  GLKVector2 circle2Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node2.shape];
+  GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
+  float length = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
+  return length <= (((TEEllipse*)node1.shape).radiusX + ((TEEllipse*)node1.shape).radiusX);
+}
+
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
   // TODO SCALE THE OBJECT
   
@@ -49,7 +62,7 @@ typedef enum {
   } else if (type == TECollisionTypePolygonCircle) {
     b2CollidePolygonAndCircle(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
   } else if (type == TECollisionTypeCircleCircle) {
-    b2CollideCircles(&manifold, (b2CircleShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
+    return [self circle:node1 collidesWithCircle:node2];
   }
   
   return manifold.pointCount > 0;

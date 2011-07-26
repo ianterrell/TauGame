@@ -13,12 +13,15 @@
 - (id)init
 {
   self = [super init];
+  
+  GLKVector4 color = GLKVector4Make([TERandom randomFractionFrom:0.7 to:0.9], [TERandom randomFractionFrom:0.7 to:0.9], [TERandom randomFractionFrom:0.7 to:0.9], 1);
+  
   if (self) {
     for (int i = 0; i < [TERandom randomFrom:2 to:6]; i++) {
       TENode *triangleNode = [[TENode alloc] init];
       TETriangle *triangleShape = [[TETriangle alloc] init];
       
-      triangleShape.color = GLKVector4Make(1, 1, 1, 1);
+      triangleShape.color = color;
       triangleShape.vertex0 = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
       triangleShape.vertex1 = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
       triangleShape.vertex2 = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);

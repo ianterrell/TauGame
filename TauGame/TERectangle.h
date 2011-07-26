@@ -6,11 +6,10 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TEShape.h"
+#import "TEPolygon.h"
 
-@interface TERectangle : TEShape {
+@interface TERectangle : TEPolygon {
   GLfloat height, width;
-  GLfloat vertices[8];
 }
 
 @property GLfloat height, width;

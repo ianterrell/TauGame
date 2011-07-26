@@ -20,6 +20,11 @@ typedef enum {
   TECollisionTypeCircleCircle
 } TECollisionType;
 
+typedef struct {
+  float min;
+  float max;
+} ProjectionRange;
+
 @implementation TECollisionDetector
 
 +(GLKVector2)transformedPoint:(GLKVector2)point fromShape:(TEShape*)shape {
@@ -33,6 +38,68 @@ typedef enum {
   GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
   float length = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
   return length <= (((TEEllipse*)node1.shape).radiusX + ((TEEllipse*)node1.shape).radiusX);
+}
+
++(GLKVector2)axisPerpendicularToEdge:(GLKVector2)edge {
+//  NSLog(@"normalized axis goes from 0,0 to %f,%f", GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x)).x, GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x)).y);
+  return GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x));
+}
+
++(GLKVector2)axisPerpendicularToEdgeStarting:(GLKVector2)start ending:(GLKVector2)end {
+  return [self axisPerpendicularToEdge:GLKVector2Subtract(end, start)];
+}
+
++(ProjectionRange)polygon:(TEPolygon *)poly projectedOnto:(GLKVector2)axis {
+  ProjectionRange range;
+  range.min = INFINITY;
+  range.max = 0;
+  
+  for (int i = 0; i < poly.numVertices; i++) {
+    float projection = GLKVector2DotProduct(poly.vertices[i], axis);
+    range.min = MIN(range.min,projection);
+    range.max = MAX(range.max,projection);
+  }
+//  NSLog(@"projecting %@ onto (%f,%f) I find min %f and max %f", poly, axis.x, axis.y, range.min, range.max);
+  return range;
+}
+
++(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnEdge:(GLKVector2)edge {
+  ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:edge];
+  ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:edge];
+  
+  if (poly1Projection.min < poly2Projection.min)
+    return poly2Projection.min < poly1Projection.max;
+  else
+    return poly1Projection.min < poly2Projection.max;
+}
+
++(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnPolygonsEdges:(TEPolygon *)poly {
+  for (int i = 0; i < poly.numVertices; i++) {
+    GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[i] ending:poly.vertices[(i+1)%poly.numVertices]];
+    if (![self polygon:poly1 andPolygon:poly2 intersectOnEdge:perpendicularEdge])
+      return NO;
+  }
+  return YES;
+}
+
++(BOOL)polygon:(TENode *)node1 collidesWithPolygon:(TENode *)node2 {
+  
+  // Transform our polygons
+  TEPolygon *poly1 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node1.shape).numVertices];
+  for (int i = 0; i < poly1.numVertices; i++)
+    poly1.vertices[i] = [self transformedPoint:((TEPolygon *)node1.shape).vertices[i] fromShape:((TEPolygon *)node1.shape)];
+
+  TEPolygon *poly2 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node2.shape).numVertices];
+  for (int i = 0; i < poly2.numVertices; i++)
+    poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.shape).vertices[i] fromShape:((TEPolygon *)node2.shape)];
+  
+  // Test by separating axis theorem
+  if (![self polygon:poly1 andPolygon:poly2 intersectOnPolygonsEdges:poly1])
+    return NO;
+  if (![self polygon:poly1 andPolygon:poly2 intersectOnPolygonsEdges:poly2])
+    return NO;
+  
+  return YES;
 }
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
@@ -58,7 +125,8 @@ typedef enum {
 //  transform2.Set(b2Vec2(x2, y2), rotation1);
   
   if (type == TECollisionTypePolygonPolygon) {
-    b2CollidePolygons(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2PolygonShape*)node2.collisionShape, transform2);
+    NSLog(@"doing a triangle");
+    return [self polygon:node1 collidesWithPolygon:node2];
   } else if (type == TECollisionTypePolygonCircle) {
     b2CollidePolygonAndCircle(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
   } else if (type == TECollisionTypeCircleCircle) {

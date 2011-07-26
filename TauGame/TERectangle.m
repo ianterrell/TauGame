@@ -12,7 +12,7 @@
 
 - (id)init
 {
-  self = [super init];
+  self = [super initWithVertices:4];
   if (self) {
     width = height = 1.0;
     [self updateVertices];
@@ -21,24 +21,11 @@
   return self;
 }
 
--(void)renderInScene:(TEScene *)scene forNode:(TENode *)node  {
-  [super renderInScene:scene forNode:node];
-  
-  glEnableVertexAttribArray(GLKVertexAttribPosition);
-  glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-  glDisableVertexAttribArray(GLKVertexAttribPosition);
-}
-
 -(void)updateVertices {
-  vertices[0] = width/2.0;
-  vertices[1] = -height/2.0;
-  vertices[2] = width/2.0;
-  vertices[3] = height/2.0;
-  vertices[4] = -width/2.0;
-  vertices[5] = height/2.0;
-  vertices[6] = -width/2.0;
-  vertices[7] =-height/2.0;
+  vertices[0] = GLKVector2Make( width/2.0, -height/2.0);
+  vertices[1] = GLKVector2Make( width/2.0,  height/2.0);
+  vertices[2] = GLKVector2Make(-width/2.0,  height/2.0);
+  vertices[3] = GLKVector2Make(-width/2.0, -height/2.0);
 }
 
 -(GLfloat)height {

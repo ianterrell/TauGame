@@ -141,10 +141,12 @@
 		3CD1F93C13DDCF0000F6F035 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93A13DDCF0000F6F035 /* shoot.wav */; };
 		3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */; };
 		3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94013DDD33F00F6F035 /* TESoundManager.m */; };
-		3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94313DE311F00F6F035 /* Asteroid.m */; };
+		3CD1F94413DE311F00F6F035 /* Asteroid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94313DE311F00F6F035 /* Asteroid.mm */; };
 		3CD1F94713DE313A00F6F035 /* BaddieField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94613DE313A00F6F035 /* BaddieField.m */; };
 		3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94913DF03CB00F6F035 /* TERandom.m */; };
 		3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94C13DF0E3200F6F035 /* FighterScene.m */; };
+		3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */; };
+		3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95513DF55EF00F6F035 /* TEPolygon.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -311,13 +313,17 @@
 		3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESoundManager.h; sourceTree = "<group>"; };
 		3CD1F94013DDD33F00F6F035 /* TESoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESoundManager.m; sourceTree = "<group>"; };
 		3CD1F94213DE311F00F6F035 /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
-		3CD1F94313DE311F00F6F035 /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
+		3CD1F94313DE311F00F6F035 /* Asteroid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Asteroid.mm; sourceTree = "<group>"; };
 		3CD1F94513DE313A00F6F035 /* BaddieField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaddieField.h; sourceTree = "<group>"; };
 		3CD1F94613DE313A00F6F035 /* BaddieField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaddieField.m; sourceTree = "<group>"; };
 		3CD1F94813DF03C600F6F035 /* TERandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandom.h; sourceTree = "<group>"; };
 		3CD1F94913DF03CB00F6F035 /* TERandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandom.m; sourceTree = "<group>"; };
 		3CD1F94B13DF0E3200F6F035 /* FighterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FighterScene.h; sourceTree = "<group>"; };
 		3CD1F94C13DF0E3200F6F035 /* FighterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FighterScene.m; sourceTree = "<group>"; };
+		3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetectorTest.h; sourceTree = "<group>"; };
+		3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetectorTest.m; sourceTree = "<group>"; };
+		3CD1F95413DF55EC00F6F035 /* TEPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEPolygon.h; sourceTree = "<group>"; };
+		3CD1F95513DF55EF00F6F035 /* TEPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEPolygon.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -531,7 +537,7 @@
 				3C01190513D86090004808DA /* Baddie.h */,
 				3C01190613D86090004808DA /* Baddie.m */,
 				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
-				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
+				3CD1F94313DE311F00F6F035 /* Asteroid.mm */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -645,12 +651,14 @@
 				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3CB0487413CBD5D20029875B /* TEShape.h */,
 				3CB0487513CBD5D20029875B /* TEShape.m */,
+				3CD1F95413DF55EC00F6F035 /* TEPolygon.h */,
+				3CD1F95513DF55EF00F6F035 /* TEPolygon.m */,
 				3CB0487713CBD5DF0029875B /* TETriangle.h */,
 				3CB0487813CBD5DF0029875B /* TETriangle.m */,
-				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
-				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
 				3CB0487D13CBD5F20029875B /* TERectangle.h */,
 				3CB0487E13CBD5F20029875B /* TERectangle.m */,
+				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
+				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
 				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
 				3C138B9113CCB15A002FC701 /* TECharacterLoader.mm */,
 				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
@@ -665,6 +673,8 @@
 				3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */,
 				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
 				3C5507A513CE237D00585C40 /* TECollisionDetector.mm */,
+				3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */,
+				3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */,
 				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
 				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
 				3CB0488F13CBDB440029875B /* TEScene.h */,
@@ -869,10 +879,12 @@
 				3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */,
 				3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */,
 				3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */,
-				3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */,
+				3CD1F94413DE311F00F6F035 /* Asteroid.mm in Sources */,
 				3CD1F94713DE313A00F6F035 /* BaddieField.m in Sources */,
 				3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */,
 				3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */,
+				3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */,
+				3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

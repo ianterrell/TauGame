@@ -26,17 +26,17 @@
       // Set up shape
       TETriangle *triangleShape = [[TETriangle alloc] init];
       triangleShape.color = color;
-      triangleShape.vertex0 = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
-      triangleShape.vertex1 = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
-      triangleShape.vertex2 = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
+      triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
+      triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
+      triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
       triangleShape.parent = triangleNode;
       
       // Set up collisions
       b2PolygonShape *triangle = new b2PolygonShape();
       b2Vec2 vertices[3];
-      vertices[0] = b2Vec2(triangleShape.vertex0.x, triangleShape.vertex0.y);
-      vertices[1] = b2Vec2(triangleShape.vertex1.x, triangleShape.vertex1.y);
-      vertices[2] = b2Vec2(triangleShape.vertex2.x, triangleShape.vertex2.y);
+      vertices[0] = b2Vec2(triangleShape.vertices[0].x, triangleShape.vertices[0].y);
+      vertices[1] = b2Vec2(triangleShape.vertices[1].x, triangleShape.vertices[1].y);
+      vertices[2] = b2Vec2(triangleShape.vertices[2].x, triangleShape.vertices[2].y);
       triangle->Set(vertices, 3);
       
       // Set up node

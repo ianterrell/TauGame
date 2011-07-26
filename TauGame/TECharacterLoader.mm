@@ -45,11 +45,11 @@
       shape.color = GLKVector4Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue], 
                                    [[obj objectAtIndex:2] floatValue], [[obj objectAtIndex:3] floatValue]);
     } else if ([key isEqualToString:@"vertex0"]) {
-      ((TETriangle *)shape).vertex0 = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
+      ((TETriangle *)shape).vertices[0] = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
     } else if ([key isEqualToString:@"vertex1"]) {
-      ((TETriangle *)shape).vertex1 = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
+      ((TETriangle *)shape).vertices[1] = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
     } else if ([key isEqualToString:@"vertex2"]) {
-      ((TETriangle *)shape).vertex2 = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
+      ((TETriangle *)shape).vertices[2] = GLKVector2Make([[obj objectAtIndex:0] floatValue], [[obj objectAtIndex:1] floatValue]);
     } else if ([key isEqualToString:@"height"]) {
       ((TERectangle *)shape).height = [obj floatValue];
     } else if ([key isEqualToString:@"width"]) {
@@ -94,9 +94,9 @@
       TETriangle *triangleShape = (TETriangle *)node.shape;
       b2PolygonShape *triangle = new b2PolygonShape();
       b2Vec2 vertices[3];
-      vertices[0] = b2Vec2(triangleShape.vertex0.x, triangleShape.vertex0.y);
-      vertices[1] = b2Vec2(triangleShape.vertex1.x, triangleShape.vertex1.y);
-      vertices[2] = b2Vec2(triangleShape.vertex2.x, triangleShape.vertex2.y);
+      vertices[0] = b2Vec2(triangleShape.vertices[0].x, triangleShape.vertices[0].y);
+      vertices[1] = b2Vec2(triangleShape.vertices[1].x, triangleShape.vertices[1].y);
+      vertices[2] = b2Vec2(triangleShape.vertices[2].x, triangleShape.vertices[2].y);
       triangle->Set(vertices, 3);
       node.collisionShape = (void *)triangle;
     } 

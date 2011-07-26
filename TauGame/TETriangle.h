@@ -6,12 +6,9 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TEShape.h"
+#import "TEPolygon.h"
 
-@interface TETriangle : TEShape {
-  GLfloat vertices[6];
+@interface TETriangle : TEPolygon {
 }
-
-@property GLKVector2 vertex0, vertex1, vertex2;
 
 @end

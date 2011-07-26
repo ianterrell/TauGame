@@ -19,9 +19,10 @@
 #import "TENode.h"
 #import "TECharacter.h"
 #import "TEShape.h"
+#import "TEPolygon.h"
 #import "TETriangle.h"
-#import "TEEllipse.h"
 #import "TERectangle.h"
+#import "TEEllipse.h"
 
 #import "TEScene.h"
 #import "TESceneController.h"

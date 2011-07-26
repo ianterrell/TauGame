@@ -34,8 +34,6 @@
 -(GLKMatrix4)modelViewMatrix;
 -(void)markModelViewMatrixDirty;
 
-+(void)displayCount;
-
 // TODO: should parents be TENodes? Node-Shape smell here again
 -(void)crawlUpWithBlock:(void (^)(TEDrawable *))block;
 

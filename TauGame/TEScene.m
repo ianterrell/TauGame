@@ -32,10 +32,6 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-  if ([controller framesDisplayed] % 60 == 0) {
-    NSLog(@"After %d frames", [controller framesDisplayed]);
-    [TEDrawable displayCount];
-  }
   GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
   // Update all characters

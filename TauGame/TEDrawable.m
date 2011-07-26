@@ -8,7 +8,7 @@
 
 #import "TEDrawable.h"
 #import "TauEngine.h"
-static int count = 0;
+
 @implementation TEDrawable
 
 @synthesize parent, effect, currentAnimations, dirtyFullModelViewMatrix;
@@ -49,22 +49,20 @@ static int count = 0;
         mvScale *= ((TEScaleAnimation *)animation).easedScale;
     }];
     
-    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0)); count++;
-    cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation)); count++;
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation));
     
     dirtyObjectModelViewMatrix = [currentAnimations count] > 0;
     dirtyFullModelViewMatrix = YES;
   }
 
   if (dirtyFullModelViewMatrix) {
-    if (parent) {
-      cachedFullModelViewMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], cachedObjectModelViewMatrix); count++;
-    }
-    else if ([TESceneController sharedController].currentScene != nil) {
-      cachedFullModelViewMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, cachedObjectModelViewMatrix); count++;
-    } else {
+    if (parent)
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], cachedObjectModelViewMatrix);
+    else if ([TESceneController sharedController].currentScene != nil)
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, cachedObjectModelViewMatrix);
+    else
       cachedFullModelViewMatrix = cachedObjectModelViewMatrix;
-    }
     dirtyFullModelViewMatrix = NO;
   }
   
@@ -102,16 +100,10 @@ static int count = 0;
   [self markModelViewMatrixDirty];
 }
 
-+(void)displayCount {
-  NSLog(@"calculated %d matrices", count);
-}
-
-
 -(void)crawlUpWithBlock:(void (^)(TEDrawable *))block {
   block(self);
   if (parent != nil)
     [parent crawlUpWithBlock:block];
 }
-
 
 @end

@@ -8,7 +8,6 @@
 
 #import "TECharacterLoader.h"
 #import "TauEngine.h"
-#import "Box2D.h"
 
 @implementation TECharacterLoader
 
@@ -86,36 +85,8 @@
 
 +(void)setUpColliders:(TENode *)node attributes:(NSDictionary *)attributes {
   NSString *collide = (NSString *)[attributes objectForKey:@"collide"];
-  if ([collide isEqualToString:@"yes"]) {
+  if ([collide isEqualToString:@"yes"])
     node.collide = YES;
-    // TODO: Custom collision shapes, collisions on nodes w/o shapes
-    if ([node.shape isKindOfClass:[TETriangle class]]) 
-    {
-      TETriangle *triangleShape = (TETriangle *)node.shape;
-      b2PolygonShape *triangle = new b2PolygonShape();
-      b2Vec2 vertices[3];
-      vertices[0] = b2Vec2(triangleShape.vertices[0].x, triangleShape.vertices[0].y);
-      vertices[1] = b2Vec2(triangleShape.vertices[1].x, triangleShape.vertices[1].y);
-      vertices[2] = b2Vec2(triangleShape.vertices[2].x, triangleShape.vertices[2].y);
-      triangle->Set(vertices, 3);
-      node.collisionShape = (void *)triangle;
-    } 
-    else if ([node.shape isKindOfClass:[TEEllipse class]]) // Only works with circles!
-    {
-      
-      TEEllipse *circleShape = (TEEllipse *)node.shape;
-      b2CircleShape *circle = new b2CircleShape();
-      circle->m_radius = circleShape.radiusX;
-      node.collisionShape = (void *)circle;
-    } 
-    else if ([node.shape isKindOfClass:[TERectangle class]]) 
-    {
-      TERectangle *rectangleShape = (TERectangle *)node.shape;
-      b2PolygonShape *box = new b2PolygonShape();
-      box->SetAsBox(rectangleShape.width/2.0, rectangleShape.height/2.0);
-      node.collisionShape = (void *)box;
-    }
-  }
 }
 
 +(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName {

@@ -16,7 +16,7 @@
 {
   self = [super init];
   if (self) {
-    vertexData = [NSMutableData dataWithLength:sizeof(GLKVector2)*numVertices];
+    vertexData = [NSMutableData dataWithLength:sizeof(GLKVector2)*num];
     vertices = [vertexData mutableBytes];
     numVertices = num;
   }

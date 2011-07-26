@@ -7,7 +7,6 @@
 //
 
 #import "Asteroid.h"
-#import "Box2D.h"
 
 @implementation Asteroid
 
@@ -31,16 +30,7 @@
       triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
       triangleShape.parent = triangleNode;
       
-      // Set up collisions
-      b2PolygonShape *triangle = new b2PolygonShape();
-      b2Vec2 vertices[3];
-      vertices[0] = b2Vec2(triangleShape.vertices[0].x, triangleShape.vertices[0].y);
-      vertices[1] = b2Vec2(triangleShape.vertices[1].x, triangleShape.vertices[1].y);
-      vertices[2] = b2Vec2(triangleShape.vertices[2].x, triangleShape.vertices[2].y);
-      triangle->Set(vertices, 3);
-      
       // Set up node
-      triangleNode.collisionShape = (void *)triangle;
       triangleNode.shape = triangleShape;
       triangleNode.parent = self;
       triangleNode.rotation = ((float)rand()/RAND_MAX)*M_TAU;

@@ -34,13 +34,16 @@ static int count = 0;
 
 +(TEShape *)triangleShape {
   TETriangle *triangle = [[TETriangle alloc] init];
+  NSLog(@"here creating a triangle shape... it has %d vertices", triangle.numVertices);
   triangle.vertices[0] = GLKVector2Make(0,0);
   triangle.vertices[1] = GLKVector2Make(1,0);
   triangle.vertices[2] = GLKVector2Make(0,1);
+  NSLog(@"returning");
   return triangle;
 }
 
 +(TENode *)triangleNode {
+  NSLog(@"gonna make a shape");
   return [self nodeWithShape:@selector(triangleShape)];
 }
 

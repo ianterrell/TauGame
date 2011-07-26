@@ -24,7 +24,6 @@
   BOOL remove;
   
   BOOL collide;
-  void *collisionShape;
 }
 
 @property(strong, nonatomic) NSString *name;
@@ -35,7 +34,6 @@
 @property float angularVelocity, angularAcceleration, maxAngularVelocity, maxAngularAcceleration;
 @property BOOL remove;
 @property BOOL collide;
-@property void *collisionShape;
 
 # pragma mark Update
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene;

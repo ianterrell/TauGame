@@ -8,11 +8,6 @@
 
 #import "TECollisionDetector.h"
 #import "TauEngine.h"
-#import "Box2D.h"
-
-static b2Manifold manifold;
-static b2Transform transform1;
-static b2Transform transform2;
 
 typedef enum {
   TECollisionTypePolygonPolygon,
@@ -103,37 +98,15 @@ typedef struct {
 }
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
-  // TODO SCALE THE OBJECT
-  
-  transform1.Set(b2Vec2(node1.position.x, node1.position.y), node1.rotation);
-  transform2.Set(b2Vec2(node2.position.x, node2.position.y), node2.rotation);
-  
-//  __block float x1, y1, rotation1, x2, y2, rotation2 = 0;
-//  [node1 crawlUpWithBlock:^(TEDrawable *drawable) {
-//    x1 += drawable.position.x;
-//    y1 += drawable.position.y;
-//    rotation1 += drawable.rotation; // THIS IS WRONG
-//  }];
-//  [node2 crawlUpWithBlock:^(TEDrawable *drawable) {
-//    x2 += drawable.position.x;
-//    y2 += drawable.position.y;
-//    rotation2 += drawable.rotation; // THIS IS WRONG
-//  }];  
-//  NSLog(@"%f,%f,%f %f,%f,%f", x1, y1, rotation1, x2, y2, rotation2);
-//  
-//  transform1.Set(b2Vec2(x1, y1), rotation1);
-//  transform2.Set(b2Vec2(x2, y2), rotation1);
-  
   if (type == TECollisionTypePolygonPolygon) {
     NSLog(@"doing a triangle");
     return [self polygon:node1 collidesWithPolygon:node2];
   } else if (type == TECollisionTypePolygonCircle) {
-    b2CollidePolygonAndCircle(&manifold, (b2PolygonShape*)node1.collisionShape, transform1, (b2CircleShape*)node2.collisionShape, transform2);
-  } else if (type == TECollisionTypeCircleCircle) {
+    NSLog(@"Polygon/Circle collision detection not yet implemented");
+    return NO;
+  } else {
     return [self circle:node1 collidesWithCircle:node2];
   }
-  
-  return manifold.pointCount > 0;
 }
 
 

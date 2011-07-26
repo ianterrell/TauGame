@@ -17,6 +17,9 @@
   GLfloat scale;
   GLfloat rotation;
   NSMutableArray *currentAnimations;
+
+  GLKMatrix4 cachedModelViewMatrix;
+  BOOL dirtyModelViewMatrix;
 }
 
 @property(strong, nonatomic) TEDrawable *parent;
@@ -25,12 +28,12 @@
 @property GLfloat scale;
 @property GLfloat rotation;
 @property(strong, nonatomic) NSMutableArray *currentAnimations;
+@property BOOL dirtyModelViewMatrix;
 
 -(void)renderInScene:(TEScene *)scene;
 -(GLKMatrix4)modelViewMatrix;
 
 // TODO: should parents be TENodes? Node-Shape smell here again
 -(void)crawlUpWithBlock:(void (^)(TEDrawable *))block;
-
 
 @end

@@ -118,6 +118,14 @@
   angularAcceleration = MIN(maxAngularAcceleration, newAngularAcceleration);
 }
 
+# pragma mark Mark all children dirty
+
+-(void)markModelViewMatrixDirty {
+  [self traverseUsingBlock:^(TENode *node) {
+    node.dirtyModelViewMatrix = YES;
+    node.shape.dirtyModelViewMatrix = YES;
+  }];
+}
 
 # pragma mark Position Shortcuts
 

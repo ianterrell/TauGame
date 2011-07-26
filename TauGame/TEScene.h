@@ -16,10 +16,11 @@
   NSMutableArray *characters;
   
   UIDeviceOrientation currentOrientation;
-  GLKMatrix4 orientationRotationMatrix;
+  GLKMatrix4 orientationRotationMatrix, cachedProjectionMatrix;
+  BOOL dirtyProjectionMatrix;
 }
 
-@property GLfloat left, right, bottom, top;
+@property(readonly) GLfloat left, right, bottom, top;
 @property(readonly) float width, height;
 @property GLKVector4 clearColor;
 @property(strong, nonatomic) NSMutableArray *characters;

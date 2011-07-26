@@ -24,6 +24,8 @@
     self.delegate = self;
     self.drawableMultisample = GLKViewDrawableMultisample4X;
     self.characters = [[NSMutableArray alloc] init];
+    
+    dirtyProjectionMatrix = YES;
   }
   
   return self;
@@ -56,10 +58,11 @@
 # pragma mark Scene Setup
 
 -(void)setLeft:(GLfloat)_left right:(GLfloat)_right bottom:(GLfloat)_bottom top:(GLfloat)_top {
-  self.left = _left;
-  self.right = _right;
-  self.bottom = _bottom;
-  self.top = _top;
+  left = _left;
+  right = _right;
+  bottom = _bottom;
+  top = _top;
+  dirtyProjectionMatrix = YES;
 }
 
 -(float)width {
@@ -140,7 +143,11 @@
 }
 
 -(GLKMatrix4)projectionMatrix {
-  return GLKMatrix4MakeOrtho(left, right, bottom, top, 1.0, -1.0);
+  if (dirtyProjectionMatrix) {
+    cachedProjectionMatrix = GLKMatrix4MakeOrtho(left, right, bottom, top, 1.0, -1.0);
+    dirtyProjectionMatrix = NO;
+  }
+  return cachedProjectionMatrix;
 }
 
 @end

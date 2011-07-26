@@ -19,6 +19,7 @@
     vertexData = [NSMutableData dataWithLength:sizeof(GLKVector2)*num];
     vertices = [vertexData mutableBytes];
     numVertices = num;
+    radius = 0;
   }
   
   return self;
@@ -35,6 +36,13 @@
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
   glDrawArrays([self renderMode], 0, [self numVertices]);
   glDisableVertexAttribArray(GLKVertexAttribPosition);
+}
+
+-(float)radius {
+  if (radius == 0)
+    for (int i = 0; i < numVertices; i++)
+      radius = MAX(radius, GLKVector2Length(vertices[i]));
+  return radius;
 }
 
 @end

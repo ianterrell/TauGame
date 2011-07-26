@@ -15,6 +15,7 @@
 }
 
 @property GLKVector4 color;
+@property(readonly) float radius;
 
 -(void)renderInScene:(TEScene *)scene forNode:(TENode *)node;
 

@@ -12,6 +12,7 @@
   NSMutableData *vertexData;
   GLKVector2 *vertices;
   int numVertices;
+  float radius;
 }
 
 @property(readonly) int numVertices;

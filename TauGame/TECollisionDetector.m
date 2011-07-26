@@ -22,21 +22,26 @@ typedef struct {
 
 @implementation TECollisionDetector
 
+#pragma mark - Object to World Coordinate Transformation
+
 +(GLKVector2)transformedPoint:(GLKVector2)point fromShape:(TEShape*)shape {
   GLKVector4 transformedPoint = GLKMatrix4MultiplyVector4(shape.modelViewMatrix, GLKVector4Make(point.x,point.y,0,1));
   return GLKVector2Make(transformedPoint.x, transformedPoint.y);
 }
+
+#pragma mark - Collision detection between two circles
 
 +(BOOL)circle:(TENode *)node1 collidesWithCircle:(TENode *)node2 {
   GLKVector2 circle1Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node1.shape];
   GLKVector2 circle2Center = [self transformedPoint:GLKVector2Make(0,0) fromShape:node2.shape];
   GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
   float length = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
-  return length <= (((TEEllipse*)node1.shape).radiusX + ((TEEllipse*)node1.shape).radiusX);
+  return length <= (node1.shape.radius + node2.shape.radius);
 }
 
+#pragma mark - Collision detection between two polygons
+
 +(GLKVector2)axisPerpendicularToEdge:(GLKVector2)edge {
-//  NSLog(@"normalized axis goes from 0,0 to %f,%f", GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x)).x, GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x)).y);
   return GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x));
 }
 
@@ -54,7 +59,7 @@ typedef struct {
     range.min = MIN(range.min,projection);
     range.max = MAX(range.max,projection);
   }
-//  NSLog(@"projecting %@ onto (%f,%f) I find min %f and max %f", poly, axis.x, axis.y, range.min, range.max);
+  
   return range;
 }
 
@@ -62,10 +67,10 @@ typedef struct {
   ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:edge];
   ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:edge];
   
-  if (poly1Projection.min < poly2Projection.min)
-    return poly2Projection.min < poly1Projection.max;
+  if (poly1Projection.min <= poly2Projection.min)
+    return poly2Projection.min <= poly1Projection.max;
   else
-    return poly1Projection.min < poly2Projection.max;
+    return poly1Projection.min <= poly2Projection.max;
 }
 
 +(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnPolygonsEdges:(TEPolygon *)poly {
@@ -78,6 +83,9 @@ typedef struct {
 }
 
 +(BOOL)polygon:(TENode *)node1 collidesWithPolygon:(TENode *)node2 {
+  // Check bounding circles first; way faster
+  if (![self circle:node1 collidesWithCircle:node2])
+    return NO;
   
   // Transform our polygons
   TEPolygon *poly1 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node1.shape).numVertices];
@@ -97,9 +105,10 @@ typedef struct {
   return YES;
 }
 
+# pragma mark - Collision detection between nodes
+
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 type:(TECollisionType)type {
   if (type == TECollisionTypePolygonPolygon) {
-    NSLog(@"doing a triangle");
     return [self polygon:node1 collidesWithPolygon:node2];
   } else if (type == TECollisionTypePolygonCircle) {
     NSLog(@"Polygon/Circle collision detection not yet implemented");
@@ -158,6 +167,8 @@ typedef struct {
   return collision;
 }
 
+# pragma mark - Collision detection within an array
+
 +(NSMutableArray *)collisionsIn:(NSArray *)nodes {
   return [self collisionsIn:nodes maxPerNode:0];
 }
@@ -193,6 +204,8 @@ typedef struct {
     }
   }
 }
+
+# pragma mark - Collision detection between two arrays
 
 +(NSMutableArray *)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes {
   return [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:0];

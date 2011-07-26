@@ -59,4 +59,8 @@
   [self updateVertices];
 }
 
+-(float)radius {
+  return radiusX;
+}
+
 @end

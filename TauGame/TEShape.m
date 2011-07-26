@@ -51,4 +51,8 @@
   return [self isKindOfClass:[TEEllipse class]];
 }
 
+-(float)radius {
+  return 0.0;
+}
+
 @end

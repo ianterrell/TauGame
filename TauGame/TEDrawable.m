@@ -65,8 +65,7 @@ static int count = 0;
     } else {
       cachedFullModelViewMatrix = cachedObjectModelViewMatrix;
     }
-    
-//    dirtyFullModelViewMatrix = NO; // not sure where to mark this! if at all!
+    dirtyFullModelViewMatrix = NO;
   }
   
   return cachedFullModelViewMatrix;
@@ -74,7 +73,6 @@ static int count = 0;
 
 -(void)markModelViewMatrixDirty {
   dirtyObjectModelViewMatrix = YES;
-  dirtyFullModelViewMatrix = YES;
 }
 
 -(GLKVector2)position {

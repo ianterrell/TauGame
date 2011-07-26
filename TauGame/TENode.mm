@@ -126,6 +126,7 @@
   BOOL tmpSelfValue = self.dirtyFullModelViewMatrix;
   [self traverseUsingBlock:^(TENode *node) {
     node.dirtyFullModelViewMatrix = YES;
+    node.shape.dirtyFullModelViewMatrix = YES;
   }];
   self.dirtyFullModelViewMatrix = tmpSelfValue;
 }

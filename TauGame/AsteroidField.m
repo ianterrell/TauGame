@@ -10,7 +10,7 @@
 #import "Fighter.h"
 #import "ExtraBullet.h"
 
-#define POWERUP_CHANCE 1.0
+#define POWERUP_CHANCE 0.1
 
 @implementation AsteroidField
 

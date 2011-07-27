@@ -10,6 +10,7 @@
 #import "AsteroidField.h"
 
 #define NUM_ASTEROID_COLORS 4
+#define ASTEROID_HP_FACTOR 12
 
 static GLKVector4 colors[NUM_ASTEROID_COLORS];
 
@@ -55,7 +56,7 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
     self.angularVelocity = [TERandom randomFraction]*M_TAU;
     self.velocity = GLKVector2Make(0, [TERandom randomFractionFrom:-3.0 to:-1.0]);
     
-    hitPoints = self.scale * 4;
+    hitPoints = self.scale * ASTEROID_HP_FACTOR;
   }
   
   return self;

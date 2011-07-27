@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//  [TECollisionDetectorTest test];
+  [TECollisionDetectorTest test];
   
   sceneController = [TESceneController sharedController];
   [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];

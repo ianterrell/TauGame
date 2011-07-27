@@ -25,6 +25,10 @@
   return self;
 }
 
+-(BOOL)isPolygon {
+  return YES;
+}
+
 -(GLenum)renderMode {
   return GL_TRIANGLE_FAN;
 }

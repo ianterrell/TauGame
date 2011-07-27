@@ -7,6 +7,7 @@
 //
 
 #import "Asteroid.h"
+#import "AsteroidField.h"
 
 @implementation Asteroid
 
@@ -81,8 +82,6 @@
         [node.currentAnimations addObject:translateAnimation];
         
         [node markModelViewMatrixDirty];
-      
-        NSLog(@"node %@ is rotating %f and moving (%f,%f)", node, rotateAnimation.rotation, translateAnimation.translation.x, translateAnimation.translation.y);
       }
     }
   }];
@@ -96,6 +95,10 @@
     };
     [self.currentAnimations addObject:scaleAnimation];
   }
+}
+
+-(void)onRemovalFromScene:(TEScene *)scene {
+  [((AsteroidField *)scene).asteroids removeObject:self];
 }
 
 @end

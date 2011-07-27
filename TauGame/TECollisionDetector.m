@@ -41,9 +41,11 @@ typedef struct {
   float radius2 = GLKVector2Length(GLKVector2Subtract(pointOnCircle2, circle2Center));
   
   GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
-  float distance = GLKVector2Length(difference);   // POTENTIAL OPTIMIZATION: length uses sqrt; can skip it if compare squares
-  
+  float distance = GLKVector2Length(difference);
   return distance <= (radius1 + radius2);
+  
+  // TODO: test optimizations
+  //  return (difference.x * difference.x + difference.y * difference.y) <= (radius1 + radius2) * (radius1 + radius2);
 }
 
 #pragma mark - Collision detection between two polygons

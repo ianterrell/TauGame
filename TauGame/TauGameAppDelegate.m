@@ -18,8 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //  [TECollisionDetectorTest test];
+  
   sceneController = [TESceneController sharedController];
-  [sceneController addScene:[[BaddieField alloc] init] named:@"baddies"];
+  [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
   [sceneController displayScene:@"baddies"];
   
   mainMenuController = [[MainMenuViewController alloc] initWithNibName:nil bundle:nil];

@@ -7,6 +7,7 @@
 //
 
 #import "FighterScene.h"
+#import "Fighter.h"
 
 @implementation FighterScene
 
@@ -36,11 +37,6 @@
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
-    
-    // Set up sounds
-    sounds = [[TESoundManager alloc] init];
-    [sounds load:@"shoot"];
-    [sounds load:@"hurt"];
   }
   
   return self;
@@ -56,18 +52,7 @@
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
-  [self shoot];
+  [fighter shootInScene:self];  
 }
-
--(void) shoot {
-  [sounds play:@"shoot"];
-  
-  TECharacter *bullet = [[Bullet alloc] init];
-  bullet.position = GLKVector2Make(fighter.position.x, fighter.position.y + 1.1);
-  bullet.velocity = GLKVector2Make(0, 5);
-  [characters addObject:bullet];
-  [bullets addObject:bullet];
-}
-
 
 @end

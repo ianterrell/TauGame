@@ -34,6 +34,7 @@
 }
 
 -(void)registerHit {
+  [[TESoundManager sharedManager] play:@"hurt"];
   hitPoints--;
   
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];

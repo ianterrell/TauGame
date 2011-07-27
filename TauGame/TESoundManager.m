@@ -20,6 +20,16 @@
   return self;
 }
 
++(TESoundManager *)sharedManager {
+  static TESoundManager *singleton;
+  
+  @synchronized(self) {
+    if (!singleton)
+      singleton = [[TESoundManager alloc] init];
+    return singleton;
+  }
+}
+
 -(void)load:(NSString *)filename {
   CFBundleRef mainBundle = CFBundleGetMainBundle();
   CFURLRef soundFileURLRef  = CFBundleCopyResourceURL(mainBundle, (__bridge CFStringRef)filename, CFSTR("wav"), NULL);

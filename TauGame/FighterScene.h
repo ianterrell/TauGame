@@ -8,8 +8,9 @@
 
 #import "TauEngine.h"
 
-#import "Fighter.h"
 #import "Bullet.h"
+
+@class Fighter;
 
 @interface FighterScene : TEScene {
   Fighter *fighter;
@@ -20,7 +21,5 @@
 
 @property(strong) Fighter *fighter;
 @property(strong) NSMutableArray *bullets;
-
--(void)shoot;
 
 @end

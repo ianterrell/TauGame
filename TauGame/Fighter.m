@@ -11,6 +11,11 @@
 
 @implementation Fighter
 
++(void)initialize {
+  [[TESoundManager sharedManager] load:@"fighter-hurt"];
+  [[TESoundManager sharedManager] load:@"shoot"];
+}
+
 - (id)init
 {
   self = [super init];
@@ -31,6 +36,25 @@
   
   [attitude update];
   self.velocity = GLKVector2Make(30*attitude.roll, 0);
+}
+
+-(void)shootInScene:(FighterScene *)scene {
+  [[TESoundManager sharedManager] play:@"shoot"];
+  
+  TECharacter *bullet = [[Bullet alloc] init];
+  bullet.position = GLKVector2Make(self.position.x, self.position.y + 1.1);
+  bullet.velocity = GLKVector2Make(0, 5);
+  [scene.characters addObject:bullet];
+  [scene.bullets addObject:bullet];
+}
+
+-(void)registerHit {
+  [[TESoundManager sharedManager] play:@"fighter-hurt"];
+  
+  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
+  highlight.color = GLKVector4Make(1, 0, 0, 1);
+  highlight.duration = 0.1;
+  [self.currentAnimations addObject:highlight];
 }
 
 @end

@@ -34,12 +34,7 @@
   
   // Detect collisions
   [TECollisionDetector collisionsBetween:bullets andNodes:ships maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
-    // We've hit a baddie!
-    [sounds play:@"hurt"];
-    
-    // Remove the bullet
     bullet.remove = YES;
-    
     [(Baddie *)ship registerHit];
   }];
 }

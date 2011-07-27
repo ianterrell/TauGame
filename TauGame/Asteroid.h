@@ -8,6 +8,10 @@
 
 #import "TauEngine.h"
 
-@interface Asteroid : TECharacter
+@interface Asteroid : TECharacter {
+  int hitPoints;
+}
+
+-(void)registerHit;
 
 @end

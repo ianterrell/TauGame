@@ -227,7 +227,7 @@ typedef struct {
 }
 
 +(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes withBlock:(void (^)(TENode *, TENode *))block {
-  return [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:0 withBlock:block];
+  [self collisionsBetween:nodes andNodes:moreNodes maxPerNode:0 withBlock:block];
 }
 
 +(void)collisionsBetween:(NSArray *)nodes andNodes:(NSArray *)moreNodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
@@ -246,5 +246,39 @@ typedef struct {
     }
   }
 }
+
+# pragma mark - Collision detection between a node and an array
+
++(NSMutableArray *)collisionsBetweenNode:(TENode *)node andNodes:(NSArray *)moreNodes {
+  return [self collisionsBetweenNode:node andNodes:moreNodes maxPerNode:0];
+}
+
++(NSMutableArray *)collisionsBetweenNode:(TENode *)node andNodes:(NSArray *)moreNodes maxPerNode:(int)n {
+  NSMutableArray *collisions = [[NSMutableArray alloc] init];
+  [self collisionsBetweenNode:node andNodes:moreNodes maxPerNode:n withBlock:^(TENode *node1, TENode *node2) {
+    [collisions addObject:[[NSArray alloc] initWithObjects:node1, node2, nil]];
+  }];
+  return collisions;
+}
+
++(void)collisionsBetweenNode:(TENode *)node andNodes:(NSArray *)moreNodes withBlock:(void (^)(TENode *, TENode *))block {
+  return [self collisionsBetweenNode:node andNodes:moreNodes maxPerNode:0 withBlock:block];
+}
+
++(void)collisionsBetweenNode:(TENode *)node andNodes:(NSArray *)moreNodes maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
+  [self collisionsBetweenNode:node andNodes:moreNodes recurseLeft:NO recurseRight:NO maxPerNode:n withBlock:block];
+}
+
++(void)collisionsBetweenNode:(TENode *)node andNodes:(NSArray *)moreNodes recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight maxPerNode:(int)n withBlock:(void (^)(TENode *, TENode *))block {
+  int count = 0;
+  for (TENode *node2 in moreNodes) {
+    if ([self node:node collidesWithNode:node2 recurseLeft:recurseLeft recurseRight:recurseRight]) {
+      block(node,node2);
+      if (n > 0 && ++count >= n)
+        break;
+    }
+  }
+}
+
 
 @end

@@ -8,9 +8,13 @@
 
 #import "TECharacter.h"
 #import "TEAdjustedAttitude.h"
+#import "FighterScene.h"
 
 @interface Fighter : TECharacter {
   TEAdjustedAttitude *attitude;
 }
+
+-(void)shootInScene:(FighterScene *)scene;
+-(void)registerHit;
 
 @end

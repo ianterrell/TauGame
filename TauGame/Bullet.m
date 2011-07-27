@@ -12,6 +12,10 @@
 
 @implementation Bullet
 
++(void)initialize {
+  [[TESoundManager sharedManager] load:@"hurt"];
+}
+
 - (id)init {
   self = [super init];
   if (self) {

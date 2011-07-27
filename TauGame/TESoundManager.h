@@ -13,6 +13,8 @@
   NSMutableDictionary *sounds;
 }
 
++(TESoundManager *)sharedManager;
+
 -(void)load:(NSString *)filename;
 -(void)play:(NSString *)sound;
 

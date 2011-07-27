@@ -12,6 +12,8 @@
 
 @interface Fighter : TECharacter {
   TEAdjustedAttitude *attitude;
+  int numBullets;
+  int spreadAmount;
 }
 
 -(void)shootInScene:(FighterScene *)scene;

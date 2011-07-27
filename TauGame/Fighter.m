@@ -9,6 +9,11 @@
 #import "Fighter.h"
 #import "TECharacterLoader.h"
 
+#define BULLET_X_SPREAD_FACTOR 3.2
+#define BULLET_Y_SPREAD_FACTOR 3.0
+#define BULLET_Y_VELOCITY 6.0
+#define BULLET_X_VELOCITY_FACTOR 0.75
+
 @implementation Fighter
 
 +(void)initialize {
@@ -21,6 +26,10 @@
   self = [super init];
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"fighter"];
+    
+    // Set up guns
+    numBullets = 1;
+    spreadAmount = 0;
     
     // Set up motion
     attitude = [[TEAdjustedAttitude alloc] init];
@@ -40,12 +49,34 @@
 
 -(void)shootInScene:(FighterScene *)scene {
   [[TESoundManager sharedManager] play:@"shoot"];
+  int middle = numBullets / 2;
+  for (int i = 0; i < numBullets; i++) {
+    TECharacter *bullet = [[Bullet alloc] init];
+
+    float x = self.position.x;
+    float xOffset = -1*((float)(middle-i))/BULLET_X_SPREAD_FACTOR;
+    xOffset += numBullets % 2 == 0 ? 1.0/(2.0*BULLET_X_SPREAD_FACTOR) : 0;
+    x += xOffset;
+    
+    float y = self.position.y + 1.1;
+    y -= ABS(((float)(middle-i))/BULLET_Y_SPREAD_FACTOR);
+    y -= (numBullets % 2 == 0) && (i >= middle) ? ABS(1.0/BULLET_Y_SPREAD_FACTOR) : 0;
+    
+    NSLog(@"xOffset = %f", xOffset);
+    bullet.position = GLKVector2Make(x, y);  
+    bullet.velocity = GLKVector2Make(xOffset * spreadAmount * BULLET_X_VELOCITY_FACTOR, BULLET_Y_VELOCITY);
+    [scene.characters addObject:bullet];
+    [scene.bullets addObject:bullet];
+  }
   
-  TECharacter *bullet = [[Bullet alloc] init];
-  bullet.position = GLKVector2Make(self.position.x, self.position.y + 1.1);
-  bullet.velocity = GLKVector2Make(0, 5);
-  [scene.characters addObject:bullet];
-  [scene.bullets addObject:bullet];
+  // Temp before powerups; cycle through guns!
+  numBullets++;
+  if (numBullets == 6) {
+    numBullets = 1;
+    spreadAmount++;
+    if (spreadAmount == 3)
+      spreadAmount = 0;
+  }
 }
 
 -(void)registerHit {

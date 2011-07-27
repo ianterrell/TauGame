@@ -70,6 +70,7 @@
 #pragma mark - Scene Control
 
 -(void)playAsteroids {
+  [TEAccelerometer zero];
   [((TauGameAppDelegate*)[UIApplication sharedApplication].delegate) showSceneController];
 }
 

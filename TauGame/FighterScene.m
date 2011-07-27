@@ -36,8 +36,6 @@
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
-    
-    [TEAccelerometer zero];
   }
   
   return self;

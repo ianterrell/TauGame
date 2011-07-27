@@ -44,15 +44,15 @@
   
   //  srand(arc4random());
   
-  float randX = ((float)rand()/RAND_MAX) * self.visibleWidth + self.bottomLeftVisible.x;
-  float randY = ((float)rand()/RAND_MAX) * (self.visibleHeight - 3) + self.bottomLeftVisible.y + 3;
-  float randVelocity = -10.0 + (float)rand()/RAND_MAX * 20.0;
+  float randX = [TERandom randomFraction] * self.visibleWidth + self.bottomLeftVisible.x;
+  float randY = [TERandom randomFraction] * (self.visibleHeight - 3) + self.bottomLeftVisible.y + 3;
+  float randVelocity = -10.0 + [TERandom randomFraction] * 20.0;
   
   baddie.position = GLKVector2Make(randX, randY);
   baddie.velocity = GLKVector2Make(randVelocity,0);
-  baddie.shape.color = GLKVector4Make(((float)rand()/RAND_MAX), ((float)rand()/RAND_MAX), ((float)rand()/RAND_MAX), 1.0);
+  baddie.shape.color = GLKVector4Make([TERandom randomFraction], [TERandom randomFraction], [TERandom randomFraction], 1.0);
   
-  if ((float)rand()/RAND_MAX > 0.8) {
+  if ([TERandom randomFraction] > 0.8) {
     TEScaleAnimation *grow = [[TEScaleAnimation alloc] init];
     grow.scale = 1.2;
     grow.duration = 1;
@@ -60,7 +60,7 @@
     [baddie.currentAnimations addObject:grow];
   }
   
-  if ((float)rand()/RAND_MAX > 0.8) {
+  if ([TERandom randomFraction] > 0.8) {
     TERotateAnimation *spin = [[TERotateAnimation alloc] init];
     spin.rotation = 1*M_TAU;
     spin.duration = 1;

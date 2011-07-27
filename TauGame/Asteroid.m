@@ -9,14 +9,26 @@
 #import "Asteroid.h"
 #import "AsteroidField.h"
 
+#define NUM_ASTEROID_COLORS 4
+
+static GLKVector4 colors[NUM_ASTEROID_COLORS];
+
 @implementation Asteroid
+
++(void)initialize {
+  int i = 0;
+  colors[i++] = GLKVector4Make(0.498, 0.580, 0.690, 1);
+  colors[i++] = GLKVector4Make(0.557, 0.686, 0.820, 1);
+  colors[i++] = GLKVector4Make(0.631, 0.745, 0.902, 1);
+  colors[i++] = GLKVector4Make(0.824, 0.894, 0.988, 1);
+}
 
 - (id)init
 {
   self = [super init];
   
   if (self) {
-    GLKVector4 color = GLKVector4Make([TERandom randomFractionFrom:0.7 to:0.9], [TERandom randomFractionFrom:0.7 to:0.9], [TERandom randomFractionFrom:0.7 to:0.9], 1);
+    GLKVector4 color = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
     self.collide = YES;
     
     for (int i = 0; i < [TERandom randomFrom:2 to:6]; i++) {
@@ -33,7 +45,7 @@
       // Set up node
       triangleNode.shape = triangleShape;
       triangleNode.parent = self;
-      triangleNode.rotation = ((float)rand()/RAND_MAX)*M_TAU;
+      triangleNode.rotation = [TERandom randomFraction]*M_TAU;
       triangleNode.collide = YES;
       
       [self.children addObject:triangleNode];

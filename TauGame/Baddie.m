@@ -53,7 +53,7 @@
       [self.currentAnimations addObject:scaleAnimation];
       
       TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
-      rotateAnimation.rotation = (float)rand()/RAND_MAX * 2 * M_TAU;
+      rotateAnimation.rotation = [TERandom randomFraction] * 2 * M_TAU;
       rotateAnimation.duration = 0.5;
       [self.currentAnimations addObject:rotateAnimation];
     };

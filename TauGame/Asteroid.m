@@ -81,7 +81,7 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   }];
   
   hitPoints--;
-  if (hitPoints <= 0)
+  if ([self dead])
     [self die];
 }
 
@@ -111,6 +111,10 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
     self.remove = YES;
   };
   [self.currentAnimations addObject:scaleAnimation];
+}
+
+-(BOOL)dead {
+  return hitPoints <= 0;
 }
 
 @end

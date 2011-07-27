@@ -14,5 +14,6 @@
 
 -(void)registerHit;
 -(void)die;
+-(BOOL)dead;
 
 @end

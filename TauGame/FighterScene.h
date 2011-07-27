@@ -14,12 +14,12 @@
 
 @interface FighterScene : TEScene {
   Fighter *fighter;
-  NSMutableArray *bullets;
+  NSMutableArray *bullets, *powerups;
 
   TESoundManager *sounds;
 }
 
 @property(strong) Fighter *fighter;
-@property(strong) NSMutableArray *bullets;
+@property(strong) NSMutableArray *bullets, *powerups;
 
 @end

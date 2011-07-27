@@ -22,6 +22,10 @@
 		3C350E8313E07316002DD35E /* TEHexagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8213E07316002DD35E /* TEHexagon.m */; };
 		3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8613E07622002DD35E /* TERegularPolygon.m */; };
 		3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8913E07701002DD35E /* TEHeptagon.m */; };
+		3C350E9413E079A6002DD35E /* extra-bullet-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */; };
+		3C350E9A13E07B1F002DD35E /* Powerup.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E9913E07B1F002DD35E /* Powerup.m */; };
+		3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E9C13E07B33002DD35E /* ExtraBullet.m */; };
+		3C350EA013E07B88002DD35E /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C350E9F13E07B88002DD35E /* powerup.wav */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C5507A213CE198900585C40 /* obstacle.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
@@ -114,6 +118,12 @@
 		3C350E8613E07622002DD35E /* TERegularPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERegularPolygon.m; sourceTree = "<group>"; };
 		3C350E8813E07701002DD35E /* TEHeptagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEHeptagon.h; sourceTree = "<group>"; };
 		3C350E8913E07701002DD35E /* TEHeptagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEHeptagon.m; sourceTree = "<group>"; };
+		3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-bullet-powerup.json"; sourceTree = "<group>"; };
+		3C350E9813E07B1E002DD35E /* Powerup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Powerup.h; sourceTree = "<group>"; };
+		3C350E9913E07B1F002DD35E /* Powerup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Powerup.m; sourceTree = "<group>"; };
+		3C350E9B13E07B33002DD35E /* ExtraBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraBullet.h; sourceTree = "<group>"; };
+		3C350E9C13E07B33002DD35E /* ExtraBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraBullet.m; sourceTree = "<group>"; };
+		3C350E9F13E07B88002DD35E /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3C5507A013CE198900585C40 /* obstacle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = obstacle.json; sourceTree = "<group>"; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
@@ -235,6 +245,7 @@
 				3C8A283713D70D6200BB0011 /* fighter.json */,
 				3C6E948813D76D53000F7988 /* bullet.json */,
 				3C01190313D85DDF004808DA /* baddie.json */,
+				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -354,6 +365,17 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		3C350E9E13E07B38002DD35E /* Powerups */ = {
+			isa = PBXGroup;
+			children = (
+				3C350E9813E07B1E002DD35E /* Powerup.h */,
+				3C350E9913E07B1F002DD35E /* Powerup.m */,
+				3C350E9B13E07B33002DD35E /* ExtraBullet.h */,
+				3C350E9C13E07B33002DD35E /* ExtraBullet.m */,
+			);
+			name = Powerups;
+			sourceTree = "<group>";
+		};
 		3C8A282413D70AC300BB0011 /* Fighter */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +399,7 @@
 				3C01190613D86090004808DA /* Baddie.m */,
 				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
 				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
+				3C350E9E13E07B38002DD35E /* Powerups */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -496,6 +519,7 @@
 		3CD1F93813DDCEE600F6F035 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				3C350E9F13E07B88002DD35E /* powerup.wav */,
 				3C32D06A13DF956F0084582B /* fighter-hurt.wav */,
 				3CD1F93913DDCF0000F6F035 /* hurt.wav */,
 				3CD1F93A13DDCF0000F6F035 /* shoot.wav */,
@@ -585,6 +609,8 @@
 				3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */,
 				3CD1F93C13DDCF0000F6F035 /* shoot.wav in Resources */,
 				3C32D06B13DF956F0084582B /* fighter-hurt.wav in Resources */,
+				3C350E9413E079A6002DD35E /* extra-bullet-powerup.json in Resources */,
+				3C350EA013E07B88002DD35E /* powerup.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +683,8 @@
 				3C350E8313E07316002DD35E /* TEHexagon.m in Sources */,
 				3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */,
 				3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */,
+				3C350E9A13E07B1F002DD35E /* Powerup.m in Sources */,
+				3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

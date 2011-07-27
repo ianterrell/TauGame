@@ -14,6 +14,8 @@
 #define BULLET_Y_VELOCITY 6.0
 #define BULLET_X_VELOCITY_FACTOR 0.75
 
+#define MAX_BULLETS 5
+
 @implementation Fighter
 
 +(void)initialize {
@@ -67,15 +69,6 @@
     [scene.characters addObject:bullet];
     [scene.bullets addObject:bullet];
   }
-  
-  // Temp before powerups; cycle through guns!
-  numBullets++;
-  if (numBullets == 6) {
-    numBullets = 1;
-    spreadAmount++;
-    if (spreadAmount == 3)
-      spreadAmount = 0;
-  }
 }
 
 -(void)registerHit {
@@ -85,6 +78,16 @@
   highlight.color = GLKVector4Make(1, 0, 0, 1);
   highlight.duration = 0.1;
   [self.currentAnimations addObject:highlight];
+}
+
+-(void)getPowerup:(Powerup *)powerup {
+  [[TESoundManager sharedManager] play:@"powerup"];
+  
+  if (numBullets < MAX_BULLETS)
+    numBullets++;
+  
+  if (numBullets == MAX_BULLETS && spreadAmount < 2)
+    spreadAmount++;
 }
 
 @end

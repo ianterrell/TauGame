@@ -11,7 +11,7 @@
 
 @implementation FighterScene
 
-@synthesize fighter, bullets;
+@synthesize fighter, bullets, powerups;
 
 - (id)init
 {
@@ -26,6 +26,7 @@
     
     // Set up our special character arrays for collision detection
     bullets = [[NSMutableArray alloc] initWithCapacity:20];
+    powerups = [[NSMutableArray alloc] initWithCapacity:3];
     
     // Set up fighter
     fighter = [[Fighter alloc] init];

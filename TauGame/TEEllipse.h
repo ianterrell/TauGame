@@ -15,5 +15,6 @@
 }
 
 @property GLfloat radiusX, radiusY;
+@property float radius;
 
 @end

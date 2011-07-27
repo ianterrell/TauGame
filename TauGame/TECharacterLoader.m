@@ -32,6 +32,8 @@
     shape = [[TERectangle alloc] init];
   } else if ([geometry isEqualToString:@"circle"] || [geometry isEqualToString:@"ellipse"]) {
     shape = [[TEEllipse alloc] init];
+  } else if ([geometry isEqualToString:@"heptagon"]) {
+    shape = [[TEHeptagon alloc] init];
   } else {
     NSLog(@"Unrecognized shape: '%@'", geometry);
     return nil;
@@ -54,8 +56,7 @@
     } else if ([key isEqualToString:@"width"]) {
       ((TERectangle *)shape).width = [obj floatValue];
     } else if ([key isEqualToString:@"radius"]) {
-      ((TEEllipse *)shape).radiusX = [obj floatValue];
-      ((TEEllipse *)shape).radiusY = [obj floatValue];
+      [(id)shape setRadius:[obj floatValue]];
     } else if ([key isEqualToString:@"radiusX"]) {
       ((TEEllipse *)shape).radiusX = [obj floatValue];
     } else if ([key isEqualToString:@"radiusY"]) {

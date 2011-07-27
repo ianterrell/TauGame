@@ -63,4 +63,9 @@
   return radiusX;
 }
 
+-(void)setRadius:(float)radius {
+  radiusX = radius;
+  self.radiusY = radius;
+}
+
 @end

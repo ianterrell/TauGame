@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "TauEngine.h"
 
-@interface TEAccelerometer : NSObject
+@interface TEAccelerometer : NSObject <UIAccelerometerDelegate>
 
-+(float) horizontal;
++(void)zero;
+
++(float)horizontal;
 
 @end

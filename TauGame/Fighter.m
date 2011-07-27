@@ -7,7 +7,6 @@
 //
 
 #import "Fighter.h"
-#import "TECharacterLoader.h"
 
 #define BULLET_X_SPREAD_FACTOR 3.2
 #define BULLET_Y_SPREAD_FACTOR 3.0
@@ -15,6 +14,9 @@
 #define BULLET_X_VELOCITY_FACTOR 0.75
 
 #define MAX_BULLETS 5
+
+#define MAX_VELOCITY 10
+#define ACCELEROMETER_SENSITIVITY 35
 
 @implementation Fighter
 
@@ -33,9 +35,7 @@
     numBullets = 1;
     spreadAmount = 0;
     
-    // Set up motion
-    attitude = [[TEAdjustedAttitude alloc] init];
-    [attitude zero];
+    self.maxVelocity = MAX_VELOCITY;
   }
   
   return self;
@@ -45,8 +45,7 @@
   [super update:dt inScene:scene];
   [self wraparoundXInScene:scene];
   
-  [attitude update];
-  self.velocity = GLKVector2Make(30*attitude.roll, 0);
+  self.velocity = GLKVector2Make(ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
 }
 
 -(void)shootInScene:(FighterScene *)scene {

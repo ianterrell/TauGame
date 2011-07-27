@@ -31,13 +31,13 @@
     // Set up fighter
     fighter = [[Fighter alloc] init];
     fighter.position = GLKVector2Make(6, self.bottomLeftVisible.y + 0.1);
-    fighter.maxVelocity = 20;
-    fighter.maxAcceleration = 40;
     [characters addObject:fighter];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
+    
+    [TEAccelerometer zero];
   }
   
   return self;

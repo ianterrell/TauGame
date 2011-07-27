@@ -16,7 +16,6 @@ static CMMotionManager *motionManager = nil;
 +(CMMotionManager *)motionManager {
   if (motionManager == nil) {
     motionManager = [[CMMotionManager alloc] init];
-    [motionManager startDeviceMotionUpdates];
   }
   return motionManager;
 }

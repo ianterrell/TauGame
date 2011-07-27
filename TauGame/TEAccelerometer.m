@@ -8,33 +8,42 @@
 
 #import "TEAccelerometer.h"
 
-static double previousXAccel = 0.0;
-static double previousYAccel = 0.0;
+static double previousHorizontal = 0.0;
 static double kFilterFactor = 0.05;
+static CMAcceleration calibration;
 
-@implementation TEAccelerometer
+@implementation TEAccelerometer;
+
++(void)zero {
+  calibration = [TauEngine motionManager].accelerometerData.acceleration;
+}
 
 +(float)horizontal {
-  CMAcceleration userAccel = [TauEngine motionManager].deviceMotion.userAcceleration;
-  
-  double xAccel = userAccel.x*kFilterFactor+(1-kFilterFactor)*previousXAccel;
-  double yAccel = userAccel.y*kFilterFactor+(1-kFilterFactor)*previousYAccel;
-  
-  previousXAccel = xAccel;
-  previousYAccel = yAccel;
+  CMAcceleration accel = [TauEngine motionManager].accelerometerData.acceleration;
+  float horizontal;
   
   switch ([TESceneController sharedController].currentScene.currentOrientation) {
     case UIDeviceOrientationPortrait:
-      return xAccel;
+      horizontal = (accel.x - calibration.x);
+      break;
     case UIDeviceOrientationPortraitUpsideDown:
-      return -1.0*xAccel;
+      horizontal = -1*(accel.x - calibration.x);
+      break;
     case UIDeviceOrientationLandscapeLeft:
-      return -1.0*yAccel;
+      horizontal = -1*(accel.y - calibration.y);
+      break;
     case UIDeviceOrientationLandscapeRight:
-      return yAccel;
+      horizontal = (accel.y - calibration.y);
+      break;
     default:
-      return xAccel;
+      horizontal = (accel.x - calibration.x);
   }
+  
+  horizontal = horizontal*kFilterFactor+(1-kFilterFactor)*previousHorizontal;
+  previousHorizontal = horizontal;
+  //  NSLog(@"what... %f -> %f", previousHorizontal, horizontal);
+  NSLog(@"calibration is %f, accel is %f, horizontal is %f", calibration.y, accel.y, horizontal);
+  return horizontal;
 }
 
 @end

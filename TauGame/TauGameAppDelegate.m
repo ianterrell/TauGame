@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [[TauEngine motionManager] startAccelerometerUpdates];
+  
   sceneController = [TESceneController sharedController];
   [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
   [sceneController displayScene:@"baddies"];

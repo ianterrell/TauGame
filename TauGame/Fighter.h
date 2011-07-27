@@ -6,13 +6,11 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
-#import "TEAdjustedAttitude.h"
+#import "TauEngine.h"
 #import "FighterScene.h"
 #import "Powerup.h"
 
 @interface Fighter : TECharacter {
-  TEAdjustedAttitude *attitude;
   int numBullets;
   int spreadAmount;
 }

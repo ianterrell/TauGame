@@ -42,6 +42,10 @@
   glDisableVertexAttribArray(GLKVertexAttribPosition);
 }
 
+-(void)setRadius:(float)radius {
+  // noop
+}
+
 -(float)radius {
   if (radius == 0)
     for (int i = 0; i < numVertices; i++)

@@ -17,6 +17,7 @@
 
 @property(readonly) int numVertices;
 @property(readonly) GLKVector2 *vertices;
+@property float radius;
 
 - (id)initWithVertices:(int)numVertices;
 

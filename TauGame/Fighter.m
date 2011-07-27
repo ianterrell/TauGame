@@ -62,7 +62,6 @@
     y -= ABS(((float)(middle-i))/BULLET_Y_SPREAD_FACTOR);
     y -= (numBullets % 2 == 0) && (i >= middle) ? ABS(1.0/BULLET_Y_SPREAD_FACTOR) : 0;
     
-    NSLog(@"xOffset = %f", xOffset);
     bullet.position = GLKVector2Make(x, y);  
     bullet.velocity = GLKVector2Make(xOffset * spreadAmount * BULLET_X_VELOCITY_FACTOR, BULLET_Y_VELOCITY);
     [scene.characters addObject:bullet];

@@ -28,18 +28,25 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   self = [super init];
   
   if (self) {
-    GLKVector4 color = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
+//    GLKVector4 color = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
     self.collide = YES;
     
     for (int i = 0; i < [TERandom randomFrom:2 to:6]; i++) {
       TENode *triangleNode = [[TENode alloc] init];
       
       // Set up shape
-      TETriangle *triangleShape = [[TETriangle alloc] init];
-      triangleShape.color = color;
-      triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
-      triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
-      triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
+//      TETriangle *triangleShape = [[TETriangle alloc] init];
+//      triangleShape.color = color;
+//      triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
+//      triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
+//      triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
+//      triangleShape.parent = triangleNode;
+      
+      
+      TEHeptagon *triangleShape = [[TEHeptagon alloc] init];
+      triangleShape.color = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
+      triangleShape.radius =[TERandom randomFractionFrom:0.25 to:1];
+      triangleShape.position = GLKVector2Make([TERandom randomFractionFrom:-1 to:1], [TERandom randomFractionFrom:-1 to:1]);
       triangleShape.parent = triangleNode;
       
       // Set up node

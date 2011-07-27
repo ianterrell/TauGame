@@ -19,6 +19,9 @@
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
 		3C32D06B13DF956F0084582B /* fighter-hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C32D06A13DF956F0084582B /* fighter-hurt.wav */; };
+		3C350E8313E07316002DD35E /* TEHexagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8213E07316002DD35E /* TEHexagon.m */; };
+		3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8613E07622002DD35E /* TERegularPolygon.m */; };
+		3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8913E07701002DD35E /* TEHeptagon.m */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C5507A213CE198900585C40 /* obstacle.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A013CE198900585C40 /* obstacle.json */; };
@@ -105,6 +108,12 @@
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
 		3C2DE86913D9DAA3000237D2 /* credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credits.txt; sourceTree = "<group>"; };
 		3C32D06A13DF956F0084582B /* fighter-hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fighter-hurt.wav"; sourceTree = "<group>"; };
+		3C350E8113E07316002DD35E /* TEHexagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEHexagon.h; sourceTree = "<group>"; };
+		3C350E8213E07316002DD35E /* TEHexagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEHexagon.m; sourceTree = "<group>"; };
+		3C350E8513E07622002DD35E /* TERegularPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERegularPolygon.h; sourceTree = "<group>"; };
+		3C350E8613E07622002DD35E /* TERegularPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERegularPolygon.m; sourceTree = "<group>"; };
+		3C350E8813E07701002DD35E /* TEHeptagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEHeptagon.h; sourceTree = "<group>"; };
+		3C350E8913E07701002DD35E /* TEHeptagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEHeptagon.m; sourceTree = "<group>"; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3C5507A013CE198900585C40 /* obstacle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = obstacle.json; sourceTree = "<group>"; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
@@ -239,6 +248,112 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		3C350E8B13E0770D002DD35E /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0487413CBD5D20029875B /* TEShape.h */,
+				3CB0487513CBD5D20029875B /* TEShape.m */,
+				3CD1F95413DF55EC00F6F035 /* TEPolygon.h */,
+				3CD1F95513DF55EF00F6F035 /* TEPolygon.m */,
+				3CB0487713CBD5DF0029875B /* TETriangle.h */,
+				3CB0487813CBD5DF0029875B /* TETriangle.m */,
+				3CB0487D13CBD5F20029875B /* TERectangle.h */,
+				3CB0487E13CBD5F20029875B /* TERectangle.m */,
+				3C350E8513E07622002DD35E /* TERegularPolygon.h */,
+				3C350E8613E07622002DD35E /* TERegularPolygon.m */,
+				3C350E8113E07316002DD35E /* TEHexagon.h */,
+				3C350E8213E07316002DD35E /* TEHexagon.m */,
+				3C350E8813E07701002DD35E /* TEHeptagon.h */,
+				3C350E8913E07701002DD35E /* TEHeptagon.m */,
+				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
+				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
+			);
+			name = Shapes;
+			sourceTree = "<group>";
+		};
+		3C350E8C13E07746002DD35E /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
+				3C138B9513CCC7E0002FC701 /* TEAnimation.m */,
+				3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */,
+				3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */,
+				3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */,
+				3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */,
+				3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */,
+				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
+				3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */,
+				3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
+		3C350E8D13E07757002DD35E /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
+				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
+				3CB0487113CBD5C70029875B /* TENode.h */,
+				3CB0487213CBD5C70029875B /* TENode.m */,
+				3CB0488013CBD5FD0029875B /* TECharacter.h */,
+				3CB0488113CBD5FD0029875B /* TECharacter.m */,
+				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
+				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		3C350E8E13E07772002DD35E /* Collision Detection */ = {
+			isa = PBXGroup;
+			children = (
+				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
+				3C5507A513CE237D00585C40 /* TECollisionDetector.m */,
+				3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */,
+				3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */,
+			);
+			name = "Collision Detection";
+			sourceTree = "<group>";
+		};
+		3C350E8F13E07788002DD35E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
+				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
+				3CB0488F13CBDB440029875B /* TEScene.h */,
+				3CB0489013CBDB440029875B /* TEScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		3C350E9013E07790002DD35E /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */,
+				3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */,
+				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
+				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
+			);
+			name = Motion;
+			sourceTree = "<group>";
+		};
+		3C350E9113E0779D002DD35E /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */,
+				3CD1F94013DDD33F00F6F035 /* TESoundManager.m */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		3C350E9213E077C4002DD35E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3CD1F94813DF03C600F6F035 /* TERandom.h */,
+				3CD1F94913DF03CB00F6F035 /* TERandom.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		3C8A282413D70AC300BB0011 /* Fighter */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,50 +481,14 @@
 			children = (
 				3CB0488613CBD6670029875B /* TauEngine.h */,
 				3CFC90D513D72F6F00100C21 /* TauEngine.m */,
-				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
-				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
-				3CB0487113CBD5C70029875B /* TENode.h */,
-				3CB0487213CBD5C70029875B /* TENode.m */,
-				3CB0488013CBD5FD0029875B /* TECharacter.h */,
-				3CB0488113CBD5FD0029875B /* TECharacter.m */,
-				3CB0487413CBD5D20029875B /* TEShape.h */,
-				3CB0487513CBD5D20029875B /* TEShape.m */,
-				3CD1F95413DF55EC00F6F035 /* TEPolygon.h */,
-				3CD1F95513DF55EF00F6F035 /* TEPolygon.m */,
-				3CB0487713CBD5DF0029875B /* TETriangle.h */,
-				3CB0487813CBD5DF0029875B /* TETriangle.m */,
-				3CB0487D13CBD5F20029875B /* TERectangle.h */,
-				3CB0487E13CBD5F20029875B /* TERectangle.m */,
-				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
-				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
-				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
-				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
-				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
-				3C138B9513CCC7E0002FC701 /* TEAnimation.m */,
-				3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */,
-				3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */,
-				3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */,
-				3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */,
-				3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */,
-				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
-				3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */,
-				3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */,
-				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
-				3C5507A513CE237D00585C40 /* TECollisionDetector.m */,
-				3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */,
-				3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */,
-				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
-				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
-				3CB0488F13CBDB440029875B /* TEScene.h */,
-				3CB0489013CBDB440029875B /* TEScene.m */,
-				3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */,
-				3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */,
-				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
-				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
-				3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */,
-				3CD1F94013DDD33F00F6F035 /* TESoundManager.m */,
-				3CD1F94813DF03C600F6F035 /* TERandom.h */,
-				3CD1F94913DF03CB00F6F035 /* TERandom.m */,
+				3C350E8D13E07757002DD35E /* Characters */,
+				3C350E8B13E0770D002DD35E /* Shapes */,
+				3C350E8C13E07746002DD35E /* Animations */,
+				3C350E8E13E07772002DD35E /* Collision Detection */,
+				3C350E8F13E07788002DD35E /* Scenes */,
+				3C350E9013E07790002DD35E /* Motion */,
+				3C350E9113E0779D002DD35E /* Sound */,
+				3C350E9213E077C4002DD35E /* Utils */,
 			);
 			name = TauEngine;
 			sourceTree = "<group>";
@@ -575,6 +654,9 @@
 				3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */,
 				3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */,
 				3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */,
+				3C350E8313E07316002DD35E /* TEHexagon.m in Sources */,
+				3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */,
+				3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@
     
     // Set up fighter
     fighter = [[Fighter alloc] init];
-    fighter.position = GLKVector2Make(6, 0.1);
+    fighter.position = GLKVector2Make(6, self.bottomLeftVisible.y + 0.1);
     fighter.maxVelocity = 20;
     fighter.maxAcceleration = 40;
     [characters addObject:fighter];
@@ -43,12 +43,7 @@
 }
 
 -(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
-  return orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight;
-}
-
--(void)orientationChangedTo:(UIDeviceOrientation)orientation {
-  [super orientationChangedTo:orientation];
-  fighter.position = GLKVector2Make(fighter.position.x, self.bottomLeftVisible.y + 0.1);
+  return UIDeviceOrientationIsLandscape(orientation);
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {

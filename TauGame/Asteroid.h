@@ -13,5 +13,6 @@
 }
 
 -(void)registerHit;
+-(void)die;
 
 @end

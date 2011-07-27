@@ -66,51 +66,51 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   [self removeOutOfScene:scene buffer:2.0];
 }
 
+-(void)onRemovalFromScene:(TEScene *)scene {
+  [((AsteroidField *)scene).asteroids removeObject:self];
+}
+
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"hurt"];
-  hitPoints--;
   
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
   highlight.color = GLKVector4Make(1, 1, 1, 1);
   highlight.duration = 0.1;
-  
-  BOOL dead = hitPoints <= 0;
-  
   [self traverseUsingBlock:^(TENode *node){
     [node.currentAnimations addObject:highlight];
-    
-    if (dead) {
-      node.collide = NO;
-      
-      if (node != self) {
-        TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
-        rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
-        rotateAnimation.duration = 0.5;
-        [node.currentAnimations addObject:rotateAnimation];
+  }];
+  
+  hitPoints--;
+  if (hitPoints <= 0)
+    [self die];
+}
 
-        TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
-        translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-5 to:5], [TERandom randomFractionFrom:-5 to:5]);
-        translateAnimation.duration = 0.5;
-        [node.currentAnimations addObject:translateAnimation];
-        
-        [node markModelViewMatrixDirty];
-      }
+-(void)die {
+  [self traverseUsingBlock:^(TENode *node){
+    node.collide = NO;
+    
+    if (node != self) {
+      TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+      rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
+      rotateAnimation.duration = 0.5;
+      [node.currentAnimations addObject:rotateAnimation];
+      
+      TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+      translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-5 to:5], [TERandom randomFractionFrom:-5 to:5]);
+      translateAnimation.duration = 0.5;
+      [node.currentAnimations addObject:translateAnimation];
+      
+      [node markModelViewMatrixDirty];
     }
   }];
   
-  if (dead) {
-    TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-    scaleAnimation.scale = 0.0;
-    scaleAnimation.duration = 0.5;
-    scaleAnimation.onRemoval= ^(){
-      self.remove = YES;
-    };
-    [self.currentAnimations addObject:scaleAnimation];
-  }
-}
-
--(void)onRemovalFromScene:(TEScene *)scene {
-  [((AsteroidField *)scene).asteroids removeObject:self];
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+  scaleAnimation.scale = 0.0;
+  scaleAnimation.duration = 0.5;
+  scaleAnimation.onRemoval= ^(){
+    self.remove = YES;
+  };
+  [self.currentAnimations addObject:scaleAnimation];
 }
 
 @end

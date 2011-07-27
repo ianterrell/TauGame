@@ -37,8 +37,9 @@
   }];
   
   // Detect collisions with ship :(
-  [TECollisionDetector collisionsBetweenNode:fighter andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
+  [TECollisionDetector collisionsBetweenNode:fighter andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *ship, TENode *asteroid) {
     [(Fighter *)fighter registerHit];
+    [(Asteroid *)asteroid die];
   }];
 }
 

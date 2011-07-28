@@ -10,6 +10,7 @@
 #import "TEImage.h"
 
 static GLKTextureInfo *digitsTexture;
+static GLKBaseEffect *digitsTextureEffect;
 
 @implementation TEDigit
 
@@ -21,27 +22,31 @@ static GLKTextureInfo *digitsTexture;
   if (error) {
     NSLog(@"Error making digits texture: %@",error);
   }
+  
+  digitsTextureEffect = [[GLKBaseEffect alloc] init];
+  digitsTextureEffect.texturingEnabled = YES;
+  digitsTextureEffect.texture2d0.envMode = GLKTextureEnvModeReplace;
+  digitsTextureEffect.texture2d0.target = GLKTextureTarget2D;
+  digitsTextureEffect.texture2d0.glName = digitsTexture.glName;
 }
 
 - (id)init
 {
   self = [super init];
   if (self) {
+    effect = digitsTextureEffect;
     digit = 0;
     renderStyle = kTERenderStyleTexture;
+    color = GLKVector4Make(1,0,0,0);
+    
+    // TODO: set to digit, hurray!
+    self.textureCoordinates[0] = GLKVector2Make(1, 0);
+    self.textureCoordinates[1] = GLKVector2Make(1, 1);
+    self.textureCoordinates[2] = GLKVector2Make(0, 1);
+    self.textureCoordinates[3] = GLKVector2Make(0, 0);
   }
   
   return self;
 }
-
--(void)renderInScene:(TEScene *)scene {
-  [super renderInScene:scene];
-  
-  glEnableVertexAttribArray(GLKVertexAttribPosition);
-  glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-  glDrawArrays([self renderMode], 0, [self numVertices]);
-  glDisableVertexAttribArray(GLKVertexAttribPosition);
-}
-
 
 @end

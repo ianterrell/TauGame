@@ -99,13 +99,16 @@ static GLKBaseEffect *constantColorEffect;
   
   // Finalize effect
   [effect prepareToDraw];
-    
+  
   glEnableVertexAttribArray(GLKVertexAttribPosition);
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
   
   if (renderStyle == kTERenderStyleVertexColors) {
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colorVertices);
+  } else if (renderStyle == kTERenderStyleTexture) {
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, textureCoordinates);
   }
   
   glDrawArrays(self.renderMode, 0, self.numVertices);
@@ -114,6 +117,8 @@ static GLKBaseEffect *constantColorEffect;
   
   if (renderStyle == kTERenderStyleVertexColors)
     glDisableVertexAttribArray(GLKVertexAttribColor);
+  else if (renderStyle == kTERenderStyleTexture)
+    glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
 }
 
 -(BOOL)isPolygon {

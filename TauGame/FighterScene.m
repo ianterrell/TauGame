@@ -9,6 +9,8 @@
 #import "FighterScene.h"
 #import "Fighter.h"
 
+static TENumberDisplay *scoreDisplay ;
+
 @implementation FighterScene
 
 @synthesize fighter, bullets, powerups;
@@ -30,12 +32,17 @@
     
     // Set up fighter
     fighter = [[Fighter alloc] init];
-    fighter.position = GLKVector2Make(6, self.bottomLeftVisible.y + 0.1);
+    fighter.position = GLKVector2Make((self.topRightVisible.x - self.bottomLeftVisible.x)/2, self.bottomLeftVisible.y + 0.1);
     [characters addObject:fighter];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self addGestureRecognizer:tapRecognizer];
+    
+    // Set up score
+    scoreDisplay = [[TENumberDisplay alloc] init];
+    scoreDisplay.position = GLKVector2Make(self.bottomLeftVisible.x, self.topRightVisible.y);
+    [characters addObject:scoreDisplay];
   }
   
   return self;
@@ -46,7 +53,7 @@
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
-  [fighter shootInScene:self];  
+  [fighter shootInScene:self];
 }
 
 @end

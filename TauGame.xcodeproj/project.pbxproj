@@ -317,6 +317,7 @@
 				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
 				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
+				3C70968F13E1DCB300BF4E83 /* Text */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -402,7 +403,6 @@
 				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
 				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3C350E8B13E0770D002DD35E /* Shapes */,
-				3C70968F13E1DCB300BF4E83 /* Text */,
 			);
 			name = Drawables;
 			sourceTree = "<group>";

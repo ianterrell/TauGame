@@ -7,6 +7,7 @@
 //
 
 #import "TENumberDisplay.h"
+#import "TEDigit.h"
 
 @implementation TENumberDisplay
 
@@ -17,15 +18,15 @@
   self = [super init];
   if (self) {
     number = numDigits = padDigit = width = height = 0;
+    TEDigit *digit = [[TEDigit alloc] init];
+    digit.node = self;
+    digit.width = 1;
+    digit.height = 1;
+    
+    self.drawable = digit;
   }
   
   return self;
-}
-
--(void)renderInScene:(TEScene *)scene {
-  [super renderInScene:scene];
-  
-  
 }
 
 @end

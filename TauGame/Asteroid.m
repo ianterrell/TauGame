@@ -29,7 +29,7 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   self = [super init];
   
   if (self) {
-    GLKVector4 color = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
+    GLKVector4 centralColor = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
     self.collide = YES;
     
     for (int i = 0; i < [TERandom randomFrom:2 to:6]; i++) {
@@ -37,10 +37,16 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
       
       // Set up shape
       TETriangle *triangleShape = [[TETriangle alloc] init];
-      triangleShape.color = color;
       triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
       triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
       triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
+      
+      triangleShape.renderStyle = kTERenderStyleVertexColors;
+      triangleShape.colorVertices[0] = centralColor;
+      triangleShape.colorVertices[1] = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
+      triangleShape.colorVertices[2] = centralColor;
+      
+      
       triangleShape.node = triangleNode;
       
       // Set up node

@@ -9,6 +9,7 @@
 #import "TEShape.h"
 #import "TEEllipse.h"
 
+static GLKBaseEffect *defaultEffect;
 static GLKBaseEffect *constantColorEffect;
 
 @implementation TEShape
@@ -16,6 +17,8 @@ static GLKBaseEffect *constantColorEffect;
 @synthesize effect, renderStyle, color;
 
 +(void)initialize {
+  defaultEffect = [[GLKBaseEffect alloc] init];
+  
   constantColorEffect = [[GLKBaseEffect alloc] init];
   constantColorEffect.useConstantColor = YES;
 }
@@ -52,7 +55,7 @@ static GLKBaseEffect *constantColorEffect;
 
 -(GLKVector4 *)colorVertices {
   if (colorData == nil) {
-    colorData = [NSMutableData dataWithLength:sizeof(GLKVector2)*self.numVertices];
+    colorData = [NSMutableData dataWithLength:sizeof(GLKVector4)*self.numVertices];
     colorVertices = [colorData mutableBytes];
   }
   return colorVertices;
@@ -71,6 +74,9 @@ static GLKBaseEffect *constantColorEffect;
     switch (renderStyle) {
       case kTERenderStyleConstantColor:
         effect = constantColorEffect;
+        break;
+      case kTERenderStyleVertexColors:
+        effect = defaultEffect;
         break;
       default:
         break;
@@ -96,8 +102,18 @@ static GLKBaseEffect *constantColorEffect;
     
   glEnableVertexAttribArray(GLKVertexAttribPosition);
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+  
+  if (renderStyle == kTERenderStyleVertexColors) {
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colorVertices);
+  }
+  
   glDrawArrays(self.renderMode, 0, self.numVertices);
+  
   glDisableVertexAttribArray(GLKVertexAttribPosition);
+  
+  if (renderStyle == kTERenderStyleVertexColors)
+    glDisableVertexAttribArray(GLKVertexAttribColor);
 }
 
 -(BOOL)isPolygon {

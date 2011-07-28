@@ -41,8 +41,6 @@ static CMAcceleration calibration;
   
   horizontal = horizontal*kFilterFactor+(1-kFilterFactor)*previousHorizontal;
   previousHorizontal = horizontal;
-  //  NSLog(@"what... %f -> %f", previousHorizontal, horizontal);
-  NSLog(@"calibration is %f, accel is %f, horizontal is %f", calibration.y, accel.y, horizontal);
   return horizontal;
 }
 

@@ -197,6 +197,12 @@
 -(void)onRemovalFromScene:(TEScene *)scene {
 }
 
+# pragma mark - Drawable Methods
+
+-(TEShape *)shape {
+  return (TEShape *)drawable;
+}
+
 # pragma mark - Matrix Methods
 
 -(GLKMatrix4)modelViewMatrix {

@@ -12,24 +12,11 @@
 @class TENode;
 @class TEScene;
 
-typedef enum {
-  kTERenderStyleConstantColor,
-  kTERenderStyleVertexColors,
-  kTERenderStyleTexture
-} TERenderStyle;
-
 @interface TEDrawable : NSObject {
   TENode *node;
-  GLKBaseEffect *effect;
-  TERenderStyle renderStyle;
-  GLKVector4 color;
 }
 
 @property(strong, nonatomic) TENode *node;
-@property(strong, nonatomic) GLKBaseEffect *effect;
-
-@property TERenderStyle renderStyle;
-@property GLKVector4 color;
 
 -(void)renderInScene:(TEScene *)scene;
 

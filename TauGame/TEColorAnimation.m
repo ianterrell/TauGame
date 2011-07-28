@@ -16,8 +16,8 @@
 {
   self = [super initWithNode:_node];
   if (self) {
-    self.color = _node.drawable.color;
-    self.previousColor = _node.drawable.color;
+    self.color = _node.shape.color;
+    self.previousColor = _node.shape.color;
   }
   
   return self;

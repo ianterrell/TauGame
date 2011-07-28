@@ -8,6 +8,7 @@
 
 #import "TEDrawable.h"
 #import "TEScene.h"
+#import "TEShape.h"
 
 @interface TENode : NSObject {
   NSString *name;
@@ -40,6 +41,7 @@
 
 @property(strong, nonatomic) NSString *name;
 @property(strong, nonatomic) TEDrawable *drawable;
+@property(readonly) TEShape *shape;
 @property(strong, nonatomic) TENode *parent;
 @property(strong, nonatomic) NSMutableArray *children;
 @property float maxVelocity, maxAcceleration, maxAngularVelocity, maxAngularAcceleration;

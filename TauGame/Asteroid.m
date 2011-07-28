@@ -41,10 +41,10 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
       triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
       triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
       triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
-      triangleShape.parent = triangleNode;
+      triangleShape.node = triangleNode;
       
       // Set up node
-      triangleNode.shape = triangleShape;
+      triangleNode.drawable = triangleShape;
       triangleNode.parent = self;
       triangleNode.rotation = [TERandom randomFraction]*M_TAU;
       triangleNode.collide = YES;

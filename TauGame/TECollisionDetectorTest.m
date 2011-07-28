@@ -16,8 +16,8 @@ static int count = 0;
 
 +(TENode *)nodeWithShape:(SEL)sel {
   TENode *node = [[TENode alloc] init];
-  node.shape = [self performSelector:sel];
-  node.shape.parent = node;
+  node.drawable = [self performSelector:sel];
+  node.drawable.node = node;
   node.collide = YES;
   return node;
 }
@@ -93,18 +93,7 @@ static int count = 0;
   
   circle1.position = GLKVector2Make(0,0);
   circle1.scale = 1.0;//reset
-  
-  circle1.shape.position = GLKVector2Make(0.5,0);
-  [self node:circle1 shouldCollideWith:circle2 label:@"Circles overlapping some; repositioned in shape"];
-  
-  circle1.shape.position = GLKVector2Make(2,0);
-  [self node:circle1 shouldCollideWith:circle2 label:@"Circles touching; repositioned in shape"];
-  
-  circle1.shape.position = GLKVector2Make(3,0);
-  [self node:circle1 shouldNotCollideWith:circle2 label:@"Circles not touching; repositioned in shape"];
-  
-  circle1.shape.position = GLKVector2Make(0,0);//reset
-  
+    
   TENode *subCircle1 = [self circleNode];
   subCircle1.parent = circle1;
   subCircle1.position = GLKVector2Make(-2,0);

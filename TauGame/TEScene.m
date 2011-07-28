@@ -132,7 +132,6 @@
 -(void)markChildrensFullMatricesDirty {
   [characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {
     node.dirtyFullModelViewMatrix = YES;
-    node.shape.dirtyFullModelViewMatrix = YES;
   }];
 }
 

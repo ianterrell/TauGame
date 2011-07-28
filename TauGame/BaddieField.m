@@ -50,7 +50,7 @@
   
   baddie.position = GLKVector2Make(randX, randY);
   baddie.velocity = GLKVector2Make(randVelocity,0);
-  baddie.shape.color = GLKVector4Make([TERandom randomFraction], [TERandom randomFraction], [TERandom randomFraction], 1.0);
+  baddie.drawable.color = GLKVector4Make([TERandom randomFraction], [TERandom randomFraction], [TERandom randomFraction], 1.0);
   
   if ([TERandom randomFraction] > 0.8) {
     TEScaleAnimation *grow = [[TEScaleAnimation alloc] init];

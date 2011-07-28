@@ -22,8 +22,8 @@
   return self;
 }
 
--(void)renderInScene:(TEScene *)scene forNode:(TENode *)node  {
-  [super renderInScene:scene forNode:node];
+-(void)renderInScene:(TEScene *)scene  {
+  [super renderInScene:scene];
   
   glEnableVertexAttribArray(GLKVertexAttribPosition);
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);

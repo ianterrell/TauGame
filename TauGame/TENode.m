@@ -7,20 +7,26 @@
 //
 
 #import "TENode.h"
-#import "TEAnimation.h"
+#import "TauEngine.h"
 
 @implementation TENode
 
-@synthesize name, shape, children;
+@synthesize name, drawable;
 @synthesize maxVelocity, maxAcceleration;
 @synthesize maxAngularVelocity, maxAngularAcceleration;
 @synthesize remove;
 @synthesize collide;
+@synthesize parent, children;
+@synthesize currentAnimations, dirtyFullModelViewMatrix;
 
 - (id)init
 {
   self = [super init];
   if (self) {
+    scale = 1.0;
+    rotation = 0.0;
+    position = GLKVector2Make(0.0, 0.0);
+    
     velocity = GLKVector2Make(0, 0);
     acceleration = GLKVector2Make(0, 0);
     maxVelocity = INFINITY;
@@ -29,17 +35,19 @@
     angularVelocity = angularAcceleration = 0;
     maxAngularVelocity = maxAngularAcceleration = INFINITY;
     
+    currentAnimations = [[NSMutableArray alloc] init];
+    
     remove = NO;
     self.children = [[NSMutableArray alloc] init];
+    
+    dirtyObjectModelViewMatrix = YES;
   }
   
   return self;
 }
 
 -(void)renderInScene:(TEScene *)scene {
-  [super renderInScene:scene];
-  
-  [shape renderInScene:scene forNode:self];
+  [drawable renderInScene:scene];
   [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
 }
 
@@ -70,6 +78,33 @@
 }
 
 # pragma mark Motion Methods
+
+-(GLKVector2)position {
+  return position;
+}
+
+-(void)setPosition:(GLKVector2)_position {
+  position = _position;
+  [self markModelViewMatrixDirty];
+}
+
+-(float)scale {
+  return scale;
+}
+
+-(void)setScale:(float)_scale {
+  scale = _scale;
+  [self markModelViewMatrixDirty];
+}
+
+-(float)rotation {
+  return rotation;
+}
+
+-(void)setRotation:(float)_rotation {
+  rotation = _rotation;
+  [self markModelViewMatrixDirty];
+}
 
 -(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene {
   self.velocity = GLKVector2Add(velocity, GLKVector2MultiplyScalar(acceleration, dt));
@@ -117,19 +152,6 @@
   angularAcceleration = MIN(maxAngularAcceleration, newAngularAcceleration);
 }
 
-# pragma mark Mark all children dirty
-
--(void)markModelViewMatrixDirty {
-  [super markModelViewMatrixDirty];
-  
-  BOOL tmpSelfValue = self.dirtyFullModelViewMatrix;
-  [self traverseUsingBlock:^(TENode *node) {
-    node.dirtyFullModelViewMatrix = YES;
-    node.shape.dirtyFullModelViewMatrix = YES;
-  }];
-  self.dirtyFullModelViewMatrix = tmpSelfValue;
-}
-
 # pragma mark Position Shortcuts
 
 -(void)wraparoundInScene:(TEScene *)scene {
@@ -173,6 +195,53 @@
 # pragma mark Callbacks
 
 -(void)onRemovalFromScene:(TEScene *)scene {
+}
+
+# pragma mark - Matrix Methods
+
+-(GLKMatrix4)modelViewMatrix {
+  if (dirtyObjectModelViewMatrix) {
+    __block GLKVector2 mvTranslation = position;
+    __block GLfloat mvScale = scale;
+    __block GLfloat mvRotation = rotation;
+    
+    [currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
+      if ([animation isKindOfClass:[TETranslateAnimation class]])
+        mvTranslation = GLKVector2Add(mvTranslation, ((TETranslateAnimation *)animation).easedTranslation);
+      else if ([animation isKindOfClass:[TERotateAnimation class]])
+        mvRotation += ((TERotateAnimation *)animation).easedRotation;
+      else if ([animation isKindOfClass:[TEScaleAnimation class]])
+        mvScale *= ((TEScaleAnimation *)animation).easedScale;
+    }];
+    
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation));
+    
+    dirtyObjectModelViewMatrix = [currentAnimations count] > 0;
+    dirtyFullModelViewMatrix = YES;
+  }
+  
+  if (dirtyFullModelViewMatrix) {
+    if (parent)
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], cachedObjectModelViewMatrix);
+    else if ([TESceneController sharedController].currentScene != nil)
+      cachedFullModelViewMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, cachedObjectModelViewMatrix);
+    else
+      cachedFullModelViewMatrix = cachedObjectModelViewMatrix;
+    dirtyFullModelViewMatrix = NO;
+  }
+  
+  return cachedFullModelViewMatrix;
+}
+
+-(void)markModelViewMatrixDirty {
+  dirtyObjectModelViewMatrix = YES;
+  
+  BOOL tmpSelfValue = self.dirtyFullModelViewMatrix;
+  [self traverseUsingBlock:^(TENode *node) {
+    node.dirtyFullModelViewMatrix = YES;
+  }];
+  self.dirtyFullModelViewMatrix = tmpSelfValue;
 }
 
 @end

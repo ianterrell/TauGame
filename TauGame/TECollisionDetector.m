@@ -25,19 +25,19 @@ typedef struct {
 #pragma mark - Object to World Coordinate Transformation
 
 +(GLKVector2)transformedPoint:(GLKVector2)point fromShape:(TEShape*)shape {
-  GLKVector4 transformedPoint = GLKMatrix4MultiplyVector4(shape.modelViewMatrix, GLKVector4Make(point.x,point.y,0,1));
+  GLKVector4 transformedPoint = GLKMatrix4MultiplyVector4(shape.node.modelViewMatrix, GLKVector4Make(point.x,point.y,0,1));
   return GLKVector2Make(transformedPoint.x, transformedPoint.y);
 }
 
 #pragma mark - Collision detection between two circles
 
 +(BOOL)circle:(TENode *)node1 collidesWithCircle:(TENode *)node2 {
-  GLKVector2 circle1Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:node1.shape];
-  GLKVector2 pointOnCircle1 = [self transformedPoint:GLKVector2Make(0,node1.shape.radius) fromShape:node1.shape];
+  GLKVector2 circle1Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:(TEShape *)node1.drawable];
+  GLKVector2 pointOnCircle1 = [self transformedPoint:GLKVector2Make(0,((TEShape *)node1.drawable).radius) fromShape:(TEShape *)node1.drawable];
   float radius1 = GLKVector2Length(GLKVector2Subtract(pointOnCircle1, circle1Center));
   
-  GLKVector2 circle2Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:node2.shape];
-  GLKVector2 pointOnCircle2 = [self transformedPoint:GLKVector2Make(0,node2.shape.radius) fromShape:node2.shape];
+  GLKVector2 circle2Center  = [self transformedPoint:GLKVector2Make(0,0) fromShape:(TEShape *)node2.drawable];
+  GLKVector2 pointOnCircle2 = [self transformedPoint:GLKVector2Make(0,((TEShape *)node2.drawable).radius) fromShape:(TEShape *)node2.drawable];
   float radius2 = GLKVector2Length(GLKVector2Subtract(pointOnCircle2, circle2Center));
   
   GLKVector2 difference = GLKVector2Subtract(circle1Center, circle2Center);
@@ -97,13 +97,13 @@ typedef struct {
     return NO;
   
   // Transform our polygons
-  TEPolygon *poly1 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node1.shape).numVertices];
+  TEPolygon *poly1 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node1.drawable).numVertices];
   for (int i = 0; i < poly1.numVertices; i++)
-    poly1.vertices[i] = [self transformedPoint:((TEPolygon *)node1.shape).vertices[i] fromShape:((TEPolygon *)node1.shape)];
+    poly1.vertices[i] = [self transformedPoint:((TEPolygon *)node1.drawable).vertices[i] fromShape:((TEPolygon *)node1.drawable)];
 
-  TEPolygon *poly2 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node2.shape).numVertices];
+  TEPolygon *poly2 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node2.drawable).numVertices];
   for (int i = 0; i < poly2.numVertices; i++)
-    poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.shape).vertices[i] fromShape:((TEPolygon *)node2.shape)];
+    poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.drawable).vertices[i] fromShape:((TEPolygon *)node2.drawable)];
   
   // Test by separating axis theorem
   if (![self polygon:poly1 andPolygon:poly2 intersectOnPolygonsEdges:poly1])
@@ -129,16 +129,16 @@ typedef struct {
 
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 {
-  if (!node1.collide || !node2.collide || node1.shape == nil || node2.shape == nil) {
+  if (!node1.collide || !node2.collide || node1.drawable == nil || node2.drawable == nil) {
     return NO;
   } else {
-    if ([node1.shape isPolygon]) {
-      if ([node2.shape isPolygon])
+    if ([(TEShape *)node1.drawable isPolygon]) {
+      if ([(TEShape *)node2.drawable isPolygon])
         return [self node:node1 collidesWithNode:node2 type:TECollisionTypePolygonPolygon];
       else
         return [self node:node1 collidesWithNode:node2 type:TECollisionTypePolygonCircle];
     } else {
-      if ([node2.shape isPolygon])
+      if ([(TEShape *)node2.drawable isPolygon])
         return [self node:node2 collidesWithNode:node1 type:TECollisionTypePolygonCircle];
       else
         return [self node:node1 collidesWithNode:node2 type:TECollisionTypeCircleCircle];

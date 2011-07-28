@@ -7,31 +7,42 @@
 //
 
 #import "TEDrawable.h"
-#import "TEShape.h"
 #import "TEScene.h"
 
-@interface TENode : TEDrawable {
+@interface TENode : NSObject {
   NSString *name;
-  TEShape *shape;
+  TEDrawable *drawable;
   
+  GLKVector2 position, velocity, acceleration;
+  float rotation, angularVelocity, angularAcceleration;
+  float scale;
+  
+  float maxVelocity, maxAcceleration;
+  float maxAngularVelocity, maxAngularAcceleration;
+  
+  NSMutableArray *currentAnimations;
+  
+  TENode *parent;
   NSMutableArray *children;
   
-  GLKVector2 velocity, acceleration;
-  float maxVelocity, maxAcceleration;
-  
-  float angularVelocity, angularAcceleration, maxAngularVelocity, maxAngularAcceleration;
-
   BOOL remove;
-  
   BOOL collide;
+  
+  GLKMatrix4 cachedObjectModelViewMatrix, cachedFullModelViewMatrix;
+  BOOL dirtyObjectModelViewMatrix, dirtyFullModelViewMatrix;
 }
 
+@property GLKVector2 position, velocity, acceleration;
+@property float scale;
+@property float rotation, angularVelocity, angularAcceleration;
+@property(strong, nonatomic) NSMutableArray *currentAnimations;
+@property BOOL dirtyFullModelViewMatrix; // can be marked by parents
+
 @property(strong, nonatomic) NSString *name;
-@property(strong, nonatomic) TEShape *shape;
+@property(strong, nonatomic) TEDrawable *drawable;
+@property(strong, nonatomic) TENode *parent;
 @property(strong, nonatomic) NSMutableArray *children;
-@property GLKVector2 velocity, acceleration;
-@property float maxVelocity, maxAcceleration;
-@property float angularVelocity, angularAcceleration, maxAngularVelocity, maxAngularAcceleration;
+@property float maxVelocity, maxAcceleration, maxAngularVelocity, maxAngularAcceleration;
 @property BOOL remove;
 @property BOOL collide;
 
@@ -55,5 +66,14 @@
 
 # pragma mark Callbacks
 -(void)onRemovalFromScene:(TEScene *)scene;
+
+# pragma mark Rendering
+
+-(void)renderInScene:(TEScene *)scene;
+
+# pragma mark Matrix Methods
+
+-(GLKMatrix4)modelViewMatrix;
+-(void)markModelViewMatrixDirty;
 
 @end

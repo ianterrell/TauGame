@@ -8,33 +8,29 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
-#import "TEScene.h"
+
+@class TENode;
+@class TEScene;
+
+typedef enum {
+  kTERenderStyleConstantColor,
+  kTERenderStyleVertexColors,
+  kTERenderStyleTexture
+} TERenderStyle;
 
 @interface TEDrawable : NSObject {
-  TEDrawable *parent;
+  TENode *node;
   GLKBaseEffect *effect;
-  GLKVector2 position;
-  GLfloat scale;
-  GLfloat rotation;
-  NSMutableArray *currentAnimations;
-
-  GLKMatrix4 cachedObjectModelViewMatrix, cachedFullModelViewMatrix;
-  BOOL dirtyObjectModelViewMatrix, dirtyFullModelViewMatrix;
+  TERenderStyle renderStyle;
+  GLKVector4 color;
 }
 
-@property(strong, nonatomic) TEDrawable *parent;
+@property(strong, nonatomic) TENode *node;
 @property(strong, nonatomic) GLKBaseEffect *effect;
-@property GLKVector2 position;
-@property GLfloat scale;
-@property GLfloat rotation;
-@property(strong, nonatomic) NSMutableArray *currentAnimations;
-@property BOOL dirtyFullModelViewMatrix; // can be marked by parents
+
+@property TERenderStyle renderStyle;
+@property GLKVector4 color;
 
 -(void)renderInScene:(TEScene *)scene;
--(GLKMatrix4)modelViewMatrix;
--(void)markModelViewMatrixDirty;
-
-// TODO: should parents be TENodes? Node-Shape smell here again
--(void)crawlUpWithBlock:(void (^)(TEDrawable *))block;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation TECharacterLoader
 
-+(void)parseTransformsForNode:(TEDrawable *)node attributes:(NSDictionary *)attributes {
++(void)parseTransformsForNode:(TENode *)node attributes:(NSDictionary *)attributes {
   [attributes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     if ([key isEqualToString:@"scale"]) {
       node.scale = [obj floatValue];
@@ -38,8 +38,6 @@
     NSLog(@"Unrecognized shape: '%@'", geometry);
     return nil;
   }
-  
-  [self parseTransformsForNode:shape attributes:attributes];
 
   [attributes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     if ([key isEqualToString:@"color"]) {
@@ -71,8 +69,8 @@
     [self parseTransformsForNode:node attributes:attributes];
     if ([key isEqualToString:@"shape"]) {
       TEShape *shape = [self createShape:obj];
-      node.shape = shape;
-      shape.parent = node;
+      node.drawable = shape;
+      shape.node = node;
     } else if ([key isEqualToString:@"children"]) {
       [obj enumerateKeysAndObjectsUsingBlock:^(id childName, id childAttributes, BOOL *stop) {
         TENode *childNode = [[TENode alloc] init];

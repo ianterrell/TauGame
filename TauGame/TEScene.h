@@ -12,7 +12,6 @@
 @interface TEScene : GLKView <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
   GLKVector4 clearColor;
-  GLKBaseEffect *constantColorEffect;
   NSMutableArray *characters;
   
   UIDeviceOrientation currentOrientation;
@@ -24,7 +23,6 @@
 @property(readonly) float width, height;
 @property GLKVector4 clearColor;
 @property(strong, nonatomic) NSMutableArray *characters;
-@property(readonly) GLKBaseEffect *constantColorEffect;
 @property UIDeviceOrientation currentOrientation;
 @property GLKMatrix4 orientationRotationMatrix;
 

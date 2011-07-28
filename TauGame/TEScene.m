@@ -142,14 +142,6 @@
   [characters makeObjectsPerformSelector:@selector(renderInScene:) withObject:self];
 }
 
-- (GLKBaseEffect *)constantColorEffect {
-  if (!constantColorEffect) {
-    constantColorEffect = [[GLKBaseEffect alloc] init];
-    constantColorEffect.useConstantColor = GL_TRUE;
-  }
-  return constantColorEffect;
-}
-
 -(GLKMatrix4)projectionMatrix {
   if (dirtyProjectionMatrix) {
     cachedProjectionMatrix = GLKMatrix4MakeOrtho(left, right, bottom, top, 1.0, -1.0);

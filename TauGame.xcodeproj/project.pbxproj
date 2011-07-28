@@ -311,8 +311,6 @@
 		3C350E8D13E07757002DD35E /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
-				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3CB0487113CBD5C70029875B /* TENode.h */,
 				3CB0487213CBD5C70029875B /* TENode.m */,
 				3CB0488013CBD5FD0029875B /* TECharacter.h */,
@@ -396,6 +394,17 @@
 				3C70969113E1DCCB00BF4E83 /* TEDigit.m */,
 			);
 			name = Text;
+			sourceTree = "<group>";
+		};
+		3C70969613E1EEB600BF4E83 /* Drawables */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
+				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
+				3C350E8B13E0770D002DD35E /* Shapes */,
+				3C70968F13E1DCB300BF4E83 /* Text */,
+			);
+			name = Drawables;
 			sourceTree = "<group>";
 		};
 		3C8A282413D70AC300BB0011 /* Fighter */ = {
@@ -527,8 +536,7 @@
 				3CB0488613CBD6670029875B /* TauEngine.h */,
 				3CFC90D513D72F6F00100C21 /* TauEngine.m */,
 				3C350E8D13E07757002DD35E /* Characters */,
-				3C70968F13E1DCB300BF4E83 /* Text */,
-				3C350E8B13E0770D002DD35E /* Shapes */,
+				3C70969613E1EEB600BF4E83 /* Drawables */,
 				3C350E8C13E07746002DD35E /* Animations */,
 				3C350E8E13E07772002DD35E /* Collision Detection */,
 				3C350E8F13E07788002DD35E /* Scenes */,

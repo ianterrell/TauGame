@@ -8,12 +8,20 @@
 
 #import "TEDrawable.h"
 
+typedef enum {
+  kTERenderStyleConstantColor,
+  kTERenderStyleVertexColors,
+  kTERenderStyleTexture
+} TERenderStyle;
+
 @class TENode;
 
 @interface TEShape : TEDrawable {
+  TERenderStyle renderStyle;
   GLKVector4 color;
 }
 
+@property TERenderStyle renderStyle;
 @property GLKVector4 color;
 @property(readonly) float radius;
 

@@ -11,13 +11,13 @@
 
 @implementation TEShape
 
-@synthesize color;
+@synthesize renderStyle, color;
 
 - (id)init
 {
   self = [super init];
   if (self) {
-    // Initialization code here.
+    renderStyle = kTERenderStyleConstantColor;
   }
   
   return self;
@@ -30,14 +30,18 @@
   // Set up matrices
   [super renderInScene:scene];
   
-  // Set the color
-  self.effect.constantColor = self.color;
-  [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
-    if ([animation isKindOfClass:[TEColorAnimation class]]) {
-      TEColorAnimation *colorAnimation = (TEColorAnimation *)animation;
-      self.effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
-    }
-  }];
+  // Set up the effect
+  if (renderStyle == kTERenderStyleConstantColor) {
+    self.effect.constantColor = self.color;
+    [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
+      if ([animation isKindOfClass:[TEColorAnimation class]]) {
+        TEColorAnimation *colorAnimation = (TEColorAnimation *)animation;
+        self.effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
+      }
+    }];
+  } else if (renderStyle == kTERenderStyleTexture) {
+    
+  }
   
   // Finalize effect
   [self.effect prepareToDraw];

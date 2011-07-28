@@ -16,8 +16,10 @@
 #import <CoreMotion/CoreMotion.h>
 
 #import "TEDrawable.h"
+
 #import "TENode.h"
 #import "TECharacter.h"
+
 #import "TEShape.h"
 #import "TEPolygon.h"
 #import "TETriangle.h"
@@ -25,6 +27,9 @@
 #import "TEHexagon.h"
 #import "TEHeptagon.h"
 #import "TEEllipse.h"
+
+#import "TENumberDisplay.h"
+#import "TEDigit.h"
 
 #import "TEScene.h"
 #import "TESceneController.h"
@@ -45,6 +50,7 @@
 #import "TESoundManager.h"
 
 #import "TERandom.h"
+#import "TEImage.h"
 
 @interface TauEngine : NSObject {
   CMMotionManager *motionManager;

@@ -20,5 +20,6 @@
 @property float radius;
 
 - (id)initWithVertices:(int)numVertices;
+-(GLenum)renderMode;
 
 @end

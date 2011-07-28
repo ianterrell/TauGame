@@ -18,12 +18,24 @@ typedef enum {
   GLKBaseEffect *effect;
   TERenderStyle renderStyle;
   GLKVector4 color;
+  
+  NSMutableData *vertexData, *textureData, *colorData;
+  GLKVector2 *vertices, *textureCoordinates;
+  GLKVector4 *colorVertices;
 }
 
 @property(strong, nonatomic) GLKBaseEffect *effect;
 @property TERenderStyle renderStyle;
 @property GLKVector4 color;
-@property(readonly) float radius;
+
+@property(readonly) int numVertices;
+@property(readonly) GLKVector2 *vertices;
+@property(readonly) GLKVector2 *textureCoordinates;
+@property(readonly) GLKVector4 *colorVertices;
+
+@property(readonly) float radius; // for bounding circle collision detection
+
+@property(readonly) GLenum renderMode;
 
 -(void)updateVertices;
 -(BOOL)isPolygon;

@@ -10,14 +10,12 @@
 
 @implementation TEPolygon
 
-@synthesize vertices, numVertices;
+@synthesize numVertices;
 
 - (id)initWithVertices:(int)num
 {
   self = [super init];
   if (self) {
-    vertexData = [NSMutableData dataWithLength:sizeof(GLKVector2)*num];
-    vertices = [vertexData mutableBytes];
     numVertices = num;
     radius = 0;
   }
@@ -25,25 +23,12 @@
   return self;
 }
 
+-(int)numVertices {
+  return numVertices;
+}
+
 -(BOOL)isPolygon {
   return YES;
-}
-
--(GLenum)renderMode {
-  return GL_TRIANGLE_FAN;
-}
-
--(void)renderInScene:(TEScene *)scene {
-  [super renderInScene:scene];
-  
-  glEnableVertexAttribArray(GLKVertexAttribPosition);
-  glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-  glDrawArrays([self renderMode], 0, [self numVertices]);
-  glDisableVertexAttribArray(GLKVertexAttribPosition);
-}
-
--(void)setRadius:(float)radius {
-  // noop
 }
 
 -(float)radius {

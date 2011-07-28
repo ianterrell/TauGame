@@ -12,6 +12,8 @@
   int numSides;
 }
 
+@property float radius;
+
 -(id)initWithSides:(int)numSides;
 
 @end

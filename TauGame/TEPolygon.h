@@ -9,17 +9,10 @@
 #import "TEShape.h"
 
 @interface TEPolygon : TEShape {
-  NSMutableData *vertexData;
-  GLKVector2 *vertices;
   int numVertices;
   float radius;
 }
 
-@property(readonly) int numVertices;
-@property(readonly) GLKVector2 *vertices;
-@property float radius;
-
 - (id)initWithVertices:(int)numVertices;
--(GLenum)renderMode;
 
 @end

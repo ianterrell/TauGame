@@ -16,18 +16,22 @@
   self = [super initWithVertices:num+2];
   if (self) {
     numSides = num;
-    self.radius = 1.0;
+    radius = 1.0;
   }
   
   return self;
 }
 
 -(void)updateVertices {
-  vertices[0] = GLKVector2Make(0,0);
+  self.vertices[0] = GLKVector2Make(0,0);
   for (int i = 0; i <= numSides; i++) {
     float theta = ((float)i) / numSides * M_TAU;
-    vertices[i+1] = GLKVector2Make(cos(theta)*radius, sin(theta)*radius);
+    self.vertices[i+1] = GLKVector2Make(cos(theta)*radius, sin(theta)*radius);
   }
+}
+
+-(float)radius {
+  return radius;
 }
 
 -(void)setRadius:(float)_radius {

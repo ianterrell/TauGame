@@ -10,11 +10,9 @@
 #import "TEShape.h"
 
 @interface TEEllipse : TEShape {
-  GLfloat radiusX, radiusY;
-  GLfloat vertices[2*TE_ELLIPSE_NUM_VERTICES];
+  float radiusX, radiusY;
 }
 
-@property GLfloat radiusX, radiusY;
-@property float radius;
+@property float radius, radiusX, radiusY;
 
 @end

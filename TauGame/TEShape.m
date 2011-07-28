@@ -30,8 +30,43 @@ static GLKBaseEffect *constantColorEffect;
   return self;
 }
 
+-(int)numVertices {
+  return 0;
+}
+
+- (GLKVector2 *)vertices {
+  if (vertexData == nil) {
+    vertexData = [NSMutableData dataWithLength:sizeof(GLKVector2)*self.numVertices];
+    vertices = [vertexData mutableBytes];
+  }
+  return vertices;
+}
+
+-(GLKVector2 *)textureCoordinates {
+  if (textureData == nil) {
+    textureData = [NSMutableData dataWithLength:sizeof(GLKVector2)*self.numVertices];
+    textureCoordinates = [textureData mutableBytes];
+  }
+  return textureCoordinates;
+}
+
+-(GLKVector4 *)colorVertices {
+  if (colorData == nil) {
+    colorData = [NSMutableData dataWithLength:sizeof(GLKVector2)*self.numVertices];
+    colorVertices = [colorData mutableBytes];
+  }
+  return colorVertices;
+}
+
+-(void)updateVertices {
+}
+
+-(GLenum)renderMode {
+  return GL_TRIANGLE_FAN;
+}
+
 -(void)renderInScene:(TEScene *)scene {
-  // Create the effect if necessary
+  // Initialize the effect if necessary
   if (effect == nil) {
     switch (renderStyle) {
       case kTERenderStyleConstantColor:
@@ -58,9 +93,11 @@ static GLKBaseEffect *constantColorEffect;
   
   // Finalize effect
   [effect prepareToDraw];
-}
-
--(void)updateVertices {
+    
+  glEnableVertexAttribArray(GLKVertexAttribPosition);
+  glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+  glDrawArrays(self.renderMode, 0, self.numVertices);
+  glDisableVertexAttribArray(GLKVertexAttribPosition);
 }
 
 -(BOOL)isPolygon {

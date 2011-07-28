@@ -22,22 +22,15 @@
   return self;
 }
 
--(void)renderInScene:(TEScene *)scene  {
-  [super renderInScene:scene];
-  
-  glEnableVertexAttribArray(GLKVertexAttribPosition);
-  glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-  glDrawArrays(GL_TRIANGLE_FAN, 0, TE_ELLIPSE_NUM_VERTICES);
-  glDisableVertexAttribArray(GLKVertexAttribPosition);
+-(int)numVertices {
+  return TE_ELLIPSE_NUM_VERTICES;
 }
 
-
 -(void)updateVertices {
-  vertices[0] = vertices[1] = 0.0;
+  self.vertices[0] = GLKVector2Make(0,0);
   for (int i = 0; i <= TE_ELLIPSE_RESOLUTION; i++) {
     float theta = ((float)i) / TE_ELLIPSE_RESOLUTION * M_TAU;
-    vertices[2+i*2] = cos(theta)*radiusX;
-    vertices[2+i*2+1] = sin(theta)*radiusY;
+    self.vertices[i+1] = GLKVector2Make(cos(theta)*radiusX, sin(theta)*radiusY);
   }
 }
 
@@ -64,8 +57,7 @@
 }
 
 -(void)setRadius:(float)radius {
-  radiusX = radius;
-  self.radiusY = radius;
+  radiusX = radiusY = radius;
 }
 
 @end

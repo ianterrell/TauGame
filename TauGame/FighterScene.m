@@ -9,8 +9,6 @@
 #import "FighterScene.h"
 #import "Fighter.h"
 
-static TENumberDisplay *scoreDisplay ;
-
 @implementation FighterScene
 
 @synthesize fighter, bullets, powerups;
@@ -32,7 +30,7 @@ static TENumberDisplay *scoreDisplay ;
     
     // Set up fighter
     fighter = [[Fighter alloc] init];
-    fighter.position = GLKVector2Make((self.topRightVisible.x - self.bottomLeftVisible.x)/2, self.bottomLeftVisible.y + 0.1);
+    fighter.position = GLKVector2Make((self.topRightVisible.x + self.bottomLeftVisible.x)/2, self.bottomLeftVisible.y + 0.1);
     [characters addObject:fighter];
     
     // Set up shooting
@@ -40,9 +38,13 @@ static TENumberDisplay *scoreDisplay ;
     [self addGestureRecognizer:tapRecognizer];
     
     // Set up score
-    scoreDisplay = [[TENumberDisplay alloc] init];
-    scoreDisplay.position = GLKVector2Make(self.bottomLeftVisible.x, self.topRightVisible.y);
-    [characters addObject:scoreDisplay];
+    scoreboard = [[TECharacter alloc] init];
+    TENumberDisplay *scoreboardDisplay = [[TENumberDisplay alloc] initWithNumDigits:8];
+    scoreboardDisplay.node = scoreboard;
+    scoreboard.drawable = scoreboardDisplay;
+    scoreboard.scale = scoreboardDisplay.width/5000;
+    scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width*scoreboard.scale/2.0, self.topRightVisible.y - scoreboardDisplay.height*scoreboard.scale/2.0);
+    [characters addObject:scoreboard];
   }
   
   return self;

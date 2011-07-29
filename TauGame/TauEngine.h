@@ -29,7 +29,6 @@
 #import "TEEllipse.h"
 
 #import "TENumberDisplay.h"
-#import "TEDigit.h"
 
 #import "TEScene.h"
 #import "TESceneController.h"

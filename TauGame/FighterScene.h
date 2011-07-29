@@ -15,6 +15,7 @@
 @interface FighterScene : TEScene {
   Fighter *fighter;
   NSMutableArray *bullets, *powerups;
+  TECharacter *scoreboard;
 
   TESoundManager *sounds;
 }

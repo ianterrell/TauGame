@@ -37,8 +37,11 @@
   [TECollisionDetector collisionsBetween:bullets andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
     bullet.remove = YES;
     [(Asteroid *)asteroid registerHit];
-    if ([(Asteroid *)asteroid dead] && [TERandom randomFraction] < POWERUP_CHANCE) {
-      [ExtraBullet addPowerupToScene:self at:asteroid.position];
+    ((TENumberDisplay *)scoreboard.drawable).number += 1;
+    if ([(Asteroid *)asteroid dead]) {
+      ((TENumberDisplay *)scoreboard.drawable).number += 10;
+      if ([TERandom randomFraction] < POWERUP_CHANCE)
+        [ExtraBullet addPowerupToScene:self at:asteroid.position];
     }
   }];
   

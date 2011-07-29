@@ -39,7 +39,6 @@
 		3C6E948913D76D53000F7988 /* bullet.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C6E948813D76D53000F7988 /* bullet.json */; };
 		3C6E948C13D771A7000F7988 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948B13D771A7000F7988 /* Bullet.m */; };
 		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
-		3C70969213E1DCCB00BF4E83 /* TEDigit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969113E1DCCB00BF4E83 /* TEDigit.m */; };
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
@@ -142,8 +141,6 @@
 		3C6E948B13D771A7000F7988 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		3C70968C13E1DBC400BF4E83 /* TENumberDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENumberDisplay.h; sourceTree = "<group>"; };
 		3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENumberDisplay.m; sourceTree = "<group>"; };
-		3C70969013E1DCCB00BF4E83 /* TEDigit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEDigit.h; sourceTree = "<group>"; };
-		3C70969113E1DCCB00BF4E83 /* TEDigit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDigit.m; sourceTree = "<group>"; };
 		3C70969313E1DD1200BF4E83 /* TEImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEImage.h; sourceTree = "<group>"; };
 		3C70969413E1DD1200BF4E83 /* TEImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEImage.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
@@ -317,7 +314,6 @@
 				3CB0488113CBD5FD0029875B /* TECharacter.m */,
 				3C138B9013CCB15A002FC701 /* TECharacterLoader.h */,
 				3C138B9113CCB15A002FC701 /* TECharacterLoader.m */,
-				3C70968F13E1DCB300BF4E83 /* Text */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -391,8 +387,6 @@
 			children = (
 				3C70968C13E1DBC400BF4E83 /* TENumberDisplay.h */,
 				3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */,
-				3C70969013E1DCCB00BF4E83 /* TEDigit.h */,
-				3C70969113E1DCCB00BF4E83 /* TEDigit.m */,
 			);
 			name = Text;
 			sourceTree = "<group>";
@@ -403,6 +397,7 @@
 				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
 				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
 				3C350E8B13E0770D002DD35E /* Shapes */,
+				3C70968F13E1DCB300BF4E83 /* Text */,
 			);
 			name = Drawables;
 			sourceTree = "<group>";
@@ -717,7 +712,6 @@
 				3C350E9A13E07B1F002DD35E /* Powerup.m in Sources */,
 				3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */,
 				3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */,
-				3C70969213E1DCCB00BF4E83 /* TEDigit.m in Sources */,
 				3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,14 +6,15 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TENode.h"
+#import "TEPolygon.h"
 
-@interface TENumberDisplay : TENode {
+@interface TENumberDisplay : TEPolygon {
   int number, numDigits, padDigit;
-  float width, height;
 }
 
-@property int number, numDigits, padDigit;
-@property float width, height;
+@property int number, numDigits;
+@property(readonly) float height, width;
+
+-(id)initWithNumDigits:(int)num;
 
 @end

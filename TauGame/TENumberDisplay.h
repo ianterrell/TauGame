@@ -10,10 +10,12 @@
 
 @interface TENumberDisplay : TEPolygon {
   int number, numDigits, padDigit;
+  float width;
 }
 
 @property int number, numDigits;
-@property(readonly) float height, width;
+@property(readonly) float height;
+@property float width;
 
 -(id)initWithNumDigits:(int)num;
 

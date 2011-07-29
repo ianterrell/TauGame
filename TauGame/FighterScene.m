@@ -41,9 +41,10 @@
     scoreboard = [[TECharacter alloc] init];
     TENumberDisplay *scoreboardDisplay = [[TENumberDisplay alloc] initWithNumDigits:8];
     scoreboardDisplay.node = scoreboard;
+    scoreboardDisplay.width = 3;
     scoreboard.drawable = scoreboardDisplay;
-    scoreboard.scale = scoreboardDisplay.width/5000;
-    scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width*scoreboard.scale/2.0, self.topRightVisible.y - scoreboardDisplay.height*scoreboard.scale/2.0);
+    NSLog(@"width %f height %f", scoreboardDisplay.width, scoreboardDisplay.height);
+    scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width/2.0, self.topRightVisible.y - scoreboardDisplay.height/2.0);
     [characters addObject:scoreboard];
   }
   

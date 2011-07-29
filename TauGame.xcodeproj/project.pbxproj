@@ -40,6 +40,7 @@
 		3C6E948C13D771A7000F7988 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948B13D771A7000F7988 /* Bullet.m */; };
 		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
+		3C7096A313E35E6E00BF4E83 /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A213E35E6E00BF4E83 /* Starfield.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
@@ -143,6 +144,8 @@
 		3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENumberDisplay.m; sourceTree = "<group>"; };
 		3C70969313E1DD1200BF4E83 /* TEImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEImage.h; sourceTree = "<group>"; };
 		3C70969413E1DD1200BF4E83 /* TEImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEImage.m; sourceTree = "<group>"; };
+		3C7096A113E35E6D00BF4E83 /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starfield.h; sourceTree = "<group>"; };
+		3C7096A213E35E6E00BF4E83 /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starfield.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
@@ -425,6 +428,8 @@
 				3C01190613D86090004808DA /* Baddie.m */,
 				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
 				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
+				3C7096A113E35E6D00BF4E83 /* Starfield.h */,
+				3C7096A213E35E6E00BF4E83 /* Starfield.m */,
 				3C350E9E13E07B38002DD35E /* Powerups */,
 			);
 			name = Characters;
@@ -713,6 +718,7 @@
 				3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */,
 				3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */,
 				3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */,
+				3C7096A313E35E6E00BF4E83 /* Starfield.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "FighterScene.h"
 #import "Fighter.h"
+#import "Starfield.h"
 
 @implementation FighterScene
 
@@ -23,6 +24,9 @@
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
+    
+    // Set up starfield
+    //Does not work on device! :( [characters addObject:[[Starfield alloc] initInScene:self]];
     
     // Set up our special character arrays for collision detection
     bullets = [[NSMutableArray alloc] initWithCapacity:20];
@@ -43,7 +47,6 @@
     scoreboardDisplay.node = scoreboard;
     scoreboardDisplay.width = 3;
     scoreboard.drawable = scoreboardDisplay;
-    NSLog(@"width %f height %f", scoreboardDisplay.width, scoreboardDisplay.height);
     scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width/2.0, self.topRightVisible.y - scoreboardDisplay.height/2.0);
     [characters addObject:scoreboard];
   }

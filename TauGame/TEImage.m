@@ -10,9 +10,11 @@
 
 @implementation TEImage
 
-+(UIImage *)imageFromText:(NSString *)text
-{
-  UIFont *font = [UIFont systemFontOfSize:20.0];
++(UIImage *)imageFromText:(NSString *)text {
+  return [self imageFromText:text withFont:[UIFont systemFontOfSize:20.0]];
+}
+
++(UIImage *)imageFromText:(NSString *)text withFont:(UIFont *)font {
   CGSize size  = [text sizeWithFont:font];
   
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -20,7 +22,7 @@
                                                     size.width, size.height,
                                                     8, 4*size.width,
                                                     colorSpace,
-                                                    kCGImageAlphaPremultipliedFirst
+                                                    /* kCGBitmapByteOrder32Host for after beta5 */ kCGImageAlphaPremultipliedFirst
                                                     );
   CGColorSpaceRelease(colorSpace);
   UIGraphicsPushContext(contextRef);

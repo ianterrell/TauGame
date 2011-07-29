@@ -163,7 +163,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-  return (interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+  return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 #pragma mark - Paging Controls

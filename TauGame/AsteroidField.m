@@ -40,6 +40,19 @@
     ((TENumberDisplay *)scoreboard.drawable).number += 1;
     if ([(Asteroid *)asteroid dead]) {
       ((TENumberDisplay *)scoreboard.drawable).number += 10;
+      
+      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+      scaleAnimation.scale = 1.2;
+      scaleAnimation.duration = 0.2;
+      scaleAnimation.reverse = YES;
+      [scoreboard.currentAnimations addObject:scaleAnimation];
+      
+      TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+      translateAnimation.translation = GLKVector2Make((((TENumberDisplay *)scoreboard.drawable).width*1.2-((TENumberDisplay *)scoreboard.drawable).width)/2, -1*(((TENumberDisplay *)scoreboard.drawable).height*1.2-((TENumberDisplay *)scoreboard.drawable).height)/2);
+      translateAnimation.duration = 0.2;
+      translateAnimation.reverse = YES;
+      [scoreboard.currentAnimations addObject:translateAnimation];
+      
       if ([TERandom randomFraction] < POWERUP_CHANCE)
         [ExtraBullet addPowerupToScene:self at:asteroid.position];
     }

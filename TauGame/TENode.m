@@ -58,8 +58,8 @@
   [self updatePosition:dt inScene:scene];
   
   // Update animations
-  NSMutableArray *removed = [[NSMutableArray alloc] init];
   [self traverseUsingBlock:^(TENode *node) {
+    NSMutableArray *removed = [[NSMutableArray alloc] init];
     // Remove animations that are done
     [node.currentAnimations filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TEAnimation *animation, NSDictionary *bindings) {
       if (animation.remove) {
@@ -68,13 +68,18 @@
       } else
         return YES;
     }]];
+    
+    for (TEAnimation *animation in removed) {
+      if (animation.next != nil)
+        [node.currentAnimations addObject:animation.next];
+      if (animation.onRemoval != nil)
+        animation.onRemoval();
+    }
+    
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {
       [((TEAnimation *)animation) incrementElapsedTime:dt];
     }];
   }];
-  for (TEAnimation *animation in removed)
-    if (animation.onRemoval != nil)
-      animation.onRemoval();
 }
 
 # pragma mark Motion Methods

@@ -10,13 +10,15 @@
 
 @implementation TEAnimation
 
-@synthesize node, elapsedTime, duration, repeat, easing, remove, onRemoval;
+@synthesize node, next, elapsedTime, duration, repeat, easing, remove, reverse, onRemoval;
 
 - (id)init
 {
   self = [super init];
   if (self) {
     easing = TEAnimationEasingLinear;
+    forward = YES;
+    reverse = NO;
     elapsedTime = 0.0;
   }
   
@@ -34,7 +36,7 @@
 }
 
 -(float)percentDone {
-  return elapsedTime/duration;
+  return forward ? elapsedTime/duration : 1.0 - elapsedTime/duration;
 }
 
 -(float)easingFactor {
@@ -49,7 +51,10 @@
 -(void)incrementElapsedTime:(double)time {
   elapsedTime += time;
   if (elapsedTime >= duration) {
-    if (repeat > 0 || repeat == TEAnimationRepeatForever) {
+    if (forward && reverse) {
+      elapsedTime -= duration;
+      forward = NO;
+    } else if (repeat > 0 || repeat == TEAnimationRepeatForever) {
       elapsedTime -= duration;
       if (repeat > 0)
         repeat -= 1;

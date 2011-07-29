@@ -76,6 +76,7 @@
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
   highlight.color = GLKVector4Make(1, 0, 0, 1);
   highlight.duration = 0.1;
+  highlight.reverse = YES;
   [self.currentAnimations addObject:highlight];
 }
 

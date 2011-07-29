@@ -21,15 +21,18 @@ typedef enum {
   TEAnimationEasingType easing;
   double elapsedTime, duration;
   int repeat;
-  BOOL remove;
+  BOOL remove, reverse, forward;
   void (^onRemoval)(void);
+  
+  TEAnimation *next;
 }
 
 @property(strong) TENode *node;
+@property(strong) TEAnimation *next;
 @property TEAnimationEasingType easing;
 @property double elapsedTime, duration;
 @property int repeat;
-@property BOOL remove;
+@property BOOL remove, reverse;
 @property(nonatomic,copy) void (^onRemoval)(void);
 
 @property(readonly) float percentDone;

@@ -7,6 +7,50 @@
       "vertex1": [-0.5, 0.0],
       "vertex2": [0.5, 0.0],
       "color": [1.0,1.0,1.0,1.0]
+    },
+    "children": {
+      "cockpict": {
+        "translation": [0.0,0.35],
+        "scale": 0.5,
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 1.0],
+          "vertex1": [-0.5, 0.0],
+          "vertex2": [0.5, 0.0],
+          "color0": [1.0,0.867,0.459,1.0],
+          "color1": [0.961,0.722,0.0,1.0],
+          "color2": [0.961,0.722,0.0,1.0],
+        },
+      },
+      "health balls": {
+        "translation": [0.0,0.15],
+        "scale": 0.1,
+        "children": {
+          "health0": {
+            "translation": [-2.5,0.0],
+            "shape": {
+              "geometry": "hexagon",
+              "radius": 1.0,
+              "color": [0.188,0.761,0.0,1.0]
+            }
+          },
+          "health1": {
+            "shape": {
+              "geometry": "hexagon",
+              "radius": 1.0,
+              "color": [0.188,0.761,0.0,1.0]
+            }
+          },
+          "health2": {
+            "translation": [2.5,0.0],
+            "shape": {
+              "geometry": "hexagon",
+              "radius": 1.0,
+              "color": [0.188,0.761,0.0,1.0]
+            }
+          },
+        }
+      }
     }
   }
 }

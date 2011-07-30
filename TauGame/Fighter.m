@@ -19,11 +19,16 @@
 #define ACCELEROMETER_SENSITIVITY 35
 #define TURN_FACTOR 5
 
+static GLKVector4 healthyColor, unhealthyColor;
+
 @implementation Fighter
 
 +(void)initialize {
   [[TESoundManager sharedManager] load:@"fighter-hurt"];
   [[TESoundManager sharedManager] load:@"shoot"];
+  
+  healthyColor = GLKVector4Make(0.188,0.761,0.0,1.0);
+  unhealthyColor = GLKVector4Make(0.9,0.9,0.9,1.0);
 }
 
 - (id)init
@@ -31,6 +36,10 @@
   self = [super init];
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"fighter"];
+    
+    // Set up health
+    health = maxHealth = 9;
+    healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
     numBullets = 1;
@@ -81,6 +90,30 @@
   highlight.duration = 0.1;
   highlight.reverse = YES;
   [self.currentAnimations addObject:highlight];
+  
+  [self decrementHealth:1];
+}
+
+-(void)setHealth:(int)_health {
+  health = _health;
+  
+  // for testing
+  if (health < 0)
+    health = maxHealth;
+  
+  for (int i = 0; i < 3; i++) {
+    float factor = MAX(0,MIN(1,(float)(health - i*maxHealth/3)/(maxHealth/3)));
+    GLKVector4 newColor = GLKVector4Add(unhealthyColor,GLKVector4MultiplyScalar(GLKVector4Subtract(healthyColor, unhealthyColor), factor));
+    ((TENode *)[healthShapes objectAtIndex:i]).shape.color = newColor;
+  }
+}
+
+-(void)decrementHealth:(int)amount {
+  [self setHealth:health-amount];
+}
+
+-(void)incrementHealth:(int)amount {
+  [self setHealth:health+amount];
 }
 
 -(void)getPowerup:(Powerup *)powerup {

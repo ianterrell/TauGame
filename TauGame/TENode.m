@@ -196,6 +196,26 @@
   [self.children makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:block];
 }
 
+-(TENode *)childNamed:(NSString *)nodeName {
+  __block TENode *namedNode;
+  [self traverseUsingBlock:^(TENode *node) {
+    if ([node.name isEqualToString:nodeName]) {
+      namedNode = node;
+      return;
+    }
+  }];
+  return namedNode;
+}
+
+-(NSArray *)childrenNamed:(NSArray *)nodeNames {
+  NSMutableArray *namedChildren = [NSMutableArray arrayWithArray:nodeNames];
+  [self traverseUsingBlock:^(TENode *node) {
+    if ([nodeNames containsObject:node.name])
+      [namedChildren replaceObjectAtIndex:[namedChildren indexOfObject:node.name] withObject:node];
+  }];
+  return namedChildren;
+}
+
 
 # pragma mark Callbacks
 

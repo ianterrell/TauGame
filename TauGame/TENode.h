@@ -66,6 +66,8 @@
 
 -(void)addChild:(TENode *)child;
 -(void)traverseUsingBlock:(void (^)(TENode *))block;
+-(TENode *)childNamed:(NSString *)name;
+-(NSArray *)childrenNamed:(NSArray *)names;
 
 # pragma mark Callbacks
 

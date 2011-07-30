@@ -62,7 +62,7 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
 
     self.drawable = polygon;
     self.scale = [TERandom randomFractionFrom:0.25 to:1.25];
-    self.angularVelocity = [TERandom randomFraction]*M_TAU;
+    self.angularVelocity = [TERandom randomFractionFrom:-1 to:1]*M_TAU;
     self.velocity = GLKVector2Make(0, [TERandom randomFractionFrom:-3.0 to:-1.0]);
     
     hitPoints = self.scale * ASTEROID_HP_FACTOR;

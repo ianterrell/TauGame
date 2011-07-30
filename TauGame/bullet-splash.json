@@ -1,0 +1,51 @@
+{
+  "splash": {
+    "children": {
+      "splash0": {
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 0.1],
+          "vertex1": [-0.05, 0.0],
+          "vertex2": [0.05, 0.0],
+          "color": [1.0,1.0,1.0,1.0]
+        }
+      },
+      "splash1": {
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 0.1],
+          "vertex1": [-0.05, 0.0],
+          "vertex2": [0.05, 0.0],
+          "color": [1.0,1.0,1.0,1.0]
+        }
+      },
+      "splash2": {
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 0.1],
+          "vertex1": [-0.05, 0.0],
+          "vertex2": [0.05, 0.0],
+          "color": [1.0,1.0,1.0,1.0]
+        }
+      },
+      "splash3": {
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 0.1],
+          "vertex1": [-0.05, 0.0],
+          "vertex2": [0.05, 0.0],
+          "color": [1.0,1.0,1.0,1.0]
+        }
+      },
+      "splash4": {
+        "shape": {
+          "geometry": "triangle",
+          "vertex0": [0.0, 0.1],
+          "vertex1": [-0.05, 0.0],
+          "vertex2": [0.05, 0.0],
+          "color": [1.0,1.0,1.0,1.0]
+        }
+      }
+    }
+  }
+}

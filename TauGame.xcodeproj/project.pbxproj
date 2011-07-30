@@ -15,6 +15,8 @@
 		3C138B9313CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
+		3C20D40E13E3ACDF00A90FEB /* bullet-splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */; };
+		3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41113E3AD4C00A90FEB /* BulletSplash.m */; };
 		3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -111,6 +113,9 @@
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
 		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
+		3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bullet-splash.json"; sourceTree = "<group>"; };
+		3C20D41013E3AD4C00A90FEB /* BulletSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletSplash.h; sourceTree = "<group>"; };
+		3C20D41113E3AD4C00A90FEB /* BulletSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletSplash.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -258,6 +263,7 @@
 				3C6E948813D76D53000F7988 /* bullet.json */,
 				3C01190313D85DDF004808DA /* baddie.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
+				3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -429,6 +435,8 @@
 				3C8A282713D70B4200BB0011 /* Fighter.m */,
 				3C6E948A13D771A7000F7988 /* Bullet.h */,
 				3C6E948B13D771A7000F7988 /* Bullet.m */,
+				3C20D41013E3AD4C00A90FEB /* BulletSplash.h */,
+				3C20D41113E3AD4C00A90FEB /* BulletSplash.m */,
 				3C01190513D86090004808DA /* Baddie.h */,
 				3C01190613D86090004808DA /* Baddie.m */,
 				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
@@ -647,6 +655,7 @@
 				3C32D06B13DF956F0084582B /* fighter-hurt.wav in Resources */,
 				3C350E9413E079A6002DD35E /* extra-bullet-powerup.json in Resources */,
 				3C350EA013E07B88002DD35E /* powerup.wav in Resources */,
+				3C20D40E13E3ACDF00A90FEB /* bullet-splash.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +734,7 @@
 				3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */,
 				3C7096A313E35E6E00BF4E83 /* Starfield.m in Sources */,
 				3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */,
+				3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

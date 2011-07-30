@@ -9,6 +9,7 @@
 #import "AsteroidField.h"
 #import "Fighter.h"
 #import "ExtraBullet.h"
+#import "BulletSplash.h"
 
 #define POWERUP_CHANCE 0.1
 
@@ -36,6 +37,10 @@
   // Detect collisions with bullets :)
   [TECollisionDetector collisionsBetween:bullets andNodes:asteroids maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
     bullet.remove = YES;
+    BulletSplash *splash = [[BulletSplash alloc] init];
+    splash.position = bullet.position;
+    [self.characters addObject:splash];
+    
     [(Asteroid *)asteroid registerHit];
     ((TENumberDisplay *)scoreboard.drawable).number += 1;
     if ([(Asteroid *)asteroid dead]) {

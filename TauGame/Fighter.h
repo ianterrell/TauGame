@@ -13,6 +13,7 @@
 @interface Fighter : TECharacter {
   int numBullets;
   int spreadAmount;
+  float yRotation;
 }
 
 -(void)shootInScene:(FighterScene *)scene;

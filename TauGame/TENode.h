@@ -36,6 +36,7 @@
 @property GLKVector2 position, velocity, acceleration;
 @property float scale;
 @property float rotation, angularVelocity, angularAcceleration;
+
 @property(strong, nonatomic) NSMutableArray *currentAnimations;
 @property BOOL dirtyFullModelViewMatrix; // can be marked by parents
 
@@ -82,5 +83,7 @@
 
 -(GLKMatrix4)modelViewMatrix;
 -(void)markModelViewMatrixDirty;
+-(BOOL)hasCustomTransformation;
+-(GLKMatrix4)customTransformation;
 
 @end

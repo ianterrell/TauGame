@@ -17,6 +17,7 @@
 
 #define MAX_VELOCITY 10
 #define ACCELEROMETER_SENSITIVITY 35
+#define TURN_FACTOR 5
 
 @implementation Fighter
 
@@ -36,6 +37,7 @@
     spreadAmount = 0;
     
     self.maxVelocity = MAX_VELOCITY;
+    yRotation = 0.0;
   }
   
   return self;
@@ -46,6 +48,7 @@
   [self wraparoundXInScene:scene];
   
   self.velocity = GLKVector2Make(ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
+  yRotation = MIN(1,MAX(-1,self.velocity.x / TURN_FACTOR)) * 1.0/6*M_TAU;
 }
 
 -(void)shootInScene:(FighterScene *)scene {
@@ -88,6 +91,14 @@
   
   if (numBullets == MAX_BULLETS && spreadAmount < 2)
     spreadAmount++;
+}
+
+-(BOOL)hasCustomTransformation {
+  return YES;
+}
+
+-(GLKMatrix4)customTransformation {
+  return GLKMatrix4MakeYRotation(yRotation);
 }
 
 @end

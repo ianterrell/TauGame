@@ -233,6 +233,8 @@
     
     cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
     cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation));
+    if ([self hasCustomTransformation])
+      cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, [self customTransformation]);
     
     dirtyObjectModelViewMatrix = [currentAnimations count] > 0;
     dirtyFullModelViewMatrix = YES;
@@ -259,6 +261,14 @@
     node.dirtyFullModelViewMatrix = YES;
   }];
   self.dirtyFullModelViewMatrix = tmpSelfValue;
+}
+
+-(BOOL)hasCustomTransformation {
+  return NO;
+}
+
+-(GLKMatrix4)customTransformation {
+  return GLKMatrix4Identity;
 }
 
 @end

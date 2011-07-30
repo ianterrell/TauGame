@@ -14,6 +14,8 @@
 
 static GLKVector4 colors[NUM_ASTEROID_COLORS];
 
+NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification";
+
 @implementation Asteroid
 
 +(void)initialize {
@@ -74,10 +76,6 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   [self removeOutOfScene:scene buffer:2.0];
 }
 
--(void)onRemovalFromScene:(TEScene *)scene {
-  [((AsteroidField *)scene).asteroids removeObject:self];
-}
-
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"hurt"];
   
@@ -94,6 +92,11 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
 }
 
 -(void)die {
+  [self postNotification:AsteroidDestroyedNotification];
+  [self explode];
+}
+
+-(void)explode {
   __block BOOL setRemovedCallback = NO;
   [self traverseUsingBlock:^(TENode *node){
     if (node != self) {

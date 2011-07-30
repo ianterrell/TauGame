@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
+#import "TENode.h"
 
 @interface TEScene : GLKView <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
@@ -45,5 +46,9 @@
 -(void)render;
 -(void)markChildrensFullMatricesDirty;
 -(GLKMatrix4)projectionMatrix;
+
+# pragma mark Scene Updating
+
+-(void)nodeRemoved:(TENode *)node;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface BulletSplash : TECharacter
 
+-(id)initWithPosition:(GLKVector2)position;
+
 @end

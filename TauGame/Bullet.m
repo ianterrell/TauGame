@@ -30,8 +30,4 @@
   [self removeOutOfScene:scene buffer:1.0];
 }
 
--(void)onRemovalFromScene:(TEScene *)scene {
-  [((BaddieField *)scene).bullets removeObject:self];
-}
-
 @end

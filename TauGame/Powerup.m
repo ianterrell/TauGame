@@ -33,10 +33,6 @@
   [self removeOutOfScene:scene buffer:2.0];
 }
 
--(void)onRemovalFromScene:(TEScene *)scene {
-  [((FighterScene *)scene).powerups removeObject:self];
-}
-
 -(void)die {
   self.collide = NO;
   TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];

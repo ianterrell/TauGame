@@ -199,7 +199,13 @@
 
 # pragma mark Callbacks
 
--(void)onRemovalFromScene:(TEScene *)scene {
+-(void)onRemoval {
+}
+
+# pragma mark Communicating with outside world
+
+-(void)postNotification:(NSString *)notificationName {
+  [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
 }
 
 # pragma mark - Drawable Methods

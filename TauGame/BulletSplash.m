@@ -11,7 +11,7 @@
 
 @implementation BulletSplash
 
-- (id)init
+-(id)initWithPosition:(GLKVector2)_position
 {
   self = [super init];
   if (self) {
@@ -30,6 +30,8 @@
         setRemovedCallback = YES;
       }
       [child.currentAnimations addObject:translateAnimation];
+      
+      self.position = _position;
     }
   }
 

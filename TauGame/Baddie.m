@@ -28,10 +28,11 @@
   [self wraparoundInScene:scene];
 }
 
--(void)onRemovalFromScene:(TEScene *)scene {
-  [((BaddieField *)scene).ships removeObject:self];
-  [(BaddieField *)scene addRandomBaddie];
-}
+// TODO update baddie field whenever it gets done
+//-(void)onRemovalFromScene:(TEScene *)scene {
+//  [((BaddieField *)scene).ships removeObject:self];
+//  [(BaddieField *)scene addRandomBaddie];
+//}
 
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"hurt"];

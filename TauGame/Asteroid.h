@@ -8,12 +8,15 @@
 
 #import "TauEngine.h"
 
+extern NSString *const AsteroidDestroyedNotification;// = @"asteroidDiedNotification";
+
 @interface Asteroid : TECharacter {
   int hitPoints;
 }
 
 -(void)registerHit;
 -(void)die;
+-(void)explode;
 -(BOOL)dead;
 
 @end

@@ -22,6 +22,9 @@
   self = [super init];
   if (self) {
     asteroids = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    // Set up notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(asteroidDestroyed:) name:AsteroidDestroyedNotification object:nil];
   }
   
   return self;
@@ -37,36 +40,16 @@
   // Detect collisions with bullets :)
   [TECollisionDetector collisionsBetween:bullets andNodes:asteroids maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
     bullet.remove = YES;
-    BulletSplash *splash = [[BulletSplash alloc] init];
-    splash.position = bullet.position;
-    [self.characters addObject:splash];
+    [self.characters addObject:[[BulletSplash alloc] initWithPosition:bullet.position]];
     
     [(Asteroid *)asteroid registerHit];
-    ((TENumberDisplay *)scoreboard.drawable).number += 1;
-    if ([(Asteroid *)asteroid dead]) {
-      ((TENumberDisplay *)scoreboard.drawable).number += 10;
-      
-      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-      scaleAnimation.scale = 1.2;
-      scaleAnimation.duration = 0.2;
-      scaleAnimation.reverse = YES;
-      [scoreboard.currentAnimations addObject:scaleAnimation];
-      
-      TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
-      translateAnimation.translation = GLKVector2Make((((TENumberDisplay *)scoreboard.drawable).width*1.2-((TENumberDisplay *)scoreboard.drawable).width)/2, -1*(((TENumberDisplay *)scoreboard.drawable).height*1.2-((TENumberDisplay *)scoreboard.drawable).height)/2);
-      translateAnimation.duration = 0.2;
-      translateAnimation.reverse = YES;
-      [scoreboard.currentAnimations addObject:translateAnimation];
-      
-      if ([TERandom randomFraction] < POWERUP_CHANCE)
-        [ExtraBullet addPowerupToScene:self at:asteroid.position];
-    }
+    [self incrementScore:1];
   }];
   
   // Detect collisions with ship :(
   [TECollisionDetector collisionsBetweenNode:fighter andNodes:asteroids maxPerNode:1 withBlock:^(TENode *ship, TENode *asteroid) {
     [(Fighter *)fighter registerHit];
-    [(Asteroid *)asteroid die];
+    [(Asteroid *)asteroid explode];
   }];
   
   // Detect powerup collisions
@@ -83,6 +66,20 @@
   [asteroids addObject:asteroid];
 }
 
+-(void)asteroidDestroyed:(NSNotification *)notification {
+  Asteroid *asteroid = notification.object;
+
+  [self incrementScoreWithPulse:10];
+  
+  if ([TERandom randomFraction] < POWERUP_CHANCE)
+    [ExtraBullet addPowerupToScene:self at:asteroid.position];
+}
+
+-(void)nodeRemoved:(TENode *)node {
+  [super nodeRemoved:node];
+  if ([node isKindOfClass:[Asteroid class]])
+    [asteroids removeObject:node];
+}
 
 @end
 

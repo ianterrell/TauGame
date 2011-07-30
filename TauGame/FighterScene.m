@@ -62,4 +62,31 @@
   [fighter shootInScene:self];
 }
 
+-(void)incrementScore:(int)score {
+  ((TENumberDisplay *)scoreboard.drawable).number += score;
+}
+
+-(void)incrementScoreWithPulse:(int)score {
+  [self incrementScore:score];
+  
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+  scaleAnimation.scale = 1.2;
+  scaleAnimation.duration = 0.2;
+  scaleAnimation.reverse = YES;
+  [scoreboard.currentAnimations addObject:scaleAnimation];
+  
+  TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+  translateAnimation.translation = GLKVector2Make((((TENumberDisplay *)scoreboard.drawable).width*1.2-((TENumberDisplay *)scoreboard.drawable).width)/2, -1*(((TENumberDisplay *)scoreboard.drawable).height*1.2-((TENumberDisplay *)scoreboard.drawable).height)/2);
+  translateAnimation.duration = 0.2;
+  translateAnimation.reverse = YES;
+  [scoreboard.currentAnimations addObject:translateAnimation];
+}
+
+-(void)nodeRemoved:(TENode *)node {
+  if ([node isKindOfClass:[Bullet class]])
+    [bullets removeObject:node];
+  else if ([node isKindOfClass:[Powerup class]])
+    [powerups removeObject:node];
+}
+
 @end

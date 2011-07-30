@@ -67,7 +67,12 @@
 -(void)traverseUsingBlock:(void (^)(TENode *))block;
 
 # pragma mark Callbacks
--(void)onRemovalFromScene:(TEScene *)scene;
+
+-(void)onRemoval;
+
+# pragma mark Communicating with outside world
+
+-(void)postNotification:(NSString *)notificationName;
 
 # pragma mark Rendering
 

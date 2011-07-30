@@ -47,8 +47,10 @@
     } else
       return YES;
   }]];
-  for (TECharacter *character in removed)
-    [character onRemovalFromScene:self];
+  for (TECharacter *character in removed) {
+    [self nodeRemoved:character];
+    [character onRemoval];
+  }
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
@@ -149,5 +151,11 @@
   }
   return cachedProjectionMatrix;
 }
+
+# pragma mark Scene Updating
+
+-(void)nodeRemoved:(TENode *)node {
+}
+
 
 @end

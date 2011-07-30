@@ -23,4 +23,7 @@
 @property(strong) Fighter *fighter;
 @property(strong) NSMutableArray *bullets, *powerups;
 
+-(void)incrementScore:(int)score;
+-(void)incrementScoreWithPulse:(int)score;
+
 @end

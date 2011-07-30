@@ -20,6 +20,8 @@ typedef struct {
   float max;
 } ProjectionRange;
 
+static int edgeTestCount = 0;
+
 @implementation TECollisionDetector
 
 #pragma mark - Object to World Coordinate Transformation
@@ -73,6 +75,7 @@ typedef struct {
 }
 
 +(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnEdge:(GLKVector2)edge {
+  edgeTestCount++;
   ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:edge];
   ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:edge];
   
@@ -82,13 +85,37 @@ typedef struct {
     return poly1Projection.min <= poly2Projection.max;
 }
 
-+(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnPolygonsEdges:(TEPolygon *)poly {
-  for (int i = 0; i < poly.numVertices; i++) {
-    GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[i] ending:poly.vertices[(i+1)%poly.numVertices]];
-    if (![self polygon:poly1 andPolygon:poly2 intersectOnEdge:perpendicularEdge])
-      return NO;
++(BOOL)testedEdge:(GLKVector2)edge alreadyTested:(GLKVector2[])edges numTested:(int)n {
+  for (int i = 0; i < n; i++)
+    if (GLKVector2AllEqualToVector2(edges[i],GLKVector2Negate(edge)) || GLKVector2AllEqualToVector2(edges[i],edge))
+      return YES;
+  return NO;
+}
+
++(BOOL)intersectOnEdgesPolygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 {
+  GLKVector2 testedEdges[poly1.numVertices + poly2.numVertices];
+  int testedCount = 0;
+  
+  for (int i = 0; i < 2; i++) {
+    TEPolygon *poly = i == 0 ? poly1 : poly2;
+    
+    for (int j = 0; j < poly.numVertices; j++) {
+      GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[j] ending:poly.vertices[(j+1)%poly.numVertices]];
+      
+      if ([self testedEdge:perpendicularEdge alreadyTested:testedEdges numTested:testedCount])
+        continue;
+      
+      if (![self polygon:poly1 andPolygon:poly2 intersectOnEdge:perpendicularEdge])
+        return NO;
+      else
+        testedEdges[testedCount++] = perpendicularEdge;
+    }
   }
   return YES;
+}
+
++(void)displayCount {
+  NSLog(@"Tested %d edges", edgeTestCount);
 }
 
 +(BOOL)polygon:(TENode *)node1 collidesWithPolygon:(TENode *)node2 {
@@ -106,12 +133,7 @@ typedef struct {
     poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.drawable).vertices[i] fromShape:((TEPolygon *)node2.drawable)];
   
   // Test by separating axis theorem
-  if (![self polygon:poly1 andPolygon:poly2 intersectOnPolygonsEdges:poly1])
-    return NO;
-  if (![self polygon:poly1 andPolygon:poly2 intersectOnPolygonsEdges:poly2])
-    return NO;
-  
-  return YES;
+  return [self intersectOnEdgesPolygon:poly2 andPolygon:poly2];
 }
 
 # pragma mark - Collision detection between nodes

@@ -44,6 +44,16 @@ static int count = 0;
   return [self nodeWithShape:@selector(triangleShape)];
 }
 
++(TEShape *)squareShape {
+  TERectangle *square = [[TERectangle alloc] init];
+  square.width = square.height = 1.0;
+  return square;
+}
+
++(TENode *)squareNode {
+  return [self nodeWithShape:@selector(squareShape)];
+}
+
 +(void)testNode:(TENode *)node1 collidingWithNode:(TENode *)node2 recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight desired:(BOOL)desired label:(NSString *)label {
   count++;
   if ([TECollisionDetector node:node1 collidesWithNode:node2 recurseLeft:recurseLeft recurseRight:recurseRight] == desired)
@@ -138,6 +148,26 @@ static int count = 0;
   
   triangle1.position = GLKVector2Make(5,0);
   [self node:triangle1 shouldNotCollideWith:triangle2 label:@"Triangles not touching"];
+  
+  //////
+  ///// Squares
+  ////
+  
+  TENode *square1 = [self squareNode];
+  TENode *square2 = [self squareNode];
+  
+  [self node:square1 shouldCollideWith:square2 label:@"Squares overlapping completely"];
+  
+  square1.position = GLKVector2Make(0.5,0);
+  [self node:square1 shouldCollideWith:square2 label:@"Squares overlapping some"];
+  
+  square1.position = GLKVector2Make(1.0,0);
+  [self node:square1 shouldCollideWith:square2 label:@"Squares touching"];
+  
+  square1.position = GLKVector2Make(5,0);
+  [self node:square1 shouldNotCollideWith:square2 label:@"Squares not touching"];
+  
+  [TECollisionDetector displayCount];
 }
 
 @end

@@ -166,8 +166,6 @@ static int count = 0;
   
   square1.position = GLKVector2Make(5,0);
   [self node:square1 shouldNotCollideWith:square2 label:@"Squares not touching"];
-  
-  [TECollisionDetector displayCount];
 }
 
 @end

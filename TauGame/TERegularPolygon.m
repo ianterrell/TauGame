@@ -22,6 +22,14 @@
   return self;
 }
 
+-(int)numEdges {
+  return numVertices-2;
+}
+
+-(int)edgeVerticesOffset {
+  return 1;
+}
+
 -(void)updateVertices {
   self.vertices[0] = GLKVector2Make(0,0);
   for (int i = 0; i <= numSides; i++) {

@@ -20,8 +20,6 @@ typedef struct {
   float max;
 } ProjectionRange;
 
-static int edgeTestCount = 0;
-
 @implementation TECollisionDetector
 
 #pragma mark - Object to World Coordinate Transformation
@@ -75,7 +73,6 @@ static int edgeTestCount = 0;
 }
 
 +(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnEdge:(GLKVector2)edge {
-  edgeTestCount++;
   ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:edge];
   ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:edge];
   
@@ -92,19 +89,13 @@ static int edgeTestCount = 0;
   return NO;
 }
 
-+(BOOL)intersectOnEdgesPolygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 {
-  GLKVector2 testedEdges[poly1.numVertices + poly2.numVertices];
-  int testedCount = 0;
-  
-  for (int i = 0; i < 2; i++) {
-    TEPolygon *poly = i == 0 ? poly1 : poly2;
++(BOOL)intersectOnEdgesOf:(TEPolygon *)poly first:(TEPolygon *)poly1 second:(TEPolygon*)poly2 {
+  GLKVector2 testedEdges[poly.numVertices];
+  int testedCount = 0;    
+  for (int j = 0; j < poly.numEdges; j++) {
+    GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[j+poly.edgeVerticesOffset] ending:poly.vertices[(j+1+poly.edgeVerticesOffset)%poly.numEdges]];
     
-    for (int j = 0; j < poly.numVertices; j++) {
-      GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[j] ending:poly.vertices[(j+1)%poly.numVertices]];
-      
-      if ([self testedEdge:perpendicularEdge alreadyTested:testedEdges numTested:testedCount])
-        continue;
-      
+    if (![self testedEdge:perpendicularEdge alreadyTested:testedEdges numTested:testedCount]) {      
       if (![self polygon:poly1 andPolygon:poly2 intersectOnEdge:perpendicularEdge])
         return NO;
       else
@@ -112,10 +103,6 @@ static int edgeTestCount = 0;
     }
   }
   return YES;
-}
-
-+(void)displayCount {
-  NSLog(@"Tested %d edges", edgeTestCount);
 }
 
 +(BOOL)polygon:(TENode *)node1 collidesWithPolygon:(TENode *)node2 {
@@ -133,7 +120,12 @@ static int edgeTestCount = 0;
     poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.drawable).vertices[i] fromShape:((TEPolygon *)node2.drawable)];
   
   // Test by separating axis theorem
-  return [self intersectOnEdgesPolygon:poly2 andPolygon:poly2];
+  // TODO: Why can't I combine these into one method call?
+  if (![self intersectOnEdgesOf:poly1 first:poly1 second:poly2])
+    return NO;
+  if (![self intersectOnEdgesOf:poly2 first:poly1 second:poly2])
+    return NO;
+  return YES;
 }
 
 # pragma mark - Collision detection between nodes

@@ -17,8 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [TECollisionDetectorTest test];
-  
   [[TauEngine motionManager] startAccelerometerUpdates];
   
   sceneController = [TESceneController sharedController];

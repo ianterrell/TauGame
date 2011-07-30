@@ -27,6 +27,14 @@
   return numVertices;
 }
 
+-(int)numEdges {
+  return numVertices;
+}
+
+-(int)edgeVerticesOffset {
+  return 0;
+}
+
 -(BOOL)isPolygon {
   return YES;
 }

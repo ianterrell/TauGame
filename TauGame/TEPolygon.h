@@ -15,4 +15,8 @@
 
 - (id)initWithVertices:(int)numVertices;
 
+-(int)numEdges;
+-(int)edgeVerticesOffset;
+
+
 @end

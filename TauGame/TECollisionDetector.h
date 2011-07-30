@@ -10,7 +10,7 @@
 #import "TauEngine.h"
 
 @interface TECollisionDetector : NSObject
-+(void)displayCount;
+
 # pragma mark - Collision detection between nodes
 
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2;

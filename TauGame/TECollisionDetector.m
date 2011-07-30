@@ -54,10 +54,6 @@ typedef struct {
   return GLKVector2Normalize(GLKVector2Make(-edge.y,edge.x));
 }
 
-+(GLKVector2)axisPerpendicularToEdgeStarting:(GLKVector2)start ending:(GLKVector2)end {
-  return [self axisPerpendicularToEdge:GLKVector2Subtract(end, start)];
-}
-
 +(ProjectionRange)polygon:(TEPolygon *)poly projectedOnto:(GLKVector2)axis {
   ProjectionRange range;
   range.min = INFINITY;
@@ -72,9 +68,9 @@ typedef struct {
   return range;
 }
 
-+(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnEdge:(GLKVector2)edge {
-  ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:edge];
-  ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:edge];
++(BOOL)polygon:(TEPolygon *)poly1 andPolygon:(TEPolygon *)poly2 intersectOnAxis:(GLKVector2)axis {
+  ProjectionRange poly1Projection = [self polygon:poly1 projectedOnto:axis];
+  ProjectionRange poly2Projection = [self polygon:poly2 projectedOnto:axis];
   
   if (poly1Projection.min <= poly2Projection.min)
     return poly2Projection.min <= poly1Projection.max;
@@ -89,17 +85,21 @@ typedef struct {
   return NO;
 }
 
-+(BOOL)intersectOnEdgesOf:(TEPolygon *)poly first:(TEPolygon *)poly1 second:(TEPolygon*)poly2 {
-  GLKVector2 testedEdges[poly.numVertices];
-  int testedCount = 0;    
-  for (int j = 0; j < poly.numEdges; j++) {
-    GLKVector2 perpendicularEdge = [self axisPerpendicularToEdgeStarting:poly.vertices[j+poly.edgeVerticesOffset] ending:poly.vertices[(j+1+poly.edgeVerticesOffset)%poly.numEdges]];
-    
-    if (![self testedEdge:perpendicularEdge alreadyTested:testedEdges numTested:testedCount]) {      
-      if (![self polygon:poly1 andPolygon:poly2 intersectOnEdge:perpendicularEdge])
-        return NO;
-      else
-        testedEdges[testedCount++] = perpendicularEdge;
++(BOOL)intersectOnEdgesFirst:(TEPolygon *)poly1 second:(TEPolygon*)poly2 {
+  GLKVector2 testedEdges[poly1.numEdges+poly2.numEdges];
+  int testedCount = 0;
+  for (int i = 0; i<2; i++){
+    TEPolygon *poly = i == 0 ? poly1 : poly2;
+    for (int j = 0; j < poly.numEdges; j++) {
+      GLKVector2 edge = GLKVector2Subtract(poly.vertices[(j+1+poly.edgeVerticesOffset)%poly.numEdges], poly.vertices[j+poly.edgeVerticesOffset]);
+      GLKVector2 perpendicularAxis = [self axisPerpendicularToEdge:edge];
+
+      if (![self testedEdge:perpendicularAxis alreadyTested:testedEdges numTested:testedCount]) {      
+        if (![self polygon:poly1 andPolygon:poly2 intersectOnAxis:perpendicularAxis])
+          return NO;
+        else
+          testedEdges[testedCount++] = edge;
+      }
     }
   }
   return YES;
@@ -120,12 +120,7 @@ typedef struct {
     poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.drawable).vertices[i] fromShape:((TEPolygon *)node2.drawable)];
   
   // Test by separating axis theorem
-  // TODO: Why can't I combine these into one method call?
-  if (![self intersectOnEdgesOf:poly1 first:poly1 second:poly2])
-    return NO;
-  if (![self intersectOnEdgesOf:poly2 first:poly1 second:poly2])
-    return NO;
-  return YES;
+  return [self intersectOnEdgesFirst:poly1 second:poly2];
 }
 
 # pragma mark - Collision detection between nodes

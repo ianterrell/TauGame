@@ -16,7 +16,7 @@
   self = [super initWithVertices:num+2];
   if (self) {
     numSides = num;
-    radius = 1.0;
+    self.radius = 1.0;
   }
   
   return self;

@@ -11,7 +11,8 @@
 typedef enum {
   kTERenderStyleConstantColor,
   kTERenderStyleVertexColors,
-  kTERenderStyleTexture
+  kTERenderStyleTexture,
+  kTERenderStyleNone
 } TERenderStyle;
 
 @interface TEShape : TEDrawable {

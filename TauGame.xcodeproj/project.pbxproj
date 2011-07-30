@@ -41,6 +41,7 @@
 		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
 		3C7096A313E35E6E00BF4E83 /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A213E35E6E00BF4E83 /* Starfield.m */; };
+		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
 		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
@@ -146,6 +147,8 @@
 		3C70969413E1DD1200BF4E83 /* TEImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEImage.m; sourceTree = "<group>"; };
 		3C7096A113E35E6D00BF4E83 /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starfield.h; sourceTree = "<group>"; };
 		3C7096A213E35E6E00BF4E83 /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starfield.m; sourceTree = "<group>"; };
+		3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandomPolygon.h; sourceTree = "<group>"; };
+		3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandomPolygon.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				3CB0487E13CBD5F20029875B /* TERectangle.m */,
 				3C350E8513E07622002DD35E /* TERegularPolygon.h */,
 				3C350E8613E07622002DD35E /* TERegularPolygon.m */,
+				3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */,
+				3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */,
 				3C350E8113E07316002DD35E /* TEHexagon.h */,
 				3C350E8213E07316002DD35E /* TEHexagon.m */,
 				3C350E8813E07701002DD35E /* TEHeptagon.h */,
@@ -719,6 +724,7 @@
 				3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */,
 				3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */,
 				3C7096A313E35E6E00BF4E83 /* Starfield.m in Sources */,
+				3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

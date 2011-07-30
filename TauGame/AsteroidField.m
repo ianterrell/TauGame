@@ -34,7 +34,7 @@
   }
   
   // Detect collisions with bullets :)
-  [TECollisionDetector collisionsBetween:bullets andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
+  [TECollisionDetector collisionsBetween:bullets andNodes:asteroids maxPerNode:1 withBlock:^(TENode *bullet, TENode *asteroid) {
     bullet.remove = YES;
     [(Asteroid *)asteroid registerHit];
     ((TENumberDisplay *)scoreboard.drawable).number += 1;
@@ -59,7 +59,7 @@
   }];
   
   // Detect collisions with ship :(
-  [TECollisionDetector collisionsBetweenNode:fighter andNodes:asteroids recurseLeft:NO recurseRight:YES maxPerNode:1 withBlock:^(TENode *ship, TENode *asteroid) {
+  [TECollisionDetector collisionsBetweenNode:fighter andNodes:asteroids maxPerNode:1 withBlock:^(TENode *ship, TENode *asteroid) {
     [(Fighter *)fighter registerHit];
     [(Asteroid *)asteroid die];
   }];

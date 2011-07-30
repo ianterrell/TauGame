@@ -69,6 +69,9 @@ static GLKBaseEffect *constantColorEffect;
 }
 
 -(void)renderInScene:(TEScene *)scene {
+  if (renderStyle == kTERenderStyleNone)
+    return;
+  
   // Initialize the effect if necessary
   if (effect == nil) {
     switch (renderStyle) {

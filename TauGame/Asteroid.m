@@ -29,35 +29,36 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   self = [super init];
   
   if (self) {
-    GLKVector4 centralColor = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
     self.collide = YES;
     
-    for (int i = 0; i < [TERandom randomFrom:2 to:6]; i++) {
+    TERandomPolygon *polygon = [[TERandomPolygon alloc] initWithSides:[TERandom randomFrom:5 to:9] lowerFactor:0.5 upperFactor:1.5];
+    for (int i = 0; i < polygon.numSides+2; i++)
+      polygon.colorVertices[i] = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
+    polygon.renderStyle = kTERenderStyleVertexColors;
+    polygon.node = self;
+    
+    for (int i = 0; i < polygon.numSides; i++) {
       TENode *triangleNode = [[TENode alloc] init];
       
       // Set up shape
       TETriangle *triangleShape = [[TETriangle alloc] init];
-      triangleShape.vertices[0] = GLKVector2Make(0, [TERandom randomFractionFrom:0.5 to:1.5]);
-      triangleShape.vertices[1] = GLKVector2Make([TERandom randomFractionFrom:-1.5 to:-0.5], 0);
-      triangleShape.vertices[2] = GLKVector2Make([TERandom randomFractionFrom:0.5 to:1.5], 0);
+      triangleShape.vertices[0] = polygon.vertices[0];
+      triangleShape.vertices[1] = polygon.vertices[i+1];
+      triangleShape.vertices[2] = polygon.vertices[i+2 > polygon.numSides ? 1 : i+2];
       
-      triangleShape.renderStyle = kTERenderStyleVertexColors;
-      triangleShape.colorVertices[0] = centralColor;
-      triangleShape.colorVertices[1] = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
-      triangleShape.colorVertices[2] = centralColor;
-      
+      triangleShape.renderStyle = kTERenderStyleNone;
+      triangleShape.colorVertices[0] = polygon.colorVertices[0];
+      triangleShape.colorVertices[1] = polygon.colorVertices[i+1];
+      triangleShape.colorVertices[2] = polygon.colorVertices[i+2 > polygon.numSides ? 1 : i+2];
       
       triangleShape.node = triangleNode;
-      
-      // Set up node
       triangleNode.drawable = triangleShape;
       triangleNode.parent = self;
-      triangleNode.rotation = [TERandom randomFraction]*M_TAU;
-      triangleNode.collide = YES;
       
       [self.children addObject:triangleNode];
     }
-    
+
+    self.drawable = polygon;
     self.scale = [TERandom randomFractionFrom:0.25 to:1.25];
     self.angularVelocity = [TERandom randomFraction]*M_TAU;
     self.velocity = GLKVector2Make(0, [TERandom randomFractionFrom:-3.0 to:-1.0]);
@@ -93,31 +94,39 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
 }
 
 -(void)die {
+  __block BOOL setRemovedCallback = NO;
   [self traverseUsingBlock:^(TENode *node){
-    node.collide = NO;
-    
     if (node != self) {
+      node.shape.renderStyle = kTERenderStyleVertexColors;
       TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
       rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
       rotateAnimation.duration = 0.5;
       [node.currentAnimations addObject:rotateAnimation];
       
       TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
-      translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-5 to:5], [TERandom randomFractionFrom:-5 to:5]);
+      translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-2 to:2], [TERandom randomFractionFrom:-2 to:2]);
       translateAnimation.duration = 0.5;
       [node.currentAnimations addObject:translateAnimation];
+      
+      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+      scaleAnimation.scale = 0.0;
+      scaleAnimation.duration = 0.5;
+      if (!setRemovedCallback) {
+        scaleAnimation.onRemoval= ^(){
+          self.remove = YES;
+        };
+        setRemovedCallback = YES;
+      }
+      [node.currentAnimations addObject:scaleAnimation];
       
       [node markModelViewMatrixDirty];
     }
   }];
   
-  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-  scaleAnimation.scale = 0.0;
-  scaleAnimation.duration = 0.5;
-  scaleAnimation.onRemoval= ^(){
-    self.remove = YES;
-  };
-  [self.currentAnimations addObject:scaleAnimation];
+  self.collide = NO;
+  self.shape.renderStyle = kTERenderStyleNone;
+  self.angularVelocity = 0;
+  self.velocity = GLKVector2Make(0,0);
 }
 
 -(BOOL)dead {

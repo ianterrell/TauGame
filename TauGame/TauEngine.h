@@ -27,6 +27,8 @@
 #import "TEHexagon.h"
 #import "TEHeptagon.h"
 #import "TEEllipse.h"
+#import "TERegularPolygon.h"
+#import "TERandomPolygon.h"
 
 #import "TENumberDisplay.h"
 

@@ -79,12 +79,12 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"hurt"];
   
-  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
-  highlight.color = GLKVector4Make(1, 1, 1, 1);
-  highlight.duration = 0.1;
-  [self traverseUsingBlock:^(TENode *node){
-    [node.currentAnimations addObject:highlight];
-  }];
+  TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
+  for (int i = 0; i < self.shape.numVertices; i++)
+    highlight.toColorVertices[i] = GLKVector4Make(1, 1, 1, 1);
+  highlight.duration = 0.2;
+  highlight.backward = YES;
+  [self.currentAnimations addObject:highlight];
   
   hitPoints--;
   if ([self dead])

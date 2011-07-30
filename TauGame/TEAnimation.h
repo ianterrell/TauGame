@@ -32,7 +32,7 @@ typedef enum {
 @property TEAnimationEasingType easing;
 @property double elapsedTime, duration;
 @property int repeat;
-@property BOOL remove, reverse;
+@property BOOL remove, reverse, backward;
 @property(nonatomic,copy) void (^onRemoval)(void);
 
 @property(readonly) float percentDone;

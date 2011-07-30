@@ -14,7 +14,7 @@ static GLKBaseEffect *constantColorEffect;
 
 @implementation TEShape
 
-@synthesize effect, renderStyle, color;
+@synthesize effect, renderStyle, color, colorData;
 
 +(void)initialize {
   defaultEffect = [[GLKBaseEffect alloc] init];
@@ -72,6 +72,8 @@ static GLKBaseEffect *constantColorEffect;
   if (renderStyle == kTERenderStyleNone)
     return;
   
+  __block GLKVector4 *displayColorVertices;
+  
   // Initialize the effect if necessary
   if (effect == nil) {
     switch (renderStyle) {
@@ -98,6 +100,14 @@ static GLKBaseEffect *constantColorEffect;
         effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
       }
     }];
+  } else if (renderStyle == kTERenderStyleVertexColors) {
+    displayColorVertices = colorVertices;
+    [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
+      if ([animation isKindOfClass:[TEVertexColorAnimation class]]) {
+        TEVertexColorAnimation *colorAnimation = (TEVertexColorAnimation *)animation;
+        displayColorVertices = colorAnimation.easedColorVertices;
+      }
+    }];
   }
   
   // Finalize effect
@@ -108,7 +118,7 @@ static GLKBaseEffect *constantColorEffect;
   
   if (renderStyle == kTERenderStyleVertexColors) {
     glEnableVertexAttribArray(GLKVertexAttribColor);
-    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colorVertices);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, displayColorVertices);
   } else if (renderStyle == kTERenderStyleTexture) {
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, textureCoordinates);

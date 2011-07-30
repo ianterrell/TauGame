@@ -27,7 +27,7 @@
 
 -(id)initWithNode:(TENode *)_node
 {
-  self = [super init];
+  self = [self init];
   if (self) {
     self.node = _node;
   }
@@ -62,6 +62,14 @@
       remove = YES;
     }
   }
+}
+
+-(BOOL)backward {
+  return !forward;
+}
+
+-(void)setBackward:(BOOL)backward {
+  forward = !backward;
 }
 
 @end

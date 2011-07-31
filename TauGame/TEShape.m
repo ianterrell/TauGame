@@ -113,6 +113,10 @@ static GLKBaseEffect *constantColorEffect;
   // Finalize effect
   [effect prepareToDraw];
   
+  // Set up transparency
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  
   glEnableVertexAttribArray(GLKVertexAttribPosition);
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
   
@@ -132,6 +136,8 @@ static GLKBaseEffect *constantColorEffect;
     glDisableVertexAttribArray(GLKVertexAttribColor);
   else if (renderStyle == kTERenderStyleTexture)
     glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
+  
+  glDisable(GL_BLEND);
 }
 
 -(BOOL)isPolygon {

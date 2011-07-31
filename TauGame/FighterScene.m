@@ -8,7 +8,7 @@
 
 #import "FighterScene.h"
 #import "Fighter.h"
-#import "Starfield.h"
+#import "Background.h"
 
 @implementation FighterScene
 
@@ -24,9 +24,7 @@
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
-    
-    // Set up starfield
-    //Does not work on device! :( [characters addObject:[[Starfield alloc] initInScene:self]];
+    [characters addObject:[[Background alloc] initInScene:self]];
     
     // Set up our special character arrays for collision detection
     bullets = [[NSMutableArray alloc] initWithCapacity:20];

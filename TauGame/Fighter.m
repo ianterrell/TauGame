@@ -84,14 +84,25 @@ static GLKVector4 healthyColor, unhealthyColor;
 
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"fighter-hurt"];
+  [self decrementHealth:1];
+  
+  collide = NO;
+  
+  TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:self];
+  transparent.color = GLKVector4Make(1, 1, 1, 0.6);
+  transparent.duration = 0.25;
+  transparent.reverse = YES;
+  transparent.repeat = 1;
+  transparent.onRemoval = ^(){
+    collide = YES;
+  };
   
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
   highlight.color = GLKVector4Make(1, 0, 0, 1);
   highlight.duration = 0.1;
   highlight.reverse = YES;
+  highlight.next = transparent;
   [self.currentAnimations addObject:highlight];
-  
-  [self decrementHealth:1];
 }
 
 -(void)setHealth:(int)_health {

@@ -53,8 +53,9 @@
   if (elapsedTime >= duration) {
     if (forward && reverse) {
       elapsedTime -= duration;
-      forward = NO;
+      forward = !forward;
     } else if (repeat > 0 || repeat == TEAnimationRepeatForever) {
+      forward = !forward;
       elapsedTime -= duration;
       if (repeat > 0)
         repeat -= 1;

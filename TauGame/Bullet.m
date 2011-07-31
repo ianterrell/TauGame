@@ -14,6 +14,7 @@
 
 +(void)initialize {
   [[TESoundManager sharedManager] load:@"hurt"];
+  [[TESoundManager sharedManager] load:@"hurt2"];
 }
 
 - (id)init {

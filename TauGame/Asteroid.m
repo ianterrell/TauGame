@@ -24,6 +24,8 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
   colors[i++] = GLKVector4Make(0.557, 0.686, 0.820, 1);
   colors[i++] = GLKVector4Make(0.631, 0.745, 0.902, 1);
   colors[i++] = GLKVector4Make(0.824, 0.894, 0.988, 1);
+  
+  [[TESoundManager sharedManager] load:@"explosion"];
 }
 
 - (id)init
@@ -77,7 +79,7 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
 }
 
 -(void)registerHit {
-  [[TESoundManager sharedManager] play:@"hurt"];
+  [[TESoundManager sharedManager] play:@"hurt2"];
   
   TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
   for (int i = 0; i < self.shape.numVertices; i++)
@@ -93,6 +95,7 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
 
 -(void)die {
   [self postNotification:AsteroidDestroyedNotification];
+  [[TESoundManager sharedManager] play:@"explosion"];
   [self explode];
 }
 

@@ -130,6 +130,7 @@ typedef struct {
     return [self polygon:node1 collidesWithPolygon:node2];
   } else if (type == TECollisionTypePolygonCircle) {
     NSLog(@"Polygon/Circle collision detection not yet implemented");
+    // TODO! http://stackoverflow.com/questions/1073336/circle-line-collision-detection
     return NO;
   } else {
     return [self circle:node1 collidesWithCircle:node2];

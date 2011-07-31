@@ -20,6 +20,8 @@ extern NSString *const FighterDiedNotification;// = @"FighterDiedNotification";
   int numBullets;
   int spreadAmount;
   float yRotation;
+  
+  TENode *body;
 }
 
 @property int lives;

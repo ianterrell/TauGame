@@ -52,6 +52,10 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
     numBullets = 1;
     spreadAmount = 0;
     
+    // Root body is for collision only
+    self.shape.renderStyle = kTERenderStyleNone;
+    body = [self childNamed:@"body double"];
+    
     paused = NO;
     
     self.maxVelocity = MAX_VELOCITY;
@@ -133,13 +137,7 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
   transparent.onRemoval = ^(){
     collide = YES;
   };
-  
-  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
-  highlight.color = GLKVector4Make(1, 0, 0, 1);
-  highlight.duration = 0.1;
-  highlight.reverse = YES;
-  highlight.next = transparent;
-  [self.currentAnimations addObject:highlight];
+  [body.currentAnimations addObject:transparent];  
 }
 
 -(void)explode {
@@ -153,39 +151,41 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
   
   __block BOOL setCallback = NO;
   [self traverseUsingBlock:^(TENode *node){
-    TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
-    rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
-    rotateAnimation.duration = 1.5;
-    rotateAnimation.reverse = resurrect;
-    [node.currentAnimations addObject:rotateAnimation];
+    if (node != self) {
+      TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+      rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
+      rotateAnimation.duration = 1.5;
+      rotateAnimation.reverse = resurrect;
+      [node.currentAnimations addObject:rotateAnimation];
     
-    TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
-    translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:0 to:3]);
-    translateAnimation.duration = 1.5;
-    translateAnimation.reverse = resurrect;
-    [node.currentAnimations addObject:translateAnimation];
-    
-    TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-    scaleAnimation.scale = 0.0;
-    scaleAnimation.duration = 1.5;
-    scaleAnimation.reverse = resurrect;
-    
-    if (!setCallback) {
-      scaleAnimation.onRemoval= ^(){
-        if (resurrect) {
-          collide = YES;
-          paused = NO;
-          [self setHealth:maxHealth];
-          [self makeTemporarilyInvincible];
-        }
-        else
-          remove = YES;
-      };
-      setCallback = YES;
+      TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+      translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:0 to:3]);
+      translateAnimation.duration = 1.5;
+      translateAnimation.reverse = resurrect;
+      [node.currentAnimations addObject:translateAnimation];
+      
+      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+      scaleAnimation.scale = 0.0;
+      scaleAnimation.duration = 1.5;
+      scaleAnimation.reverse = resurrect;
+      
+      if (!setCallback) {
+        scaleAnimation.onRemoval= ^(){
+          if (resurrect) {
+            collide = YES;
+            paused = NO;
+            [self setHealth:maxHealth];
+            [self makeTemporarilyInvincible];
+          }
+          else
+            remove = YES;
+        };
+        setCallback = YES;
+      }
+      
+      [node.currentAnimations addObject:scaleAnimation];
+      [node markModelViewMatrixDirty];
     }
-    
-    [node.currentAnimations addObject:scaleAnimation];
-    [node markModelViewMatrixDirty];
   }];
 }
 
@@ -196,6 +196,11 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
   if ([self dead]) {
     [self explode];
   } else {
+    TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
+    highlight.color = GLKVector4Make(1, 0, 0, 1);
+    highlight.duration = 0.1;
+    highlight.reverse = YES;
+    [body.currentAnimations addObject:highlight];
     [self makeTemporarilyInvincible];
   }
 }

@@ -45,7 +45,15 @@
 }
 
 -(void)showMainMenuController {
-  self.window.rootViewController = mainMenuController;
+  mainMenuController.view.alpha = 0.0;
+  [UIView animateWithDuration:2.0 animations:^(void) {
+    sceneController.view.alpha = 0.0;
+  } completion:^(BOOL finished) {
+    self.window.rootViewController = mainMenuController;
+    [UIView animateWithDuration:1.0 animations:^(void) {
+      mainMenuController.view.alpha = 1.0;
+    }];
+  }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

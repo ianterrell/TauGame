@@ -6,8 +6,10 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "TauGameAppDelegate.h"
 #import "FighterScene.h"
 #import "Fighter.h"
+#import "FighterLife.h"
 #import "Background.h"
 
 @implementation FighterScene
@@ -24,7 +26,7 @@
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
-    [characters addObject:[[Background alloc] initInScene:self]];
+    [characters insertObject:[[Background alloc] initInScene:self] atIndex:0];
     
     // Set up our special character arrays for collision detection
     bullets = [[NSMutableArray alloc] initWithCapacity:20];
@@ -34,6 +36,19 @@
     fighter = [[Fighter alloc] init];
     fighter.position = GLKVector2Make((self.topRightVisible.x + self.bottomLeftVisible.x)/2, self.bottomLeftVisible.y + 0.1);
     [characters addObject:fighter];
+    
+    // Set up lives display
+    lives = [[NSMutableArray alloc] initWithCapacity:fighter.lives];
+    for (int i = 0; i < fighter.lives-1; i++) {
+      FighterLife *life = [[FighterLife alloc] init];
+      life.scale = 0.5;
+      life.position = GLKVector2Make(self.topRightVisible.x - life.shape.radius/2 - i*life.shape.radius*0.85, self.topRightVisible.y - life.shape.radius/2 - 0.05);
+      [lives addObject:life];
+      [characters addObject:life];
+    }
+    
+    // Set up notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:nil];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
@@ -78,6 +93,32 @@
   translateAnimation.duration = 0.2;
   translateAnimation.reverse = YES;
   [scoreboard.currentAnimations addObject:translateAnimation];
+}
+
+-(void)fighterDied:(NSNotification *)notification {
+  FighterLife *life = [lives lastObject];
+  [lives removeLastObject];
+  
+  if (life == nil) {
+    // TODO: game over screen, etc
+    [((TauGameAppDelegate*)[UIApplication sharedApplication].delegate) showMainMenuController];
+  } else {
+    TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+    scaleAnimation.scale = 0;
+    scaleAnimation.duration = 0.1;
+    scaleAnimation.onRemoval = ^(){
+      life.remove = YES;
+    };
+    
+    TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:life];
+    transparent.color = GLKVector4Make(1, 1, 1, 0.5);
+    transparent.duration = 0.25;
+    transparent.reverse = YES;
+    transparent.repeat = 2;
+    transparent.next = scaleAnimation;
+    
+    [life.currentAnimations addObject:transparent];
+  }
 }
 
 -(void)nodeRemoved:(TENode *)node {

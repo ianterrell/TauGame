@@ -62,7 +62,7 @@
 -(void)newAsteroid {
   Asteroid *asteroid = [[Asteroid alloc] init];
   asteroid.position = GLKVector2Make([TERandom randomFractionFrom:self.bottomLeftVisible.x to:self.topRightVisible.x], self.topRightVisible.y);
-  [characters addObject:asteroid];
+  [characters insertObject:asteroid atIndex:1];
   [asteroids addObject:asteroid];
 }
 

@@ -21,7 +21,11 @@
 
 static GLKVector4 healthyColor, unhealthyColor;
 
+NSString *const FighterDiedNotification = @"FighterDiedNotification";
+
 @implementation Fighter
+
+@synthesize lives;
 
 +(void)initialize {
   [[TESoundManager sharedManager] load:@"fighter-hurt"];
@@ -68,6 +72,9 @@ static GLKVector4 healthyColor, unhealthyColor;
 }
 
 -(void)shootInScene:(FighterScene *)scene {
+  if ([self dead])
+    return;
+  
   [[TESoundManager sharedManager] play:@"shoot"];
   int middle = numBullets / 2;
   for (int i = 0; i < numBullets; i++) {
@@ -115,10 +122,32 @@ static GLKVector4 healthyColor, unhealthyColor;
   [self setHealth:health+amount];
 }
 
+-(void)makeTemporarilyInvincible {
+  collide = NO;
+  
+  TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:self];
+  transparent.color = GLKVector4Make(1, 1, 1, 0.6);
+  transparent.duration = 0.25;
+  transparent.reverse = YES;
+  transparent.repeat = 1;
+  transparent.onRemoval = ^(){
+    collide = YES;
+  };
+  
+  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
+  highlight.color = GLKVector4Make(1, 0, 0, 1);
+  highlight.duration = 0.1;
+  highlight.reverse = YES;
+  highlight.next = transparent;
+  [self.currentAnimations addObject:highlight];
+}
+
 -(void)explode {
   lives--;
+  [self postNotification:FighterDiedNotification];
   BOOL resurrect = ![self gameOver];
   
+  self.velocity = GLKVector2Make(0,0);
   collide = NO;
   paused = YES;
   
@@ -131,7 +160,7 @@ static GLKVector4 healthyColor, unhealthyColor;
     [node.currentAnimations addObject:rotateAnimation];
     
     TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
-    translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:-3 to:3]);
+    translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:0 to:3]);
     translateAnimation.duration = 1.5;
     translateAnimation.reverse = resurrect;
     [node.currentAnimations addObject:translateAnimation];
@@ -147,6 +176,7 @@ static GLKVector4 healthyColor, unhealthyColor;
           collide = YES;
           paused = NO;
           [self setHealth:maxHealth];
+          [self makeTemporarilyInvincible];
         }
         else
           remove = YES;
@@ -166,23 +196,7 @@ static GLKVector4 healthyColor, unhealthyColor;
   if ([self dead]) {
     [self explode];
   } else {
-    collide = NO;
-    
-    TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:self];
-    transparent.color = GLKVector4Make(1, 1, 1, 0.6);
-    transparent.duration = 0.25;
-    transparent.reverse = YES;
-    transparent.repeat = 1;
-    transparent.onRemoval = ^(){
-      collide = YES;
-    };
-    
-    TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
-    highlight.color = GLKVector4Make(1, 0, 0, 1);
-    highlight.duration = 0.1;
-    highlight.reverse = YES;
-    highlight.next = transparent;
-    [self.currentAnimations addObject:highlight];
+    [self makeTemporarilyInvincible];
   }
 }
 

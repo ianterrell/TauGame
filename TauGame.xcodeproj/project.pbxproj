@@ -21,6 +21,8 @@
 		3C20D41A13E4EAB700A90FEB /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D41913E4EAB700A90FEB /* explosion.wav */; };
 		3C20D41C13E4EB1F00A90FEB /* hurt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D41B13E4EB1F00A90FEB /* hurt2.wav */; };
 		3C20D41F13E6003100A90FEB /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41E13E6002F00A90FEB /* Background.m */; };
+		3C20D42213E6162600A90FEB /* FighterLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D42113E6162500A90FEB /* FighterLife.m */; };
+		3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D42313E6164F00A90FEB /* fighter-life.json */; };
 		3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -125,6 +127,9 @@
 		3C20D41B13E4EB1F00A90FEB /* hurt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt2.wav; sourceTree = "<group>"; };
 		3C20D41D13E6002E00A90FEB /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		3C20D41E13E6002F00A90FEB /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		3C20D42013E6162400A90FEB /* FighterLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FighterLife.h; sourceTree = "<group>"; };
+		3C20D42113E6162500A90FEB /* FighterLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FighterLife.m; sourceTree = "<group>"; };
+		3C20D42313E6164F00A90FEB /* fighter-life.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "fighter-life.json"; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -271,6 +276,7 @@
 				3C01190313D85DDF004808DA /* baddie.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
 				3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */,
+				3C20D42313E6164F00A90FEB /* fighter-life.json */,
 			);
 			name = "Character Files";
 			sourceTree = "<group>";
@@ -452,6 +458,8 @@
 				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
 				3C20D41E13E6002F00A90FEB /* Background.m */,
 				3C20D41D13E6002E00A90FEB /* Background.h */,
+				3C20D42013E6162400A90FEB /* FighterLife.h */,
+				3C20D42113E6162500A90FEB /* FighterLife.m */,
 				3C350E9E13E07B38002DD35E /* Powerups */,
 			);
 			name = Characters;
@@ -669,6 +677,7 @@
 				3C20D40E13E3ACDF00A90FEB /* bullet-splash.json in Resources */,
 				3C20D41A13E4EAB700A90FEB /* explosion.wav in Resources */,
 				3C20D41C13E4EB1F00A90FEB /* hurt2.wav in Resources */,
+				3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +758,7 @@
 				3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */,
 				3C20D41513E443A400A90FEB /* TEVertexColorAnimation.m in Sources */,
 				3C20D41F13E6003100A90FEB /* Background.m in Sources */,
+				3C20D42213E6162600A90FEB /* FighterLife.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

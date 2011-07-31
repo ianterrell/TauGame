@@ -11,13 +11,17 @@
 #import "Powerup.h"
 
 @interface Fighter : TECharacter {
-  int health, maxHealth;
+  BOOL paused;
+  int health, maxHealth, lives;
   NSArray *healthShapes;
   
   int numBullets;
   int spreadAmount;
   float yRotation;
 }
+
+-(BOOL)dead;
+-(BOOL)gameOver;
 
 -(void)shootInScene:(FighterScene *)scene;
 -(void)registerHit;

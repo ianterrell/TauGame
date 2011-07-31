@@ -37,13 +37,18 @@ static GLKVector4 healthyColor, unhealthyColor;
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"fighter"];
     
+    // Set up lives
+    lives = 3;
+    
     // Set up health
-    health = maxHealth = 9;
+    health = maxHealth = 3;
     healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
     numBullets = 1;
     spreadAmount = 0;
+    
+    paused = NO;
     
     self.maxVelocity = MAX_VELOCITY;
     yRotation = 0.0;
@@ -56,8 +61,10 @@ static GLKVector4 healthyColor, unhealthyColor;
   [super update:dt inScene:scene];
   [self wraparoundXInScene:scene];
   
-  self.velocity = GLKVector2Make(ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
-  yRotation = MIN(1,MAX(-1,self.velocity.x / TURN_FACTOR)) * 1.0/6*M_TAU;
+  if (!paused) {
+    self.velocity = GLKVector2Make(ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
+    yRotation = MIN(1,MAX(-1,self.velocity.x / TURN_FACTOR)) * 1.0/6*M_TAU;
+  }
 }
 
 -(void)shootInScene:(FighterScene *)scene {
@@ -82,35 +89,16 @@ static GLKVector4 healthyColor, unhealthyColor;
   }
 }
 
--(void)registerHit {
-  [[TESoundManager sharedManager] play:@"fighter-hurt"];
-  [self decrementHealth:1];
-  
-  collide = NO;
-  
-  TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:self];
-  transparent.color = GLKVector4Make(1, 1, 1, 0.6);
-  transparent.duration = 0.25;
-  transparent.reverse = YES;
-  transparent.repeat = 1;
-  transparent.onRemoval = ^(){
-    collide = YES;
-  };
-  
-  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
-  highlight.color = GLKVector4Make(1, 0, 0, 1);
-  highlight.duration = 0.1;
-  highlight.reverse = YES;
-  highlight.next = transparent;
-  [self.currentAnimations addObject:highlight];
+-(BOOL)dead {
+  return health <= 0;
+}
+
+-(BOOL)gameOver {
+  return [self dead] && lives <= 0;
 }
 
 -(void)setHealth:(int)_health {
   health = _health;
-  
-  // for testing
-  if (health < 0)
-    health = maxHealth;
   
   for (int i = 0; i < 3; i++) {
     float factor = MAX(0,MIN(1,(float)(health - i*maxHealth/3)/(maxHealth/3)));
@@ -126,6 +114,78 @@ static GLKVector4 healthyColor, unhealthyColor;
 -(void)incrementHealth:(int)amount {
   [self setHealth:health+amount];
 }
+
+-(void)explode {
+  lives--;
+  BOOL resurrect = ![self gameOver];
+  
+  collide = NO;
+  paused = YES;
+  
+  __block BOOL setCallback = NO;
+  [self traverseUsingBlock:^(TENode *node){
+    TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+    rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
+    rotateAnimation.duration = 1.5;
+    rotateAnimation.reverse = resurrect;
+    [node.currentAnimations addObject:rotateAnimation];
+    
+    TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+    translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:-3 to:3]);
+    translateAnimation.duration = 1.5;
+    translateAnimation.reverse = resurrect;
+    [node.currentAnimations addObject:translateAnimation];
+    
+    TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+    scaleAnimation.scale = 0.0;
+    scaleAnimation.duration = 1.5;
+    scaleAnimation.reverse = resurrect;
+    
+    if (!setCallback) {
+      scaleAnimation.onRemoval= ^(){
+        if (resurrect) {
+          collide = YES;
+          paused = NO;
+          [self setHealth:maxHealth];
+        }
+        else
+          remove = YES;
+      };
+      setCallback = YES;
+    }
+    
+    [node.currentAnimations addObject:scaleAnimation];
+    [node markModelViewMatrixDirty];
+  }];
+}
+
+-(void)registerHit {
+  [[TESoundManager sharedManager] play:@"fighter-hurt"];
+  [self decrementHealth:1];
+  
+  if ([self dead]) {
+    [self explode];
+  } else {
+    collide = NO;
+    
+    TEColorAnimation *transparent = [[TEColorAnimation alloc] initWithNode:self];
+    transparent.color = GLKVector4Make(1, 1, 1, 0.6);
+    transparent.duration = 0.25;
+    transparent.reverse = YES;
+    transparent.repeat = 1;
+    transparent.onRemoval = ^(){
+      collide = YES;
+    };
+    
+    TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
+    highlight.color = GLKVector4Make(1, 0, 0, 1);
+    highlight.duration = 0.1;
+    highlight.reverse = YES;
+    highlight.next = transparent;
+    [self.currentAnimations addObject:highlight];
+  }
+}
+
 
 -(void)getPowerup:(Powerup *)powerup {
   [[TESoundManager sharedManager] play:@"powerup"];

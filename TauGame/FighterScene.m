@@ -128,4 +128,8 @@
     [powerups removeObject:node];
 }
 
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:nil];
+}
+
 @end

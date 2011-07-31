@@ -17,6 +17,7 @@
 
 @property(strong, readonly) EAGLContext *context;
 @property(strong, readonly) TEScene *currentScene;
+@property(strong, readonly) NSMutableDictionary *scenes;
 
 # pragma mark The Controller
 

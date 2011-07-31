@@ -19,10 +19,6 @@
 {
   [[TauEngine motionManager] startAccelerometerUpdates];
   
-  sceneController = [TESceneController sharedController];
-  [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
-  [sceneController displayScene:@"baddies"];
-  
   mainMenuController = [[MainMenuViewController alloc] initWithNibName:nil bundle:nil];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -33,7 +29,12 @@
 }
 
 -(void)showSceneController {
-  sceneController.view.alpha = 0.0;
+  sceneController = [TESceneController sharedController];
+  [sceneController.scenes removeObjectForKey:@"baddies"];
+  [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
+  [sceneController displayScene:@"baddies"];
+  
+   sceneController.view.alpha = 0.0;
   [UIView animateWithDuration:2.0 animations:^(void) {
     mainMenuController.view.alpha = 0.0;
   } completion:^(BOOL finished) {

@@ -10,7 +10,7 @@
 
 @implementation TESceneController
 
-@synthesize context, currentScene;
+@synthesize context, currentScene, scenes;
 
 - (id)init
 {

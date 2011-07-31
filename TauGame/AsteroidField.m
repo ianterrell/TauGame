@@ -81,5 +81,9 @@
     [asteroids removeObject:node];
 }
 
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:AsteroidDestroyedNotification object:nil];
+}
+
 @end
 

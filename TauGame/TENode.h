@@ -16,7 +16,7 @@
   
   GLKVector2 position, velocity, acceleration;
   float rotation, angularVelocity, angularAcceleration;
-  float scale;
+  float scaleX, scaleY;
   
   float maxVelocity, maxAcceleration;
   float maxAngularVelocity, maxAngularAcceleration;
@@ -34,7 +34,7 @@
 }
 
 @property GLKVector2 position, velocity, acceleration;
-@property float scale;
+@property float scale, scaleX, scaleY;
 @property float rotation, angularVelocity, angularAcceleration;
 
 @property(strong, nonatomic) NSMutableArray *currentAnimations;

@@ -10,20 +10,36 @@
 
 @implementation TEScaleAnimation
 
-@synthesize scale;
+@synthesize scaleX, scaleY;
 
 - (id)init
 {
   self = [super init];
   if (self) {
-    scale = 1.0;
+    self.scale = 1.0;
   }
   
   return self;
 }
 
+-(float)scale {
+  return scaleX;
+}
+
+-(void)setScale:(float)scale {
+  scaleX = scaleY = scale;
+}
+
 -(float)easedScale {
-  return 1.0 + self.easingFactor * (scale - 1.0);
+  return 1.0 + self.easingFactor * (self.scale - 1.0);
+}
+
+-(float)easedScaleX {
+  return 1.0 + self.easingFactor * (scaleX - 1.0);
+}
+
+-(float)easedScaleY {
+  return 1.0 + self.easingFactor * (scaleY - 1.0);
 }
 
 @end

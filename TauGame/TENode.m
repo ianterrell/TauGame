@@ -23,7 +23,7 @@
 {
   self = [super init];
   if (self) {
-    scale = 1.0;
+    self.scale = 1.0;
     rotation = 0.0;
     position = GLKVector2Make(0.0, 0.0);
     
@@ -94,11 +94,28 @@
 }
 
 -(float)scale {
-  return scale;
+  return scaleX;
 }
 
 -(void)setScale:(float)_scale {
-  scale = _scale;
+  self.scaleX = scaleY = _scale;
+}
+
+-(float)scaleX {
+  return scaleX;
+}
+
+-(void)setScaleX:(float)_scale {
+  scaleX = _scale;
+  [self markModelViewMatrixDirty];
+}
+
+-(float) scaleY {
+  return scaleY;
+}
+
+-(void)setScaleY:(float)_scale {
+  scaleY = _scale;
   [self markModelViewMatrixDirty];
 }
 
@@ -239,7 +256,8 @@
 -(GLKMatrix4)modelViewMatrix {
   if (dirtyObjectModelViewMatrix) {
     __block GLKVector2 mvTranslation = position;
-    __block GLfloat mvScale = scale;
+    __block GLfloat mvScaleX = scaleX;
+    __block GLfloat mvScaleY = scaleY;
     __block GLfloat mvRotation = rotation;
     
     [currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
@@ -247,11 +265,13 @@
         mvTranslation = GLKVector2Add(mvTranslation, ((TETranslateAnimation *)animation).easedTranslation);
       else if ([animation isKindOfClass:[TERotateAnimation class]])
         mvRotation += ((TERotateAnimation *)animation).easedRotation;
-      else if ([animation isKindOfClass:[TEScaleAnimation class]])
-        mvScale *= ((TEScaleAnimation *)animation).easedScale;
+      else if ([animation isKindOfClass:[TEScaleAnimation class]]) {
+        mvScaleX *= ((TEScaleAnimation *)animation).easedScaleX;
+        mvScaleY *= ((TEScaleAnimation *)animation).easedScaleY;
+      }
     }];
     
-    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScale, mvScale, 1.0));
+    cachedObjectModelViewMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(mvTranslation.x, mvTranslation.y, 0.0),GLKMatrix4MakeScale(mvScaleX, mvScaleY, 1.0));
     cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, GLKMatrix4MakeZRotation(mvRotation));
     if ([self hasCustomTransformation])
       cachedObjectModelViewMatrix = GLKMatrix4Multiply(cachedObjectModelViewMatrix, [self customTransformation]);

@@ -9,10 +9,12 @@
 #import "TEAnimation.h"
 
 @interface TEScaleAnimation : TEAnimation {
-  float scale;
+  float scaleX, scaleY;
 }
 
-@property float scale;
+@property float scale, scaleX, scaleY;
 @property(readonly) float easedScale;
+@property(readonly) float easedScaleX;
+@property(readonly) float easedScaleY;
 
 @end

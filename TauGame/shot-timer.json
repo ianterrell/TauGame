@@ -1,0 +1,22 @@
+{
+  "frame": {
+    "scale": 0.1,
+    "shape": {
+      "geometry": "rectangle",
+      "width": 10,
+      "height": 1,
+      "color": [0.0, 1.0, 0.0, 1.0]
+    },
+    "children": {
+      "bar": {
+        "scaleX": 0,
+        "shape": {
+          "geometry": "rectangle",
+          "width": 10,
+          "height": 1,
+          "color": [1.0, 0.0, 0.0, 1.0]
+        },
+      },
+    }
+  }
+}

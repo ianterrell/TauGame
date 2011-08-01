@@ -17,6 +17,12 @@
     if ([key isEqualToString:@"scale"]) {
       node.scale = [obj floatValue];
     } 
+    else if ([key isEqualToString:@"scaleX"]) {
+      node.scaleX = [obj floatValue];
+    } 
+    else if ([key isEqualToString:@"scaleY"]) {
+      node.scaleY = [obj floatValue];
+    } 
     
     // Translation
     else if ([key isEqualToString:@"translation"]) {

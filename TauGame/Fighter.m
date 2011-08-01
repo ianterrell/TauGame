@@ -7,6 +7,7 @@
 //
 
 #import "Fighter.h"
+#import "ShotTimer.h"
 
 #define BULLET_X_SPREAD_FACTOR 3.2
 #define BULLET_Y_SPREAD_FACTOR 3.0
@@ -25,7 +26,7 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
 
 @implementation Fighter
 
-@synthesize lives;
+@synthesize lives, numShots, shotTimers;
 
 +(void)initialize {
   [[TESoundManager sharedManager] load:@"fighter-hurt"];
@@ -49,8 +50,14 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
     healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
+    numShots = 1;
+    shotSpeed = 1.0;
     numBullets = 1;
     spreadAmount = 0;
+    
+    shotTimers = [NSMutableArray arrayWithCapacity:numShots];
+    for (int i = 0; i < numShots; i++)
+      [shotTimers addObject:[[ShotTimer alloc] init]];
     
     // Root body is for collision only
     self.shape.renderStyle = kTERenderStyleNone;
@@ -76,7 +83,20 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
 }
 
 -(void)shootInScene:(FighterScene *)scene {
+  // Can't shoot if dead!
   if ([self dead])
+    return;
+  
+  // Can't shoot if we don't have a timer available!
+  BOOL fired = NO;
+  for (ShotTimer *timer in shotTimers) {
+    if ([timer ready]) {
+      [timer fireWithTime:shotSpeed];
+      fired = YES;
+      break;
+    }
+  }
+  if (!fired)
     return;
   
   [[TESoundManager sharedManager] play:@"shoot"];

@@ -10,6 +10,7 @@
 #import "FighterScene.h"
 #import "Fighter.h"
 #import "FighterLife.h"
+#import "ShotTimer.h"
 #import "Background.h"
 
 @implementation FighterScene
@@ -45,6 +46,19 @@
       life.position = GLKVector2Make(self.topRightVisible.x - life.shape.radius/2 - i*life.shape.radius*0.85, self.topRightVisible.y - life.shape.radius/2 - 0.05);
       [lives addObject:life];
       [characters addObject:life];
+    }
+    
+    // Set up shot timers display
+//    shotTimers = [[NSMutableArray alloc] initWithCapacity:fighter.numShots];
+//    for (int i = 0; i < fighter.numShots; i++) {
+//      ShotTimer *timer = [[ShotTimer alloc] init];
+//      timer.position = GLKVector2Make(self.topRightVisible.x - 0.6, self.topRightVisible.y - 0.9);
+//      [shotTimers addObject:timer];
+//      [characters addObject:timer];
+//    }
+    for (ShotTimer *timer in fighter.shotTimers) {
+      timer.position = GLKVector2Make(self.topRightVisible.x - 0.6, self.topRightVisible.y - 0.9);
+      [characters addObject:timer];
     }
     
     // Set up notifications

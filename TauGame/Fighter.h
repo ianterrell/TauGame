@@ -10,21 +10,26 @@
 #import "FighterScene.h"
 #import "Powerup.h"
 
-extern NSString *const FighterDiedNotification;// = @"FighterDiedNotification";
+extern NSString *const FighterDiedNotification;
 
 @interface Fighter : TECharacter {
   BOOL paused;
+  
   int health, maxHealth, lives;
   NSArray *healthShapes;
   
-  int numBullets;
-  int spreadAmount;
+  int numShots, numBullets, spreadAmount;
+  float shotSpeed;
+  
   float yRotation;
   
   TENode *body;
+  
+  NSMutableArray *shotTimers;
 }
 
-@property int lives;
+@property int lives, numShots;
+@property(strong,nonatomic) NSMutableArray *shotTimers;
 
 -(BOOL)dead;
 -(BOOL)gameOver;

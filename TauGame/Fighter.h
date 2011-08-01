@@ -11,6 +11,7 @@
 #import "Powerup.h"
 
 extern NSString *const FighterDiedNotification;
+extern NSString *const FighterExtraLifeNotification;
 
 @interface Fighter : TECharacter {
   BOOL paused;

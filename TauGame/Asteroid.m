@@ -10,7 +10,7 @@
 #import "AsteroidField.h"
 
 #define NUM_ASTEROID_COLORS 4
-#define ASTEROID_HP_FACTOR 12
+#define ASTEROID_HP_FACTOR 4
 
 static GLKVector4 colors[NUM_ASTEROID_COLORS];
 

@@ -31,7 +31,7 @@
 }
 
 -(float)easedScale {
-  return 1.0 + self.easingFactor * (self.scale - 1.0);
+  return [self easedScaleX];
 }
 
 -(float)easedScaleX {

@@ -14,4 +14,6 @@
 +(void)addPowerupToScene:(FighterScene *)scene at:(GLKVector2)location;
 -(void)die;
 
+-(void)setInnerColor:(GLKVector4)inner outerColor:(GLKVector4)outer;
+
 @end

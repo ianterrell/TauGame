@@ -44,5 +44,11 @@
   [self.currentAnimations addObject:scaleAnimation];
 }
 
+-(void)setInnerColor:(GLKVector4)inner outerColor:(GLKVector4)outer {
+  self.shape.renderStyle = kTERenderStyleVertexColors;
+  self.shape.colorVertices[0] = inner;
+  for (int i = 1; i < self.shape.numVertices; i++)
+    self.shape.colorVertices[i] = outer;
+}
 
 @end

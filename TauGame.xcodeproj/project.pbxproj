@@ -25,6 +25,11 @@
 		3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D42313E6164F00A90FEB /* fighter-life.json */; };
 		3C228ADE13E7082700CFE5D1 /* shot-timer.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228ADD13E7082700CFE5D1 /* shot-timer.json */; };
 		3C228AE213E708F200CFE5D1 /* ShotTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AE113E708F200CFE5D1 /* ShotTimer.m */; };
+		3C228AE413E7151600CFE5D1 /* extra-life-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */; };
+		3C228AE613E7154400CFE5D1 /* faster-shot-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */; };
+		3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */; };
+		3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE913E7156A00CFE5D1 /* health-powerup.json */; };
+		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
 		3C2DE86613D9CB9D000237D2 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -135,6 +140,12 @@
 		3C228ADD13E7082700CFE5D1 /* shot-timer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shot-timer.json"; sourceTree = "<group>"; };
 		3C228AE013E708F200CFE5D1 /* ShotTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotTimer.h; sourceTree = "<group>"; };
 		3C228AE113E708F200CFE5D1 /* ShotTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotTimer.m; sourceTree = "<group>"; };
+		3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-life-powerup.json"; sourceTree = "<group>"; };
+		3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "faster-shot-powerup.json"; sourceTree = "<group>"; };
+		3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-shot-powerup.json"; sourceTree = "<group>"; };
+		3C228AE913E7156A00CFE5D1 /* health-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "health-powerup.json"; sourceTree = "<group>"; };
+		3C228AEB13E7185600CFE5D1 /* ExtraLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraLife.h; sourceTree = "<group>"; };
+		3C228AEC13E7185600CFE5D1 /* ExtraLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraLife.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -280,6 +291,10 @@
 				3C6E948813D76D53000F7988 /* bullet.json */,
 				3C01190313D85DDF004808DA /* baddie.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
+				3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */,
+				3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */,
+				3C228AE913E7156A00CFE5D1 /* health-powerup.json */,
+				3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */,
 				3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */,
 				3C20D42313E6164F00A90FEB /* fighter-life.json */,
 				3C228ADD13E7082700CFE5D1 /* shot-timer.json */,
@@ -413,6 +428,8 @@
 				3C350E9913E07B1F002DD35E /* Powerup.m */,
 				3C350E9B13E07B33002DD35E /* ExtraBullet.h */,
 				3C350E9C13E07B33002DD35E /* ExtraBullet.m */,
+				3C228AEB13E7185600CFE5D1 /* ExtraLife.h */,
+				3C228AEC13E7185600CFE5D1 /* ExtraLife.m */,
 			);
 			name = Powerups;
 			sourceTree = "<group>";
@@ -687,6 +704,10 @@
 				3C20D41C13E4EB1F00A90FEB /* hurt2.wav in Resources */,
 				3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */,
 				3C228ADE13E7082700CFE5D1 /* shot-timer.json in Resources */,
+				3C228AE413E7151600CFE5D1 /* extra-life-powerup.json in Resources */,
+				3C228AE613E7154400CFE5D1 /* faster-shot-powerup.json in Resources */,
+				3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */,
+				3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +790,7 @@
 				3C20D41F13E6003100A90FEB /* Background.m in Sources */,
 				3C20D42213E6162600A90FEB /* FighterLife.m in Sources */,
 				3C228AE213E708F200CFE5D1 /* ShotTimer.m in Sources */,
+				3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

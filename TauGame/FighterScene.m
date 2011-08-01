@@ -40,13 +40,8 @@
     
     // Set up lives display
     lives = [[NSMutableArray alloc] initWithCapacity:fighter.lives];
-    for (int i = 0; i < fighter.lives-1; i++) {
-      FighterLife *life = [[FighterLife alloc] init];
-      life.scale = 0.5;
-      life.position = GLKVector2Make(self.topRightVisible.x - life.shape.radius/2 - i*life.shape.radius*0.85, self.topRightVisible.y - life.shape.radius/2 - 0.05);
-      [lives addObject:life];
-      [characters addObject:life];
-    }
+    for (int i = 0; i < fighter.lives-1; i++)
+      [self addLifeDisplayAtIndex:i];
     
     // Set up shot timers display
 //    shotTimers = [[NSMutableArray alloc] initWithCapacity:fighter.numShots];
@@ -63,6 +58,7 @@
     
     // Set up notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraLife:) name:FighterExtraLifeNotification object:nil];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
@@ -109,6 +105,29 @@
   [scoreboard.currentAnimations addObject:translateAnimation];
 }
 
+-(void)addLifeDisplayAtIndex:(int)i {
+  FighterLife *life = [[FighterLife alloc] init];
+  life.scale = 0.5;
+  life.shape.color = GLKVector4Make(1,1,1,0);
+  life.position = GLKVector2Make(self.topRightVisible.x - life.shape.radius/2 - i*life.shape.radius*0.85, self.topRightVisible.y - life.shape.radius/2 - 0.05);
+
+  TEColorAnimation *colorAnimation = [[TEColorAnimation alloc] init];
+  colorAnimation.color = GLKVector4Make(1,1,1,1);
+  colorAnimation.duration = 1;
+  colorAnimation.onRemoval = ^(){
+    life.shape.color = GLKVector4Make(1,1,1,1);
+  };
+  [life.currentAnimations addObject:colorAnimation];
+  [life markModelViewMatrixDirty];
+  
+  [lives addObject:life];
+  [characters addObject:life];
+}
+
+-(void)extraLife:(NSNotification *)notification {
+  [self addLifeDisplayAtIndex:[lives count]];
+}
+
 -(void)fighterDied:(NSNotification *)notification {
   FighterLife *life = [lives lastObject];
   [lives removeLastObject];
@@ -144,6 +163,7 @@
 
 -(void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:nil];
 }
 
 @end

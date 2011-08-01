@@ -9,13 +9,23 @@
 #import "AsteroidField.h"
 #import "Fighter.h"
 #import "ExtraBullet.h"
+#import "ExtraLife.h"
 #import "BulletSplash.h"
 
-#define POWERUP_CHANCE 0.1
+#define POWERUP_CHANCE 1.0
+#define NUM_POWERUPS 2
+
+static Class powerupClasses[NUM_POWERUPS];
 
 @implementation AsteroidField
 
 @synthesize asteroids;
+
++(void)initialize {
+  int i = 0;
+  powerupClasses[i++] = [ExtraBullet class];
+  powerupClasses[i++] = [ExtraLife class];
+}
 
 - (id)init
 {
@@ -71,8 +81,10 @@
 
   [self incrementScoreWithPulse:10];
   
-  if ([TERandom randomFraction] < POWERUP_CHANCE)
-    [ExtraBullet addPowerupToScene:self at:asteroid.position];
+  if ([TERandom randomFraction] < POWERUP_CHANCE) {
+    [powerupClasses[[TERandom randomTo:NUM_POWERUPS]] addPowerupToScene:self at:asteroid.position];
+  }
+    
 }
 
 -(void)nodeRemoved:(TENode *)node {

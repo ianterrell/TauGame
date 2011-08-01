@@ -8,6 +8,8 @@
 
 #import "Fighter.h"
 #import "ShotTimer.h"
+#import "ExtraBullet.h"
+#import "ExtraLife.h"
 
 #define BULLET_X_SPREAD_FACTOR 3.2
 #define BULLET_Y_SPREAD_FACTOR 3.0
@@ -23,6 +25,7 @@
 static GLKVector4 healthyColor, unhealthyColor;
 
 NSString *const FighterDiedNotification = @"FighterDiedNotification";
+NSString *const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
 
 @implementation Fighter
 
@@ -229,11 +232,16 @@ NSString *const FighterDiedNotification = @"FighterDiedNotification";
 -(void)getPowerup:(Powerup *)powerup {
   [[TESoundManager sharedManager] play:@"powerup"];
   
-  if (numBullets < MAX_BULLETS)
-    numBullets++;
-  
-  if (numBullets == MAX_BULLETS && spreadAmount < 2)
-    spreadAmount++;
+  if ([powerup isKindOfClass:[ExtraBullet class]]) {
+    if (numBullets < MAX_BULLETS)
+      numBullets++;
+    
+    if (numBullets == MAX_BULLETS && spreadAmount < 2)
+      spreadAmount++;
+  } else if ([powerup isKindOfClass:[ExtraLife class]]) {
+    lives++;
+    [self postNotification:FighterExtraLifeNotification];
+  }
 }
 
 -(BOOL)hasCustomTransformation {

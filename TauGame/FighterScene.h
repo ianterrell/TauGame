@@ -26,4 +26,6 @@
 -(void)incrementScore:(int)score;
 -(void)incrementScoreWithPulse:(int)score;
 
+-(void)addLifeDisplayAtIndex:(int)i;
+
 @end

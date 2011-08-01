@@ -13,7 +13,7 @@
 #import "ExtraShot.h"
 #import "BulletSplash.h"
 
-#define POWERUP_CHANCE 1
+#define POWERUP_CHANCE 0.1
 #define NUM_POWERUPS 3
 
 static Class powerupClasses[NUM_POWERUPS];

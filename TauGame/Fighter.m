@@ -10,6 +10,7 @@
 #import "ShotTimer.h"
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
+#import "ExtraShot.h"
 
 #define BULLET_X_SPREAD_FACTOR 3.2
 #define BULLET_Y_SPREAD_FACTOR 3.0
@@ -17,6 +18,7 @@
 #define BULLET_X_VELOCITY_FACTOR 0.75
 
 #define MAX_BULLETS 5
+#define MAX_SHOTS 5
 
 #define MAX_VELOCITY 10
 #define ACCELEROMETER_SENSITIVITY 35
@@ -24,8 +26,9 @@
 
 static GLKVector4 healthyColor, unhealthyColor;
 
-NSString *const FighterDiedNotification = @"FighterDiedNotification";
-NSString *const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
+NSString * const FighterDiedNotification = @"FighterDiedNotification";
+NSString * const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
+NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 
 @implementation Fighter
 
@@ -53,14 +56,13 @@ NSString *const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
     healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
-    numShots = 1;
     shotSpeed = 1.0;
     numBullets = 1;
     spreadAmount = 0;
     
-    shotTimers = [NSMutableArray arrayWithCapacity:numShots];
-    for (int i = 0; i < numShots; i++)
-      [shotTimers addObject:[[ShotTimer alloc] init]];
+    numShots = 0;
+    shotTimers = [NSMutableArray arrayWithCapacity:MAX_SHOTS];
+    [self addExtraShot];
     
     // Root body is for collision only
     self.shape.renderStyle = kTERenderStyleNone;
@@ -168,6 +170,14 @@ NSString *const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
   [self postNotification:FighterDiedNotification];
   BOOL resurrect = ![self gameOver];
   
+  numBullets = 1;
+  spreadAmount = 0;
+  
+  // Need numShots/shotTimers to remove from notification above, so notification goes first
+  numShots = 1;
+  while ([shotTimers count] > numShots)
+    [shotTimers removeLastObject];
+  
   self.velocity = GLKVector2Make(0,0);
   collide = NO;
   paused = YES;
@@ -241,8 +251,19 @@ NSString *const FighterExtraLifeNotification = @"FighterExtraLifeNotification";
   } else if ([powerup isKindOfClass:[ExtraLife class]]) {
     lives++;
     [self postNotification:FighterExtraLifeNotification];
+  } else if ([powerup isKindOfClass:[ExtraShot class]]) {
+    if (numShots < MAX_SHOTS) {
+      [self addExtraShot];
+      [self postNotification:FighterExtraShotNotification];
+    }
   }
 }
+
+-(void)addExtraShot {
+  numShots++;
+  [shotTimers addObject:[[ShotTimer alloc] init]];
+}
+
 
 -(BOOL)hasCustomTransformation {
   return YES;

@@ -12,6 +12,7 @@
 
 extern NSString *const FighterDiedNotification;
 extern NSString *const FighterExtraLifeNotification;
+extern NSString *const FighterExtraShotNotification;
 
 @interface Fighter : TECharacter {
   BOOL paused;
@@ -42,5 +43,6 @@ extern NSString *const FighterExtraLifeNotification;
 -(void)incrementHealth:(int)amount;
 
 -(void)getPowerup:(Powerup *)powerup;
+-(void)addExtraShot;
 
 @end

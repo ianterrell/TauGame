@@ -10,10 +10,11 @@
 #import "Fighter.h"
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
+#import "ExtraShot.h"
 #import "BulletSplash.h"
 
-#define POWERUP_CHANCE 1.0
-#define NUM_POWERUPS 2
+#define POWERUP_CHANCE 1
+#define NUM_POWERUPS 3
 
 static Class powerupClasses[NUM_POWERUPS];
 
@@ -25,6 +26,7 @@ static Class powerupClasses[NUM_POWERUPS];
   int i = 0;
   powerupClasses[i++] = [ExtraBullet class];
   powerupClasses[i++] = [ExtraLife class];
+  powerupClasses[i++] = [ExtraShot class];
 }
 
 - (id)init

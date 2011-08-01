@@ -26,7 +26,6 @@
 		3C228ADE13E7082700CFE5D1 /* shot-timer.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228ADD13E7082700CFE5D1 /* shot-timer.json */; };
 		3C228AE213E708F200CFE5D1 /* ShotTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AE113E708F200CFE5D1 /* ShotTimer.m */; };
 		3C228AE413E7151600CFE5D1 /* extra-life-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */; };
-		3C228AE613E7154400CFE5D1 /* faster-shot-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */; };
 		3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */; };
 		3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE913E7156A00CFE5D1 /* health-powerup.json */; };
 		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
@@ -56,8 +55,6 @@
 		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
 		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
-		3C8A282813D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
-		3C8A282913D70B4200BB0011 /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A282713D70B4200BB0011 /* Fighter.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
@@ -103,6 +100,8 @@
 		3CD1F94D13DF0E3300F6F035 /* FighterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94C13DF0E3200F6F035 /* FighterScene.m */; };
 		3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */; };
 		3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95513DF55EF00F6F035 /* TEPolygon.m */; };
+		3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675213E723CD008A1A4A /* ExtraShot.m */; };
+		3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675513E72FB3008A1A4A /* Fighter.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -141,7 +140,6 @@
 		3C228AE013E708F200CFE5D1 /* ShotTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotTimer.h; sourceTree = "<group>"; };
 		3C228AE113E708F200CFE5D1 /* ShotTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotTimer.m; sourceTree = "<group>"; };
 		3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-life-powerup.json"; sourceTree = "<group>"; };
-		3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "faster-shot-powerup.json"; sourceTree = "<group>"; };
 		3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-shot-powerup.json"; sourceTree = "<group>"; };
 		3C228AE913E7156A00CFE5D1 /* health-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "health-powerup.json"; sourceTree = "<group>"; };
 		3C228AEB13E7185600CFE5D1 /* ExtraLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraLife.h; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandomPolygon.h; sourceTree = "<group>"; };
 		3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandomPolygon.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
-		3C8A282713D70B4200BB0011 /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
 		3C8A283713D70D6200BB0011 /* fighter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fighter.json; sourceTree = "<group>"; };
@@ -248,6 +245,9 @@
 		3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetectorTest.m; sourceTree = "<group>"; };
 		3CD1F95413DF55EC00F6F035 /* TEPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEPolygon.h; sourceTree = "<group>"; };
 		3CD1F95513DF55EF00F6F035 /* TEPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEPolygon.m; sourceTree = "<group>"; };
+		3CF3675113E723CD008A1A4A /* ExtraShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraShot.h; sourceTree = "<group>"; };
+		3CF3675213E723CD008A1A4A /* ExtraShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraShot.m; sourceTree = "<group>"; };
+		3CF3675513E72FB3008A1A4A /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,7 +292,6 @@
 				3C01190313D85DDF004808DA /* baddie.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
 				3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */,
-				3C228AE513E7154300CFE5D1 /* faster-shot-powerup.json */,
 				3C228AE913E7156A00CFE5D1 /* health-powerup.json */,
 				3C228AE313E7151600CFE5D1 /* extra-life-powerup.json */,
 				3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */,
@@ -430,6 +429,8 @@
 				3C350E9C13E07B33002DD35E /* ExtraBullet.m */,
 				3C228AEB13E7185600CFE5D1 /* ExtraLife.h */,
 				3C228AEC13E7185600CFE5D1 /* ExtraLife.m */,
+				3CF3675113E723CD008A1A4A /* ExtraShot.h */,
+				3CF3675213E723CD008A1A4A /* ExtraShot.m */,
 			);
 			name = Powerups;
 			sourceTree = "<group>";
@@ -470,7 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				3C8A282613D70B4200BB0011 /* Fighter.h */,
-				3C8A282713D70B4200BB0011 /* Fighter.m */,
+				3CF3675513E72FB3008A1A4A /* Fighter.m */,
 				3C6E948A13D771A7000F7988 /* Bullet.h */,
 				3C6E948B13D771A7000F7988 /* Bullet.m */,
 				3C20D41013E3AD4C00A90FEB /* BulletSplash.h */,
@@ -705,7 +706,6 @@
 				3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */,
 				3C228ADE13E7082700CFE5D1 /* shot-timer.json in Resources */,
 				3C228AE413E7151600CFE5D1 /* extra-life-powerup.json in Resources */,
-				3C228AE613E7154400CFE5D1 /* faster-shot-powerup.json in Resources */,
 				3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */,
 				3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */,
 			);
@@ -761,7 +761,6 @@
 				3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */,
 				3C5507A613CE237D00585C40 /* TECollisionDetector.m in Sources */,
 				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
-				3C8A282813D70B4200BB0011 /* Fighter.m in Sources */,
 				3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
 				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
@@ -791,6 +790,8 @@
 				3C20D42213E6162600A90FEB /* FighterLife.m in Sources */,
 				3C228AE213E708F200CFE5D1 /* ShotTimer.m in Sources */,
 				3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */,
+				3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */,
+				3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +808,6 @@
 				3C5507A213CE198900585C40 /* obstacle.json in Sources */,
 				3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */,
 				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,
-				3C8A282913D70B4200BB0011 /* Fighter.m in Sources */,
 				3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3C8A283913D70D6200BB0011 /* fighter.json in Sources */,
 			);

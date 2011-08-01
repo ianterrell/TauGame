@@ -51,14 +51,14 @@
 //      [shotTimers addObject:timer];
 //      [characters addObject:timer];
 //    }
-    for (ShotTimer *timer in fighter.shotTimers) {
-      timer.position = GLKVector2Make(self.topRightVisible.x - 0.6, self.topRightVisible.y - 0.9);
-      [characters addObject:timer];
+    for (int i = 0; i < fighter.numShots; i++) {
+      [self addShotTimerAtIndex:i];
     }
     
     // Set up notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraLife:) name:FighterExtraLifeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraShot:) name:FighterExtraShotNotification object:nil];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
@@ -124,11 +124,26 @@
   [characters addObject:life];
 }
 
+-(void)addShotTimerAtIndex:(int)i {
+  ShotTimer *timer = [fighter.shotTimers objectAtIndex:i];
+  timer.position = GLKVector2Make(self.topRightVisible.x - 0.6, self.topRightVisible.y - 0.9 - i*0.2);    
+  [characters addObject:timer];
+}
+
 -(void)extraLife:(NSNotification *)notification {
   [self addLifeDisplayAtIndex:[lives count]];
 }
 
+-(void)extraShot:(NSNotification *)notification {
+  [self addShotTimerAtIndex:[fighter.shotTimers count]-1];
+}
+
 -(void)fighterDied:(NSNotification *)notification {
+  // Shot Timers
+  for (int i = 1; i < fighter.numShots; i++)
+    [characters removeObject:[fighter.shotTimers objectAtIndex:i]];
+     
+  // Lives
   FighterLife *life = [lives lastObject];
   [lives removeLastObject];
   
@@ -164,6 +179,7 @@
 -(void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraShotNotification object:nil];
 }
 
 @end

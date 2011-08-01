@@ -1,18 +1,18 @@
 {
-  "extrabullet": {
+  "extrashot": {
     "collide": "yes",
     "shape": {
       "geometry": "heptagon",
       "radius": 0.3,
-      "color": [0.0,0.6,0.0,1.0]
     },
     "children": {
-      "bullet": {
+      "bar": {
         "shape": {
-          "geometry": "circle",
-          "radius": 0.1,
-          "color": [1.0,1.0,1.0,1.0]
-        }
+          "geometry": "rectangle",
+          "width": 0.4,
+          "height": 0.08,
+          "color": [0.0, 1.0, 0.0, 1.0]
+        },
       }
     }
   }

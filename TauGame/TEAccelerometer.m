@@ -30,10 +30,10 @@ static CMAcceleration calibration;
       horizontal = -1*(accel.x - calibration.x);
       break;
     case UIInterfaceOrientationLandscapeLeft:
-      horizontal = -1*(accel.y - calibration.y);
+      horizontal = (accel.y - calibration.y);
       break;
     case UIInterfaceOrientationLandscapeRight:
-      horizontal = (accel.y - calibration.y);
+      horizontal = -1*(accel.y - calibration.y);
       break;
     default:
       horizontal = (accel.x - calibration.x);

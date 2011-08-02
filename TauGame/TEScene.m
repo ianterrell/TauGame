@@ -19,13 +19,15 @@
   self = [super init];
   if (self) {
     // OPTIMIZATION: configurable multisample
+    CGRect containerFrame = [TESceneController sharedController].container.frame;
+    self.view.frame = CGRectMake(containerFrame.origin.x, containerFrame.origin.y, containerFrame.size.width, containerFrame.size.height);
     
-//    self.autoresizingMask = 
-    self.frame = [[UIScreen mainScreen] bounds];
     self.delegate = self;
-    self.drawableMultisample = GLKViewDrawableMultisample4X;
-    self.characters = [[NSMutableArray alloc] init];
+    ((GLKView*)self.view).delegate = self;
+    ((GLKView*)self.view).drawableMultisample = GLKViewDrawableMultisample4X;
+    self.preferredFramesPerSecond = 60;
     
+    self.characters = [[NSMutableArray alloc] init];
     dirtyProjectionMatrix = YES;
   }
   
@@ -93,10 +95,29 @@
   return GLKVector2Make(right, top);
 }
 
+# pragma mark Scene Transitions
+
+- (void)viewWillAppear:(BOOL)animated {
+  self.paused = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+  self.paused = NO;
+}
+
 # pragma mark Orientation
 
--(BOOL)orientationSupported:(UIInterfaceOrientation)orientation {
-  return UIInterfaceOrientationIsLandscape(orientation);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+  return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  self.paused = YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  self.paused = NO;
+
 }
 
 # pragma mark Rendering
@@ -126,6 +147,5 @@
 
 -(void)nodeRemoved:(TENode *)node {
 }
-
 
 @end

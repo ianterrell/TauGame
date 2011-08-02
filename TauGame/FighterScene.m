@@ -6,7 +6,6 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TauGameAppDelegate.h"
 #import "FighterScene.h"
 #import "Fighter.h"
 #import "FighterLife.h"
@@ -64,7 +63,7 @@
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
-    [self addGestureRecognizer:tapRecognizer];
+    [self.view addGestureRecognizer:tapRecognizer];
     
     // Set up score
     scoreboard = [[TECharacter alloc] init];
@@ -147,7 +146,7 @@
   
   if (life == nil) {
     // TODO: game over screen, etc
-    [((TauGameAppDelegate*)[UIApplication sharedApplication].delegate) showMainMenuController];
+    [self exit];
   } else {
     TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
     scaleAnimation.scale = 0;
@@ -174,10 +173,11 @@
     [powerups removeObject:node];
 }
 
--(void)dealloc {
+-(void)exit {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraShotNotification object:nil];
+  [[TESceneController sharedController] displayScene:@"menu"];
 }
 
 @end

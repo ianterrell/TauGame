@@ -11,14 +11,8 @@
 #import "TauEngine.h"
 #import "MainMenuViewController.h"
 
-@interface TauGameAppDelegate : UIResponder <UIApplicationDelegate> {
-  TESceneController *sceneController;
-  MainMenuViewController *mainMenuController;
-}
+@interface TauGameAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
--(void)showSceneController;
--(void)showMainMenuController;
 
 @end

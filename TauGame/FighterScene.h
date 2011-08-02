@@ -29,4 +29,6 @@
 -(void)addLifeDisplayAtIndex:(int)i;
 -(void)addShotTimerAtIndex:(int)i;
 
+-(void)exit;
+
 @end

@@ -10,6 +10,7 @@
 #import "TECollisionDetectorTest.h"
 #import "AsteroidField.h"
 #import "BaddieField.h"
+#import "MainMenuViewController.h"
 
 @implementation TauGameAppDelegate
 
@@ -19,42 +20,15 @@
 {
   [[TauEngine motionManager] startAccelerometerUpdates];
   
-  mainMenuController = [[MainMenuViewController alloc] initWithNibName:nil bundle:nil];
+  TESceneController *sceneController = [TESceneController sharedController];
+  [sceneController addScene:[[MainMenuViewController alloc] init] named:@"menu"];
+  [sceneController displayScene:@"menu"];
   
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = mainMenuController;
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+  self.window.rootViewController = sceneController;
   [self.window makeKeyAndVisible];
   
   return YES;
-}
-
--(void)showSceneController {
-  sceneController = [TESceneController sharedController];
-  [sceneController.scenes removeObjectForKey:@"baddies"];
-  [sceneController addScene:[[AsteroidField alloc] init] named:@"baddies"];
-  [sceneController displayScene:@"baddies"];
-  
-   sceneController.view.alpha = 0.0;
-  [UIView animateWithDuration:2.0 animations:^(void) {
-    mainMenuController.view.alpha = 0.0;
-  } completion:^(BOOL finished) {
-    self.window.rootViewController = sceneController;
-    [UIView animateWithDuration:1.0 animations:^(void) {
-      sceneController.view.alpha = 1.0;
-    }];
-  }];
-}
-
--(void)showMainMenuController {
-  mainMenuController.view.alpha = 0.0;
-  [UIView animateWithDuration:2.0 animations:^(void) {
-    sceneController.view.alpha = 0.0;
-  } completion:^(BOOL finished) {
-    self.window.rootViewController = mainMenuController;
-    [UIView animateWithDuration:1.0 animations:^(void) {
-      mainMenuController.view.alpha = 1.0;
-    }];
-  }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

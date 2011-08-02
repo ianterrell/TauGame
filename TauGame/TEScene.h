@@ -10,7 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "TENode.h"
 
-@interface TEScene : GLKView <GLKViewDelegate, GLKViewControllerDelegate> {
+@interface TEScene : GLKViewController <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
   GLKVector4 clearColor;
   NSMutableArray *characters;
@@ -30,10 +30,6 @@
 @property(readonly) float visibleWidth, visibleHeight;
 @property(readonly) GLKVector2 bottomLeftVisible;
 @property(readonly) GLKVector2 topRightVisible;
-
-# pragma mark Orientation
-
--(BOOL)orientationSupported:(UIInterfaceOrientation)orientation;
 
 # pragma mark Rendering
 

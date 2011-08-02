@@ -9,14 +9,17 @@
 #import <GLKit/GLKit.h>
 #import "TEScene.h"
 
-@interface TESceneController : GLKViewController {
+@interface TESceneController : UIViewController {
+  UIView *container;
+  
   EAGLContext *context;
   NSMutableDictionary *scenes;
-  TEScene *currentScene;
+  UIViewController *currentScene;
 }
 
+@property(strong, readonly) UIView *container;
 @property(strong, readonly) EAGLContext *context;
-@property(strong, readonly) TEScene *currentScene;
+@property(strong, readonly) UIViewController *currentScene;
 @property(strong, readonly) NSMutableDictionary *scenes;
 
 # pragma mark The Controller
@@ -25,7 +28,9 @@
 
 # pragma mark Scene Management
 
--(void)addScene:(TEScene *)scene named:(NSString *)name;
+-(void)addScene:(UIViewController *)scene named:(NSString *)name;
+-(void)removeScene:(NSString *)name;
 -(void)displayScene:(NSString *)name;
+-(void)displayScene:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion;
 
 @end

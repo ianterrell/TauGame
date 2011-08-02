@@ -7,7 +7,8 @@
 //
 
 #import "MainMenuViewController.h"
-#import "TauGameAppDelegate.h"
+#import "AsteroidField.h"
+#import "TauEngine.h"
 
 @implementation MainMenuViewController
 
@@ -71,7 +72,9 @@
 
 -(void)playAsteroids {
   [TEAccelerometer zero];
-  [((TauGameAppDelegate*)[UIApplication sharedApplication].delegate) showSceneController];
+  [[TESceneController sharedController] removeScene:@"asteroids"];
+  [[TESceneController sharedController] addScene:[[AsteroidField alloc] init] named:@"asteroids"];
+  [[TESceneController sharedController] displayScene:@"asteroids"];
 }
 
 -(void)play {
@@ -83,6 +86,9 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
+//  self.view = [[MainMenu alloc] init];
+//  return;
+  
   // Warning, some nastiness ahead. We're initializing in Portrait, displaying in Landscape, so 
   // heights and widths are reversed. Autoresizing magic takes care of most of it.
   
@@ -93,18 +99,18 @@
   int numPages = 0;
   
   // Setup top level view
-  UIView *view = [[UIView alloc] initWithFrame:windowBounds];
+  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(windowBounds.origin.x, windowBounds.origin.y, windowBounds.size.height, windowBounds.size.width)];
   self.view = view;
   
   // Setup background
   // TODO: Device specific background images as an optimization?
   // TODO: Unstretch image & make a new image that reflects the motif of the game!
-  UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:windowBounds];
+  UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
   UIImage *background = [UIImage imageNamed:@"main-menu-background.jpg"];
   [background resizableImageWithCapInsets:UIEdgeInsetsZero];
   backgroundView.image = background;
   backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  [view addSubview:backgroundView];
+  [self.view addSubview:backgroundView];
   
   // Setup scroll view
   scrollView = [[UIScrollView alloc] init];
@@ -113,7 +119,7 @@
   scrollView.scrollEnabled = YES;
   scrollView.pagingEnabled = YES;
   scrollView.delegate = self;
-  scrollView.frame = windowBounds;
+  scrollView.frame = CGRectMake(windowBounds.origin.x, windowBounds.origin.y, windowBounds.size.height, windowBounds.size.width);
   scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   scrollView.showsHorizontalScrollIndicator = NO;
   
@@ -124,7 +130,7 @@
   
   // Finish up scroll view
   scrollView.contentSize = CGSizeMake(numPages * height, width);
-  [view addSubview:scrollView];
+  [self.view addSubview:scrollView];
   
   // Setup page control
   pageControl = [[UIPageControl alloc] init];
@@ -134,7 +140,7 @@
   pageControl.center = CGPointMake(height/2, width-pageControlSize.width/2);
   pageControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
   [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
-  [view addSubview:pageControl];
+  [self.view addSubview:pageControl];
   
   // Setup play button
   UIButton *playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -143,7 +149,7 @@
   playButton.center = CGPointMake(height/2, width-65);
   playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
   [playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
-  [view addSubview:playButton];
+  [self.view addSubview:playButton];
 }
 
 /*
@@ -161,9 +167,8 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-  return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+  return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
 
 #pragma mark - Paging Controls

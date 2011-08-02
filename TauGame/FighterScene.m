@@ -22,7 +22,10 @@
   self = [super init];
   if (self) {
     // Set up coordinates
-    [self setLeft:0 right:12 bottom:0 top:8];
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
+      [self setLeft:0 right:12 bottom:0 top:8];
+    else
+      [self setLeft:0 right:12 bottom:0 top:9];
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);

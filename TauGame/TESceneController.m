@@ -21,9 +21,6 @@
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     [EAGLContext setCurrentContext:context];
     self.preferredFramesPerSecond = 60;
-    
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
   }
   
   return self;
@@ -51,16 +48,27 @@
 
 -(void)displayScene:(NSString *)name {
   currentScene = [scenes objectForKey:name];
+  [currentScene orientationChangedTo:self.interfaceOrientation];
   self.delegate = currentScene;
   self.view = currentScene;
 }
 
 # pragma mark Device Orientation
 
--(void)deviceOrientationChanged:(NSNotification *)notification {
-  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-  if ([currentScene orientationSupported:orientation])
-    [currentScene orientationChangedTo:orientation];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+  NSLog(@"shouldautorotate to %d", toInterfaceOrientation);
+  return [currentScene orientationSupported:toInterfaceOrientation];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  NSLog(@"will autorotate to %d", toInterfaceOrientation);
+  self.paused = YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  NSLog(@"did autorotate from %d", fromInterfaceOrientation);
+  [currentScene orientationChangedTo:self.interfaceOrientation];
+  self.paused = NO;
 }
 
 @end

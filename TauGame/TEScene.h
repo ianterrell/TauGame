@@ -15,7 +15,7 @@
   GLKVector4 clearColor;
   NSMutableArray *characters;
   
-  UIDeviceOrientation currentOrientation;
+  UIInterfaceOrientation currentOrientation;
   GLKMatrix4 orientationRotationMatrix, cachedProjectionMatrix;
   BOOL dirtyProjectionMatrix;
 }
@@ -24,7 +24,7 @@
 @property(readonly) float width, height;
 @property GLKVector4 clearColor;
 @property(strong, nonatomic) NSMutableArray *characters;
-@property UIDeviceOrientation currentOrientation;
+@property UIInterfaceOrientation currentOrientation;
 @property GLKMatrix4 orientationRotationMatrix;
 
 # pragma mark Scene Setup
@@ -36,8 +36,8 @@
 
 # pragma mark Orientation
 
--(BOOL)orientationSupported:(UIDeviceOrientation)orientation;
--(void)orientationChangedTo:(UIDeviceOrientation)orientation;
+-(BOOL)orientationSupported:(UIInterfaceOrientation)orientation;
+-(void)orientationChangedTo:(UIInterfaceOrientation)orientation;
 -(float)turnsForOrientation;
 -(float)orientationOffset;
 

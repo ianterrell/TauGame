@@ -35,13 +35,13 @@
 
 -(float)roll {
   switch ([TESceneController sharedController].currentScene.currentOrientation) {
-    case UIDeviceOrientationPortrait:
+    case UIInterfaceOrientationPortrait:
       return self.adjustedAttitude.roll;
-    case UIDeviceOrientationPortraitUpsideDown:
+    case UIInterfaceOrientationPortraitUpsideDown:
       return -1.0*self.adjustedAttitude.roll;
-    case UIDeviceOrientationLandscapeLeft:
+    case UIInterfaceOrientationLandscapeLeft:
       return self.adjustedAttitude.yaw;
-    case UIDeviceOrientationLandscapeRight:
+    case UIInterfaceOrientationLandscapeRight:
       return -1.0*self.adjustedAttitude.yaw;
     default:
       return self.realAttitude.roll;

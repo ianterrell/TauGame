@@ -22,8 +22,7 @@
   self = [super init];
   if (self) {
     // Set up coordinates
-    [self setLeft:0 right:8 bottom:0 top:12];
-    [self orientationChangedTo:UIDeviceOrientationLandscapeLeft];
+    [self setLeft:0 right:12 bottom:0 top:8];
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
@@ -75,10 +74,6 @@
   }
   
   return self;
-}
-
--(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
-  return UIDeviceOrientationIsLandscape(orientation);
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {

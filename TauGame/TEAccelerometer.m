@@ -23,16 +23,16 @@ static CMAcceleration calibration;
   float horizontal;
   
   switch ([TESceneController sharedController].currentScene.currentOrientation) {
-    case UIDeviceOrientationPortrait:
+    case UIInterfaceOrientationPortrait:
       horizontal = (accel.x - calibration.x);
       break;
-    case UIDeviceOrientationPortraitUpsideDown:
+    case UIInterfaceOrientationPortraitUpsideDown:
       horizontal = -1*(accel.x - calibration.x);
       break;
-    case UIDeviceOrientationLandscapeLeft:
+    case UIInterfaceOrientationLandscapeLeft:
       horizontal = -1*(accel.y - calibration.y);
       break;
-    case UIDeviceOrientationLandscapeRight:
+    case UIInterfaceOrientationLandscapeRight:
       horizontal = (accel.y - calibration.y);
       break;
     default:

@@ -20,6 +20,8 @@
   self = [super init];
   if (self) {
     // OPTIMIZATION: configurable multisample
+    
+//    self.autoresizingMask = 
     self.frame = [[UIScreen mainScreen] bounds];
     self.delegate = self;
     self.drawableMultisample = GLKViewDrawableMultisample4X;
@@ -96,11 +98,11 @@
 
 # pragma mark Orientation
 
--(BOOL)orientationSupported:(UIDeviceOrientation)orientation {
-  return orientation == UIDeviceOrientationLandscapeLeft;
+-(BOOL)orientationSupported:(UIInterfaceOrientation)orientation {
+  return UIInterfaceOrientationIsLandscape(orientation);
 }
 
--(void)orientationChangedTo:(UIDeviceOrientation)orientation {
+-(void)orientationChangedTo:(UIInterfaceOrientation)orientation {
   currentOrientation = orientation;
   GLKMatrix4 translation = GLKMatrix4MakeTranslation((left-right)/2.0, (bottom-top)/2.0, 0);
   GLKMatrix4 rotation = GLKMatrix4MakeZRotation([self turnsForOrientation]*M_TAU);
@@ -110,22 +112,22 @@
 }
 
 -(float)turnsForOrientation {
-  switch (currentOrientation) {
-    case UIDeviceOrientationLandscapeLeft:
-      return -0.25;
-    case UIDeviceOrientationLandscapeRight:
-      return 0.25;
-    case UIDeviceOrientationPortraitUpsideDown:
-      return 0.5;
-    default:
+//  switch (currentOrientation) {
+//    case UIInterfaceOrientationLandscapeLeft:
+//      return -0.25;
+//    case UIInterfaceOrientationLandscapeRight:
+//      return 0.25;
+//    case UIInterfaceOrientationPortraitUpsideDown:
+//      return 0.5;
+//    default:
       return 0.0;
-  }
+//  }
 }
 
 -(float)orientationOffset {
   float offset = 0.0;
-  if (UIDeviceOrientationIsLandscape(currentOrientation))
-    offset = (self.height-self.width)/2.0;
+//  if (UIInterfaceOrientationIsLandscape(currentOrientation))
+//    offset = (self.height-self.width)/2.0;
   return offset;
 }
 

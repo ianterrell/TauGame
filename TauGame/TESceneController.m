@@ -48,7 +48,6 @@
 
 -(void)displayScene:(NSString *)name {
   currentScene = [scenes objectForKey:name];
-  [currentScene orientationChangedTo:self.interfaceOrientation];
   self.delegate = currentScene;
   self.view = currentScene;
 }
@@ -56,18 +55,14 @@
 # pragma mark Device Orientation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-  NSLog(@"shouldautorotate to %d", toInterfaceOrientation);
   return [currentScene orientationSupported:toInterfaceOrientation];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-  NSLog(@"will autorotate to %d", toInterfaceOrientation);
   self.paused = YES;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-  NSLog(@"did autorotate from %d", fromInterfaceOrientation);
-  [currentScene orientationChangedTo:self.interfaceOrientation];
   self.paused = NO;
 }
 

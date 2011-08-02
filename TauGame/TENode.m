@@ -283,8 +283,6 @@
   if (dirtyFullModelViewMatrix) {
     if (parent)
       cachedFullModelViewMatrix = GLKMatrix4Multiply([self.parent modelViewMatrix], cachedObjectModelViewMatrix);
-    else if ([TESceneController sharedController].currentScene != nil)
-      cachedFullModelViewMatrix = GLKMatrix4Multiply([TESceneController sharedController].currentScene.orientationRotationMatrix, cachedObjectModelViewMatrix);
     else
       cachedFullModelViewMatrix = cachedObjectModelViewMatrix;
     dirtyFullModelViewMatrix = NO;

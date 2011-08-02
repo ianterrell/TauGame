@@ -34,7 +34,7 @@
 }
 
 -(float)roll {
-  switch ([TESceneController sharedController].currentScene.currentOrientation) {
+  switch ([TESceneController sharedController].interfaceOrientation) {
     case UIInterfaceOrientationPortrait:
       return self.adjustedAttitude.roll;
     case UIInterfaceOrientationPortraitUpsideDown:

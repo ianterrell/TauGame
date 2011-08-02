@@ -22,7 +22,7 @@ static CMAcceleration calibration;
   CMAcceleration accel = [TauEngine motionManager].accelerometerData.acceleration;
   float horizontal;
   
-  switch ([TESceneController sharedController].currentScene.currentOrientation) {
+  switch ([TESceneController sharedController].interfaceOrientation) {
     case UIInterfaceOrientationPortrait:
       horizontal = (accel.x - calibration.x);
       break;

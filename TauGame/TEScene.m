@@ -14,7 +14,6 @@
 @synthesize left, right, bottom, top;
 @synthesize clearColor;
 @synthesize characters;
-@synthesize currentOrientation, orientationRotationMatrix;
 
 - (id)init {
   self = [super init];
@@ -87,48 +86,17 @@
 }
 
 -(GLKVector2)bottomLeftVisible {
-  float offset = [self orientationOffset];
-  return GLKVector2Make(left-offset, bottom+offset);
+  return GLKVector2Make(left, bottom);
 }
 
 -(GLKVector2)topRightVisible {
-  float offset = [self orientationOffset];
-  return GLKVector2Make(right+offset, top-offset);
+  return GLKVector2Make(right, top);
 }
 
 # pragma mark Orientation
 
 -(BOOL)orientationSupported:(UIInterfaceOrientation)orientation {
   return UIInterfaceOrientationIsLandscape(orientation);
-}
-
--(void)orientationChangedTo:(UIInterfaceOrientation)orientation {
-  currentOrientation = orientation;
-  GLKMatrix4 translation = GLKMatrix4MakeTranslation((left-right)/2.0, (bottom-top)/2.0, 0);
-  GLKMatrix4 rotation = GLKMatrix4MakeZRotation([self turnsForOrientation]*M_TAU);
-  GLKMatrix4 revertTranslation = GLKMatrix4MakeTranslation((right-left)/2.0, (top-bottom)/2.0, 0);
-  orientationRotationMatrix = GLKMatrix4Multiply(revertTranslation, GLKMatrix4Multiply(rotation, translation));
-  [self markChildrensFullMatricesDirty];
-}
-
--(float)turnsForOrientation {
-//  switch (currentOrientation) {
-//    case UIInterfaceOrientationLandscapeLeft:
-//      return -0.25;
-//    case UIInterfaceOrientationLandscapeRight:
-//      return 0.25;
-//    case UIInterfaceOrientationPortraitUpsideDown:
-//      return 0.5;
-//    default:
-      return 0.0;
-//  }
-}
-
--(float)orientationOffset {
-  float offset = 0.0;
-//  if (UIInterfaceOrientationIsLandscape(currentOrientation))
-//    offset = (self.height-self.width)/2.0;
-  return offset;
 }
 
 # pragma mark Rendering

@@ -11,6 +11,7 @@
 #import "AsteroidField.h"
 #import "BaddieField.h"
 #import "MainMenu.h"
+#import "Pause.h"
 
 @implementation TauGameAppDelegate
 
@@ -22,6 +23,7 @@
   
   TESceneController *sceneController = [TESceneController sharedController];
   [sceneController addScene:[[MainMenu alloc] init] named:@"menu"];
+  [sceneController addScene:[[Pause alloc] init] named:@"pause"];
   [sceneController displayScene:@"menu"];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];

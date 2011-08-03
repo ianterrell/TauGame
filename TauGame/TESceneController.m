@@ -8,6 +8,8 @@
 
 #import "TESceneController.h"
 
+NSString * const TEPreviousScene = @"TEPreviousScene";
+
 @implementation TESceneController
 
 @synthesize container, context, currentScene, scenes;
@@ -60,12 +62,13 @@
 }
 
 -(void)displayScene:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion {
-  UIViewController *newScene = [scenes objectForKey:name];
+  UIViewController *newScene = name == TEPreviousScene ? previousScene : [scenes objectForKey:name];
   if (currentScene == nil)
     [container addSubview:newScene.view];
-  else
+  else {
+    previousScene = currentScene;
     [UIView transitionFromView:currentScene.view toView:newScene.view duration:duration options:options completion:completion];
-  
+  }
   currentScene = newScene;
 }
 

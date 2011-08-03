@@ -56,6 +56,7 @@
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
 		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
 		3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27213E9C697005895AE /* SeekNShoot.m */; };
+		3C7BD27E13E9E140005895AE /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27D13E9E140005895AE /* Pause.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
@@ -184,6 +185,8 @@
 		3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandomPolygon.m; sourceTree = "<group>"; };
 		3C7BD27113E9C696005895AE /* SeekNShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekNShoot.h; sourceTree = "<group>"; };
 		3C7BD27213E9C697005895AE /* SeekNShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekNShoot.m; sourceTree = "<group>"; };
+		3C7BD27C13E9E13F005895AE /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
+		3C7BD27D13E9E140005895AE /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 				3CD1F94513DE313A00F6F035 /* BaddieField.h */,
 				3CD1F94613DE313A00F6F035 /* BaddieField.m */,
+				3C7BD27C13E9E13F005895AE /* Pause.h */,
+				3C7BD27D13E9E140005895AE /* Pause.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */,
 				3CF3679813E99D58008A1A4A /* StarfieldLayer.m in Sources */,
 				3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */,
+				3C7BD27E13E9E140005895AE /* Pause.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

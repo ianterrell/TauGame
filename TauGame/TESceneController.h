@@ -9,12 +9,14 @@
 #import <GLKit/GLKit.h>
 #import "TEScene.h"
 
+extern NSString *const TEPreviousScene;
+
 @interface TESceneController : UIViewController {
   UIView *container;
   
   EAGLContext *context;
   NSMutableDictionary *scenes;
-  UIViewController *currentScene;
+  UIViewController *currentScene, *previousScene;
 }
 
 @property(strong, readonly) UIView *container;

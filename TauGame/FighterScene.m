@@ -88,7 +88,15 @@ static Class powerupClasses[NUM_POWERUPS];
 }
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
-  [fighter shootInScene:self];
+  CGPoint locationInView = [gestureRecognizer locationInView:self.view];
+  CGSize frameSize = self.view.frame.size;
+  float fraction = 0.33;
+  
+  // Pause or shoot!
+  if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
+    [[TESceneController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
+  else
+    [fighter shootInScene:self];
 }
 
 -(void)incrementScore:(int)score {

@@ -78,16 +78,10 @@ static GLKBaseEffect *constantColorEffect;
   
   // Initialize the effect if necessary
   if (effect == nil) {
-    switch (renderStyle) {
-      case kTERenderStyleConstantColor:
-        effect = constantColorEffect;
-        break;
-      case kTERenderStyleVertexColors:
-        effect = defaultEffect;
-        break;
-      default:
-        break;
-    }
+    if (RenderStyleIs(kTERenderStyleConstantColor))
+      effect = constantColorEffect;
+    else if (RenderStyleIs(kTERenderStyleVertexColors))
+      effect = defaultEffect;
   }
   
   effect.transform.modelviewMatrix = [node modelViewMatrix];

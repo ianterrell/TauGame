@@ -9,6 +9,8 @@
 #import "TEShape.h"
 #import "TEEllipse.h"
 
+#define RenderStyleIs(x) ((renderStyle & x) == x)
+
 static GLKBaseEffect *defaultEffect;
 static GLKBaseEffect *constantColorEffect;
 
@@ -92,7 +94,7 @@ static GLKBaseEffect *constantColorEffect;
   effect.transform.projectionMatrix = [scene projectionMatrix];
   
   // Set up effect specifics
-  if ((renderStyle & kTERenderStyleConstantColor) == kTERenderStyleConstantColor) {
+  if (RenderStyleIs(kTERenderStyleConstantColor)) {
     effect.constantColor = color;
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
       if ([animation isKindOfClass:[TEColorAnimation class]]) {
@@ -100,7 +102,7 @@ static GLKBaseEffect *constantColorEffect;
         effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
       }
     }];
-  } else if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors) {
+  } else if (RenderStyleIs(kTERenderStyleVertexColors)) {
     displayColorVertices = colorVertices;
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
       if ([animation isKindOfClass:[TEVertexColorAnimation class]]) {
@@ -122,13 +124,13 @@ static GLKBaseEffect *constantColorEffect;
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
   
   // Set up color vertices
-  if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors) {
+  if (RenderStyleIs(kTERenderStyleVertexColors)) {
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, displayColorVertices);
   }
   
   // Set up texture vertices
-  if ((renderStyle & kTERenderStyleTexture) == kTERenderStyleTexture) {
+  if (RenderStyleIs(kTERenderStyleTexture)) {
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, textureCoordinates);
   }
@@ -140,11 +142,11 @@ static GLKBaseEffect *constantColorEffect;
   glDisableVertexAttribArray(GLKVertexAttribPosition);
   
   // Tear down color vertices
-  if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors)
+  if (RenderStyleIs(kTERenderStyleVertexColors))
     glDisableVertexAttribArray(GLKVertexAttribColor);
   
   // Tear down texture vertices
-  if ((renderStyle & kTERenderStyleTexture) == kTERenderStyleTexture)
+  if (RenderStyleIs(kTERenderStyleTexture))
     glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
   
   // Disable transparency

@@ -11,10 +11,10 @@
 #import "TENode.h"
 
 typedef enum {
-  TEAnimationEasingLinear,
+  kTEAnimationEasingLinear,
 } TEAnimationEasingType;
 
-#define TEAnimationRepeatForever -1
+#define kTEAnimationRepeatForever -1
 
 @interface TEAnimation : NSObject {
   TENode *node;

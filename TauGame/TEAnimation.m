@@ -16,7 +16,7 @@
 {
   self = [super init];
   if (self) {
-    easing = TEAnimationEasingLinear;
+    easing = kTEAnimationEasingLinear;
     forward = YES;
     reverse = NO;
     elapsedTime = 0.0;
@@ -41,7 +41,7 @@
 
 -(float)easingFactor {
   switch (easing) {
-    case TEAnimationEasingLinear:
+    case kTEAnimationEasingLinear:
       return self.percentDone;
     default:
       return 0.0;
@@ -54,7 +54,7 @@
     if (forward && reverse) {
       elapsedTime -= duration;
       forward = !forward;
-    } else if (repeat > 0 || repeat == TEAnimationRepeatForever) {
+    } else if (repeat > 0 || repeat == kTEAnimationRepeatForever) {
       forward = !forward;
       elapsedTime -= duration;
       if (repeat > 0)

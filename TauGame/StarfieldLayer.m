@@ -31,7 +31,7 @@
       highlight.toColorVertices[i] = GLKVector4Make([TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], 1);
     highlight.duration = 5;
     highlight.reverse = YES;
-    highlight.repeat = TEAnimationRepeatForever;
+    highlight.repeat = kTEAnimationRepeatForever;
     [self.currentAnimations addObject:highlight];
   }
   

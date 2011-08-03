@@ -9,10 +9,10 @@
 #import "TEDrawable.h"
 
 typedef enum {
-  kTERenderStyleConstantColor,
-  kTERenderStyleVertexColors,
-  kTERenderStyleTexture,
-  kTERenderStyleNone
+  kTERenderStyleNone          = 0,
+  kTERenderStyleConstantColor = 1 << 0,
+  kTERenderStyleVertexColors  = 1 << 1,
+  kTERenderStyleTexture       = 1 << 2,
 } TERenderStyle;
 
 @interface TEShape : TEDrawable {

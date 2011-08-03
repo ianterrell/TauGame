@@ -92,7 +92,7 @@ static GLKBaseEffect *constantColorEffect;
   effect.transform.projectionMatrix = [scene projectionMatrix];
   
   // Set up effect specifics
-  if (renderStyle == kTERenderStyleConstantColor) {
+  if ((renderStyle & kTERenderStyleConstantColor) == kTERenderStyleConstantColor) {
     effect.constantColor = color;
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
       if ([animation isKindOfClass:[TEColorAnimation class]]) {
@@ -100,7 +100,7 @@ static GLKBaseEffect *constantColorEffect;
         effect.constantColor = GLKVector4Add(self.effect.constantColor, colorAnimation.easedColor);
       }
     }];
-  } else if (renderStyle == kTERenderStyleVertexColors) {
+  } else if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors) {
     displayColorVertices = colorVertices;
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop){
       if ([animation isKindOfClass:[TEVertexColorAnimation class]]) {
@@ -117,26 +117,37 @@ static GLKBaseEffect *constantColorEffect;
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   
+  // Set up position vertices
   glEnableVertexAttribArray(GLKVertexAttribPosition);
   glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
   
-  if (renderStyle == kTERenderStyleVertexColors) {
+  // Set up color vertices
+  if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors) {
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, displayColorVertices);
-  } else if (renderStyle == kTERenderStyleTexture) {
+  }
+  
+  // Set up texture vertices
+  if ((renderStyle & kTERenderStyleTexture) == kTERenderStyleTexture) {
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, textureCoordinates);
   }
   
+  // Draw arrays
   glDrawArrays(self.renderMode, 0, self.numVertices);
   
+  // Tear down position vertices
   glDisableVertexAttribArray(GLKVertexAttribPosition);
   
-  if (renderStyle == kTERenderStyleVertexColors)
+  // Tear down color vertices
+  if ((renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors)
     glDisableVertexAttribArray(GLKVertexAttribColor);
-  else if (renderStyle == kTERenderStyleTexture)
+  
+  // Tear down texture vertices
+  if ((renderStyle & kTERenderStyleTexture) == kTERenderStyleTexture)
     glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
   
+  // Disable transparency
   glDisable(GL_BLEND);
 }
 

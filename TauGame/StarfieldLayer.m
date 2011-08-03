@@ -25,6 +25,14 @@
     
     drawable = [[StarfieldLayerShape alloc] initWithWidth:width height:height textureImage:starfieldImage];
     drawable.node = self;
+    
+    TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
+    for (int i = 0; i < self.shape.numVertices; i++)
+      highlight.toColorVertices[i] = GLKVector4Make([TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], 1);
+    highlight.duration = 5;
+    highlight.reverse = YES;
+    highlight.repeat = TEAnimationRepeatForever;
+    [self.currentAnimations addObject:highlight];
   }
   
   return self;
@@ -63,6 +71,7 @@
   CGColorSpaceRelease(colorSpace);
   UIGraphicsPushContext(contextRef);
   
+  CGContextSetFillColorWithColor(contextRef, [UIColor whiteColor].CGColor);
   for (int i = 0; i < num; i++) {
     int radius = [TERandom randomTo:3] * scale;
     CGContextFillEllipseInRect(contextRef, CGRectMake([TERandom randomTo:width], [TERandom randomTo:height], radius, radius));
@@ -90,10 +99,10 @@
       NSLog(@"Error making texture: %@",error);
     }
     
-    self.renderStyle = kTERenderStyleTexture;
+    self.renderStyle = kTERenderStyleTexture | kTERenderStyleVertexColors;
     effect = [[GLKBaseEffect alloc] init];
     effect.texturingEnabled = YES;
-    effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+    effect.texture2d0.envMode = GLKTextureEnvModeModulate;
     effect.texture2d0.target = GLKTextureTarget2D;
     effect.texture2d0.glName = texture.glName;
     
@@ -115,6 +124,9 @@
     self.textureCoordinates[5] = GLKVector2Make(0, 1);
     self.textureCoordinates[6] = GLKVector2Make(1, 0);
     self.textureCoordinates[7] = GLKVector2Make(0, 0);
+    
+    for (int i = 0; i < self.numVertices; i++)
+      self.colorVertices[i] = GLKVector4Make([TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], 1);
   }
   
   return self;

@@ -7,18 +7,22 @@
 //
 
 #import "BaddieField.h"
-#import "Asteroid.h"
+#import "Fighter.h"
+#import "SeekNShoot.h"
 
 @implementation BaddieField
 
-@synthesize ships;
+@synthesize baddieBullets;
+
+@synthesize baddies;
 
 - (id)init
 {
   self = [super init];
   if (self) {
     // Set up baddie array for collision detection
-    ships = [[NSMutableArray alloc] initWithCapacity:5];
+    baddies = [[NSMutableArray alloc] initWithCapacity:5];
+    baddieBullets = [[NSMutableArray alloc] initWithCapacity:5];
     
     // Set up a baddie
     [self addRandomBaddie];
@@ -32,44 +36,58 @@
 -(void)glkViewControllerUpdate:(GLKViewController *)controller {  
   [super glkViewControllerUpdate:controller];
   
-  // Detect collisions
-  [TECollisionDetector collisionsBetween:bullets andNodes:ships maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
+  // Shoot the baddies! :)
+  [TECollisionDetector collisionsBetween:bullets andNodes:baddies maxPerNode:1 withBlock:^(TENode *bullet, TENode *ship) {
     bullet.remove = YES;
+    [self addBulletSplashAt:bullet.position];
     [(Baddie *)ship registerHit];
+    [self incrementScore:1];
+  }];
+  
+  // Don't get shot! :(
+  [TECollisionDetector collisionsBetweenNode:fighter andNodes:baddieBullets maxPerNode:1 withBlock:^(TENode *fighterNode, TENode *bullet) {
+    bullet.remove = YES;
+    [fighter registerHit];
   }];
 }
 
 -(void)addRandomBaddie {
-  Baddie *baddie = [[Baddie alloc] init];
-  
-  //  srand(arc4random());
+  Baddie *baddie = [[SeekNShoot alloc] init];
   
   float randX = [TERandom randomFraction] * self.visibleWidth + self.bottomLeftVisible.x;
   float randY = [TERandom randomFraction] * (self.visibleHeight - 3) + self.bottomLeftVisible.y + 3;
-  float randVelocity = -10.0 + [TERandom randomFraction] * 20.0;
   
   baddie.position = GLKVector2Make(randX, randY);
-  baddie.velocity = GLKVector2Make(randVelocity,0);
-  baddie.shape.color = GLKVector4Make([TERandom randomFraction], [TERandom randomFraction], [TERandom randomFraction], 1.0);
-  
-  if ([TERandom randomFraction] > 0.8) {
-    TEScaleAnimation *grow = [[TEScaleAnimation alloc] init];
-    grow.scale = 1.2;
-    grow.duration = 1;
-    grow.repeat = TEAnimationRepeatForever;
-    [baddie.currentAnimations addObject:grow];
-  }
-  
-  if ([TERandom randomFraction] > 0.8) {
-    TERotateAnimation *spin = [[TERotateAnimation alloc] init];
-    spin.rotation = 1*M_TAU;
-    spin.duration = 1;
-    spin.repeat = TEAnimationRepeatForever;
-    [baddie.currentAnimations addObject:spin];
-  }
+  baddie.shape.color = GLKVector4Make([TERandom randomFractionFrom:0.5 to:1], [TERandom randomFractionFrom:0.5 to:1], [TERandom randomFractionFrom:0.5 to:1], 1.0);
   
   [self.characters addObject:baddie];
-  [ships addObject:baddie];
+  [baddies addObject:baddie];
+}
+
+-(void)nodeRemoved:(TENode *)node {
+  [super nodeRemoved:node];
+  if ([node isKindOfClass:[Baddie class]]) {
+    [baddies removeObject:node];
+    [self addRandomBaddie];
+  } else if ([node isKindOfClass:[Bullet class]])
+    [baddieBullets removeObject:node];
+}
+
+
+-(void)baddieDestroyed:(NSNotification *)notification {
+  Baddie *baddie = notification.object;
+  [self incrementScoreWithPulse:10];
+  [self dropPowerupWithPercentChance:0.1 at:baddie.position];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(baddieDestroyed:) name:BaddieDestroyedNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:BaddieDestroyedNotification object:nil];
 }
 
 @end

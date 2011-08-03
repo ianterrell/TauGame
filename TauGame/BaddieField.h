@@ -11,10 +11,10 @@
 #import "Baddie.h"
 
 @interface BaddieField : FighterScene {
-  NSMutableArray *ships;
+  NSMutableArray *baddies, *baddieBullets;
 }
 
-@property(strong) NSMutableArray *ships;
+@property(strong) NSMutableArray *baddies, *baddieBullets;
 
 -(void)addRandomBaddie;
 

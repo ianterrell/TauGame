@@ -27,7 +27,9 @@
     ((GLKView*)self.view).drawableMultisample = GLKViewDrawableMultisample4X;
     self.preferredFramesPerSecond = 60;
     
-    self.characters = [[NSMutableArray alloc] init];
+    characters = [[NSMutableArray alloc] init];
+    charactersToAdd = [[NSMutableArray alloc] init];
+    
     dirtyProjectionMatrix = YES;
   }
   
@@ -54,6 +56,10 @@
     [self nodeRemoved:character];
     [character onRemoval];
   }
+  
+  // Add any who were created in update
+  [characters addObjectsFromArray:charactersToAdd];
+  [charactersToAdd removeAllObjects];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
@@ -144,6 +150,10 @@
 }
 
 # pragma mark Scene Updating
+
+-(void)addCharacterAfterUpdate:(TENode *)node {
+  [charactersToAdd addObject:node];
+}
 
 -(void)nodeRemoved:(TENode *)node {
 }

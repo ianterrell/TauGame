@@ -8,6 +8,8 @@
 
 #import "TECharacter.h"
 
+extern NSString *const BaddieDestroyedNotification;
+
 @interface Baddie : TECharacter {
   int hitPoints;
 }

@@ -13,7 +13,7 @@
 @interface TEScene : GLKViewController <GLKViewDelegate, GLKViewControllerDelegate> {
   GLfloat left, right, bottom, top;
   GLKVector4 clearColor;
-  NSMutableArray *characters;
+  NSMutableArray *characters, *charactersToAdd;
   
   GLKMatrix4 cachedProjectionMatrix;
   BOOL dirtyProjectionMatrix;
@@ -39,6 +39,7 @@
 
 # pragma mark Scene Updating
 
+-(void)addCharacterAfterUpdate:(TENode *)node;
 -(void)nodeRemoved:(TENode *)node;
 
 @end

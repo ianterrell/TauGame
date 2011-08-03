@@ -6,9 +6,10 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "TauEngine.h"
 #import "MainMenu.h"
 #import "AsteroidField.h"
-#import "TauEngine.h"
+#import "BaddieField.h"
 
 @implementation MainMenu
 
@@ -71,14 +72,23 @@
 #pragma mark - Scene Control
 
 -(void)playAsteroids {
-  [TEAccelerometer zero];
   [[TESceneController sharedController] removeScene:@"asteroids"];
   [[TESceneController sharedController] addScene:[[AsteroidField alloc] init] named:@"asteroids"];
   [[TESceneController sharedController] displayScene:@"asteroids"];
 }
 
+-(void)playBaddies {
+  [[TESceneController sharedController] removeScene:@"baddies"];
+  [[TESceneController sharedController] addScene:[[BaddieField alloc] init] named:@"baddies"];
+  [[TESceneController sharedController] displayScene:@"baddies"];
+}
+
 -(void)play {
-  [self playAsteroids];
+  [TEAccelerometer zero];
+  if (pageControl.currentPage == 0)
+    [self playAsteroids];
+  else
+    [self playBaddies];
 }
 
 #pragma mark - View Lifecycle
@@ -201,6 +211,5 @@
 	// When the animated scrolling finishings, scrollViewDidEndDecelerating will turn this off
   pageControlIsChangingPage = YES;
 }
-
 
 @end

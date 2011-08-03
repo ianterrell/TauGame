@@ -12,12 +12,28 @@
 #import "ShotTimer.h"
 #import "Background.h"
 #import "StarfieldLayer.h"
+#import "BulletSplash.h"
+#import "ExtraBullet.h"
+#import "ExtraLife.h"
+#import "ExtraShot.h"
+
+#define POWERUP_CHANCE 0.1
+#define NUM_POWERUPS 3
 
 #define POINT_RATIO 40
+
+static Class powerupClasses[NUM_POWERUPS];
 
 @implementation FighterScene
 
 @synthesize fighter, bullets, powerups;
+
++(void)initialize {
+  int i = 0;
+  powerupClasses[i++] = [ExtraBullet class];
+  powerupClasses[i++] = [ExtraLife class];
+  powerupClasses[i++] = [ExtraShot class];
+}
 
 - (id)init
 {
@@ -53,11 +69,6 @@
     for (int i = 0; i < fighter.numShots; i++) {
       [self addShotTimerAtIndex:i];
     }
-    
-    // Set up notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraLife:) name:FighterExtraLifeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraShot:) name:FighterExtraShotNotification object:nil];
     
     // Set up shooting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
@@ -164,6 +175,16 @@
   }
 }
 
+-(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position {
+  if ([TERandom randomFraction] < percent) {
+    [powerupClasses[[TERandom randomTo:NUM_POWERUPS]] addPowerupToScene:self at:position];
+  }
+}
+
+-(void)addBulletSplashAt:(GLKVector2)position {
+  [self.characters addObject:[[BulletSplash alloc] initWithPosition:position]];
+}
+
 -(void)nodeRemoved:(TENode *)node {
   if ([node isKindOfClass:[Bullet class]])
     [bullets removeObject:node];
@@ -171,10 +192,21 @@
     [powerups removeObject:node];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraLife:) name:FighterExtraLifeNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraShot:) name:FighterExtraShotNotification object:fighter];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraShotNotification object:fighter];
+}
+
 -(void)exit {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraShotNotification object:nil];
   [[TESceneController sharedController] displayScene:@"menu"];
 }
 

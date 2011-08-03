@@ -29,6 +29,9 @@
 -(void)addLifeDisplayAtIndex:(int)i;
 -(void)addShotTimerAtIndex:(int)i;
 
+-(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position;
+-(void)addBulletSplashAt:(GLKVector2)position;
+
 -(void)exit;
 
 @end

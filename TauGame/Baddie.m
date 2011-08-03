@@ -10,6 +10,8 @@
 #import "TECharacterLoader.h"
 #import "BaddieField.h"
 
+NSString *const BaddieDestroyedNotification = @"BaddieDestroyedNotification";
+
 @implementation Baddie
 
 - (id)init
@@ -28,14 +30,8 @@
   [self wraparoundInScene:scene];
 }
 
-// TODO update baddie field whenever it gets done
-//-(void)onRemovalFromScene:(TEScene *)scene {
-//  [((BaddieField *)scene).ships removeObject:self];
-//  [(BaddieField *)scene addRandomBaddie];
-//}
-
 -(void)registerHit {
-  [[TESoundManager sharedManager] play:@"hurt"];
+  [[TESoundManager sharedManager] play:@"hurt2"];
   hitPoints--;
   
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
@@ -43,6 +39,9 @@
   highlight.duration = 0.1;
 
   if (hitPoints == 0) {
+    [self postNotification:BaddieDestroyedNotification];
+    [[TESoundManager sharedManager] play:@"explosion"];
+    
     self.collide = NO;
     highlight.onRemoval = ^(){
       TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];

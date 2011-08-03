@@ -10,48 +10,24 @@
 
 @implementation StarfieldLayer
 
-@synthesize numStars, layerVelocity;
+@synthesize layerVelocity;
 
-- (id)init
+-(id)initWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio numStars:(int)numStars
 {
   self = [super init];
   if (self) {
-    numStars = 50;
+    width = _width;
+    height = _height;
+    
     layerVelocity = 1;
-    drawable = [[StarfieldLayerShape alloc] init];
+    
+    UIImage *starfieldImage = [StarfieldLayer starfieldImageWithStars:numStars width:(int)(pixelRatio * width) height:(int)(pixelRatio * height)];
+    
+    drawable = [[StarfieldLayerShape alloc] initWithWidth:width height:height textureImage:starfieldImage];
     drawable.node = self;
   }
   
   return self;
-}
-
--(void)setVertices {
-  self.shape.vertices[0] = GLKVector2Make(width, height);
-  self.shape.vertices[1] = GLKVector2Make(    0, height);
-  self.shape.vertices[2] = GLKVector2Make(width, 0);
-  self.shape.vertices[3] = GLKVector2Make(    0, 0);
-  self.shape.vertices[4] = GLKVector2Make(width, 0);
-  self.shape.vertices[5] = GLKVector2Make(    0, 0);
-  self.shape.vertices[6] = GLKVector2Make(width, 0);
-  self.shape.vertices[7] = GLKVector2Make(    0, 0);
-}
-
--(float)width {
-  return width;
-}
-
--(void)setWidth:(float)_width {
-  width = _width;
-  [self setVertices];
-}
-
--(float)height {
-  return height;
-}
-
--(void)setHeight:(float)_height {
-  height = _height;
-  [self setVertices];
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
@@ -72,16 +48,44 @@
   self.shape.textureCoordinates[1] = self.shape.textureCoordinates[7] = GLKVector2Make(0, texturePortion);
 }
 
++(UIImage *)starfieldImageWithStars:(int)num width:(int)width height:(int)height {
+  float scale = [UIScreen mainScreen].scale;
+  width *= scale;
+  height *= scale;
+  
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+  CGContextRef contextRef =  CGBitmapContextCreate (NULL,
+                                                    width, height,
+                                                    8, 4*width,
+                                                    colorSpace,
+                                                    /* kCGBitmapByteOrder32Host for after beta5 */ kCGImageAlphaPremultipliedFirst
+                                                    );
+  CGColorSpaceRelease(colorSpace);
+  UIGraphicsPushContext(contextRef);
+  
+  for (int i = 0; i < num; i++) {
+    int radius = [TERandom randomTo:3] * scale;
+    CGContextFillEllipseInRect(contextRef, CGRectMake([TERandom randomTo:width], [TERandom randomTo:height], radius, radius));
+  }
+  
+  UIImage *image = [UIImage imageWithCGImage:CGBitmapContextCreateImage(contextRef) scale:1.0 orientation:UIImageOrientationDownMirrored];
+  
+  UIGraphicsPopContext();
+  
+  return image;
+}
+
+
 @end
 
 @implementation StarfieldLayerShape
 
-- (id)init
+-(id)initWithWidth:(float)width height:(float)height textureImage:(UIImage *)image
 {
   self = [super initWithVertices:8];
   if (self) {
     NSError *error;
-    GLKTextureInfo *texture = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"main-menu-background.jpg"].CGImage options:nil error:&error];
+    GLKTextureInfo *texture = [GLKTextureLoader textureWithCGImage:image.CGImage options:nil error:&error];
     if (error) {
       NSLog(@"Error making texture: %@",error);
     }
@@ -92,6 +96,16 @@
     effect.texture2d0.envMode = GLKTextureEnvModeReplace;
     effect.texture2d0.target = GLKTextureTarget2D;
     effect.texture2d0.glName = texture.glName;
+    
+    
+    self.vertices[0] = GLKVector2Make(width, height);
+    self.vertices[1] = GLKVector2Make(    0, height);
+    self.vertices[2] = GLKVector2Make(width, 0);
+    self.vertices[3] = GLKVector2Make(    0, 0);
+    self.vertices[4] = GLKVector2Make(width, 0);
+    self.vertices[5] = GLKVector2Make(    0, 0);
+    self.vertices[6] = GLKVector2Make(width, 0);
+    self.vertices[7] = GLKVector2Make(    0, 0);
     
     self.textureCoordinates[0] = GLKVector2Make(1, 1);
     self.textureCoordinates[1] = GLKVector2Make(0, 1);
@@ -109,5 +123,6 @@
 -(GLenum)renderMode {
   return GL_TRIANGLE_STRIP;
 }
+
 
 @end

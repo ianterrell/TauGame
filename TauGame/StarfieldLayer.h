@@ -9,15 +9,18 @@
 #import "TauEngine.h"
 
 @interface StarfieldLayer : TENode {
-  int numStars;
   float layerVelocity, width, height;
 }
 
-@property int numStars;
-@property float layerVelocity, width, height;
+@property float layerVelocity;
+
+-(id)initWithWidth:(float)width height:(float)height pixelRatio:(float)pixelRatio numStars:(int)numStars;
++(UIImage *)starfieldImageWithStars:(int)num width:(int)width height:(int)height;
 
 @end
 
 @interface StarfieldLayerShape : TEPolygon
+
+-(id)initWithWidth:(float)width height:(float)height textureImage:(UIImage *)image;
 
 @end

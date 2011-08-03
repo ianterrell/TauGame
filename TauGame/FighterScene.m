@@ -13,6 +13,8 @@
 #import "Background.h"
 #import "StarfieldLayer.h"
 
+#define POINT_RATIO 40
+
 @implementation FighterScene
 
 @synthesize fighter, bullets, powerups;
@@ -22,19 +24,15 @@
   self = [super init];
   if (self) {
     // Set up coordinates
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
-      [self setLeft:0 right:12 bottom:0 top:8];
-    else
-      [self setLeft:0 right:12 bottom:0 top:9];
+    CGSize parentSize = [TESceneController sharedController].container.frame.size;
+    [self setLeft:0 right:parentSize.width/POINT_RATIO bottom:0 top:parentSize.height/POINT_RATIO];
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
     [characters insertObject:[[Background alloc] initInScene:self] atIndex:0];
     
-    StarfieldLayer *layer = [[StarfieldLayer alloc] init];
+    StarfieldLayer *layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
     layer.position = GLKVector2Make(0,0);
-    layer.width = self.width;
-    layer.height = self.height;
     [characters insertObject:layer atIndex:1];
     
     // Set up our special character arrays for collision detection

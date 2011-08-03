@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainMenuViewController : UIViewController <UIScrollViewDelegate> {
+@interface MainMenu : UIViewController <UIScrollViewDelegate> {
   UIScrollView *scrollView;
   UIPageControl *pageControl;
   BOOL pageControlIsChangingPage;

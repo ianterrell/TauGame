@@ -11,6 +11,7 @@
 #import "FighterLife.h"
 #import "ShotTimer.h"
 #import "Background.h"
+#import "StarfieldLayer.h"
 
 @implementation FighterScene
 
@@ -30,6 +31,12 @@
     clearColor = GLKVector4Make(0, 0, 0, 1);
     [characters insertObject:[[Background alloc] initInScene:self] atIndex:0];
     
+    StarfieldLayer *layer = [[StarfieldLayer alloc] init];
+    layer.position = GLKVector2Make(0,0);
+    layer.width = self.width;
+    layer.height = self.height;
+    [characters insertObject:layer atIndex:1];
+    
     // Set up our special character arrays for collision detection
     bullets = [[NSMutableArray alloc] initWithCapacity:20];
     powerups = [[NSMutableArray alloc] initWithCapacity:3];
@@ -45,13 +52,6 @@
       [self addLifeDisplayAtIndex:i];
     
     // Set up shot timers display
-//    shotTimers = [[NSMutableArray alloc] initWithCapacity:fighter.numShots];
-//    for (int i = 0; i < fighter.numShots; i++) {
-//      ShotTimer *timer = [[ShotTimer alloc] init];
-//      timer.position = GLKVector2Make(self.topRightVisible.x - 0.6, self.topRightVisible.y - 0.9);
-//      [shotTimers addObject:timer];
-//      [characters addObject:timer];
-//    }
     for (int i = 0; i < fighter.numShots; i++) {
       [self addShotTimerAtIndex:i];
     }

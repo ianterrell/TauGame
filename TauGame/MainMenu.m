@@ -6,11 +6,11 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "MainMenuViewController.h"
+#import "MainMenu.h"
 #import "AsteroidField.h"
 #import "TauEngine.h"
 
-@implementation MainMenuViewController
+@implementation MainMenu
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

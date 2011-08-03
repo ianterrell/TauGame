@@ -74,7 +74,7 @@ static Class powerupClasses[NUM_POWERUPS];
 -(void)newAsteroid {
   Asteroid *asteroid = [[Asteroid alloc] init];
   asteroid.position = GLKVector2Make([TERandom randomFractionFrom:self.bottomLeftVisible.x to:self.topRightVisible.x], self.topRightVisible.y);
-  [characters insertObject:asteroid atIndex:1];
+  [characters insertObject:asteroid atIndex:2];
   [asteroids addObject:asteroid];
 }
 

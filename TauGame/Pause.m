@@ -11,6 +11,7 @@
 @implementation Pause
 
 -(void)resume {
+  [TEAccelerometer zero];
   [[TESceneController sharedController] displayScene:TEPreviousScene duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
 }
 

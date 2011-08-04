@@ -7,10 +7,6 @@
 //
 
 #import "Baddie.h"
-#import "TECharacterLoader.h"
-#import "BaddieField.h"
-
-NSString *const BaddieDestroyedNotification = @"BaddieDestroyedNotification";
 
 @implementation Baddie
 
@@ -31,35 +27,29 @@ NSString *const BaddieDestroyedNotification = @"BaddieDestroyedNotification";
 }
 
 -(void)registerHit {
-  [[TESoundManager sharedManager] play:@"hurt2"];
-  hitPoints--;
+  [super registerHit];
   
   TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
   highlight.color = GLKVector4Make(1, 1, 1, 1);
   highlight.duration = 0.1;
-
-  if (hitPoints == 0) {
-    [self postNotification:BaddieDestroyedNotification];
-    [[TESoundManager sharedManager] play:@"explosion"];
-    
-    self.collide = NO;
-    highlight.onRemoval = ^(){
-      TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-      scaleAnimation.scale = 0.0;
-      scaleAnimation.duration = 0.5;
-      scaleAnimation.onRemoval= ^(){
-        self.remove = YES;
-      };
-      [self.currentAnimations addObject:scaleAnimation];
-      
-      TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
-      rotateAnimation.rotation = [TERandom randomFraction] * 2 * M_TAU;
-      rotateAnimation.duration = 0.5;
-      [self.currentAnimations addObject:rotateAnimation];
-    };
-  }
-  
   [self.currentAnimations addObject:highlight];
+}
+
+-(void)explode {
+  self.collide = NO;
+
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+  scaleAnimation.scale = 0.0;
+  scaleAnimation.duration = 0.5;
+  scaleAnimation.onRemoval= ^(){
+    self.remove = YES;
+  };
+  [self startAnimation:scaleAnimation];
+  
+  TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+  rotateAnimation.rotation = [TERandom randomFraction] * 2 * M_TAU;
+  rotateAnimation.duration = 0.5;
+  [self startAnimation:rotateAnimation];
 }
 
 @end

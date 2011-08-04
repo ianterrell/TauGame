@@ -7,7 +7,7 @@
 //
 
 #import "TauEngine.h"
-#import "FighterScene.h"
+#import "Game.h"
 #import "Powerup.h"
 
 extern NSString *const FighterDiedNotification;
@@ -36,7 +36,7 @@ extern NSString *const FighterExtraShotNotification;
 -(BOOL)dead;
 -(BOOL)gameOver;
 
--(void)shootInScene:(FighterScene *)scene;
+-(void)shootInScene:(Game *)scene;
 -(void)registerHit;
 
 -(void)decrementHealth:(int)amount;

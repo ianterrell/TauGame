@@ -6,33 +6,46 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "FighterScene.h"
+#import "Game.h"
 #import "Fighter.h"
 #import "FighterLife.h"
 #import "ShotTimer.h"
 #import "Background.h"
 #import "StarfieldLayer.h"
+#import "Bullet.h"
 #import "BulletSplash.h"
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
 #import "ExtraShot.h"
+
+#import "AsteroidField.h"
+#import "ClassicHorde.h"
+#import "Enemy.h"
 
 #define POWERUP_CHANCE 0.1
 #define NUM_POWERUPS 3
 
 #define POINT_RATIO 40
 
+#define NUM_LEVELS 2
+
 static Class powerupClasses[NUM_POWERUPS];
+static Class levelClasses[NUM_LEVELS];
 
-@implementation FighterScene
+@implementation Game
 
-@synthesize fighter, bullets, powerups;
+@synthesize fighter, bullets, powerups, enemies, enemyBullets;
+@synthesize currentDifficulty;
 
 +(void)initialize {
   int i = 0;
   powerupClasses[i++] = [ExtraBullet class];
   powerupClasses[i++] = [ExtraLife class];
   powerupClasses[i++] = [ExtraShot class];
+  
+  int j = 0;
+  levelClasses[j++] = [AsteroidField class];
+  levelClasses[j++] = [ClassicHorde class];
 }
 
 - (id)init
@@ -52,8 +65,10 @@ static Class powerupClasses[NUM_POWERUPS];
     [characters insertObject:layer atIndex:1];
     
     // Set up our special character arrays for collision detection
-    bullets = [[NSMutableArray alloc] initWithCapacity:20];
-    powerups = [[NSMutableArray alloc] initWithCapacity:3];
+    bullets      = [[NSMutableArray alloc] initWithCapacity:20];
+    powerups     = [[NSMutableArray alloc] initWithCapacity:3];
+    enemies      = [[NSMutableArray alloc] initWithCapacity:20];
+    enemyBullets = [[NSMutableArray alloc] initWithCapacity:20];
     
     // Set up fighter
     fighter = [[Fighter alloc] init];
@@ -82,10 +97,54 @@ static Class powerupClasses[NUM_POWERUPS];
     scoreboard.drawable = scoreboardDisplay;
     scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width/2.0, self.topRightVisible.y - scoreboardDisplay.height/2.0);
     [characters addObject:scoreboard];
+    
+    // Set up level
+    currentDifficulty = 0;
+    [self loadNextLevel];
   }
   
   return self;
 }
+
+# pragma mark - Levels
+
+-(void)loadNextLevel {
+  currentDifficulty++;
+  currentLevel = [[levelClasses[[TERandom randomTo:NUM_LEVELS]] alloc] initWithGame:self];
+}
+
+# pragma mark - Updating
+
+-(void)glkViewControllerUpdate:(GLKViewController *)controller {  
+  [super glkViewControllerUpdate:controller];
+  
+  // Detect collisions with bullets :)
+  [TECollisionDetector collisionsBetween:bullets andNodes:enemies maxPerNode:1 withBlock:^(TENode *bullet, TENode *enemy) {
+    bullet.remove = YES;
+    [self addBulletSplashAt:bullet.position];
+    
+    [(Enemy *)enemy registerHit];
+    [self incrementScore:((Enemy *)enemy).pointsPerHit];
+  }];
+  
+  // Detect collisions with ship :(
+  [TECollisionDetector collisionsBetweenNode:fighter andNodes:enemyBullets maxPerNode:1 withBlock:^(TENode *ship, TENode *enemyBullet) {
+    [(Fighter *)fighter registerHit];
+    [(Enemy *)enemyBullet explode];
+  }];
+  
+  // Detect powerup collisions
+  [TECollisionDetector collisionsBetweenNode:fighter andNodes:powerups withBlock:^(TENode *ship, TENode *powerup) {
+    [(Powerup*)powerup die];
+    [fighter getPowerup:(Powerup*)powerup];
+  }];
+  
+  [currentLevel update];
+  if ([currentLevel done])
+    [self loadNextLevel];
+}
+
+# pragma mark - Touch Controls
 
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
   CGPoint locationInView = [gestureRecognizer locationInView:self.view];
@@ -98,6 +157,8 @@ static Class powerupClasses[NUM_POWERUPS];
   else
     [fighter shootInScene:self];
 }
+
+# pragma mark - Score
 
 -(void)incrementScore:(int)score {
   ((TENumberDisplay *)scoreboard.drawable).number += score;
@@ -118,6 +179,8 @@ static Class powerupClasses[NUM_POWERUPS];
   translateAnimation.reverse = YES;
   [scoreboard.currentAnimations addObject:translateAnimation];
 }
+
+# pragma mark - HUD
 
 -(void)addLifeDisplayAtIndex:(int)i {
   FighterLife *life = [[FighterLife alloc] init];
@@ -151,6 +214,8 @@ static Class powerupClasses[NUM_POWERUPS];
   [self addShotTimerAtIndex:[fighter.shotTimers count]-1];
 }
 
+# pragma mark - Notifications
+
 -(void)fighterDied:(NSNotification *)notification {
   // Shot Timers
   for (int i = 1; i < fighter.numShots; i++)
@@ -182,21 +247,38 @@ static Class powerupClasses[NUM_POWERUPS];
   }
 }
 
+-(void)enemyDestroyed:(NSNotification *)notification {
+  Enemy *enemy = notification.object;
+  [self incrementScoreWithPulse:enemy.pointsForDestruction];
+  [self dropPowerupWithPercentChance:0.1 at:enemy.position];
+}
+
+# pragma mark - Powerups
+
 -(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position {
   if ([TERandom randomFraction] < percent) {
     [powerupClasses[[TERandom randomTo:NUM_POWERUPS]] addPowerupToScene:self at:position];
   }
 }
 
+# pragma mark - Effects
+
 -(void)addBulletSplashAt:(GLKVector2)position {
   [self.characters addObject:[[BulletSplash alloc] initWithPosition:position]];
 }
 
 -(void)nodeRemoved:(TENode *)node {
-  if ([node isKindOfClass:[Bullet class]])
+  if ([node isKindOfClass:[Bullet class]]) {
     [bullets removeObject:node];
-  else if ([node isKindOfClass:[Powerup class]])
+    [enemyBullets removeObject:node];
+  }
+  else if ([node isKindOfClass:[Powerup class]]) {
     [powerups removeObject:node];
+  }
+  else if ([node isKindOfClass:[Enemy class]]) {
+    [enemies removeObject:node];
+    [enemyBullets removeObject:node];
+  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -204,6 +286,7 @@ static Class powerupClasses[NUM_POWERUPS];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fighterDied:) name:FighterDiedNotification object:fighter];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraLife:) name:FighterExtraLifeNotification object:fighter];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(extraShot:) name:FighterExtraShotNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enemyDestroyed:) name:EnemyDestroyedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -211,6 +294,7 @@ static Class powerupClasses[NUM_POWERUPS];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterDiedNotification object:fighter];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraLifeNotification object:fighter];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:FighterExtraShotNotification object:fighter];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:EnemyDestroyedNotification object:nil];
 }
 
 -(void)exit {

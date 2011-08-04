@@ -7,11 +7,11 @@
 //
 
 #import "TECharacter.h"
-#import "FighterScene.h"
+#import "Game.h"
 
 @interface Powerup : TECharacter
 
-+(void)addPowerupToScene:(FighterScene *)scene at:(GLKVector2)location;
++(void)addPowerupToScene:(Game *)scene at:(GLKVector2)location;
 -(void)die;
 
 -(void)setInnerColor:(GLKVector4)inner outerColor:(GLKVector4)outer;

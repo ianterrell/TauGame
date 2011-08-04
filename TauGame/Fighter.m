@@ -7,6 +7,7 @@
 //
 
 #import "Fighter.h"
+#import "Bullet.h"
 #import "ShotTimer.h"
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
@@ -87,7 +88,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   }
 }
 
--(void)shootInScene:(FighterScene *)scene {
+-(void)shootInScene:(Game *)scene {
   // Can't shoot if dead!
   if ([self dead])
     return;

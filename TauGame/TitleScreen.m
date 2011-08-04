@@ -9,7 +9,7 @@
 #import "TitleScreen.h"
 #import "Background.h"
 #import "StarfieldLayer.h"
-#import "AsteroidField.h"
+#import "Game.h"
 
 #define POINT_RATIO 40
 
@@ -60,9 +60,9 @@
 
 -(void)play {
   [TEAccelerometer zero];
-  [[TESceneController sharedController] removeScene:@"baddies"];
-  [[TESceneController sharedController] addScene:[[AsteroidField alloc] init] named:@"baddies"];
-  [[TESceneController sharedController] displayScene:@"baddies"];
+  [[TESceneController sharedController] removeScene:@"game"];
+  [[TESceneController sharedController] addScene:[[Game alloc] init] named:@"game"];
+  [[TESceneController sharedController] displayScene:@"game"];
 }
 
 @end

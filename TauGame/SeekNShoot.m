@@ -7,8 +7,9 @@
 //
 
 #import "SeekNShoot.h"
-#import "FighterScene.h"
-#import "BaddieField.h"
+#import "Bullet.h"
+#import "Game.h"
+#import "ClassicHorde.h"
 #import "Fighter.h"
 
 @implementation SeekNShoot
@@ -25,7 +26,7 @@
   return self;
 }
 
--(void)shootInScene:(BaddieField *)scene {
+-(void)shootInScene:(Game *)scene {
   // Can't shoot if dead!
 //  if ([self dead])
 //    return;
@@ -41,13 +42,13 @@
   bullet.velocity = GLKVector2Make(0, -5);
   bullet.shape.color = self.shape.color;
   [scene addCharacterAfterUpdate:bullet];
-  [scene.baddieBullets addObject:bullet];
+  [scene.enemyBullets addObject:bullet];
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   
-  FighterScene *fighterScene = (FighterScene*)scene;
+  Game *fighterScene = (Game*)scene;
   float fighterX = fighterScene.fighter.position.x;
   float diff = fighterX- self.position.x;
   self.acceleration = GLKVector2Make(diff,0);
@@ -56,7 +57,7 @@
     shotDelay -= dt;
   
   if (diff < 0.5 && shotDelay <= 0) {
-    [self shootInScene:(BaddieField*)scene];
+    [self shootInScene:(Game*)scene];
   }
 }
 

@@ -6,8 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
+#import "Enemy.h"
 
-@interface Bullet : TECharacter
+@interface Bullet : Enemy
 
 @end

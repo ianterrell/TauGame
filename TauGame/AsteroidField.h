@@ -6,16 +6,13 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TauEngine.h"
-#import "FighterScene.h"
-#import "Asteroid.h"
+#import "GameLevel.h"
 
-@interface AsteroidField : FighterScene {
-  NSMutableArray *asteroids;
+@interface AsteroidField : NSObject <GameLevel> {
+  Game *game;
+  int frames, asteroidInterval;
 }
 
-@property(strong) NSMutableArray *asteroids;
-
--(void)newAsteroid;
+-(void)addAsteroid;
 
 @end

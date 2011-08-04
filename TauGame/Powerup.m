@@ -18,7 +18,7 @@
   [[TESoundManager sharedManager] load:@"powerup"];
 }
 
-+(void)addPowerupToScene:(FighterScene *)scene at:(GLKVector2)location {
++(void)addPowerupToScene:(Game *)scene at:(GLKVector2)location {
   Powerup *powerup = [[self alloc] init];
   powerup.velocity = GLKVector2Make(0,POWERUP_VELOCITY);
   powerup.acceleration = GLKVector2Make(0,POWERUP_ACCELERATION);
@@ -28,7 +28,7 @@
   [scene.powerups addObject:powerup];
 }
 
--(void)update:(NSTimeInterval)dt inScene:(FighterScene *)scene {
+-(void)update:(NSTimeInterval)dt inScene:(Game *)scene {
   [super update:dt inScene:scene];
   [self removeOutOfScene:scene buffer:2.0];
 }

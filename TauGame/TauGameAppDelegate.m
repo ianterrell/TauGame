@@ -7,9 +7,6 @@
 //
 
 #import "TauGameAppDelegate.h"
-#import "TECollisionDetectorTest.h"
-#import "AsteroidField.h"
-#import "BaddieField.h"
 #import "TitleScreen.h"
 #import "Pause.h"
 

@@ -14,8 +14,6 @@
 
 static GLKVector4 colors[NUM_ASTEROID_COLORS];
 
-NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification";
-
 @implementation Asteroid
 
 +(void)initialize {
@@ -24,8 +22,6 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
   colors[i++] = GLKVector4Make(0.557, 0.686, 0.820, 1);
   colors[i++] = GLKVector4Make(0.631, 0.745, 0.902, 1);
   colors[i++] = GLKVector4Make(0.824, 0.894, 0.988, 1);
-  
-  [[TESoundManager sharedManager] load:@"explosion"];
 }
 
 - (id)init
@@ -33,8 +29,6 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
   self = [super init];
   
   if (self) {
-    self.collide = YES;
-    
     TERandomPolygon *polygon = [[TERandomPolygon alloc] initWithSides:[TERandom randomFrom:5 to:9] lowerFactor:0.5 upperFactor:1.5];
     for (int i = 0; i < polygon.numSides+2; i++)
       polygon.colorVertices[i] = colors[[TERandom randomTo:NUM_ASTEROID_COLORS]];
@@ -78,7 +72,7 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
 }
 
 -(void)registerHit {
-  [[TESoundManager sharedManager] play:@"hurt2"];
+  [super registerHit];
   
   TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
   for (int i = 0; i < self.shape.numVertices; i++)
@@ -86,17 +80,8 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
   highlight.duration = 0.2;
   highlight.backward = YES;
   [self.currentAnimations addObject:highlight];
-  
-  hitPoints--;
-  if ([self dead])
-    [self die];
 }
 
--(void)die {
-  [self postNotification:AsteroidDestroyedNotification];
-  [[TESoundManager sharedManager] play:@"explosion"];
-  [self explode];
-}
 
 -(void)explode {
   __block BOOL setRemovedCallback = NO;
@@ -130,10 +115,6 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
   self.shape.renderStyle = kTERenderStyleNone;
   self.angularVelocity = 0;
   self.velocity = GLKVector2Make(0,0);
-}
-
--(BOOL)dead {
-  return hitPoints <= 0;
 }
 
 @end

@@ -6,14 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
+#import "Enemy.h"
 
-extern NSString *const BaddieDestroyedNotification;
-
-@interface Baddie : TECharacter {
-  int hitPoints;
-}
-
--(void)registerHit;
+@interface Baddie : Enemy
 
 @end

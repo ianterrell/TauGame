@@ -7,8 +7,6 @@
 //
 
 #import "Bullet.h"
-#import "TECharacterLoader.h"
-#import "BaddieField.h"
 
 @implementation Bullet
 

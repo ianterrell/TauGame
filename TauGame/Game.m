@@ -109,6 +109,7 @@ static Class levelClasses[NUM_LEVELS];
 # pragma mark - Levels
 
 -(void)loadNextLevel {
+  currentLevel = nil;
   currentLevelNumber++;
   
   UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:36];
@@ -123,12 +124,11 @@ static Class levelClasses[NUM_LEVELS];
   scaleAnimation.duration = 1;
   scaleAnimation.onRemoval = ^(){
     levelDisplay.remove = YES;
+    currentLevel = [[levelClasses[[TERandom randomTo:NUM_LEVELS]] alloc] initWithGame:self];
   };
   [levelDisplay startAnimation:scaleAnimation];
   
   [characters addObject:levelDisplay];
-    
-  currentLevel = [[levelClasses[[TERandom randomTo:NUM_LEVELS]] alloc] initWithGame:self];
 }
 
 # pragma mark - Updating
@@ -157,9 +157,11 @@ static Class levelClasses[NUM_LEVELS];
     [fighter getPowerup:(Powerup*)powerup];
   }];
   
-  [currentLevel update];
-  if ([currentLevel done])
-    [self loadNextLevel];
+  if (currentLevel != nil) {
+    [currentLevel update];
+    if ([currentLevel done])
+      [self loadNextLevel];
+  }
 }
 
 # pragma mark - Touch Controls
@@ -179,7 +181,7 @@ static Class levelClasses[NUM_LEVELS];
 # pragma mark - Score
 
 -(void)incrementScore:(int)score {
-  ((TENumberDisplay *)scoreboard.drawable).number += score;
+  ((TENumberDisplay *)scoreboard.drawable).number += score * currentLevelNumber;
 }
 
 -(void)incrementScoreWithPulse:(int)score {

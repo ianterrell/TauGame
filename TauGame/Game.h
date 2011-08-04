@@ -13,7 +13,7 @@
 
 @interface Game : TEScene {
   id<GameLevel> currentLevel;
-  int currentDifficulty;
+  int currentLevelNumber;
   
   Fighter *fighter;
   
@@ -23,7 +23,7 @@
   TECharacter *scoreboard;
 }
 
-@property(readonly) int currentDifficulty;
+@property(readonly) int currentLevelNumber;
 @property(strong) Fighter *fighter;
 @property(strong) NSMutableArray *bullets, *powerups, *enemies, *enemyBullets;
 

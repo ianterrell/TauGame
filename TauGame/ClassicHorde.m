@@ -18,7 +18,7 @@
   self = [super init];
   if (self) {
     game = _game;
-    for (int i = 0; i < 3*game.currentDifficulty; i++)
+    for (int i = 0; i < 3*game.currentLevelNumber; i++)
       [self addRandomBaddie];
   }
   return self;

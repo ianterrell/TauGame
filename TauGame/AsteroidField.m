@@ -17,7 +17,7 @@
   if (self) {
     game = _game;
     frames = 0;
-    asteroidInterval = 120/game.currentDifficulty;
+    asteroidInterval = 120/game.currentLevelNumber;
   }
   return self;
 }

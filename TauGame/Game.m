@@ -32,9 +32,6 @@
 static Class powerupClasses[NUM_POWERUPS];
 static Class levelClasses[NUM_LEVELS];
 
-static NSMutableArray *doneNodes;
-static int numDonePhrases;
-
 @implementation Game
 
 @synthesize fighter, bullets, powerups, enemies, enemyBullets;
@@ -48,17 +45,7 @@ static int numDonePhrases;
   
   int j = 0;
   levelClasses[j++] = [AsteroidField class];
-  levelClasses[j++] = [AsteroidField class];//[ClassicHorde class];
-  
-  NSArray *donePhrases = [NSArray arrayWithObjects:@"Well done!", @"Bravo!", @"Child's play!", @"Cake!", @"Who's next?", @"Snoozefest!", @"Splendid!", @"Grats!", @"Attafighter!", nil];
-  numDonePhrases = [donePhrases count];
-  doneNodes = [NSMutableArray arrayWithCapacity:numDonePhrases];
-  UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
-  
-  for (NSString *phrase in donePhrases) {
-    TESprite *phraseSprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:phrase withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
-    [doneNodes addObject:[TENode nodeWithDrawable:phraseSprite]];
-  }
+  levelClasses[j++] = [ClassicHorde class];
 }
 
 - (id)init
@@ -123,20 +110,23 @@ static int numDonePhrases;
 
 -(void)loadNextLevel {
   currentLevelNumber++;
-  if (currentLevelNumber > 1) {
-    TENode *doneNode = [doneNodes objectAtIndex:[TERandom randomTo:numDonePhrases]];
-    doneNode.position = GLKVector2Make(self.width/2, self.height/2);
-    
-    TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
-    scaleAnimation.scale = 5;
-    scaleAnimation.duration = 1;
-    scaleAnimation.onRemoval = ^(){
-      doneNode.remove = YES;
-    };
-    [doneNode startAnimation:scaleAnimation];
-    
-    [characters addObject:doneNode];
-  }
+  
+  UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:36];
+  TESprite *sprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:[NSString stringWithFormat:@"Level %d", currentLevelNumber] withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+  TENode *levelDisplay = [TENode nodeWithDrawable:sprite];
+
+  levelDisplay.scale = 0.2;
+  levelDisplay.position = GLKVector2Make(self.width/2, self.height/2);
+  
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+  scaleAnimation.scale = 5;
+  scaleAnimation.duration = 1;
+  scaleAnimation.onRemoval = ^(){
+    levelDisplay.remove = YES;
+  };
+  [levelDisplay startAnimation:scaleAnimation];
+  
+  [characters addObject:levelDisplay];
     
   currentLevel = [[levelClasses[[TERandom randomTo:NUM_LEVELS]] alloc] initWithGame:self];
 }

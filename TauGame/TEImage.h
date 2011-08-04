@@ -11,6 +11,6 @@
 @interface TEImage : NSObject
 
 +(UIImage *)imageFromText:(NSString *)text;
-+(UIImage *)imageFromText:(NSString *)text withFont:(UIFont *)font;
++(UIImage *)imageFromText:(NSString *)text withFont:(UIFont *)font color:(UIColor *)color;
 
 @end

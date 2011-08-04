@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "TauEngine.h"
-#import "MainMenu.h"
+#import "TitleScreen.h"
 
 @interface TauGameAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -11,10 +11,10 @@
 @implementation TEImage
 
 +(UIImage *)imageFromText:(NSString *)text {
-  return [self imageFromText:text withFont:[UIFont systemFontOfSize:20.0]];
+  return [self imageFromText:text withFont:[UIFont systemFontOfSize:20.0] color:[UIColor blackColor]];
 }
 
-+(UIImage *)imageFromText:(NSString *)text withFont:(UIFont *)font {
++(UIImage *)imageFromText:(NSString *)text withFont:(UIFont *)font color:(UIColor *)color {
   CGSize size  = [text sizeWithFont:font];
   
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -27,6 +27,7 @@
   CGColorSpaceRelease(colorSpace);
   UIGraphicsPushContext(contextRef);
   
+  CGContextSetFillColorWithColor(contextRef, color.CGColor);
   [text drawAtPoint:CGPointMake(0.0, 0.0) withFont:font];
   UIImage *image = [UIImage imageWithCGImage:CGBitmapContextCreateImage(contextRef) scale:1.0 orientation:UIImageOrientationDownMirrored];
   

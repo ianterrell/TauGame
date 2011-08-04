@@ -10,7 +10,7 @@
 #import "TECollisionDetectorTest.h"
 #import "AsteroidField.h"
 #import "BaddieField.h"
-#import "MainMenu.h"
+#import "TitleScreen.h"
 #import "Pause.h"
 
 @implementation TauGameAppDelegate
@@ -22,7 +22,7 @@
   [[TauEngine motionManager] startAccelerometerUpdates];
   
   TESceneController *sceneController = [TESceneController sharedController];
-  [sceneController addScene:[[MainMenu alloc] init] named:@"menu"];
+  [sceneController addScene:[[TitleScreen alloc] init] named:@"menu"];
   [sceneController addScene:[[Pause alloc] init] named:@"pause"];
   [sceneController displayScene:@"menu"];
   

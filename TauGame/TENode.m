@@ -11,12 +11,12 @@
 
 @implementation TENode
 
-@synthesize name, drawable;
+@synthesize name;
 @synthesize maxVelocity, maxAcceleration;
 @synthesize maxAngularVelocity, maxAngularAcceleration;
 @synthesize remove;
 @synthesize collide;
-@synthesize parent, children, renderChildrenFirst;
+@synthesize parent, renderChildrenFirst;
 @synthesize currentAnimations, dirtyFullModelViewMatrix;
 
 - (id)init
@@ -39,13 +39,23 @@
     
     remove = NO;
     renderChildrenFirst = NO;
-    self.children = [[NSMutableArray alloc] init];
+    children = [[NSMutableArray alloc] init];
     
     dirtyObjectModelViewMatrix = YES;
   }
   
   return self;
 }
+
+# pragma mark Factories
+
++(TENode *)nodeWithDrawable:(TEDrawable *)drawable {
+  TENode *node = [[TENode alloc] init];
+  node.drawable = drawable;
+  return node;
+}
+
+# pragma mark Rendering
 
 -(void)renderInScene:(TEScene *)scene {
   if (renderChildrenFirst) {
@@ -86,6 +96,21 @@
       [((TEAnimation *)animation) incrementElapsedTime:dt];
     }];
   }];
+}
+
+# pragma mark Drawable
+
+-(TEDrawable *)drawable {
+  return drawable;
+}
+
+-(void)setDrawable:(TEDrawable *)_drawable {
+  _drawable.node = self;
+  drawable = _drawable;
+}
+
+-(TEShape *)shape {
+  return (TEShape *)drawable;
 }
 
 # pragma mark Motion Methods
@@ -211,12 +236,12 @@
 
 -(void)addChild:(TENode *)child {
   child.parent = self;
-  [self.children addObject:child];
+  [children addObject:child];
 }
 
 -(void)traverseUsingBlock:(void (^)(TENode *))block {
   block(self);
-  [self.children makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:block];
+  [children makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:block];
 }
 
 -(TENode *)childNamed:(NSString *)nodeName {
@@ -249,12 +274,6 @@
 
 -(void)postNotification:(NSString *)notificationName {
   [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
-}
-
-# pragma mark - Drawable Methods
-
--(TEShape *)shape {
-  return (TEShape *)drawable;
 }
 
 # pragma mark - Matrix Methods

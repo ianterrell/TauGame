@@ -45,11 +45,14 @@
 @property(strong, nonatomic) TEDrawable *drawable;
 @property(readonly) TEShape *shape;
 @property(strong, nonatomic) TENode *parent;
-@property(strong, nonatomic) NSMutableArray *children;
 @property float maxVelocity, maxAcceleration, maxAngularVelocity, maxAngularAcceleration;
 @property BOOL remove;
 @property BOOL collide;
 @property BOOL renderChildrenFirst;
+
+# pragma mark Factories
+
++(TENode *)nodeWithDrawable:(TEDrawable *)drawable;
 
 # pragma mark Update
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene;

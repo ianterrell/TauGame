@@ -105,9 +105,8 @@ static int count = 0;
   circle1.scale = 1.0;//reset
     
   TENode *subCircle1 = [self circleNode];
-  subCircle1.parent = circle1;
   subCircle1.position = GLKVector2Make(-2,0);
-  [circle1.children addObject:subCircle1];
+  [circle1 addChild:subCircle1];
   
   [self node:circle1 shouldCollideWith:circle2 label:@"Circles w/sub overlapping completely"];
   

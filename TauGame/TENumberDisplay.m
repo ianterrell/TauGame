@@ -10,7 +10,6 @@
 #import "TauEngine.h"
 
 
-static GLKTextureInfo *digitsTexture;
 static GLKBaseEffect *digitsTextureEffect;
 
 static CGSize digitSize;
@@ -23,21 +22,11 @@ static float digitFractionalWidth;
 +(void)initialize {
   UIFont *font = [UIFont fontWithName:@"Courier-Bold" size:30];
   
-  NSError *error;
-  digitsTexture = [GLKTextureLoader textureWithCGImage:[TEImage imageFromText:@"0123456789" withFont:font].CGImage options:nil error:&error];
-  if (error) {
-    NSLog(@"Error making digits texture: %@",error);
-  }
+  digitsTextureEffect = [TETexture effectWithTextureFromImage:[TEImage imageFromText:@"0123456789" withFont:font color:[UIColor blackColor]]];
   
   digitSize = [@"0" sizeWithFont:font];
   digitSize = CGSizeMake(digitSize.width-1.0, digitSize.height); // pads by 1 px on end
   digitFractionalWidth = digitSize.width / (10*digitSize.width + 1.0);
-  
-  digitsTextureEffect = [[GLKBaseEffect alloc] init];
-  digitsTextureEffect.texturingEnabled = YES;
-  digitsTextureEffect.texture2d0.envMode = GLKTextureEnvModeReplace;
-  digitsTextureEffect.texture2d0.target = GLKTextureTarget2D;
-  digitsTextureEffect.texture2d0.glName = digitsTexture.glName;
 }
 
 - (id)initWithNumDigits:(int)num

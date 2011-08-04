@@ -32,6 +32,8 @@
 
 #import "TENumberDisplay.h"
 
+#import "TESprite.h"
+
 #import "TEScene.h"
 #import "TESceneController.h"
 
@@ -53,6 +55,7 @@
 
 #import "TERandom.h"
 #import "TEImage.h"
+#import "TETexture.h"
 
 @interface TauEngine : NSObject {
   CMMotionManager *motionManager;

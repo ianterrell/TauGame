@@ -57,9 +57,8 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
       
       triangleShape.node = triangleNode;
       triangleNode.drawable = triangleShape;
-      triangleNode.parent = self;
       
-      [self.children addObject:triangleNode];
+      [self addChild:triangleNode];
     }
 
     self.drawable = polygon;

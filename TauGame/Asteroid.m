@@ -122,9 +122,7 @@ NSString *const AsteroidDestroyedNotification = @"AsteroidDestroyedNotification"
         };
         setRemovedCallback = YES;
       }
-      [node.currentAnimations addObject:scaleAnimation];
-      
-      [node markModelViewMatrixDirty];
+      [node startAnimation:scaleAnimation];
     }
   }];
   

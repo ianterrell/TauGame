@@ -131,8 +131,7 @@ static Class powerupClasses[NUM_POWERUPS];
   colorAnimation.onRemoval = ^(){
     life.shape.color = GLKVector4Make(1,1,1,1);
   };
-  [life.currentAnimations addObject:colorAnimation];
-  [life markModelViewMatrixDirty];
+  [life startAnimation:colorAnimation];
   
   [lives addObject:life];
   [characters addObject:life];

@@ -232,6 +232,14 @@
     self.remove = YES;
 }
 
+
+# pragma mark Animation Methods
+
+-(void)startAnimation:(TEAnimation *)animation {
+  [currentAnimations addObject:animation];
+  [self markModelViewMatrixDirty];
+}
+
 # pragma mark Tree Methods
 
 -(void)addChild:(TENode *)child {

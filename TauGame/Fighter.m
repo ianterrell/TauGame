@@ -216,8 +216,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
         setCallback = YES;
       }
       
-      [node.currentAnimations addObject:scaleAnimation];
-      [node markModelViewMatrixDirty];
+      [node startAnimation:scaleAnimation];
     }
   }];
 }

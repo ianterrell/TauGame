@@ -39,10 +39,7 @@
   TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
   translateAnimation.translation = GLKVector2Make(-5.0,0);
   translateAnimation.duration = time;
-  [bar.currentAnimations addObject:translateAnimation];
-  
-  [bar markModelViewMatrixDirty];
-//  [self markModelViewMatrixDirty];
+  [bar startAnimation:translateAnimation];
 }
 
 @end

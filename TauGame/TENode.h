@@ -10,6 +10,8 @@
 #import "TEScene.h"
 #import "TEShape.h"
 
+@class TEAnimation;
+
 @interface TENode : NSObject {
   NSString *name;
   TEDrawable *drawable;
@@ -66,6 +68,10 @@
 -(void)wraparoundYInScene:(TEScene *)scene;
 
 -(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer;
+
+# pragma mark Animation Methods
+
+-(void)startAnimation:(TEAnimation *)animation;
 
 # pragma mark Tree Methods
 

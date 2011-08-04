@@ -16,7 +16,7 @@
 @synthesize maxAngularVelocity, maxAngularAcceleration;
 @synthesize remove;
 @synthesize collide;
-@synthesize parent, children;
+@synthesize parent, children, renderChildrenFirst;
 @synthesize currentAnimations, dirtyFullModelViewMatrix;
 
 - (id)init
@@ -38,6 +38,7 @@
     currentAnimations = [[NSMutableArray alloc] init];
     
     remove = NO;
+    renderChildrenFirst = NO;
     self.children = [[NSMutableArray alloc] init];
     
     dirtyObjectModelViewMatrix = YES;
@@ -47,8 +48,13 @@
 }
 
 -(void)renderInScene:(TEScene *)scene {
-  [drawable renderInScene:scene];
-  [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
+  if (renderChildrenFirst) {
+    [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
+    [drawable renderInScene:scene];
+  } else {
+    [drawable renderInScene:scene];
+    [children makeObjectsPerformSelector:@selector(renderInScene:) withObject:scene];
+  }
 }
 
 # pragma mark Update

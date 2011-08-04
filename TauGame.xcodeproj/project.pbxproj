@@ -57,6 +57,8 @@
 		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
 		3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27213E9C697005895AE /* SeekNShoot.m */; };
 		3C7BD27E13E9E140005895AE /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27D13E9E140005895AE /* Pause.m */; };
+		3C7BD28013EADB2D005895AE /* glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C7BD27F13EADB2D005895AE /* glow.png */; };
+		3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28213EADB41005895AE /* GlowingBullet.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
@@ -187,6 +189,9 @@
 		3C7BD27213E9C697005895AE /* SeekNShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekNShoot.m; sourceTree = "<group>"; };
 		3C7BD27C13E9E13F005895AE /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		3C7BD27D13E9E140005895AE /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
+		3C7BD27F13EADB2D005895AE /* glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glow.png; path = ../../../Desktop/glow.png; sourceTree = "<group>"; };
+		3C7BD28113EADB41005895AE /* GlowingBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowingBullet.h; sourceTree = "<group>"; };
+		3C7BD28213EADB41005895AE /* GlowingBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowingBullet.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
@@ -460,6 +465,8 @@
 			children = (
 				3C6E948A13D771A7000F7988 /* Bullet.h */,
 				3C6E948B13D771A7000F7988 /* Bullet.m */,
+				3C7BD28113EADB41005895AE /* GlowingBullet.h */,
+				3C7BD28213EADB41005895AE /* GlowingBullet.m */,
 			);
 			name = Weapons;
 			sourceTree = "<group>";
@@ -467,6 +474,7 @@
 		3C7BD27513E9C6B7005895AE /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				3C7BD27F13EADB2D005895AE /* glow.png */,
 				3C20D41013E3AD4C00A90FEB /* BulletSplash.h */,
 				3C20D41113E3AD4C00A90FEB /* BulletSplash.m */,
 			);
@@ -747,6 +755,7 @@
 				3C228AE413E7151600CFE5D1 /* extra-life-powerup.json in Resources */,
 				3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */,
 				3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */,
+				3C7BD28013EADB2D005895AE /* glow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +843,7 @@
 				3CF3679813E99D58008A1A4A /* StarfieldLayer.m in Sources */,
 				3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */,
 				3C7BD27E13E9E140005895AE /* Pause.m in Sources */,
+				3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

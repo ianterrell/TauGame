@@ -28,6 +28,7 @@
   
   BOOL remove;
   BOOL collide;
+  BOOL renderChildrenFirst;
   
   GLKMatrix4 cachedObjectModelViewMatrix, cachedFullModelViewMatrix;
   BOOL dirtyObjectModelViewMatrix, dirtyFullModelViewMatrix;
@@ -48,6 +49,7 @@
 @property float maxVelocity, maxAcceleration, maxAngularVelocity, maxAngularAcceleration;
 @property BOOL remove;
 @property BOOL collide;
+@property BOOL renderChildrenFirst;
 
 # pragma mark Update
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene;

@@ -8,9 +8,7 @@
 
 #import "GameLevel.h"
 
-@interface ClassicHorde : NSObject <GameLevel> {
-  Game *game;
-}
+@interface ClassicHorde : GameLevel
 
 -(void)addRandomBaddie;
 

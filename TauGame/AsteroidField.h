@@ -8,8 +8,7 @@
 
 #import "GameLevel.h"
 
-@interface AsteroidField : NSObject <GameLevel> {
-  Game *game;
+@interface AsteroidField : GameLevel {
   int frames, asteroidInterval;
 }
 

@@ -112,22 +112,39 @@ static Class levelClasses[NUM_LEVELS];
   currentLevel = nil;
   currentLevelNumber++;
   
-  UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:36];
-  TESprite *sprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:[NSString stringWithFormat:@"Level %d", currentLevelNumber] withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
-  TENode *levelDisplay = [TENode nodeWithDrawable:sprite];
-
-  levelDisplay.scale = 0.2;
-  levelDisplay.position = GLKVector2Make(self.width/2, self.height/2);
+  Class nextLevelClass = levelClasses[[TERandom randomTo:NUM_LEVELS]];
   
+  // Set up level name display
+  TENode *levelName = [nextLevelClass nameSpriteWithPointRatio:POINT_RATIO];
+  levelName.scale = 0.2;
+  levelName.position = GLKVector2Make(self.width/2, self.height/2);
   TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
   scaleAnimation.scale = 5;
   scaleAnimation.duration = 1;
   scaleAnimation.onRemoval = ^(){
-    levelDisplay.remove = YES;
-    currentLevel = [[levelClasses[[TERandom randomTo:NUM_LEVELS]] alloc] initWithGame:self];
+    NSLog(@"finishing up second one!");
+    levelName.remove = YES;
+    currentLevel = [[nextLevelClass alloc] initWithGame:self];;
   };
-  [levelDisplay startAnimation:scaleAnimation];
+  [levelName startAnimation:scaleAnimation];
   
+  // Set up level number display
+  UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:36];
+  TESprite *sprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:[NSString stringWithFormat:@"Level %d", currentLevelNumber] withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+  TENode *levelDisplay = [TENode nodeWithDrawable:sprite];
+  levelDisplay.scale = 0.2;
+  levelDisplay.position = GLKVector2Make(self.width/2, self.height/2);
+  TEScaleAnimation *scaleAnimation2 = [[TEScaleAnimation alloc] init];
+  scaleAnimation2.scale = 5;
+  scaleAnimation2.duration = 1;
+  scaleAnimation2.onRemoval = ^(){
+    NSLog(@"finishing up first one!");
+    levelDisplay.remove = YES;
+    [characters addObject:levelName];
+  };
+  [levelDisplay startAnimation:scaleAnimation2];  
+  
+  // Kick it off
   [characters addObject:levelDisplay];
 }
 

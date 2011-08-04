@@ -14,10 +14,13 @@
 
 @implementation ClassicHorde
 
++(NSString *)name {
+  return @"Invading Hordes";
+}
+
 -(id)initWithGame:(Game*)_game {
-  self = [super init];
+  self = [super initWithGame:_game];
   if (self) {
-    game = _game;
     for (int i = 0; i < 3*game.currentLevelNumber; i++)
       [self addRandomBaddie];
   }

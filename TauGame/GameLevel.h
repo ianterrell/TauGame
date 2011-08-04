@@ -6,11 +6,16 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "TauEngine.h"
 
 @class Game;
 
-@protocol GameLevel <NSObject>
+@interface  GameLevel : NSObject {
+  Game *game;
+}
+
++(NSString *)name;
++(TENode *)nameSpriteWithPointRatio:(float)pointRatio;
 
 -(id)initWithGame:(Game*)game;
 -(void)update;

@@ -12,10 +12,13 @@
 
 @implementation AsteroidField
 
++(NSString *)name {
+  return @"Asteroid Field";
+}
+
 -(id)initWithGame:(Game*)_game {
-  self = [super init];
+  self = [super initWithGame:_game];
   if (self) {
-    game = _game;
     frames = 0;
     asteroidInterval = 120/game.currentLevelNumber;
   }

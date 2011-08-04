@@ -62,6 +62,7 @@
 		3C7BD28613EB00B6005895AE /* TESprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28513EB00B6005895AE /* TESprite.m */; };
 		3C7BD28A13EB0158005895AE /* TETexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28913EB0158005895AE /* TETexture.m */; };
 		3C80617313EB142100EF4929 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80617213EB142100EF4929 /* Enemy.m */; };
+		3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80617413EB2D4B00EF4929 /* GameLevel.m */; };
 		3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
@@ -202,6 +203,7 @@
 		3C80617013EB10F700EF4929 /* GameLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevel.h; sourceTree = "<group>"; };
 		3C80617113EB142100EF4929 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		3C80617213EB142100EF4929 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		3C80617413EB2D4B00EF4929 /* GameLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLevel.m; sourceTree = "<group>"; };
 		3C8A282613D70B4200BB0011 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				3C80617013EB10F700EF4929 /* GameLevel.h */,
+				3C80617413EB2D4B00EF4929 /* GameLevel.m */,
 				3C8A283013D70CBC00BB0011 /* AsteroidField.h */,
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 				3CD1F94513DE313A00F6F035 /* ClassicHorde.h */,
@@ -880,6 +883,7 @@
 				3C7BD28613EB00B6005895AE /* TESprite.m in Sources */,
 				3C7BD28A13EB0158005895AE /* TETexture.m in Sources */,
 				3C80617313EB142100EF4929 /* Enemy.m in Sources */,
+				3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

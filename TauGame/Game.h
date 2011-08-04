@@ -12,7 +12,7 @@
 @class Fighter;
 
 @interface Game : TEScene {
-  id<GameLevel> currentLevel;
+  GameLevel *currentLevel;
   int currentLevelNumber;
   
   Fighter *fighter;

@@ -45,10 +45,12 @@
     shape = [[TERectangle alloc] init];
   } else if ([geometry isEqualToString:@"circle"] || [geometry isEqualToString:@"ellipse"]) {
     shape = [[TEEllipse alloc] init];
-  } else if ([geometry isEqualToString:@"heptagon"]) {
-    shape = [[TEHeptagon alloc] init];
+  } else if ([geometry isEqualToString:@"polygon"]) {
+    shape = [[TEPolygon alloc] initWithVertices:[[attributes objectForKey:@"num-vertices"] intValue]];
   } else if ([geometry isEqualToString:@"hexagon"]) {
     shape = [[TEHexagon alloc] init];
+  } else if ([geometry isEqualToString:@"heptagon"]) {
+    shape = [[TEHeptagon alloc] init];
   } else {
     NSLog(@"Unrecognized shape: '%@'", geometry);
     return nil;

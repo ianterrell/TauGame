@@ -1,0 +1,38 @@
+{
+  "seeker": {
+    "collide": "yes",
+    "shape": {
+      "geometry": "hexagon",
+      "vertex0": [0,0],
+      "vertex1": [1,-0.333],
+      "vertex2": [1.5,0],
+      "vertex3": [1,0.333],
+      "vertex4": [-1,0.333],
+      "vertex5": [-1.5,0],
+      "vertex6": [-1,-0.333],
+      "vertex7": [1,-0.333],
+      "color": [0.25, 0.25, 0.25, 1.0]
+    },
+    "children": {
+      "eye": {
+        "shape": {
+          "geometry": "rectangle",
+          "width": 2.25,
+          "height": 0.2,
+          "color": [0.5,0.5,0.5,0.5]
+        },
+        "children": {
+          "pupil": {
+            "translation": [-1.025,0],
+            "shape": {
+              "geometry": "rectangle",
+              "width": 0.2,
+              "height": 0.2,
+              "color": [1.0, 0.0, 0.0, 1.0]
+            }
+          }
+        }
+      }
+    }
+  }
+}

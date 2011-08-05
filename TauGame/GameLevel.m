@@ -8,9 +8,6 @@
 
 #import "GameLevel.h"
 
-@class Game;
-@class TENode;
-
 @implementation GameLevel
 
 @synthesize game;
@@ -37,7 +34,7 @@
 }
 
 -(BOOL)done {
-  return NO;
+  return [game.enemies count] == 0;
 }
 
 @end

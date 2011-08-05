@@ -15,7 +15,6 @@
   self = [super init];
   if (self) {
     hitPoints = 3;
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"baddie"];
   }
   
   return self;

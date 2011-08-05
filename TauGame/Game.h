@@ -7,9 +7,8 @@
 //
 
 #import "TauEngine.h"
-#import "GameLevel.h"
 
-@class Fighter;
+@class Fighter, GameLevel;
 
 @interface Game : TEScene {
   GameLevel *currentLevel;

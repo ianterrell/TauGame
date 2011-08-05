@@ -26,6 +26,8 @@
 {
   self = [super init];
   if (self) {
+    [TECharacterLoader loadCharacter:self fromJSONFile:@"horde-unit"];
+    
     level = _level;
     row = _row;
     column = _column;

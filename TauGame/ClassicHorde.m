@@ -33,13 +33,6 @@
   return self;
 }
 
--(void)update {
-}
-
--(BOOL)done {
-  return [game.enemies count] == 0;
-}
-
 -(void)addHordeUnitAtRow:(int)row column:(int)col {
   HordeUnit *baddie = [[HordeUnit alloc] initWithLevel:self row:row column:col shotDelayMin:MAX(0.5,(1.5-game.currentLevelNumber/10.0)) shotDelayMax:MAX(1.5,(5.5-game.currentLevelNumber/10.0))];
   

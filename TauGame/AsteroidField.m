@@ -7,7 +7,6 @@
 //
 
 #import "AsteroidField.h"
-#import "Game.h"
 #import "Asteroid.h"
 
 @implementation AsteroidField
@@ -28,12 +27,12 @@
 -(void)update {
   frames++;
   
-  if (frames % asteroidInterval == 0)
+  if (frames % asteroidInterval == 0 && frames < 10*60)
     [self addAsteroid];
 }
 
 -(BOOL)done {
-  return frames >= 10*60;
+  return frames >= 10*60 && [game.enemies count] == 0;
 }
 
 -(void)addAsteroid {

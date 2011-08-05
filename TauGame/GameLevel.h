@@ -7,8 +7,7 @@
 //
 
 #import "TauEngine.h"
-
-@class Game;
+#import "Game.h"
 
 @interface  GameLevel : NSObject {
   Game *game;

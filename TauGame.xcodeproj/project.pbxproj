@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C01190713D86090004808DA /* Baddie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C01190613D86090004808DA /* Baddie.m */; };
-		3C01190813D8612E004808DA /* baddie.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C01190313D85DDF004808DA /* baddie.json */; };
+		3C01190813D8612E004808DA /* horde-unit.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C01190313D85DDF004808DA /* horde-unit.json */; };
+		3C10726F13EC33BB0062986D /* seeker.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C10726E13EC33BB0062986D /* seeker.json */; };
+		3C10727313EC35380062986D /* Fray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10727213EC35380062986D /* Fray.m */; };
 		3C138B8E13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B8F13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
@@ -55,7 +57,7 @@
 		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
 		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
 		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
-		3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27213E9C697005895AE /* SeekNShoot.m */; };
+		3C7BD27313E9C697005895AE /* Seeker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27213E9C697005895AE /* Seeker.m */; };
 		3C7BD27E13E9E140005895AE /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27D13E9E140005895AE /* Pause.m */; };
 		3C7BD28013EADB2D005895AE /* glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C7BD27F13EADB2D005895AE /* glow.png */; };
 		3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28213EADB41005895AE /* GlowingBullet.m */; };
@@ -126,9 +128,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3C01190313D85DDF004808DA /* baddie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = baddie.json; sourceTree = "<group>"; };
+		3C01190313D85DDF004808DA /* horde-unit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "horde-unit.json"; sourceTree = "<group>"; };
 		3C01190513D86090004808DA /* Baddie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baddie.h; sourceTree = "<group>"; };
 		3C01190613D86090004808DA /* Baddie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baddie.m; sourceTree = "<group>"; };
+		3C10726E13EC33BB0062986D /* seeker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seeker.json; sourceTree = "<group>"; };
+		3C10727113EC35380062986D /* Fray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fray.h; sourceTree = "<group>"; };
+		3C10727213EC35380062986D /* Fray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fray.m; sourceTree = "<group>"; };
 		3C138B8D13CCAD9D002FC701 /* mage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mage.json; sourceTree = "<group>"; };
 		3C138B9013CCB15A002FC701 /* TECharacterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacterLoader.h; sourceTree = "<group>"; };
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
@@ -190,8 +195,8 @@
 		3C70969413E1DD1200BF4E83 /* TEImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEImage.m; sourceTree = "<group>"; };
 		3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandomPolygon.h; sourceTree = "<group>"; };
 		3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandomPolygon.m; sourceTree = "<group>"; };
-		3C7BD27113E9C696005895AE /* SeekNShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekNShoot.h; sourceTree = "<group>"; };
-		3C7BD27213E9C697005895AE /* SeekNShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekNShoot.m; sourceTree = "<group>"; };
+		3C7BD27113E9C696005895AE /* Seeker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seeker.h; sourceTree = "<group>"; };
+		3C7BD27213E9C697005895AE /* Seeker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seeker.m; sourceTree = "<group>"; };
 		3C7BD27C13E9E13F005895AE /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		3C7BD27D13E9E140005895AE /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
 		3C7BD27F13EADB2D005895AE /* glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glow.png; path = ../../../Desktop/glow.png; sourceTree = "<group>"; };
@@ -318,7 +323,8 @@
 				3C5507A013CE198900585C40 /* obstacle.json */,
 				3C8A283713D70D6200BB0011 /* fighter.json */,
 				3C6E948813D76D53000F7988 /* bullet.json */,
-				3C01190313D85DDF004808DA /* baddie.json */,
+				3C01190313D85DDF004808DA /* horde-unit.json */,
+				3C10726E13EC33BB0062986D /* seeker.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
 				3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */,
 				3C228AE913E7156A00CFE5D1 /* health-powerup.json */,
@@ -517,6 +523,8 @@
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 				3CD1F94513DE313A00F6F035 /* ClassicHorde.h */,
 				3CD1F94613DE313A00F6F035 /* ClassicHorde.m */,
+				3C10727113EC35380062986D /* Fray.h */,
+				3C10727213EC35380062986D /* Fray.m */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -546,8 +554,8 @@
 				3C01190613D86090004808DA /* Baddie.m */,
 				3C975B6913EB654700CAEB6D /* HordeUnit.h */,
 				3C975B6A13EB654700CAEB6D /* HordeUnit.m */,
-				3C7BD27113E9C696005895AE /* SeekNShoot.h */,
-				3C7BD27213E9C697005895AE /* SeekNShoot.m */,
+				3C7BD27113E9C696005895AE /* Seeker.h */,
+				3C7BD27213E9C697005895AE /* Seeker.m */,
 				3CF3679513E99D18008A1A4A /* HUD */,
 				3C7BD27413E9C6A9005895AE /* Weapons */,
 				3C350E9E13E07B38002DD35E /* Powerups */,
@@ -775,7 +783,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C01190813D8612E004808DA /* baddie.json in Resources */,
+				3C01190813D8612E004808DA /* horde-unit.json in Resources */,
 				3C8A283A13D70D9E00BB0011 /* fighter.json in Resources */,
 				3C5507A313CE19CB00585C40 /* obstacle.json in Resources */,
 				3CB0484713CBD5960029875B /* InfoPlist.strings in Resources */,
@@ -797,6 +805,7 @@
 				3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */,
 				3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */,
 				3C7BD28013EADB2D005895AE /* glow.png in Resources */,
+				3C10726F13EC33BB0062986D /* seeker.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,7 +891,7 @@
 				3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */,
 				3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */,
 				3CF3679813E99D58008A1A4A /* StarfieldLayer.m in Sources */,
-				3C7BD27313E9C697005895AE /* SeekNShoot.m in Sources */,
+				3C7BD27313E9C697005895AE /* Seeker.m in Sources */,
 				3C7BD27E13E9E140005895AE /* Pause.m in Sources */,
 				3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */,
 				3C7BD28613EB00B6005895AE /* TESprite.m in Sources */,
@@ -890,6 +899,7 @@
 				3C80617313EB142100EF4929 /* Enemy.m in Sources */,
 				3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */,
 				3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */,
+				3C10727313EC35380062986D /* Fray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

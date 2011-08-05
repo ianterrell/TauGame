@@ -17,9 +17,11 @@
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
 #import "ExtraShot.h"
+#import "GameLevel.h"
 
 #import "AsteroidField.h"
 #import "ClassicHorde.h"
+#import "Fray.h"
 #import "Enemy.h"
 
 #define POWERUP_CHANCE 0.1
@@ -27,7 +29,7 @@
 
 #define POINT_RATIO 40
 
-#define NUM_LEVELS 2
+#define NUM_LEVELS 3
 
 static Class powerupClasses[NUM_POWERUPS];
 static Class levelClasses[NUM_LEVELS];
@@ -44,8 +46,9 @@ static Class levelClasses[NUM_LEVELS];
   powerupClasses[i++] = [ExtraShot class];
   
   int j = 0;
-  levelClasses[j++] = [ClassicHorde class];//[AsteroidField class];
+  levelClasses[j++] = [AsteroidField class];
   levelClasses[j++] = [ClassicHorde class];
+  levelClasses[j++] = [Fray class];
 }
 
 - (id)init

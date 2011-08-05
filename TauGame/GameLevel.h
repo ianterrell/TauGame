@@ -14,6 +14,8 @@
   Game *game;
 }
 
+@property(readonly) Game *game;
+
 +(NSString *)name;
 +(TENode *)nameSpriteWithPointRatio:(float)pointRatio;
 

@@ -13,6 +13,8 @@
 
 @implementation GameLevel
 
+@synthesize game;
+
 +(NSString *)name {
   return @"Unnamed";
 }

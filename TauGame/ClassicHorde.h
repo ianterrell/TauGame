@@ -8,8 +8,12 @@
 
 #import "GameLevel.h"
 
-@interface ClassicHorde : GameLevel
+@interface ClassicHorde : GameLevel {
+  int rows, columns;
+}
 
--(void)addRandomBaddie;
+@property(readonly) int rows, columns;
+
+-(void)addHordeUnitAtRow:(int)row column:(int)col;
 
 @end

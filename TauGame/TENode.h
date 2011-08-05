@@ -67,6 +67,11 @@
 -(void)wraparoundXInScene:(TEScene *)scene;
 -(void)wraparoundYInScene:(TEScene *)scene;
 
+-(void)bounceXInScene:(TEScene *)scene buffer:(float)buffer;
+-(void)bounceXInScene:(TEScene *)scene bufferLeft:(float)left bufferRight:(float)right;
+-(void)bounceYInScene:(TEScene *)scene buffer:(float)buffer;
+-(void)bounceYInScene:(TEScene *)scene bufferTop:(float)top bufferBottom:(float)bottom;
+
 -(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer;
 
 # pragma mark Animation Methods

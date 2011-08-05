@@ -21,11 +21,6 @@
   return self;
 }
 
--(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
-  [super update:dt inScene:scene];
-  [self wraparoundInScene:scene];
-}
-
 -(void)registerHit {
   [super registerHit];
   

@@ -10,9 +10,11 @@
 #import "Baddie.h"
 #import "Fighter.h"
 #import "Bullet.h"
-#import "SeekNShoot.h"
+#import "HordeUnit.h"
 
 @implementation ClassicHorde
+
+@synthesize rows, columns;
 
 +(NSString *)name {
   return @"Invading Hordes";
@@ -21,8 +23,12 @@
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    for (int i = 0; i < 3*game.currentLevelNumber; i++)
-      [self addRandomBaddie];
+    rows = 1 + game.currentLevelNumber / 5;
+    columns = 2 + game.currentLevelNumber % 5;
+    
+    for (int row = 0; row < rows; row++)
+      for (int col = 0; col < columns; col++)
+        [self addHordeUnitAtRow:row column:col];
   }
   return self;
 }
@@ -34,16 +40,14 @@
   return [game.enemies count] == 0;
 }
 
--(void)addRandomBaddie {
-  Baddie *baddie = [[SeekNShoot alloc] init];
+-(void)addHordeUnitAtRow:(int)row column:(int)col {
+  HordeUnit *baddie = [[HordeUnit alloc] initWithLevel:self row:row column:col shotDelayMin:MAX(0.5,(1.5-game.currentLevelNumber/10.0)) shotDelayMax:MAX(1.5,(5.5-game.currentLevelNumber/10.0))];
   
-  float randX = [TERandom randomFraction] * game.visibleWidth + game.bottomLeftVisible.x;
-  float randY = [TERandom randomFraction] * (game.visibleHeight - 3) + game.bottomLeftVisible.y + 3;
+  baddie.maxVelocity = 3*(0.5+game.currentLevelNumber/10.0);
+  baddie.velocity = GLKVector2Make(0.5+game.currentLevelNumber/10.0,-0.01+game.currentLevelNumber/100.0);
+  baddie.acceleration = GLKVector2Make(game.currentLevelNumber/100.0,-1*game.currentLevelNumber/300.0);
   
-  baddie.position = GLKVector2Make(randX, randY);
-  baddie.shape.color = GLKVector4Make([TERandom randomFractionFrom:0.5 to:1], [TERandom randomFractionFrom:0.5 to:1], [TERandom randomFractionFrom:0.5 to:1], 1.0);
-  
-  [game.characters addObject:baddie];
+  [game addCharacterAfterUpdate:baddie];
   [game.enemies addObject:baddie];
 }
 

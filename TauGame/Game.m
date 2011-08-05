@@ -44,7 +44,7 @@ static Class levelClasses[NUM_LEVELS];
   powerupClasses[i++] = [ExtraShot class];
   
   int j = 0;
-  levelClasses[j++] = [AsteroidField class];
+  levelClasses[j++] = [ClassicHorde class];//[AsteroidField class];
   levelClasses[j++] = [ClassicHorde class];
 }
 
@@ -122,7 +122,6 @@ static Class levelClasses[NUM_LEVELS];
   scaleAnimation.scale = 5;
   scaleAnimation.duration = 1;
   scaleAnimation.onRemoval = ^(){
-    NSLog(@"finishing up second one!");
     levelName.remove = YES;
     currentLevel = [[nextLevelClass alloc] initWithGame:self];;
   };
@@ -138,9 +137,8 @@ static Class levelClasses[NUM_LEVELS];
   scaleAnimation2.scale = 5;
   scaleAnimation2.duration = 1;
   scaleAnimation2.onRemoval = ^(){
-    NSLog(@"finishing up first one!");
     levelDisplay.remove = YES;
-    [characters addObject:levelName];
+    [self addCharacterAfterUpdate:levelName];
   };
   [levelDisplay startAnimation:scaleAnimation2];  
   

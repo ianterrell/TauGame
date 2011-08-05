@@ -73,6 +73,7 @@
 		3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
 		3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
 		3C8F913D13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
+		3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C975B6A13EB654700CAEB6D /* HordeUnit.m */; };
 		3CB0483D13CBD5960029875B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0483C13CBD5960029875B /* UIKit.framework */; };
 		3CB0483F13CBD5960029875B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0483E13CBD5960029875B /* Foundation.framework */; };
 		3CB0484113CBD5960029875B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0484013CBD5960029875B /* CoreGraphics.framework */; };
@@ -214,6 +215,8 @@
 		3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERotateAnimation.m; sourceTree = "<group>"; };
 		3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETranslateAnimation.h; sourceTree = "<group>"; };
 		3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETranslateAnimation.m; sourceTree = "<group>"; };
+		3C975B6913EB654700CAEB6D /* HordeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HordeUnit.h; sourceTree = "<group>"; };
+		3C975B6A13EB654700CAEB6D /* HordeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HordeUnit.m; sourceTree = "<group>"; };
 		3CB0483813CBD5960029875B /* TauGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TauGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0483C13CBD5960029875B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CB0483E13CBD5960029875B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -541,6 +544,8 @@
 				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
 				3C01190513D86090004808DA /* Baddie.h */,
 				3C01190613D86090004808DA /* Baddie.m */,
+				3C975B6913EB654700CAEB6D /* HordeUnit.h */,
+				3C975B6A13EB654700CAEB6D /* HordeUnit.m */,
 				3C7BD27113E9C696005895AE /* SeekNShoot.h */,
 				3C7BD27213E9C697005895AE /* SeekNShoot.m */,
 				3CF3679513E99D18008A1A4A /* HUD */,
@@ -884,6 +889,7 @@
 				3C7BD28A13EB0158005895AE /* TETexture.m in Sources */,
 				3C80617313EB142100EF4929 /* Enemy.m in Sources */,
 				3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */,
+				3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

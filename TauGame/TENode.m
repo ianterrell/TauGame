@@ -226,6 +226,42 @@
     self.position = GLKVector2Make(self.position.x, scene.topRightVisible.y);
 }
 
+-(void)bounceXInScene:(TEScene *)scene buffer:(float)buffer {
+  [self bounceXInScene:scene bufferLeft:buffer bufferRight:buffer];
+}
+
+-(void)bounceXInScene:(TEScene *)scene bufferLeft:(float)left bufferRight:(float)right {
+  BOOL farLeft = self.position.x < scene.left + left;
+  BOOL farRight = self.position.x > scene.right - right;
+  
+  if (farLeft)
+    self.position = GLKVector2Make(scene.left + left, self.position.y);
+  if (farRight)
+    self.position = GLKVector2Make(scene.right - right, self.position.y);
+  if (farLeft || farRight) {
+    self.velocity = GLKVector2Make(-1*self.velocity.x, self.velocity.y);
+    self.acceleration = GLKVector2Make(-1*self.acceleration.x, self.acceleration.y);
+  }
+}
+
+-(void)bounceYInScene:(TEScene *)scene buffer:(float)buffer {
+  [self bounceYInScene:scene bufferTop:buffer bufferBottom:buffer];
+}
+
+-(void)bounceYInScene:(TEScene *)scene bufferTop:(float)top bufferBottom:(float)bottom {
+  BOOL low = self.position.y < scene.bottom + bottom;
+  BOOL high = self.position.y > scene.top - top;
+  
+  if (low)
+    self.position = GLKVector2Make(self.position.x, scene.bottom + bottom);
+  if (high)
+    self.position = GLKVector2Make(self.position.x, scene.top - top);
+  if (low || high) {
+    self.velocity = GLKVector2Make(self.velocity.x, -1*self.velocity.y);
+    self.acceleration = GLKVector2Make(self.acceleration.x, -1*self.acceleration.y);
+  }
+}
+
 -(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer {
   if (self.position.y < scene.bottomLeftVisible.y - buffer || self.position.y > scene.topRightVisible.y + buffer ||
       self.position.x < scene.bottomLeftVisible.x - buffer || self.position.x > scene.topRightVisible.x + buffer)

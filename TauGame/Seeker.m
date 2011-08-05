@@ -23,6 +23,7 @@
     shotDelay = 0.0;
     self.maxVelocity = 2;
     
+    self.scale = 0.6;
     
     // Animate!
     TENode *pupil = [self childNamed:@"pupil"];
@@ -58,7 +59,7 @@
   float y = self.position.y - 1;
   bullet.position = GLKVector2Make(x, y);  
   bullet.velocity = GLKVector2Make(0, -5);
-  bullet.shape.color = self.shape.color;
+  bullet.shape.color = GLKVector4Make(1,0,0,1);
   [scene addCharacterAfterUpdate:bullet];
   [scene.enemyBullets addObject:bullet];
 }
@@ -74,7 +75,7 @@
   if (shotDelay > 0)
     shotDelay -= dt;
   
-  if (diff < 0.5 && shotDelay <= 0) {
+  if (ABS(diff) < 0.5 && shotDelay <= 0) {
     [self shootInScene:(Game*)scene];
   }
 }

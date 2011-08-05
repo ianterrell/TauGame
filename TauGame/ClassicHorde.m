@@ -23,8 +23,8 @@
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    rows = 1 + game.currentLevelNumber / 5;
-    columns = 2 + game.currentLevelNumber % 5;
+    rows = MIN(6,1 + game.currentLevelNumber / 5);
+    columns = MIN(8,2 + rows + game.currentLevelNumber % 5);
     
     for (int row = 0; row < rows; row++)
       for (int col = 0; col < columns; col++)
@@ -38,7 +38,7 @@
   
   baddie.maxVelocity = 3*(0.5+game.currentLevelNumber/10.0);
   baddie.velocity = GLKVector2Make(0.5+game.currentLevelNumber/10.0,-0.01+game.currentLevelNumber/100.0);
-  baddie.acceleration = GLKVector2Make(game.currentLevelNumber/100.0,-1*game.currentLevelNumber/300.0);
+  baddie.acceleration = GLKVector2Make(game.currentLevelNumber/200.0,-1*game.currentLevelNumber/400.0);
   
   [game addCharacterAfterUpdate:baddie];
   [game.enemies addObject:baddie];

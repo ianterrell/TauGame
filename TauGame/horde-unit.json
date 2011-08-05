@@ -9,39 +9,32 @@
     },
     "children": {
       "eyes": {
-        "translation": [0.0, 0.1333],
+        "translation": [0.0, 0.1],
         "children": {
           "left eye": {
             "shape": {
-              "geometry": "rectangle",
-              "width": 0.25,
-              "height": 0.0667,
+              "geometry": "triangle",
+              "vertex0": [0.15,-0.04],
+              "vertex1": [-0.15,0.05],
+              "vertex2": [-0.15,-0.05],
               "color": [1.0, 1.0, 1.0, 1.0]
             },
-            "rotation": -0.523598333,
-            "translation": [-0.2667, 0.0]
+            "rotation": -0.45,
+            "translation": [-0.21, 0.0]
           },
           "right eye": {
             "shape": {
-              "geometry": "rectangle",
-              "width": 0.25,
-              "height": 0.0667,
+              "geometry": "triangle",
+              "vertex0": [-0.15,-0.04],
+              "vertex1": [0.15,-0.05],
+              "vertex2": [0.15,0.05],
               "color": [1.0, 1.0, 1.0, 1.0]
             },
-            "rotation": 0.523598333,
-            "translation": [0.2667, 0.0]
+            "rotation": 0.45,
+            "translation": [0.21, 0.0]
           }
         }
       },
-      "mouth": {
-        "translation": [0.0, -0.1333],
-        "shape": {
-          "geometry": "rectangle",
-          "width": 0.7333,
-          "height": 0.0667,
-          "color": [0.7, 0.0, 0.0, 1.0]
-        },
-      }
     }
   }
 }

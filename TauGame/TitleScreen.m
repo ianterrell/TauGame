@@ -21,7 +21,7 @@
   if (self) {
     // Set up coordinates
     CGSize parentSize = [TESceneController sharedController].container.frame.size;
-    [self setLeft:0 right:parentSize.width/POINT_RATIO bottom:0 top:parentSize.height/POINT_RATIO];
+    [self setLeft:0 right:parentSize.height/POINT_RATIO bottom:0 top:parentSize.width/POINT_RATIO]; // not sure why container isn't sized properly
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
@@ -35,9 +35,11 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(play)];
     [self.view addGestureRecognizer:tapRecognizer];
     
-    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:64];
     TESprite *title = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"GALAXY WILD" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
     TENode *titleNode = [TENode nodeWithDrawable:title];
+    titleNode.scaleX = 0.9;
+    titleNode.scaleY = 0.5;
     titleNode.position = GLKVector2Make(self.width/2,self.height/2);
     [characters addObject:titleNode];
     

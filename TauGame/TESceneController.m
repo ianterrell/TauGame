@@ -78,7 +78,7 @@ NSString * const TEPreviousScene = @"TEPreviousScene";
   if (currentScene != nil)
     return [currentScene shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
   else
-    return YES;
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
 
 @end

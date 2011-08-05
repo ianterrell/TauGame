@@ -36,10 +36,17 @@
     
     self.position = GLKVector2Make((column+1)*COLUMN_WIDTH, level.game.top-(row+1)*ROW_HEIGHT-TOP_BUFFER);
     
-    float reds[]   = {1,0,0,1,0};
-    float greens[] = {0,1,0,1,1};
-    float blues[]  = {0,0,1,0,1};
-    self.shape.color = GLKVector4Make(reds[column%5], greens[column%5], blues[column%5], 1.0);
+    float reds[]   = {1,0,0,1,0,1};
+    float greens[] = {0,1,0,1,1,0};
+    float blues[]  = {0,0,1,0,1,1};
+    self.shape.renderStyle = kTERenderStyleVertexColors;
+    int j = [TERandom randomTo:4];
+    int k = [TERandom randomTo:4];
+    for (int i = 0; i < 4; i++) {
+      float factor = (i == j || i == k) ? 0.95 : 0.5;
+      self.shape.colorVertices[i] = GLKVector4Make(reds[column%6]*factor, greens[column%6]*factor, blues[column%6]*factor, 1.0);
+    }
+    self.shape.color = GLKVector4Make(reds[column%6], greens[column%6], blues[column%6], 1.0); // for bullets
     
     [self resetShotDelay];
   }

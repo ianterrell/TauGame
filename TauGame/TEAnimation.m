@@ -10,7 +10,7 @@
 
 @implementation TEAnimation
 
-@synthesize node, next, elapsedTime, duration, repeat, easing, remove, reverse, onRemoval;
+@synthesize node, next, elapsedTime, duration, repeat, easing, remove, reverse, onRemoval, onComplete;
 
 - (id)init
 {
@@ -57,9 +57,13 @@
     } else if (repeat > 0 || repeat == kTEAnimationRepeatForever) {
       forward = !forward;
       elapsedTime -= duration;
+      if (onComplete != nil)
+        onComplete();
       if (repeat > 0)
         repeat -= 1;
     } else {
+      if (onComplete != nil)
+        onComplete();
       remove = YES;
     }
   }

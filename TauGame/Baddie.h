@@ -8,6 +8,11 @@
 
 #import "Enemy.h"
 
-@interface Baddie : Enemy
+@interface Baddie : Enemy {
+  float blinkDelay;
+}
+
+-(void)updateBlink:(NSTimeInterval)dt;
+-(void)blink;
 
 @end

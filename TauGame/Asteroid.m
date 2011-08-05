@@ -71,18 +71,6 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   [self removeOutOfScene:scene buffer:2.0];
 }
 
--(void)registerHit {
-  [super registerHit];
-  
-  TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
-  for (int i = 0; i < self.shape.numVertices; i++)
-    highlight.toColorVertices[i] = GLKVector4Make(1, 1, 1, 1);
-  highlight.duration = 0.2;
-  highlight.backward = YES;
-  [self.currentAnimations addObject:highlight];
-}
-
-
 -(void)explode {
   __block BOOL setRemovedCallback = NO;
   [self traverseUsingBlock:^(TENode *node){

@@ -10,7 +10,7 @@
 
 @implementation GameLevel
 
-@synthesize game;
+@synthesize game, recurseEnemiesForCollisions;
 
 +(NSString *)name {
   return @"Unnamed";
@@ -26,6 +26,7 @@
   self = [super init];
   if (self) {
     game = _game;
+    recurseEnemiesForCollisions = NO;
   }
   return self;
 }

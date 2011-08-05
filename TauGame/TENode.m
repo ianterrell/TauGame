@@ -90,6 +90,7 @@
         [node.currentAnimations addObject:animation.next];
       if (animation.onRemoval != nil)
         animation.onRemoval();
+      
     }
     
     [node.currentAnimations enumerateObjectsUsingBlock:^(id animation, NSUInteger idx, BOOL *stop) {

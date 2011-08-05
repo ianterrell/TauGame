@@ -10,6 +10,7 @@
 
 @interface Seeker : Baddie {
   float shotSpeed, shotDelay;
+  float accelerationFactor;
 }
 
 @end

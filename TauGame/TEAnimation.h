@@ -23,6 +23,7 @@ typedef enum {
   int repeat;
   BOOL remove, reverse, forward;
   void (^onRemoval)(void);
+  void (^onComplete)(void);
   
   TEAnimation *next;
 }
@@ -34,6 +35,7 @@ typedef enum {
 @property int repeat;
 @property BOOL remove, reverse, backward;
 @property(nonatomic,copy) void (^onRemoval)(void);
+@property(nonatomic,copy) void (^onComplete)(void);
 
 @property(readonly) float percentDone;
 @property(readonly) float easingFactor;

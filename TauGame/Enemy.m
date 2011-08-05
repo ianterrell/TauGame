@@ -37,6 +37,7 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
 
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"hurt2"];
+  [self flashWhite];
   
   hitPoints--;
   if ([self dead])
@@ -56,6 +57,25 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
 
 -(BOOL)dead {
   return hitPoints <= 0;
+}
+
+-(TEAnimation *)flashWhiteAnimation {
+  TEAnimation *highlight;
+  if ((self.shape.renderStyle & kTERenderStyleVertexColors) == kTERenderStyleVertexColors) {
+    highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
+    for (int i = 0; i < self.shape.numVertices; i++)
+      ((TEVertexColorAnimation*)highlight).toColorVertices[i] = GLKVector4Make(1, 1, 1, 1);
+  } else {
+    highlight = [[TEColorAnimation alloc] init];
+    ((TEColorAnimation*)highlight).color = GLKVector4Make(1, 1, 1, 1);
+  }
+  highlight.duration = 0.2;
+  highlight.backward = YES;
+  return highlight;
+}
+
+-(void)flashWhite {
+  [self startAnimation:[self flashWhiteAnimation]];
 }
 
 @end

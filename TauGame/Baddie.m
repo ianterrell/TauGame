@@ -8,6 +8,9 @@
 
 #import "Baddie.h"
 
+#define BLINK_MIN 2
+#define BLINK_MAX 11
+
 @implementation Baddie
 
 - (id)init
@@ -15,18 +18,10 @@
   self = [super init];
   if (self) {
     hitPoints = 3;
+    blinkDelay = [TERandom randomFractionFrom:BLINK_MIN to:BLINK_MAX];
   }
   
   return self;
-}
-
--(void)registerHit {
-  [super registerHit];
-  
-  TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
-  highlight.color = GLKVector4Make(1, 1, 1, 1);
-  highlight.duration = 0.1;
-  [self.currentAnimations addObject:highlight];
 }
 
 -(void)explode {
@@ -44,6 +39,17 @@
   rotateAnimation.rotation = [TERandom randomFraction] * 2 * M_TAU;
   rotateAnimation.duration = 0.5;
   [self startAnimation:rotateAnimation];
+}
+
+-(void)updateBlink:(NSTimeInterval)dt {
+  if (blinkDelay > 0)
+    blinkDelay -= dt;
+  if (blinkDelay <= 0)
+    [self blink];
+}
+
+-(void)blink {
+  blinkDelay = [TERandom randomFractionFrom:BLINK_MIN to:BLINK_MAX];
 }
 
 @end

@@ -23,6 +23,8 @@
     shotDelay = 0.0;
     self.maxVelocity = 2;
     
+    accelerationFactor = [TERandom randomFractionFrom:0.75 to:3];
+    
     self.scale = 0.6;
     
     // Animate!
@@ -70,7 +72,7 @@
   Game *fighterScene = (Game*)scene;
   float fighterX = fighterScene.fighter.position.x;
   float diff = fighterX- self.position.x;
-  self.acceleration = GLKVector2Make(diff,0);
+  self.acceleration = GLKVector2MultiplyScalar(GLKVector2Make(diff,0),accelerationFactor);
   
   if (shotDelay > 0)
     shotDelay -= dt;

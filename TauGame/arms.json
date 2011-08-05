@@ -1,0 +1,61 @@
+{
+  "armsdude": {
+    "collide": "yes",
+    "shape": {
+      "geometry": "rectangle",
+      "width": 1,
+      "height": 0.615,
+      "color": [0.643, 0.776, 0.224, 1.0]
+    },
+    "children": {
+      "eyes": {
+        "translation": [0.0, 0.154],
+        "children": {
+          "left eye": {
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.154,
+              "width": 0.154,
+              "color": [1.0, 1.0, 1.0, 1.0]
+            },
+            "translation": [-0.269, 0.0]
+          },
+          "right eye": {
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.154,
+              "width": 0.154,
+              "color": [1.0, 1.0, 1.0, 1.0]
+            },
+            "translation": [0.269, 0.0]
+          }
+        }
+      },
+      "arms": {
+        "translation": [0.0, -0.192],
+        "children": {
+          "left arm": {
+            "collide": "yes",
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.538,
+              "width": 0.231,
+              "color": [0.643, 0.776, 0.224, 1.0]
+            },
+            "translation": [-0.615, 0.0]
+          },
+          "right arm": {
+            "collide": "yes",
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.538,
+              "width": 0.231,
+              "color": [0.643, 0.776, 0.224, 1.0]
+            },
+            "translation": [0.615, 0.0]
+          }
+        }
+      },
+    }
+  }
+}

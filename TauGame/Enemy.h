@@ -21,4 +21,7 @@ extern NSString *const EnemyDestroyedNotification;// = @"EnemyDestroyedNotificat
 -(void)explode;
 -(BOOL)dead;
 
+-(TEAnimation *)flashWhiteAnimation;
+-(void)flashWhite;
+
 @end

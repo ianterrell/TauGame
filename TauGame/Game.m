@@ -155,7 +155,8 @@ static Class levelClasses[NUM_LEVELS];
   [super glkViewControllerUpdate:controller];
   
   // Detect collisions with bullets :)
-  [TECollisionDetector collisionsBetween:bullets andNodes:enemies maxPerNode:1 withBlock:^(TENode *bullet, TENode *enemy) {
+  BOOL recurseRight = currentLevel == nil ? NO : currentLevel.recurseEnemiesForCollisions;
+  [TECollisionDetector collisionsBetween:bullets andNodes:enemies recurseLeft:NO recurseRight:recurseRight maxPerNode:1 withBlock:^(TENode *bullet, TENode *enemy) {
     bullet.remove = YES;
     [self addBulletSplashAt:bullet.position];
     

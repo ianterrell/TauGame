@@ -11,6 +11,8 @@
 		3C01190813D8612E004808DA /* horde-unit.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C01190313D85DDF004808DA /* horde-unit.json */; };
 		3C10726F13EC33BB0062986D /* seeker.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C10726E13EC33BB0062986D /* seeker.json */; };
 		3C10727313EC35380062986D /* Fray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10727213EC35380062986D /* Fray.m */; };
+		3C10727613EC55BE0062986D /* Arms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10727513EC55BD0062986D /* Arms.m */; };
+		3C10727913EC560D0062986D /* arms.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C10727813EC560D0062986D /* arms.json */; };
 		3C138B8E13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B8F13CCAD9D002FC701 /* mage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C138B8D13CCAD9D002FC701 /* mage.json */; };
 		3C138B9213CCB15B002FC701 /* TECharacterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TECharacterLoader.m */; };
@@ -134,6 +136,10 @@
 		3C10726E13EC33BB0062986D /* seeker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seeker.json; sourceTree = "<group>"; };
 		3C10727113EC35380062986D /* Fray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fray.h; sourceTree = "<group>"; };
 		3C10727213EC35380062986D /* Fray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fray.m; sourceTree = "<group>"; };
+		3C10727413EC55BD0062986D /* Arms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arms.h; sourceTree = "<group>"; };
+		3C10727513EC55BD0062986D /* Arms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arms.m; sourceTree = "<group>"; };
+		3C10727813EC560D0062986D /* arms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arms.json; sourceTree = "<group>"; };
+		3C10727A13EC6AE10062986D /* GriddedGameLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GriddedGameLevel.h; sourceTree = "<group>"; };
 		3C138B8D13CCAD9D002FC701 /* mage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mage.json; sourceTree = "<group>"; };
 		3C138B9013CCB15A002FC701 /* TECharacterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECharacterLoader.h; sourceTree = "<group>"; };
 		3C138B9113CCB15A002FC701 /* TECharacterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECharacterLoader.m; sourceTree = "<group>"; };
@@ -316,6 +322,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C10727713EC55D30062986D /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				3C80617113EB142100EF4929 /* Enemy.h */,
+				3C80617213EB142100EF4929 /* Enemy.m */,
+				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
+				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
+				3C01190513D86090004808DA /* Baddie.h */,
+				3C01190613D86090004808DA /* Baddie.m */,
+				3C975B6913EB654700CAEB6D /* HordeUnit.h */,
+				3C975B6A13EB654700CAEB6D /* HordeUnit.m */,
+				3C7BD27113E9C696005895AE /* Seeker.h */,
+				3C7BD27213E9C697005895AE /* Seeker.m */,
+				3C10727413EC55BD0062986D /* Arms.h */,
+				3C10727513EC55BD0062986D /* Arms.m */,
+			);
+			name = Enemies;
+			sourceTree = "<group>";
+		};
 		3C138B8C13CCAD94002FC701 /* Character Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +350,7 @@
 				3C6E948813D76D53000F7988 /* bullet.json */,
 				3C01190313D85DDF004808DA /* horde-unit.json */,
 				3C10726E13EC33BB0062986D /* seeker.json */,
+				3C10727813EC560D0062986D /* arms.json */,
 				3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */,
 				3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */,
 				3C228AE913E7156A00CFE5D1 /* health-powerup.json */,
@@ -519,6 +545,7 @@
 			children = (
 				3C80617013EB10F700EF4929 /* GameLevel.h */,
 				3C80617413EB2D4B00EF4929 /* GameLevel.m */,
+				3C10727A13EC6AE10062986D /* GriddedGameLevel.h */,
 				3C8A283013D70CBC00BB0011 /* AsteroidField.h */,
 				3C8A283113D70CBC00BB0011 /* AsteroidField.m */,
 				3CD1F94513DE313A00F6F035 /* ClassicHorde.h */,
@@ -546,16 +573,7 @@
 			children = (
 				3C8A282613D70B4200BB0011 /* Fighter.h */,
 				3CF3675513E72FB3008A1A4A /* Fighter.m */,
-				3C80617113EB142100EF4929 /* Enemy.h */,
-				3C80617213EB142100EF4929 /* Enemy.m */,
-				3CD1F94213DE311F00F6F035 /* Asteroid.h */,
-				3CD1F94313DE311F00F6F035 /* Asteroid.m */,
-				3C01190513D86090004808DA /* Baddie.h */,
-				3C01190613D86090004808DA /* Baddie.m */,
-				3C975B6913EB654700CAEB6D /* HordeUnit.h */,
-				3C975B6A13EB654700CAEB6D /* HordeUnit.m */,
-				3C7BD27113E9C696005895AE /* Seeker.h */,
-				3C7BD27213E9C697005895AE /* Seeker.m */,
+				3C10727713EC55D30062986D /* Enemies */,
 				3CF3679513E99D18008A1A4A /* HUD */,
 				3C7BD27413E9C6A9005895AE /* Weapons */,
 				3C350E9E13E07B38002DD35E /* Powerups */,
@@ -806,6 +824,7 @@
 				3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */,
 				3C7BD28013EADB2D005895AE /* glow.png in Resources */,
 				3C10726F13EC33BB0062986D /* seeker.json in Resources */,
+				3C10727913EC560D0062986D /* arms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +919,7 @@
 				3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */,
 				3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */,
 				3C10727313EC35380062986D /* Fray.m in Sources */,
+				3C10727613EC55BE0062986D /* Arms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

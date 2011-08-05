@@ -22,7 +22,7 @@
   shotDelay = [TERandom randomFractionFrom:shotDelayMin to:shotDelayMax];
 }
 
--(id)initWithLevel:(ClassicHorde*)_level row:(int)_row column:(int)_column shotDelayMin:(float)min shotDelayMax:(float)max
+-(id)initWithLevel:(id<GriddedGameLevel>)_level row:(int)_row column:(int)_column shotDelayMin:(float)min shotDelayMax:(float)max
 {
   self = [super init];
   if (self) {
@@ -49,7 +49,6 @@
     self.shape.color = GLKVector4Make(reds[column%6], greens[column%6], blues[column%6], 1.0); // for bullets
     
     [self resetShotDelay];
-    blinkDelay = [TERandom randomFractionFrom:2 to:10];
   }
   
   return self;
@@ -74,17 +73,6 @@
   [scene.enemyBullets addObject:bullet];
 }
 
--(void)blink {
-  blinkDelay = [TERandom randomFractionFrom:2 to:10];
-  TENode *eyes = [self childNamed:@"eyes"];
-  TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
-  animation.scaleX = 1.25;
-  animation.scaleY = 0.15;
-  animation.reverse = YES;
-  animation.duration = 0.1;
-  [eyes startAnimation:animation];
-}
-
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   
@@ -93,13 +81,21 @@
   if (shotDelay <= 0)
     [self shootInScene:(Game*)scene];
   
-  if (blinkDelay > 0)
-    blinkDelay -= dt;
-  if (blinkDelay <= 0)
-    [self blink];
+  [self updateBlink:dt];
   
   [super bounceXInScene:scene bufferLeft:COLUMN_WIDTH*(column+1) bufferRight:COLUMN_WIDTH*(level.columns-column)];
   [super bounceYInScene:scene bufferTop:TOP_BUFFER+ROW_HEIGHT*(row+1) bufferBottom:BOTTOM_BUFFER+ROW_HEIGHT*(level.rows-row)];
+}
+
+-(void)blink {
+  [super blink];
+  TENode *eyes = [self childNamed:@"eyes"];
+  TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
+  animation.scaleX = 1.25;
+  animation.scaleY = 0.15;
+  animation.reverse = YES;
+  animation.duration = 0.1;
+  [eyes startAnimation:animation];
 }
 
 @end

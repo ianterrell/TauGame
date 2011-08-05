@@ -94,7 +94,14 @@
   return shape;
 }
 
++(void)setUpColliders:(TENode *)node attributes:(NSDictionary *)attributes {
+  NSString *collide = (NSString *)[attributes objectForKey:@"collide"];
+  if ([collide isEqualToString:@"yes"])
+    node.collide = YES;
+}
+
 +(void)parseNode:(TENode *)node attributes:(NSDictionary *)attributes {
+  [self setUpColliders:node attributes:attributes];
   [attributes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     [self parseTransformsForNode:node attributes:attributes];
     if ([key isEqualToString:@"shape"]) {
@@ -112,12 +119,6 @@
   }];
 }
 
-+(void)setUpColliders:(TENode *)node attributes:(NSDictionary *)attributes {
-  NSString *collide = (NSString *)[attributes objectForKey:@"collide"];
-  if ([collide isEqualToString:@"yes"])
-    node.collide = YES;
-}
-
 +(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName {
   NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"json"];
   NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -131,7 +132,6 @@
   
   character.name = [[characterData allKeys] objectAtIndex:0];
   [self parseNode:character attributes:[characterData objectForKey:character.name]];
-  [self setUpColliders:character attributes:[characterData objectForKey:character.name]];
 }
 
 +(TECharacter *)loadCharacterFromJSONFile:(NSString *)fileName {

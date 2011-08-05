@@ -11,9 +11,11 @@
 
 @interface  GameLevel : NSObject {
   Game *game;
+  BOOL recurseEnemiesForCollisions;
 }
 
 @property(readonly) Game *game;
+@property(readonly) BOOL recurseEnemiesForCollisions;
 
 +(NSString *)name;
 +(TENode *)nameSpriteWithPointRatio:(float)pointRatio;

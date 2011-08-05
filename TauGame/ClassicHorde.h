@@ -7,8 +7,9 @@
 //
 
 #import "GameLevel.h"
+#import "GriddedGameLevel.h"
 
-@interface ClassicHorde : GameLevel {
+@interface ClassicHorde : GameLevel<GriddedGameLevel> {
   int rows, columns;
 }
 

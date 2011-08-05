@@ -11,11 +11,10 @@
 
 @interface HordeUnit : Baddie {
   int row, column;
-  ClassicHorde *level;
+  id<GriddedGameLevel> level;
   float shotDelayMin, shotDelayMax, shotDelay;
-  float blinkDelay;
 }
 
--(id)initWithLevel:(ClassicHorde*)level row:(int)row column:(int)column shotDelayMin:(float)min shotDelayMax:(float)max;
+-(id)initWithLevel:(id<GriddedGameLevel>)level row:(int)row column:(int)column shotDelayMin:(float)min shotDelayMax:(float)max;
 
 @end

@@ -13,6 +13,7 @@
   int row, column;
   ClassicHorde *level;
   float shotDelayMin, shotDelayMax, shotDelay;
+  float blinkDelay;
 }
 
 -(id)initWithLevel:(ClassicHorde*)level row:(int)row column:(int)column shotDelayMin:(float)min shotDelayMax:(float)max;

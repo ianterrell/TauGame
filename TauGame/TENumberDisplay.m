@@ -22,7 +22,7 @@ static float digitFractionalWidth;
 +(void)initialize {
   UIFont *font = [UIFont fontWithName:@"Courier-Bold" size:30];
   
-  digitsTextureEffect = [TETexture effectWithTextureFromImage:[TEImage imageFromText:@"0123456789" withFont:font color:[UIColor blackColor]]];
+  digitsTextureEffect = [TETexture effectWithTextureFromImage:[TEImage imageFromText:@"0123456789" withFont:font color:[UIColor whiteColor]]];
   
   digitSize = [@"0" sizeWithFont:font];
   digitSize = CGSizeMake(digitSize.width-1.0, digitSize.height); // pads by 1 px on end

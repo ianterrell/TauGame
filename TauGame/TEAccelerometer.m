@@ -22,22 +22,18 @@ static CMAcceleration calibration;
   CMAcceleration accel = [TauEngine motionManager].accelerometerData.acceleration;
   float horizontal;
   
-  switch ([TESceneController sharedController].interfaceOrientation) {
-    case UIInterfaceOrientationPortrait:
-      horizontal = (accel.x - calibration.x);
-      break;
-    case UIInterfaceOrientationPortraitUpsideDown:
-      horizontal = -1*(accel.x - calibration.x);
-      break;
-    case UIInterfaceOrientationLandscapeLeft:
-      horizontal = (accel.y - calibration.y);
-      break;
-    case UIInterfaceOrientationLandscapeRight:
-      horizontal = -1*(accel.y - calibration.y);
-      break;
-    default:
-      horizontal = (accel.x - calibration.x);
-  }
+  UIInterfaceOrientation orientation = [TESceneController sharedController].interfaceOrientation;
+  
+  if (orientation == UIInterfaceOrientationPortrait)
+    horizontal = (accel.x - calibration.x);
+  else if (orientation == UIInterfaceOrientationPortraitUpsideDown)
+    horizontal = -1*(accel.x - calibration.x);
+  else if (orientation == UIInterfaceOrientationLandscapeLeft)
+    horizontal = (accel.y - calibration.y);
+  else if (orientation == UIInterfaceOrientationLandscapeRight)
+    horizontal = -1*(accel.y - calibration.y);
+  else
+    horizontal = (accel.x - calibration.x);
   
   horizontal = horizontal*kFilterFactor+(1-kFilterFactor)*previousHorizontal;
   previousHorizontal = horizontal;

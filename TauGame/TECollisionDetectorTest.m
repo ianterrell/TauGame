@@ -14,9 +14,9 @@ static int count = 0;
 
 @implementation TECollisionDetectorTest
 
-+(TENode *)nodeWithShape:(SEL)sel {
++(TENode *)nodeWithShape:(TEShape *)shape; {
   TENode *node = [[TENode alloc] init];
-  node.drawable = [self performSelector:sel];
+  node.drawable = shape;
   node.drawable.node = node;
   node.collide = YES;
   return node;
@@ -29,7 +29,7 @@ static int count = 0;
 }
 
 +(TENode *)circleNode {
-  return [self nodeWithShape:@selector(circleShape)];
+  return [self nodeWithShape:[self circleShape]];
 }
 
 +(TEShape *)triangleShape {
@@ -41,7 +41,7 @@ static int count = 0;
 }
 
 +(TENode *)triangleNode {
-  return [self nodeWithShape:@selector(triangleShape)];
+  return [self nodeWithShape:[self triangleShape]];
 }
 
 +(TEShape *)squareShape {
@@ -51,7 +51,7 @@ static int count = 0;
 }
 
 +(TENode *)squareNode {
-  return [self nodeWithShape:@selector(squareShape)];
+  return [self nodeWithShape:[self squareShape]];
 }
 
 +(void)testNode:(TENode *)node1 collidingWithNode:(TENode *)node2 recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight desired:(BOOL)desired label:(NSString *)label {

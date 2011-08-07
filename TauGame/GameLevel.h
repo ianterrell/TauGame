@@ -14,7 +14,7 @@
   BOOL recurseEnemiesForCollisions;
 }
 
-@property(readonly) Game *game;
+@property(strong,readonly) Game *game;
 @property(readonly) BOOL recurseEnemiesForCollisions;
 
 +(NSString *)name;

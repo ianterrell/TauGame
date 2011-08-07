@@ -32,7 +32,7 @@ typedef enum {
 @property(readonly) int numVertices;
 @property(readonly) GLKVector2 *vertices;
 @property(readonly) GLKVector2 *textureCoordinates;
-@property(readonly) NSMutableData *colorData;
+@property(strong,readonly) NSMutableData *colorData;
 @property(readonly) GLKVector4 *colorVertices;
 
 @property(readonly) float radius; // for bounding circle collision detection

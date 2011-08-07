@@ -22,12 +22,14 @@
     time = 0;
     radius = MIN(scene.topRightVisible.x - scene.bottomLeftVisible.x, scene.topRightVisible.y - scene.bottomLeftVisible.y)/3;
     
-    shape.colorVertices[0] = GLKVector4Make(0,0,0.3,1);
+    shape.colorVertices[0] = GLKVector4Make(0,0,0.1,1);
     for (int i = 1; i < shape.numVertices; i++)
-      shape.colorVertices[i] = GLKVector4Make(0,0,0.1,1);
+      shape.colorVertices[i] = GLKVector4Make(0,0,0.0,1);
     
     self.drawable = shape;
     self.position = GLKVector2Make((scene.topRightVisible.x + scene.bottomLeftVisible.x)/2, (scene.topRightVisible.y + scene.bottomLeftVisible.y)/2);
+    
+    self.angularVelocity = 0.05*M_TAU;
   }
   
   return self;
@@ -37,7 +39,7 @@
   [super update:dt inScene:scene];
   
   time += dt;
-  self.shape.vertices[0] = GLKVector2Make(sin(time/3)*radius,cos(time/3)*radius);
+//  self.shape.vertices[0] = GLKVector2Make(sin(time/3)*radius,cos(time/3)*radius);
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "TitleScreen.h"
 #import "Background.h"
-#import "StarfieldLayer.h"
+#import "Starfield.h"
 #import "Game.h"
 
 #define POINT_RATIO 40
@@ -25,11 +25,16 @@
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
-    [characters insertObject:[[Background alloc] initInScene:self] atIndex:0];
-    
-    StarfieldLayer *layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
-    layer.position = GLKVector2Make(0,0);
-    [characters insertObject:layer atIndex:1];
+    [characters addObject:[[Background alloc] initInScene:self]];
+    [Starfield addDefaultStarfieldWithWidth:self.width height:self.height pixelRatio:POINT_RATIO toScene:self];
+        
+//    layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
+//    layer.position = GLKVector2Make(0,0);
+//    [characters insertObject:layer atIndex:0];
+//    
+//    layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
+//    layer.position = GLKVector2Make(0,0);
+//    [characters insertObject:layer atIndex:0];
     
     // Set up starting
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(play)];

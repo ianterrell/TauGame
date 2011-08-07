@@ -11,7 +11,7 @@
 #import "FighterLife.h"
 #import "ShotTimer.h"
 #import "Background.h"
-#import "StarfieldLayer.h"
+#import "Starfield.h"
 #import "Bullet.h"
 #import "BulletSplash.h"
 #import "ExtraBullet.h"
@@ -61,11 +61,8 @@ static Class levelClasses[NUM_LEVELS];
     
     // Set up background
     clearColor = GLKVector4Make(0, 0, 0, 1);
-    [characters insertObject:[[Background alloc] initInScene:self] atIndex:0];
-    
-    StarfieldLayer *layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
-    layer.position = GLKVector2Make(0,0);
-    [characters insertObject:layer atIndex:1];
+    [characters addObject:[[Background alloc] initInScene:self]];
+    [Starfield addDefaultStarfieldWithWidth:self.width height:self.height pixelRatio:POINT_RATIO toScene:self];
     
     // Set up our special character arrays for collision detection
     bullets      = [[NSMutableArray alloc] initWithCapacity:20];

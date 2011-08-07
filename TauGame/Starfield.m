@@ -6,29 +6,87 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "StarfieldLayer.h"
+#import "Starfield.h"
+
+#define NUM_STAR_COLORS 7
+static GLKVector4 colors[NUM_STAR_COLORS];
+
+@implementation Starfield
+
++(void)initialize {
+  int i = 0;
+  colors[i++] = GLKVector4Make(0.345, 0.776, 0.984, 1); // bluish
+  colors[i++] = GLKVector4Make(0.937, 0.784, 0.718, 1); // pinkish
+  colors[i++] = GLKVector4Make(0.933, 1.000, 1.000, 1); // light light bluish
+  colors[i++] = GLKVector4Make(1.000, 0.988, 0.788, 1); // yellowish
+  colors[i++] = GLKVector4Make(0.365, 0.541, 1.000, 1); // blue
+  colors[i++] = GLKVector4Make(1.000, 0.553, 0.227, 1); // orange
+  colors[i++] = GLKVector4Make(0.902, 0.973, 0.643, 1); // yellow
+}
+
++(void)addDefaultStarfieldWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio toScene:(TEScene *)scene {
+  Starfield *starfield = [Starfield defaultStarfieldWithWidth:_width height:_height pixelRatio:pixelRatio];
+  for (TENode *node in [starfield layers])
+    [scene.characters addObject:node];
+}
+
++(Starfield *)defaultStarfieldWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio {
+  NSMutableDictionary *layer1Desc = [NSMutableDictionary dictionaryWithCapacity:3];
+  [layer1Desc setObject:[NSNumber numberWithInt:300] forKey:@"numStars"];
+  [layer1Desc setObject:[NSNumber numberWithFloat:1.75] forKey:@"starSize"];
+  [layer1Desc setObject:[NSNumber numberWithFloat:0.25] forKey:@"velocity"];
+  
+  NSMutableDictionary *layer2Desc = [NSMutableDictionary dictionaryWithCapacity:3];
+  [layer2Desc setObject:[NSNumber numberWithInt:75] forKey:@"numStars"];
+  [layer2Desc setObject:[NSNumber numberWithFloat:2.5] forKey:@"starSize"];
+  [layer2Desc setObject:[NSNumber numberWithFloat:0.5] forKey:@"velocity"];
+    
+  return [[Starfield alloc] initWithWidth:_width height:_height pixelRatio:pixelRatio layers:[NSArray arrayWithObjects:layer1Desc, layer2Desc, nil]];
+}
+
+-(id)initWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio layers:(NSArray *)layerDescriptions {
+  self = [super init];
+  if (self) {
+    layers = [NSMutableArray arrayWithCapacity:[layerDescriptions count]];
+    for (NSDictionary *description in layerDescriptions) {
+      int numStars = [[description objectForKey:@"numStars"] intValue];
+      float starSize = [[description objectForKey:@"starSize"] floatValue];
+      float velocity = [[description objectForKey:@"velocity"] floatValue];
+      StarfieldLayer *layer = [[StarfieldLayer alloc] initWithWidth:_width height:_height pixelRatio:pixelRatio numStars:numStars starSize:starSize velocity:velocity];
+      [layers addObject:layer];
+    }
+  }
+  
+  return self;
+}
+
+-(NSArray *)layers {
+  return layers;
+}
+
+@end
 
 @implementation StarfieldLayer
 
 @synthesize layerVelocity;
 
--(id)initWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio numStars:(int)numStars
+-(id)initWithWidth:(float)_width height:(float)_height pixelRatio:(float)pixelRatio numStars:(int)numStars starSize:(float)starSize velocity:(float)_velocity
 {
   self = [super init];
   if (self) {
     width = _width;
     height = _height;
     
-    layerVelocity = 1;
+    layerVelocity = _velocity;
     
-    UIImage *starfieldImage = [StarfieldLayer starfieldImageWithStars:numStars width:(int)(pixelRatio * width) height:(int)(pixelRatio * height)];
+    UIImage *starfieldImage = [StarfieldLayer starfieldImageWithStars:numStars width:(int)(pixelRatio * width) height:(int)(pixelRatio * height) starSize:starSize];
     
     drawable = [[StarfieldLayerShape alloc] initWithWidth:width height:height textureImage:starfieldImage];
     drawable.node = self;
     
     TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:self];
     for (int i = 0; i < self.shape.numVertices; i++)
-      highlight.toColorVertices[i] = GLKVector4Make([TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], 1);
+      highlight.toColorVertices[i] = colors[[TERandom randomTo:NUM_STAR_COLORS]];
     highlight.duration = 5;
     highlight.reverse = YES;
     highlight.repeat = kTEAnimationRepeatForever;
@@ -56,7 +114,7 @@
   self.shape.textureCoordinates[1] = self.shape.textureCoordinates[7] = GLKVector2Make(0, texturePortion);
 }
 
-+(UIImage *)starfieldImageWithStars:(int)num width:(int)width height:(int)height {
++(UIImage *)starfieldImageWithStars:(int)num width:(int)width height:(int)height starSize:(float)starSize {
   float scale = [UIScreen mainScreen].scale;
   width *= scale;
   height *= scale;
@@ -73,7 +131,7 @@
   
   CGContextSetFillColorWithColor(contextRef, [UIColor whiteColor].CGColor);
   for (int i = 0; i < num; i++) {
-    int radius = [TERandom randomTo:3] * scale;
+    float radius = starSize * scale;
     CGContextFillEllipseInRect(contextRef, CGRectMake([TERandom randomTo:width], [TERandom randomTo:height], radius, radius));
   }
   
@@ -126,7 +184,7 @@
     self.textureCoordinates[7] = GLKVector2Make(0, 0);
     
     for (int i = 0; i < self.numVertices; i++)
-      self.colorVertices[i] = GLKVector4Make([TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], [TERandom randomFractionFrom:0.7 to:1.0], 1);
+      self.colorVertices[i] = colors[[TERandom randomTo:NUM_STAR_COLORS]];
   }
   
   return self;

@@ -115,7 +115,7 @@
 		3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95513DF55EF00F6F035 /* TEPolygon.m */; };
 		3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675213E723CD008A1A4A /* ExtraShot.m */; };
 		3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675513E72FB3008A1A4A /* Fighter.m */; };
-		3CF3679813E99D58008A1A4A /* StarfieldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3679713E99D58008A1A4A /* StarfieldLayer.m */; };
+		3CF3679813E99D58008A1A4A /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3679713E99D58008A1A4A /* Starfield.m */; };
 		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
@@ -286,8 +286,8 @@
 		3CF3675113E723CD008A1A4A /* ExtraShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraShot.h; sourceTree = "<group>"; };
 		3CF3675213E723CD008A1A4A /* ExtraShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraShot.m; sourceTree = "<group>"; };
 		3CF3675513E72FB3008A1A4A /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
-		3CF3679613E99D58008A1A4A /* StarfieldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarfieldLayer.h; sourceTree = "<group>"; };
-		3CF3679713E99D58008A1A4A /* StarfieldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarfieldLayer.m; sourceTree = "<group>"; };
+		3CF3679613E99D58008A1A4A /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starfield.h; sourceTree = "<group>"; };
+		3CF3679713E99D58008A1A4A /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starfield.m; sourceTree = "<group>"; };
 		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -713,8 +713,8 @@
 			children = (
 				3C20D41D13E6002E00A90FEB /* Background.h */,
 				3C20D41E13E6002F00A90FEB /* Background.m */,
-				3CF3679613E99D58008A1A4A /* StarfieldLayer.h */,
-				3CF3679713E99D58008A1A4A /* StarfieldLayer.m */,
+				3CF3679613E99D58008A1A4A /* Starfield.h */,
+				3CF3679713E99D58008A1A4A /* Starfield.m */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -909,7 +909,7 @@
 				3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */,
 				3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */,
 				3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */,
-				3CF3679813E99D58008A1A4A /* StarfieldLayer.m in Sources */,
+				3CF3679813E99D58008A1A4A /* Starfield.m in Sources */,
 				3C7BD27313E9C697005895AE /* Seeker.m in Sources */,
 				3C7BD27E13E9E140005895AE /* Pause.m in Sources */,
 				3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */,

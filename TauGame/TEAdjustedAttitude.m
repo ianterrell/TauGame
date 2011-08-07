@@ -34,18 +34,18 @@
 }
 
 -(float)roll {
-  switch ([TESceneController sharedController].interfaceOrientation) {
-    case UIInterfaceOrientationPortrait:
-      return self.adjustedAttitude.roll;
-    case UIInterfaceOrientationPortraitUpsideDown:
-      return -1.0*self.adjustedAttitude.roll;
-    case UIInterfaceOrientationLandscapeLeft:
-      return self.adjustedAttitude.yaw;
-    case UIInterfaceOrientationLandscapeRight:
-      return -1.0*self.adjustedAttitude.yaw;
-    default:
-      return self.realAttitude.roll;
-  }
+  UIInterfaceOrientation orientation = [TESceneController sharedController].interfaceOrientation;
+  
+  if (orientation == UIInterfaceOrientationPortrait)
+    return self.adjustedAttitude.roll;
+  else if (orientation == UIInterfaceOrientationPortraitUpsideDown)
+    return -1.0*self.adjustedAttitude.roll;
+  else if (orientation == UIInterfaceOrientationLandscapeLeft)
+    return self.adjustedAttitude.yaw;
+  else if (orientation == UIInterfaceOrientationLandscapeRight)
+    return -1.0*self.adjustedAttitude.yaw;
+  else
+    return self.realAttitude.roll;
 }
 
 -(float)pitch {

@@ -51,6 +51,8 @@
     shape = [[TEHexagon alloc] init];
   } else if ([geometry isEqualToString:@"heptagon"]) {
     shape = [[TEHeptagon alloc] init];
+  } else if ([geometry isEqualToString:@"octagon"]) {
+    shape = [[TEOctagon alloc] init];
   } else {
     NSLog(@"Unrecognized shape: '%@'", geometry);
     return nil;

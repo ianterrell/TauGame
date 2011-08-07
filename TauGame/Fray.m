@@ -11,6 +11,7 @@
 #import "Seeker.h"
 #import "Arms.h"
 #import "HordeUnit.h"
+#import "Spinner.h"
 
 @implementation Fray
 
@@ -23,13 +24,14 @@
 -(void)addBaddie {
   Baddie *baddie;
   float random = [TERandom randomFraction];
-  if (random < 0.33)
+  if (random < 0.25)
     baddie = [[Arms alloc] init];
-  else if (random < 0.66)
+  else if (random < 0.5)
     baddie = [[Seeker alloc] init];
-  else
+  else if (random < 0.75)
     baddie = [[HordeUnit alloc] initWithLevel:self row:[TERandom randomTo:rows] column:[TERandom randomTo:columns] shotDelayMin:MAX(0.5,(1.5-game.currentLevelNumber/10.0)) shotDelayMax:MAX(1.5,(5.5-game.currentLevelNumber/10.0))];
-  
+  else
+    baddie = [[Spinner alloc] init];
   if (![baddie isKindOfClass:[HordeUnit class]])
     baddie.position = GLKVector2Make([TERandom randomFractionFrom:game.left to:game.right],[TERandom randomFractionFrom:game.bottom+2 to:game.top-1]);
   else {

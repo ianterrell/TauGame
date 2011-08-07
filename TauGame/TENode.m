@@ -269,6 +269,9 @@
     self.remove = YES;
 }
 
+-(GLKVector2)vectorToNode:(TENode *)node {
+  return GLKVector2Subtract(node.position, self.position);
+}
 
 # pragma mark Animation Methods
 

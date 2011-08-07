@@ -10,8 +10,7 @@
 
 @implementation TEHexagon
 
-- (id)init
-{
+- (id)init {
   return [super initWithSides:6];
 }
 

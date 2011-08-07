@@ -26,6 +26,7 @@
 #import "TERectangle.h"
 #import "TEHexagon.h"
 #import "TEHeptagon.h"
+#import "TEOctagon.h"
 #import "TEEllipse.h"
 #import "TERegularPolygon.h"
 #import "TERandomPolygon.h"

@@ -35,13 +35,6 @@
     animation.repeat = kTEAnimationRepeatForever;
     animation.duration = 0.5;
     [pupil startAnimation:animation];
-    
-    // Colorize!
-    self.shape.renderStyle = kTERenderStyleVertexColors;
-    self.shape.colorVertices[0] = GLKVector4Make(0.4,0.4,0.4,1);
-    for (int i = 1; i < self.shape.numVertices; i++)
-      self.shape.colorVertices[i] = GLKVector4Make(0.1,0.1,0.1,1);
-    self.shape.colorVertices[2] = self.shape.colorVertices[5] = GLKVector4Make(0.2,0.2,0.2,1);
   }
   
   return self;

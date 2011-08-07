@@ -12,7 +12,7 @@
 @interface HordeUnit : Baddie {
   int row, column;
   id<GriddedGameLevel> level;
-  float shotDelayMin, shotDelayMax, shotDelay;
+  float shotDelayMin, shotDelayMax;
 }
 
 -(id)initWithLevel:(id<GriddedGameLevel>)level row:(int)row column:(int)column shotDelayMin:(float)min shotDelayMax:(float)max;

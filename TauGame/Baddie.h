@@ -9,7 +9,7 @@
 #import "Enemy.h"
 
 @interface Baddie : Enemy {
-  float blinkDelay;
+  float blinkDelay, shotDelay;
 }
 
 -(void)updateBlink:(NSTimeInterval)dt;

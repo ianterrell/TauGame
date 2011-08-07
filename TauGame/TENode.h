@@ -63,6 +63,7 @@
 -(void)updatePosition:(NSTimeInterval)dt inScene:(TEScene *)scene;
 
 # pragma mark Position Shortcuts
+
 -(void)wraparoundInScene:(TEScene *)scene;
 -(void)wraparoundXInScene:(TEScene *)scene;
 -(void)wraparoundYInScene:(TEScene *)scene;
@@ -73,6 +74,8 @@
 -(void)bounceYInScene:(TEScene *)scene bufferTop:(float)top bufferBottom:(float)bottom;
 
 -(void)removeOutOfScene:(TEScene *)scene buffer:(float)buffer;
+
+-(GLKVector2)vectorToNode:(TENode *)node;
 
 # pragma mark Animation Methods
 

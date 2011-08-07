@@ -10,7 +10,7 @@
 
 @interface Arms : Baddie {
   int numShots, shooting;
-  float shotDelay, shotInterval;
+  float shotInterval;
   
   GLKVector2 seekingLocation;
   float seekingDelay;

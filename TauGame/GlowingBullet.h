@@ -10,4 +10,6 @@
 
 @interface GlowingBullet : Bullet
 
+-(id)initWithColor:(GLKVector4)color;
+
 @end

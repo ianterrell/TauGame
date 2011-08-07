@@ -29,25 +29,25 @@ static GLKBaseEffect *glowingEffect;
   glowingEffect.texture2d0.glName = texture.glName;
 }
 
-- (id)init
+-(id)initWithColor:(GLKVector4)color
 {
-  self = [super init];
+  self = [super initWithColor:color];
   if (self) {
     self.renderChildrenFirst = YES;
     TENode *glowNode = [[TENode alloc] init];
     
     TERectangle *rectangle = [[TERectangle alloc] init];
     rectangle.node = glowNode;
-    rectangle.height = 0.2;
-    rectangle.width = 0.2;
+    rectangle.height = 1;//0.2;
+    rectangle.width = 0.7;//0.14;
     glowNode.drawable = rectangle;
     
     rectangle.renderStyle = kTERenderStyleConstantColor | kTERenderStyleTexture;
-    rectangle.color = GLKVector4Make(0,1,0,1); //TODO: self.shape.color
+    rectangle.color = self.shape.color;
     rectangle.effect = glowingEffect;
     
-    rectangle.textureCoordinates[0] = GLKVector2Make(1, 1);
-    rectangle.textureCoordinates[1] = GLKVector2Make(0, 1);
+    rectangle.textureCoordinates[0] = GLKVector2Make(0, 1);
+    rectangle.textureCoordinates[1] = GLKVector2Make(1, 1);
     rectangle.textureCoordinates[2] = GLKVector2Make(1, 0);
     rectangle.textureCoordinates[3] = GLKVector2Make(0, 0);
     

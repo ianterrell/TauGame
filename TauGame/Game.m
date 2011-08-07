@@ -123,7 +123,7 @@ static Class levelClasses[NUM_LEVELS];
   scaleAnimation.duration = 1;
   scaleAnimation.onRemoval = ^(){
     levelName.remove = YES;
-    currentLevel = [[nextLevelClass alloc] initWithGame:self];;
+    currentLevel = [[nextLevelClass alloc] initWithGame:self];
   };
   [levelName startAnimation:scaleAnimation];
   

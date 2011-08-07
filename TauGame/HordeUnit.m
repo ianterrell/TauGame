@@ -7,7 +7,7 @@
 //
 
 #import "HordeUnit.h"
-#import "Bullet.h"
+#import "GlowingBullet.h"
 #import "Game.h"
 
 #define COLUMN_WIDTH 1.2
@@ -62,13 +62,12 @@
   [self resetShotDelay];
   
   [[TESoundManager sharedManager] play:@"shoot"];
-  TECharacter *bullet = [[Bullet alloc] init];
+  TECharacter *bullet = [[GlowingBullet alloc] initWithColor:self.shape.color];
   
   float x = self.position.x;
   float y = self.position.y - 1;
   bullet.position = GLKVector2Make(x, y);  
   bullet.velocity = GLKVector2Make(0, -5);
-  bullet.shape.color = self.shape.color;
   [scene addCharacterAfterUpdate:bullet];
   [scene.enemyBullets addObject:bullet];
 }

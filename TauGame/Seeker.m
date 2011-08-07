@@ -7,7 +7,7 @@
 //
 
 #import "Seeker.h"
-#import "Bullet.h"
+#import "GlowingBullet.h"
 #import "Game.h"
 #import "ClassicHorde.h"
 #import "Fighter.h"
@@ -55,13 +55,12 @@
   shotDelay = 1.0;
   [[TESoundManager sharedManager] play:@"shoot"];
 
-  TECharacter *bullet = [[Bullet alloc] init];
+  TECharacter *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,0,0,1)];
     
   float x = self.position.x;
   float y = self.position.y - 1;
   bullet.position = GLKVector2Make(x, y);  
   bullet.velocity = GLKVector2Make(0, -5);
-  bullet.shape.color = GLKVector4Make(1,0,0,1);
   [scene addCharacterAfterUpdate:bullet];
   [scene.enemyBullets addObject:bullet];
 }

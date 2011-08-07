@@ -15,10 +15,11 @@
   [[TESoundManager sharedManager] load:@"hurt2"];
 }
 
-- (id)init {
+-(id)initWithColor:(GLKVector4)color {
   self = [super init];
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"bullet"];
+    self.shape.color = color;
   }
   
   return self;

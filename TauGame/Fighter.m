@@ -8,6 +8,7 @@
 
 #import "Fighter.h"
 #import "Bullet.h"
+#import "GlowingBullet.h"
 #import "ShotTimer.h"
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
@@ -108,7 +109,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [[TESoundManager sharedManager] play:@"shoot"];
   int middle = numBullets / 2;
   for (int i = 0; i < numBullets; i++) {
-    TECharacter *bullet = [[Bullet alloc] init];
+    TECharacter *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,1,1,1)];
 
     float x = self.position.x;
     float xOffset = -1*((float)(middle-i))/BULLET_X_SPREAD_FACTOR;
@@ -121,7 +122,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     
     bullet.position = GLKVector2Make(x, y);  
     bullet.velocity = GLKVector2Make(xOffset * spreadAmount * BULLET_X_VELOCITY_FACTOR, BULLET_Y_VELOCITY);
-    [scene.characters addObject:bullet];
+    [scene.characters insertObject:bullet atIndex:3];
     [scene.bullets addObject:bullet];
   }
 }

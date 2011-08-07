@@ -10,4 +10,6 @@
 
 @interface Bullet : Enemy
 
+-(id)initWithColor:(GLKVector4)color;
+
 @end

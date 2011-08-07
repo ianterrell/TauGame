@@ -7,7 +7,7 @@
 //
 
 #import "Arms.h"
-#import "Bullet.h"
+#import "GlowingBullet.h"
 #import "Game.h"
 #import "Fighter.h"
 
@@ -61,12 +61,11 @@
   [[TESoundManager sharedManager] play:@"shoot"];
   
   for (int i = 0; i < 2; i++) {
-    TECharacter *bullet = [[Bullet alloc] init];
+    TECharacter *bullet = [[GlowingBullet alloc] initWithColor:self.shape.color];
     float x = self.position.x - 0.615 + i*1.23;
     float y = self.position.y - 0.5;
     bullet.position = GLKVector2Make(x, y);  
     bullet.velocity = GLKVector2Make(0, -5);
-    bullet.shape.color = self.shape.color;
     [scene addCharacterAfterUpdate:bullet];
     [scene.enemyBullets addObject:bullet];
   }

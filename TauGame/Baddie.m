@@ -20,6 +20,9 @@
   self = [super init];
   if (self) {
     hitPoints = 3;
+    
+    shotDelayConstant = shotDelayMin = shotDelayMax = 5; // defaults
+    
     [self resetBlinkDelay];
     [self resetShotDelay];
   }
@@ -36,7 +39,8 @@
   if ([self readyToShoot])
     [self shootInScene:(Game*)scene];
   
-  [self updateBlink:dt];
+  if ([[self class] blinks])
+    [self updateBlink:dt];
 }
 
 # pragma mark - Shooting
@@ -91,19 +95,25 @@
   [self resetShotDelay];
   
   [[TESoundManager sharedManager] play:@"shoot"];
+  
+  if ([[self class] shootTowardFighter])
+    [self shootInDirection:[self vectorToNode:scene.fighter] inScene:scene];
+  else
+    [self shootInDirection:GLKVector2Make(0,-1) inScene:scene];
+}
+
+-(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene {
   Bullet *bullet = [[GlowingBullet alloc] initWithColor:[self bulletColor]];
-  if ([[self class] shootTowardFighter]) {
-    GLKVector2 diff = [self vectorToNode:scene.fighter];
-    GLKVector2 normalizedDiff = GLKVector2Normalize(diff);
-    bullet.rotation = diff.y == 0 ? 0 : atan(diff.x/diff.y);
-    bullet.position = GLKVector2Add(self.position,GLKVector2MultiplyScalar(normalizedDiff, [self bulletInitialYOffset]));
-    bullet.velocity = GLKVector2MultiplyScalar(normalizedDiff,3);
+  if (!GLKVector2AllEqualToVector2(direction, GLKVector2Make(0,-1))) {
+    GLKVector2 normalized = GLKVector2Normalize(direction);
+    bullet.rotation = direction.y == 0 ? 0 : atan(direction.x/direction.y);
+    bullet.position = GLKVector2Add(self.position,GLKVector2MultiplyScalar(normalized, [self bulletInitialYOffset]));
+    bullet.velocity = GLKVector2MultiplyScalar(normalized,[self bulletVelocity]);
   } else {
     bullet.position = GLKVector2Make(self.position.x, self.position.y - [self bulletInitialYOffset]);
-    bullet.velocity = GLKVector2Make(0, -1*[self bulletVelocity]);
+    bullet.velocity = GLKVector2Make(0,-1*[self bulletVelocity]);
   }
-  
-  [self fire:bullet in:scene];
+  [self fire:bullet in:scene];  
 }
 
 -(void)fire:(Bullet *)bullet in:(Game*)scene {

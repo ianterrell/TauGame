@@ -9,8 +9,7 @@
 #import "Baddie.h"
 
 @interface Seeker : Baddie {
-  float shotSpeed;
-  float accelerationFactor;
+  float accelerationFactor, distanceToFighter, distanceToShoot;
 }
 
 @end

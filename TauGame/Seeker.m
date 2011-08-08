@@ -19,8 +19,10 @@
   self = [super init];
   if (self) {
     [TECharacterLoader loadCharacter:self fromJSONFile:@"seeker"];
-    shotSpeed = 1.0;
-    shotDelay = 0.0;
+
+    shotDelayConstant = 1.0;
+    distanceToShoot = 0.5;
+    
     self.maxVelocity = 2;
     
     accelerationFactor = [TERandom randomFractionFrom:0.75 to:3];
@@ -35,43 +37,26 @@
     animation.repeat = kTEAnimationRepeatForever;
     animation.duration = 0.5;
     [pupil startAnimation:animation];
+    
+    [self resetShotDelay];
   }
   
   return self;
 }
 
--(void)shootInScene:(Game *)scene {
-  // Can't shoot if dead!
-  if ([self dead])
-    return;
-  
-  shotDelay = 1.0;
-  [[TESoundManager sharedManager] play:@"shoot"];
+-(GLKVector4)bulletColor {
+  return GLKVector4Make(1,0,0,1);
+}
 
-  TECharacter *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,0,0,1)];
-    
-  float x = self.position.x;
-  float y = self.position.y - 1;
-  bullet.position = GLKVector2Make(x, y);  
-  bullet.velocity = GLKVector2Make(0, -5);
-  [scene addCharacterAfterUpdate:bullet];
-  [scene.enemyBullets addObject:bullet];
+-(BOOL)readyToShoot {
+  return (ABS(distanceToFighter) < distanceToShoot && shotDelay <= 0);
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   
-  Game *fighterScene = (Game*)scene;
-  float fighterX = fighterScene.fighter.position.x;
-  float diff = fighterX- self.position.x;
-  self.acceleration = GLKVector2MultiplyScalar(GLKVector2Make(diff,0),accelerationFactor);
-  
-  if (shotDelay > 0)
-    shotDelay -= dt;
-  
-  if (ABS(diff) < 0.5 && shotDelay <= 0) {
-    [self shootInScene:(Game*)scene];
-  }
+  distanceToFighter = ((Game*)scene).fighter.position.x- self.position.x;
+  self.acceleration = GLKVector2Make(distanceToFighter*accelerationFactor,0);
 }
 
 @end

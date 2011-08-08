@@ -16,4 +16,6 @@
   float seekingDelay;
 }
 
+-(void)seekInScene:(Game*)game;
+
 @end

@@ -18,8 +18,12 @@
 
 @implementation HordeUnit
 
--(void)resetShotDelay {
-  shotDelay = [TERandom randomFractionFrom:shotDelayMin to:shotDelayMax];
++(BaddieShootingStyle)shootingStyle {
+  return kBaddieRandomShot;
+}
+
++(BOOL)blinks {
+  return YES;
 }
 
 -(id)initWithLevel:(id<GriddedGameLevel>)_level row:(int)_row column:(int)_column shotDelayMin:(float)min shotDelayMax:(float)max
@@ -54,47 +58,12 @@
   return self;
 }
 
--(void)shootInScene:(Game *)scene {
-  // Can't shoot if dead!
-  if ([self dead])
-    return;
-  
-  [self resetShotDelay];
-  
-  [[TESoundManager sharedManager] play:@"shoot"];
-  TECharacter *bullet = [[GlowingBullet alloc] initWithColor:self.shape.color];
-  
-  float x = self.position.x;
-  float y = self.position.y - 1;
-  bullet.position = GLKVector2Make(x, y);  
-  bullet.velocity = GLKVector2Make(0, -5);
-  [scene addCharacterAfterUpdate:bullet];
-  [scene.enemyBullets addObject:bullet];
-}
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
-  
-  if (shotDelay > 0)
-    shotDelay -= dt;
-  if (shotDelay <= 0)
-    [self shootInScene:(Game*)scene];
-  
-  [self updateBlink:dt];
-  
+
   [super bounceXInScene:scene bufferLeft:COLUMN_WIDTH*(column+1) bufferRight:COLUMN_WIDTH*(level.columns-column)];
   [super bounceYInScene:scene bufferTop:TOP_BUFFER+ROW_HEIGHT*(row+1) bufferBottom:BOTTOM_BUFFER+ROW_HEIGHT*(level.rows-row)];
-}
-
--(void)blink {
-  [super blink];
-  TENode *eyes = [self childNamed:@"eyes"];
-  TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
-  animation.scaleX = 1.25;
-  animation.scaleY = 0.15;
-  animation.reverse = YES;
-  animation.duration = 0.1;
-  [eyes startAnimation:animation];
 }
 
 @end

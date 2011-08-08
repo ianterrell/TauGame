@@ -1,36 +1,6 @@
 {
   "armsdude": {
-    "collide": "yes",
-    "shape": {
-      "geometry": "rectangle",
-      "width": 1,
-      "height": 0.615,
-      "color": [0.643, 0.776, 0.224, 1.0]
-    },
     "children": {
-      "eyes": {
-        "translation": [0.0, 0.154],
-        "children": {
-          "left eye": {
-            "shape": {
-              "geometry": "rectangle",
-              "height": 0.154,
-              "width": 0.154,
-              "color": [1.0, 1.0, 1.0, 1.0]
-            },
-            "translation": [-0.269, 0.0]
-          },
-          "right eye": {
-            "shape": {
-              "geometry": "rectangle",
-              "height": 0.154,
-              "width": 0.154,
-              "color": [1.0, 1.0, 1.0, 1.0]
-            },
-            "translation": [0.269, 0.0]
-          }
-        }
-      },
       "arms": {
         "translation": [0.0, -0.192],
         "children": {
@@ -40,7 +10,10 @@
               "geometry": "rectangle",
               "height": 0.538,
               "width": 0.231,
-              "color": [0.643, 0.776, 0.224, 1.0]
+              "color0": [0.643, 0.776, 0.224, 1.0],
+              "color1": [0.3858, 0.4656, 0.1344, 1.0],
+              "color2": [0.3858, 0.4656, 0.1344, 1.0],
+              "color3": [0.643, 0.776, 0.224, 1.0],
             },
             "translation": [-0.615, 0.0]
           },
@@ -50,12 +23,83 @@
               "geometry": "rectangle",
               "height": 0.538,
               "width": 0.231,
-              "color": [0.643, 0.776, 0.224, 1.0]
+              "color0": [0.643, 0.776, 0.224, 1.0],
+              "color1": [0.3858, 0.4656, 0.1344, 1.0],
+              "color2": [0.3858, 0.4656, 0.1344, 1.0],
+              "color3": [0.643, 0.776, 0.224, 1.0],
             },
             "translation": [0.615, 0.0]
           }
         }
       },
+      "legs": {
+        "translation": [0.0, -0.192],
+        "children": {
+          "left leg": {
+            "collide": "yes",
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.538,
+              "width": 0.231,
+              "color0": [0.643, 0.776, 0.224, 1.0],
+              "color1": [0.3858, 0.4656, 0.1344, 1.0],
+              "color2": [0.3858, 0.4656, 0.1344, 1.0],
+              "color3": [0.643, 0.776, 0.224, 1.0],
+            },
+            "translation": [-0.205128205, 0.0]
+          },
+          "right leg": {
+            "collide": "yes",
+            "shape": {
+              "geometry": "rectangle",
+              "height": 0.538,
+              "width": 0.231,
+              "color0": [0.643, 0.776, 0.224, 1.0],
+              "color1": [0.3858, 0.4656, 0.1344, 1.0],
+              "color2": [0.3858, 0.4656, 0.1344, 1.0],
+              "color3": [0.643, 0.776, 0.224, 1.0],
+            },
+            "translation": [0.205128205, 0.0]
+          }
+        }
+      },
+      "body": {
+        "collide": "yes",
+        "shape": {
+          "geometry": "rectangle",
+          "width": 1,
+          "height": 0.615,
+          "color0": [0.643, 0.776, 0.224, 1.0],
+          "color1": [0.3858, 0.4656, 0.1344, 1.0],
+          "color2": [0.3858, 0.4656, 0.1344, 1.0],
+          "color3": [0.643, 0.776, 0.224, 1.0],
+        },
+        "children": {
+          "eyes": {
+            "translation": [0.0, 0.154],
+            "children": {
+              "left eye": {
+                "shape": {
+                  "geometry": "rectangle",
+                  "height": 0.154,
+                  "width": 0.154,
+                  "color": [1,1,1,1]
+                },
+                "translation": [-0.269, 0.0]
+              },
+              "right eye": {
+                "shape": {
+                  "geometry": "rectangle",
+                  "height": 0.154,
+                  "width": 0.154,
+                  "color": [1,1,1,1]
+                },
+                "translation": [0.269, 0.0]
+              }
+            }
+          },
+        }
+      }
     }
   }
 }

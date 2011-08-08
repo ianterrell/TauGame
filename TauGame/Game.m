@@ -22,6 +22,7 @@
 #import "AsteroidField.h"
 #import "ClassicHorde.h"
 #import "Fray.h"
+#import "Dogfight.h"
 #import "Enemy.h"
 
 #define POWERUP_CHANCE 0.1
@@ -164,7 +165,9 @@ static Class levelClasses[NUM_LEVELS];
   // Detect collisions with ship :(
   [TECollisionDetector collisionsBetweenNode:fighter andNodes:enemyBullets maxPerNode:1 withBlock:^(TENode *ship, TENode *enemyBullet) {
     [(Fighter *)fighter registerHit];
-    [(Enemy *)enemyBullet explode];
+    
+    if ([enemyBullet isKindOfClass:[Bullet class]])
+      [(Bullet *)enemyBullet explode];
   }];
   
   // Detect powerup collisions

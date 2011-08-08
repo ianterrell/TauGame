@@ -14,8 +14,12 @@
   
   GLKVector2 seekingLocation;
   float seekingDelay;
+  
+  NSArray *appendages;
 }
 
+-(NSArray*)appendageNames;
+-(void)setupLegs;
 -(void)seekInScene:(Game*)game;
 
 @end

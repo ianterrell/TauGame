@@ -29,15 +29,8 @@
     shooting = 0;
     self.velocity = GLKVector2Make(1, 0);
     
-    // Colorize!
-    for (TENode *node in [self childrenNamed:[NSArray arrayWithObjects:@"armsdude", @"left arm", @"right arm",nil]]) {
-      node.shape.renderStyle = kTERenderStyleVertexColors;
-      for (int i = 0; i < node.shape.numVertices; i++) {
-        node.shape.colorVertices[i] = self.shape.color;
-        if (i == 1 || i == 2)
-          node.shape.colorVertices[i] = GLKVector4Make(self.shape.color.r*0.6,self.shape.color.g*0.6,self.shape.color.b*0.6,1);
-      }
-    }
+    appendages = [self childrenNamed:[self appendageNames]];
+    [self setupLegs];
     
     [self resetShotDelay];
   }
@@ -49,13 +42,29 @@
   return (shotDelay <= 0 && shooting == 0);
 }
 
+-(GLKVector4)bulletColor {
+  return GLKVector4Make(0.643, 0.776, 0.224, 1.0);
+}
+
+-(NSArray *)appendageNames {
+  return [NSArray arrayWithObjects:@"left arm", @"right arm",nil];
+}
+
+-(NSArray *)namesOfNodesToFlash {
+  return [NSArray arrayWithObjects:@"body", @"left arm", @"right arm",nil];
+}
+
+-(void)setupLegs {
+  [children removeObject:[self childNamed:@"legs"]];
+}
+
 -(void)emitBulletsInScene:(Game *)scene {
   [[TESoundManager sharedManager] play:@"shoot"];
   
-  for (int i = 0; i < 2; i++) {
-    Bullet *bullet = [[GlowingBullet alloc] initWithColor:self.shape.color];
-    float x = self.position.x - 0.615 + i*1.23;
-    float y = self.position.y - 0.5;
+  for (TENode *node in appendages) {
+    Bullet *bullet = [[GlowingBullet alloc] initWithColor:[self bulletColor]];
+    float x = self.position.x+scaleX*node.position.x;
+    float y = self.position.y - 0.5*scaleY;
     bullet.position = GLKVector2Make(x, y);  
     bullet.velocity = GLKVector2Make(0, -1*[self bulletVelocity]);
     [self fire:bullet in:scene];
@@ -82,6 +91,16 @@
     [self emitBulletsInScene:scene];
   };
   [arms startAnimation:animation];
+  
+  TENode *legs = [self childNamed:@"legs"];
+  if (legs != nil) {
+    TETranslateAnimation *animation2 = [[TETranslateAnimation alloc] init];
+    animation2.translation = GLKVector2Make(0, -0.15);
+    animation2.reverse = YES;
+    animation2.duration = 0.1;
+    animation2.repeat = numShots-1;
+    [legs startAnimation:animation2];
+  }
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
@@ -102,8 +121,15 @@
 }
 
 -(void)flashWhite {
-  for (TENode *node in [self childrenNamed:[NSArray arrayWithObjects:@"armsdude", @"left arm", @"right arm",nil]])
-    [node startAnimation:[self flashWhiteAnimation]];
+  for (TENode *node in [self childrenNamed:[self namesOfNodesToFlash]]) {
+    TEVertexColorAnimation *highlight = [[TEVertexColorAnimation alloc] initWithNode:node];
+    for (int i = 0; i < node.shape.numVertices; i++)
+      ((TEVertexColorAnimation*)highlight).toColorVertices[i] = GLKVector4Make(1, 1, 1, 1);
+    highlight.duration = 0.2;
+    highlight.backward = YES;
+
+    [node startAnimation:highlight];
+  }
 }
 
 @end

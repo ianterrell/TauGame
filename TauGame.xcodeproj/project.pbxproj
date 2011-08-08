@@ -54,6 +54,7 @@
 		3C5507A613CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
 		3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
 		3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */; };
+		3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB3B13F054BC00E35FC3 /* BigArms.m */; };
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
@@ -116,6 +117,8 @@
 		3CD1F94D13DF0E3300F6F035 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94C13DF0E3200F6F035 /* Game.m */; };
 		3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */; };
 		3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95513DF55EF00F6F035 /* TEPolygon.m */; };
+		3CED2CB413F026A300254302 /* BigHordeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED2CB313F026A300254302 /* BigHordeUnit.m */; };
+		3CED2CB713F0274400254302 /* Dogfight.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED2CB613F0274400254302 /* Dogfight.m */; };
 		3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675213E723CD008A1A4A /* ExtraShot.m */; };
 		3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675513E72FB3008A1A4A /* Fighter.m */; };
 		3CF3679813E99D58008A1A4A /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3679713E99D58008A1A4A /* Starfield.m */; };
@@ -196,6 +199,8 @@
 		3C5507A513CE237D00585C40 /* TECollisionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetector.m; sourceTree = "<group>"; };
 		3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAdjustedAttitude.h; sourceTree = "<group>"; };
 		3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAdjustedAttitude.m; sourceTree = "<group>"; };
+		3C59AB3A13F054BC00E35FC3 /* BigArms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigArms.h; sourceTree = "<group>"; };
+		3C59AB3B13F054BC00E35FC3 /* BigArms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigArms.m; sourceTree = "<group>"; };
 		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
@@ -291,6 +296,10 @@
 		3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetectorTest.m; sourceTree = "<group>"; };
 		3CD1F95413DF55EC00F6F035 /* TEPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEPolygon.h; sourceTree = "<group>"; };
 		3CD1F95513DF55EF00F6F035 /* TEPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEPolygon.m; sourceTree = "<group>"; };
+		3CED2CB213F026A300254302 /* BigHordeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigHordeUnit.h; sourceTree = "<group>"; };
+		3CED2CB313F026A300254302 /* BigHordeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigHordeUnit.m; sourceTree = "<group>"; };
+		3CED2CB513F0274400254302 /* Dogfight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dogfight.h; sourceTree = "<group>"; };
+		3CED2CB613F0274400254302 /* Dogfight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dogfight.m; sourceTree = "<group>"; };
 		3CF3675113E723CD008A1A4A /* ExtraShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraShot.h; sourceTree = "<group>"; };
 		3CF3675213E723CD008A1A4A /* ExtraShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraShot.m; sourceTree = "<group>"; };
 		3CF3675513E72FB3008A1A4A /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
@@ -347,6 +356,7 @@
 				3C10727513EC55BD0062986D /* Arms.m */,
 				3C37ED5D13EF302F00EF18A9 /* Spinner.h */,
 				3C37ED5E13EF302F00EF18A9 /* Spinner.m */,
+				3CED2CB013F0268B00254302 /* Bigguns */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -564,6 +574,8 @@
 				3CD1F94613DE313A00F6F035 /* ClassicHorde.m */,
 				3C10727113EC35380062986D /* Fray.h */,
 				3C10727213EC35380062986D /* Fray.m */,
+				3CED2CB513F0274400254302 /* Dogfight.h */,
+				3CED2CB613F0274400254302 /* Dogfight.m */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -719,6 +731,17 @@
 				3CD1F93A13DDCF0000F6F035 /* shoot.wav */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		3CED2CB013F0268B00254302 /* Bigguns */ = {
+			isa = PBXGroup;
+			children = (
+				3CED2CB213F026A300254302 /* BigHordeUnit.h */,
+				3CED2CB313F026A300254302 /* BigHordeUnit.m */,
+				3C59AB3A13F054BC00E35FC3 /* BigArms.h */,
+				3C59AB3B13F054BC00E35FC3 /* BigArms.m */,
+			);
+			name = Bigguns;
 			sourceTree = "<group>";
 		};
 		3CF3679413E99CFC008A1A4A /* Background */ = {
@@ -936,6 +959,9 @@
 				3C10727613EC55BE0062986D /* Arms.m in Sources */,
 				3C37ED5C13EF2F3700EF18A9 /* TEOctagon.m in Sources */,
 				3C37ED5F13EF302F00EF18A9 /* Spinner.m in Sources */,
+				3CED2CB413F026A300254302 /* BigHordeUnit.m in Sources */,
+				3CED2CB713F0274400254302 /* Dogfight.m in Sources */,
+				3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

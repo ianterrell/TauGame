@@ -55,6 +55,9 @@
 		3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
 		3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */; };
 		3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB3B13F054BC00E35FC3 /* BigArms.m */; };
+		3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */; };
+		3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4413F0699F00E35FC3 /* LevelBag.m */; };
+		3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4713F06D7100E35FC3 /* BiggunBag.m */; };
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
@@ -201,6 +204,12 @@
 		3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAdjustedAttitude.m; sourceTree = "<group>"; };
 		3C59AB3A13F054BC00E35FC3 /* BigArms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigArms.h; sourceTree = "<group>"; };
 		3C59AB3B13F054BC00E35FC3 /* BigArms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigArms.m; sourceTree = "<group>"; };
+		3C59AB4013F068D800E35FC3 /* TEShuffleBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShuffleBag.h; sourceTree = "<group>"; };
+		3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEShuffleBag.m; sourceTree = "<group>"; };
+		3C59AB4313F0699F00E35FC3 /* LevelBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelBag.h; sourceTree = "<group>"; };
+		3C59AB4413F0699F00E35FC3 /* LevelBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelBag.m; sourceTree = "<group>"; };
+		3C59AB4613F06D7100E35FC3 /* BiggunBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiggunBag.h; sourceTree = "<group>"; };
+		3C59AB4713F06D7100E35FC3 /* BiggunBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiggunBag.m; sourceTree = "<group>"; };
 		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
@@ -240,7 +249,7 @@
 		3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETranslateAnimation.m; sourceTree = "<group>"; };
 		3C975B6913EB654700CAEB6D /* HordeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HordeUnit.h; sourceTree = "<group>"; };
 		3C975B6A13EB654700CAEB6D /* HordeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HordeUnit.m; sourceTree = "<group>"; };
-		3CB0483813CBD5960029875B /* TauGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TauGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CB0483813CBD5960029875B /* Galaxy Wild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galaxy Wild.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0483C13CBD5960029875B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CB0483E13CBD5960029875B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CB0484013CBD5960029875B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -489,6 +498,8 @@
 			children = (
 				3CD1F94813DF03C600F6F035 /* TERandom.h */,
 				3CD1F94913DF03CB00F6F035 /* TERandom.m */,
+				3C59AB4013F068D800E35FC3 /* TEShuffleBag.h */,
+				3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */,
 				3C70969313E1DD1200BF4E83 /* TEImage.h */,
 				3C70969413E1DD1200BF4E83 /* TEImage.m */,
 				3C7BD28813EB0158005895AE /* TETexture.h */,
@@ -565,6 +576,8 @@
 		3C80616F13EB10E100EF4929 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				3C59AB4313F0699F00E35FC3 /* LevelBag.h */,
+				3C59AB4413F0699F00E35FC3 /* LevelBag.m */,
 				3C80617013EB10F700EF4929 /* GameLevel.h */,
 				3C80617413EB2D4B00EF4929 /* GameLevel.m */,
 				3C10727A13EC6AE10062986D /* GriddedGameLevel.h */,
@@ -636,7 +649,7 @@
 		3CB0483913CBD5960029875B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CB0483813CBD5960029875B /* TauGame.app */,
+				3CB0483813CBD5960029875B /* Galaxy Wild.app */,
 				3CB0485313CBD5970029875B /* TauGameTests.octest */,
 			);
 			name = Products;
@@ -740,6 +753,8 @@
 				3CED2CB313F026A300254302 /* BigHordeUnit.m */,
 				3C59AB3A13F054BC00E35FC3 /* BigArms.h */,
 				3C59AB3B13F054BC00E35FC3 /* BigArms.m */,
+				3C59AB4613F06D7100E35FC3 /* BiggunBag.h */,
+				3C59AB4713F06D7100E35FC3 /* BiggunBag.m */,
 			);
 			name = Bigguns;
 			sourceTree = "<group>";
@@ -783,7 +798,7 @@
 			);
 			name = TauGame;
 			productName = TauGame;
-			productReference = 3CB0483813CBD5960029875B /* TauGame.app */;
+			productReference = 3CB0483813CBD5960029875B /* Galaxy Wild.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3CB0485213CBD5970029875B /* TauGameTests */ = {
@@ -962,6 +977,9 @@
 				3CED2CB413F026A300254302 /* BigHordeUnit.m in Sources */,
 				3CED2CB713F0274400254302 /* Dogfight.m in Sources */,
 				3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */,
+				3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */,
+				3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */,
+				3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,7 +1092,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "TauGame/TauGame-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galaxy Wild";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1093,7 +1111,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "TauGame/TauGame-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galaxy Wild";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

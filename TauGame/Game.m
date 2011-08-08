@@ -19,21 +19,17 @@
 #import "ExtraShot.h"
 #import "GameLevel.h"
 
-#import "AsteroidField.h"
-#import "ClassicHorde.h"
-#import "Fray.h"
-#import "Dogfight.h"
 #import "Enemy.h"
+
+#import "LevelBag.h"
 
 #define POWERUP_CHANCE 0.1
 #define NUM_POWERUPS 3
 
 #define POINT_RATIO 40
 
-#define NUM_LEVELS 3
-
 static Class powerupClasses[NUM_POWERUPS];
-static Class levelClasses[NUM_LEVELS];
+static LevelBag *levelBag;
 
 @implementation Game
 
@@ -46,10 +42,7 @@ static Class levelClasses[NUM_LEVELS];
   powerupClasses[i++] = [ExtraLife class];
   powerupClasses[i++] = [ExtraShot class];
   
-  int j = 0;
-  levelClasses[j++] = [AsteroidField class];
-  levelClasses[j++] = [ClassicHorde class];
-  levelClasses[j++] = [Fray class];
+  levelBag = [[LevelBag alloc] init];
 }
 
 - (id)init
@@ -113,7 +106,7 @@ static Class levelClasses[NUM_LEVELS];
   currentLevel = nil;
   currentLevelNumber++;
   
-  Class nextLevelClass = levelClasses[[TERandom randomTo:NUM_LEVELS]];
+  Class nextLevelClass = [levelBag drawItem];
   
   // Set up level name display
   TENode *levelName = [nextLevelClass nameSpriteWithPointRatio:POINT_RATIO];

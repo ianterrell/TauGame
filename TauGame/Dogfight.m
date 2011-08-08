@@ -7,28 +7,15 @@
 //
 
 #import "Dogfight.h"
-#import "Baddie.h"
-#import "Seeker.h"
-#import "Arms.h"
-#import "HordeUnit.h"
-#import "Spinner.h"
-
+#import "BiggunBag.h"
 #import "BigHordeUnit.h"
-#import "BigArms.h"
 
-
-#define NUM_ENEMIES 4
-
-static Class enemyClasses[NUM_ENEMIES];
+static BiggunBag *bag;
 
 @implementation Dogfight
 
 +(void)initialize {
-  int i = 0;
-  enemyClasses[i++] = [Seeker class];
-  enemyClasses[i++] = [Arms class];
-  enemyClasses[i++] = [HordeUnit class];
-  enemyClasses[i++] = [Spinner class];
+  bag = [[BiggunBag alloc] init];
 }
 
 +(NSString *)name {
@@ -38,11 +25,14 @@ static Class enemyClasses[NUM_ENEMIES];
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    Baddie *baddie = [[BigArms alloc] init];
+    Baddie *baddie = [[[bag drawItem] alloc] init];
     baddie.position = GLKVector2Make([TERandom randomFractionFrom:game.left to:game.right],[TERandom randomFractionFrom:game.bottom+2 to:game.top-1]);    
+
     [game addCharacterAfterUpdate:baddie];
     [game.enemies addObject:baddie];
-//    [game.enemyBullets addObject:baddie]; horde
+    if ([baddie isKindOfClass:[BigHordeUnit class]])
+      [game.enemyBullets addObject:baddie];
+    
     recurseEnemiesForCollisions = YES;
   }
   return self;

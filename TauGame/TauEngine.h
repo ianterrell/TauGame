@@ -55,6 +55,7 @@
 #import "TESoundManager.h"
 
 #import "TERandom.h"
+#import "TEShuffleBag.h"
 #import "TEImage.h"
 #import "TETexture.h"
 

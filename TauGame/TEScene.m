@@ -123,7 +123,6 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
   self.paused = NO;
-
 }
 
 # pragma mark Rendering

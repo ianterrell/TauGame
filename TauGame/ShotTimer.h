@@ -8,7 +8,7 @@
 
 #import "TauEngine.h"
 
-@interface ShotTimer : TECharacter {
+@interface ShotTimer : TENode {
   TENode *bar;
 }
 

@@ -48,7 +48,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"fighter"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"fighter"];
     
     // Set up lives
     lives = 3;
@@ -109,7 +109,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [[TESoundManager sharedManager] play:@"shoot"];
   int middle = numBullets / 2;
   for (int i = 0; i < numBullets; i++) {
-    TECharacter *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,1,1,1)];
+    TENode *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,1,1,1)];
 
     float x = self.position.x;
     float xOffset = -1*((float)(middle-i))/BULLET_X_SPREAD_FACTOR;

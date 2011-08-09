@@ -18,7 +18,6 @@
 #import "TEDrawable.h"
 
 #import "TENode.h"
-#import "TECharacter.h"
 
 #import "TEShape.h"
 #import "TEPolygon.h"
@@ -38,7 +37,7 @@
 #import "TEScene.h"
 #import "TESceneController.h"
 
-#import "TECharacterLoader.h"
+#import "TENodeLoader.h"
 
 #import "TEAnimation.h"
 #import "TEScaleAnimation.h"

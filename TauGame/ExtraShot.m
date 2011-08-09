@@ -14,7 +14,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"extra-shot-powerup"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"extra-shot-powerup"];
     [self setInnerColor:GLKVector4Make(1,0.522,0.04,1) outerColor:GLKVector4Make(0.6, 0, 0, 1)];
   }
   

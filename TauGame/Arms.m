@@ -21,7 +21,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"arms"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"arms"];
     
     numShots = 2;
     shotDelayConstant = 5;

@@ -6,9 +6,9 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
+#import "TENode.h"
 
-@interface BulletSplash : TECharacter
+@interface BulletSplash : TENode
 
 -(id)initWithPosition:(GLKVector2)position;
 

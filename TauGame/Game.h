@@ -19,7 +19,7 @@
   NSMutableArray *powerups, *lives, *shotTimers;
   NSMutableArray *bullets, *enemies, *enemyBullets;
 
-  TECharacter *scoreboard;
+  TENode *scoreboard;
 }
 
 @property(readonly) int currentLevelNumber;

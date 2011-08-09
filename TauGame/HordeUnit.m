@@ -51,7 +51,7 @@ static float blues[]  = {0,0,1,0,1,1};
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"horde-unit"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"horde-unit"];
     
     level = _level;
     row = _row;

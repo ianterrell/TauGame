@@ -21,7 +21,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"spinner"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"spinner"];
     shotDelayConstant = 1;
     self.maxVelocity = 3;
     self.maxAcceleration = 2;

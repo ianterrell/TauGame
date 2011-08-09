@@ -40,19 +40,19 @@
   GLfloat timeSince = [controller timeSinceLastDraw]; // FIXME should really be timeSinceLastUpdate, but it's buggy
   
   // Update all characters
-  for (TECharacter *character in characters)
+  for (TENode *character in characters)
     [character update:timeSince inScene:self];
 
   // Remove any who declared they need removed
   NSMutableArray *removed = [[NSMutableArray alloc] init];
-  [characters filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TECharacter *character, NSDictionary *bindings) {
+  [characters filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TENode *character, NSDictionary *bindings) {
     if (character.remove) {
       [removed addObject:character];
       return NO;
     } else
       return YES;
   }]];
-  for (TECharacter *character in removed) {
+  for (TENode *character in removed) {
     [self nodeRemoved:character];
     [character onRemoval];
   }

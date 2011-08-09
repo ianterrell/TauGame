@@ -15,7 +15,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"bullet-splash"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"bullet-splash"];
     self.scale = 1;
     
     BOOL setRemovedCallback = NO;

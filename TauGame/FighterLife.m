@@ -15,7 +15,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"fighter-life"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"fighter-life"];
   }
   return self;
 }

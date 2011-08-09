@@ -18,7 +18,7 @@
 -(id)initWithColor:(GLKVector4)color {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"bullet"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"bullet"];
     self.shape.color = color;
   }
   

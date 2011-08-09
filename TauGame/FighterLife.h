@@ -6,8 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
+#import "TENode.h"
 
-@interface FighterLife : TECharacter
+@interface FighterLife : TENode
 
 @end

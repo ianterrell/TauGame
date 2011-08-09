@@ -1,15 +1,15 @@
 //
-//  TECharacterLoader.m
+//  TENodeLoader.m
 //  TauGame
 //
 //  Created by Ian Terrell on 7/12/11.
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacterLoader.h"
+#import "TENodeLoader.h"
 #import "TauEngine.h"
 
-@implementation TECharacterLoader
+@implementation TENodeLoader
 
 +(void)parseTransformsForNode:(TENode *)node attributes:(NSDictionary *)attributes {
   [attributes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -121,7 +121,7 @@
   }];
 }
 
-+(void)loadCharacter:(TECharacter *)character fromJSONFile:(NSString *)fileName {
++(void)loadCharacter:(TENode *)character fromJSONFile:(NSString *)fileName {
   NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"json"];
   NSData *data = [NSData dataWithContentsOfFile:filePath];
   
@@ -136,8 +136,8 @@
   [self parseNode:character attributes:[characterData objectForKey:character.name]];
 }
 
-+(TECharacter *)loadCharacterFromJSONFile:(NSString *)fileName {
-  TECharacter *character = [[TECharacter alloc] init];
++(TENode *)loadCharacterFromJSONFile:(NSString *)fileName {
+  TENode *character = [[TENode alloc] init];
   [self loadCharacter:character fromJSONFile:fileName];
   return character;
 }

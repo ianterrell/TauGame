@@ -18,7 +18,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"seeker"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"seeker"];
 
     shotDelayConstant = 1.0;
     distanceToShoot = 0.5;

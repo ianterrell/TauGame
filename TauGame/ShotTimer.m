@@ -14,7 +14,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"shot-timer"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"shot-timer"];
     bar = [self childNamed:@"bar"];
   }
   

@@ -19,7 +19,7 @@
 {
   self = [super init];
   if (self) {
-    [TECharacterLoader loadCharacter:self fromJSONFile:@"horde-unit"];
+    [TENodeLoader loadCharacter:self fromJSONFile:@"horde-unit"];
     [HordeUnit randomlyColorizeUnit:self];
 
     self.scale = 2;

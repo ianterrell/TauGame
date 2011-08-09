@@ -8,7 +8,7 @@
 
 #import "TauEngine.h"
 
-@interface Background : TECharacter {
+@interface Background : TENode {
   float time, radius;
 }
 

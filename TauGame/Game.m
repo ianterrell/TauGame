@@ -84,7 +84,7 @@ static LevelBag *levelBag;
     [self.view addGestureRecognizer:tapRecognizer];
     
     // Set up score
-    scoreboard = [[TECharacter alloc] init];
+    scoreboard = [[TENode alloc] init];
     TENumberDisplay *scoreboardDisplay = [[TENumberDisplay alloc] initWithNumDigits:8];
     scoreboardDisplay.node = scoreboard;
     scoreboardDisplay.width = 3;

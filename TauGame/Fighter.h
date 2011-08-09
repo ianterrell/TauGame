@@ -14,7 +14,7 @@ extern NSString *const FighterDiedNotification;
 extern NSString *const FighterExtraLifeNotification;
 extern NSString *const FighterExtraShotNotification;
 
-@interface Fighter : TECharacter {
+@interface Fighter : TENode {
   BOOL paused;
   
   int health, maxHealth, lives;

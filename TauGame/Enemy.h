@@ -10,7 +10,7 @@
 
 extern NSString *const EnemyDestroyedNotification;// = @"EnemyDestroyedNotification";
 
-@interface Enemy : TECharacter {
+@interface Enemy : TENode {
   int hitPoints;
 }
 

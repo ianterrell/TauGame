@@ -6,10 +6,10 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import "TECharacter.h"
+#import "TENode.h"
 #import "Game.h"
 
-@interface Powerup : TECharacter
+@interface Powerup : TENode
 
 +(void)addPowerupToScene:(Game *)scene at:(GLKVector2)location;
 -(void)die;

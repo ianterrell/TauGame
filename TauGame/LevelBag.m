@@ -19,4 +19,10 @@
   [super setItems:[NSArray arrayWithObjects:[AsteroidField class], [ClassicHorde class], [Fray class], [Dogfight class], nil]];
 }
 
+#ifdef DEBUG_LEVEL
+-(id)drawItem {
+  return DEBUG_LEVEL;
+}
+#endif
+
 @end

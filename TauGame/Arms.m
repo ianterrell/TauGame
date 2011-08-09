@@ -58,17 +58,15 @@
   [children removeObject:[self childNamed:@"legs"]];
 }
 
+-(float)bulletInitialYOffset {
+  return 0.5*scaleY;
+}
+
 -(void)emitBulletsInScene:(Game *)scene {
   [[TESoundManager sharedManager] play:@"shoot"];
   
-  for (TENode *node in appendages) {
-    Bullet *bullet = [[GlowingBullet alloc] initWithColor:[self bulletColor]];
-    float x = self.position.x+scaleX*node.position.x;
-    float y = self.position.y - 0.5*scaleY;
-    bullet.position = GLKVector2Make(x, y);  
-    bullet.velocity = GLKVector2Make(0, -1*[self bulletVelocity]);
-    [self fire:bullet in:scene];
-  }
+  for (TENode *node in appendages)
+    [self shootInDirection:GLKVector2Make(0,-1) inScene:scene xOffset:scaleX*node.position.x];
   
   [self resetShotDelay];
   shooting--;

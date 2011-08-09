@@ -4,13 +4,13 @@
     "shape": {
       "geometry": "hexagon",
       "vertex0": [0,0],
-      "vertex1": [1,-0.333],
-      "vertex2": [1.5,0],
-      "vertex3": [1,0.333],
-      "vertex4": [-1,0.333],
-      "vertex5": [-1.5,0],
-      "vertex6": [-1,-0.333],
-      "vertex7": [1,-0.333],
+      "vertex1": [0.5,-0.1667],
+      "vertex2": [0.75,0],
+      "vertex3": [0.5,0.1667],
+      "vertex4": [-0.5,0.1667],
+      "vertex5": [-0.75,0],
+      "vertex6": [-0.5,-0.1667],
+      "vertex7": [0.5,-0.1667],
       "color0": [0.4, 0.4, 0.4, 1.0],
       "color1": [0.1, 0.1, 0.1, 1.0],
       "color2": [0.2, 0.2, 0.2, 1.0],
@@ -25,17 +25,17 @@
       "eye": {
         "shape": {
           "geometry": "rectangle",
-          "width": 2.25,
-          "height": 0.2,
+          "width": 1.125,
+          "height": 0.1,
           "color": [0.5,0.5,0.5,0.5]
         },
         "children": {
           "pupil": {
-            "translation": [-1.025,0],
+            "translation": [-0.5125,0],
             "shape": {
               "geometry": "rectangle",
-              "width": 0.2,
-              "height": 0.2,
+              "width": 0.1,
+              "height": 0.1,
               "color": [1.0, 0.0, 0.0, 1.0]
             }
           }

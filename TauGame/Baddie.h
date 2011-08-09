@@ -31,6 +31,7 @@ typedef enum {
 -(void)resetShotDelay;
 -(void)shootInScene:(Game *)scene;
 -(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene;
+-(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene xOffset:(float)xOffset;
 -(void)fire:(Bullet *)bullet in:(Game*)scene;
 
 # pragma mark - Blinking

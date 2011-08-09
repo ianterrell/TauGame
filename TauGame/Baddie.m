@@ -103,14 +103,19 @@
 }
 
 -(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene {
+  [self shootInDirection:direction inScene:scene xOffset:0];
+}
+
+-(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene xOffset:(float)xOffset {
   Bullet *bullet = [[GlowingBullet alloc] initWithColor:[self bulletColor]];
   if (!GLKVector2AllEqualToVector2(direction, GLKVector2Make(0,-1))) {
     GLKVector2 normalized = GLKVector2Normalize(direction);
     bullet.rotation = direction.y == 0 ? 0 : atan(direction.x/direction.y);
     bullet.position = GLKVector2Add(self.position,GLKVector2MultiplyScalar(normalized, [self bulletInitialYOffset]));
+    bullet.position = GLKVector2Make(bullet.position.x+xOffset,bullet.position.y);
     bullet.velocity = GLKVector2MultiplyScalar(normalized,[self bulletVelocity]);
   } else {
-    bullet.position = GLKVector2Make(self.position.x, self.position.y - [self bulletInitialYOffset]);
+    bullet.position = GLKVector2Make(self.position.x+xOffset, self.position.y - [self bulletInitialYOffset]);
     bullet.velocity = GLKVector2Make(0,-1*[self bulletVelocity]);
   }
   [self fire:bullet in:scene];  

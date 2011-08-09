@@ -27,12 +27,10 @@
     
     accelerationFactor = [TERandom randomFractionFrom:0.75 to:3];
     
-    self.scale = 0.6;
-    
     // Animate!
     TENode *pupil = [self childNamed:@"pupil"];
     TETranslateAnimation *animation = [[TETranslateAnimation alloc] init];
-    animation.translation = GLKVector2Make(2.05,0);
+    animation.translation = GLKVector2Make(1.025,0);
     animation.reverse = YES;
     animation.repeat = kTEAnimationRepeatForever;
     animation.duration = 0.5;
@@ -42,6 +40,10 @@
   }
   
   return self;
+}
+
+-(float)bulletInitialYOffset {
+  return 0.1667*scaleY;
 }
 
 -(GLKVector4)bulletColor {

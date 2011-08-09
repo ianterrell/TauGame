@@ -17,6 +17,7 @@
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
 #import "ExtraShot.h"
+#import "ExtraHealth.h"
 #import "ScoreBonus.h"
 #import "GameLevel.h"
 
@@ -25,7 +26,7 @@
 #import "LevelBag.h"
 
 #define POWERUP_CHANCE 0.1
-#define NUM_POWERUPS 3
+#define NUM_POWERUPS 4
 
 #define POINT_RATIO 40
 
@@ -42,6 +43,7 @@ static LevelBag *levelBag;
   powerupClasses[i++] = [ExtraBullet class];
   powerupClasses[i++] = [ExtraLife class];
   powerupClasses[i++] = [ExtraShot class];
+  powerupClasses[i++] = [ExtraHealth class];
   
   levelBag = [[LevelBag alloc] init];
 }

@@ -13,6 +13,7 @@
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
 #import "ExtraShot.h"
+#import "ExtraHealth.h"
 
 #define BULLET_X_SPREAD_FACTOR 3.2
 #define BULLET_Y_SPREAD_FACTOR 3.0
@@ -136,7 +137,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 }
 
 -(void)setHealth:(int)_health {
-  health = _health;
+  health = MIN(_health,maxHealth);
   
   for (int i = 0; i < 3; i++) {
     float factor = MAX(0,MIN(1,(float)(health - i*maxHealth/3)/(maxHealth/3)));
@@ -252,6 +253,8 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   } else if ([powerup isKindOfClass:[ExtraLife class]]) {
     lives++;
     [self postNotification:FighterExtraLifeNotification];
+  } else if ([powerup isKindOfClass:[ExtraHealth class]]) {
+    [self incrementHealth:1];
   } else if ([powerup isKindOfClass:[ExtraShot class]]) {
     if (numShots < MAX_SHOTS) {
       [self addExtraShot];

@@ -14,6 +14,7 @@ extern NSString *const EnemyDestroyedNotification;// = @"EnemyDestroyedNotificat
   int hitPoints;
 }
 
+@property int hitPoints;
 @property(readonly) int pointsPerHit, pointsForDestruction;
 
 -(void)registerHit;

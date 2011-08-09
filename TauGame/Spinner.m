@@ -13,6 +13,8 @@
 
 @implementation Spinner
 
+@synthesize slave;
+
 +(BOOL)shootTowardFighter {
   return YES;
 }
@@ -25,6 +27,7 @@
     shotDelayConstant = 1;
     self.maxVelocity = 3;
     self.maxAcceleration = 2;
+    slave = NO;
     
     [self resetShotDelay];
   }
@@ -36,19 +39,31 @@
   return GLKVector4Make(1,1,0,1);
 }
 
+-(float)bounceBufferLeft {
+  return 0.5;
+}
+
+-(float)bounceBufferRight {
+  return 0.5;
+}
+
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   
-  [self bounceXInScene:scene buffer:0.5];
-  
-  float accelerationFactor = 1.0;
-  
   Game *fighterScene = (Game*)scene;
-  
   GLKVector2 diff = [self vectorToNode:fighterScene.fighter];
   
-  self.acceleration = GLKVector2MultiplyScalar(GLKVector2Make(-scene.width/diff.x,0),accelerationFactor);
+  if (!slave) {
+    [self bounceXInScene:scene bufferLeft:[self bounceBufferLeft] bufferRight:[self bounceBufferRight]];
+    float accelerationFactor = 1.0;
+    self.acceleration = GLKVector2MultiplyScalar(GLKVector2Make(-scene.width/diff.x,0),accelerationFactor);
+  }
+  
   self.rotation = diff.y == 0 ? 0 : -atan(diff.x/diff.y);  
+}
+
+-(TENode*)flashWhiteNode {
+  return [self childNamed:@"body"];
 }
 
 @end

@@ -17,6 +17,7 @@
 		3C138B9313CCB15B002FC701 /* TENodeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TENodeLoader.m */; };
 		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
+		3C145EEF13F1845F0095CD5E /* BigSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C145EEE13F1845F0095CD5E /* BigSpinner.m */; };
 		3C20D40E13E3ACDF00A90FEB /* bullet-splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */; };
 		3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41113E3AD4C00A90FEB /* BulletSplash.m */; };
 		3C20D41513E443A400A90FEB /* TEVertexColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41413E443A400A90FEB /* TEVertexColorAnimation.m */; };
@@ -149,6 +150,8 @@
 		3C138B9113CCB15A002FC701 /* TENodeLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENodeLoader.m; sourceTree = "<group>"; };
 		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
 		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
+		3C145EED13F1845F0095CD5E /* BigSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigSpinner.h; sourceTree = "<group>"; };
+		3C145EEE13F1845F0095CD5E /* BigSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigSpinner.m; sourceTree = "<group>"; };
 		3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bullet-splash.json"; sourceTree = "<group>"; };
 		3C20D41013E3AD4C00A90FEB /* BulletSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletSplash.h; sourceTree = "<group>"; };
 		3C20D41113E3AD4C00A90FEB /* BulletSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletSplash.m; sourceTree = "<group>"; };
@@ -757,6 +760,8 @@
 				3C59AB3B13F054BC00E35FC3 /* BigArms.m */,
 				3CCEB8C013F1742400825662 /* BigSeeker.h */,
 				3CCEB8C113F1742400825662 /* BigSeeker.m */,
+				3C145EED13F1845F0095CD5E /* BigSpinner.h */,
+				3C145EEE13F1845F0095CD5E /* BigSpinner.m */,
 			);
 			name = Bigguns;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 				3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */,
 				3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */,
 				3CCEB8C213F1742400825662 /* BigSeeker.m in Sources */,
+				3C145EEF13F1845F0095CD5E /* BigSpinner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

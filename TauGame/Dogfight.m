@@ -9,6 +9,7 @@
 #import "Dogfight.h"
 #import "BiggunBag.h"
 #import "BigHordeUnit.h"
+#import "BigSpinner.h"
 
 static BiggunBag *bag;
 
@@ -30,8 +31,16 @@ static BiggunBag *bag;
 
     [game addCharacterAfterUpdate:baddie];
     [game.enemies addObject:baddie];
+    
     if ([baddie isKindOfClass:[BigHordeUnit class]])
       [game.enemyBullets addObject:baddie];
+    else if ([baddie isKindOfClass:[BigSpinner class]]) {
+      BigSpinner *spinner = (BigSpinner*)baddie;
+      [game addCharacterAfterUpdate:spinner.leftSlave];
+      [game.enemies addObject:spinner.leftSlave];
+      [game addCharacterAfterUpdate:spinner.rightSlave];
+      [game.enemies addObject:spinner.rightSlave];
+    }
     
     recurseEnemiesForCollisions = YES;
   }

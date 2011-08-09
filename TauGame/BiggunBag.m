@@ -10,11 +10,12 @@
 #import "BigHordeUnit.h"
 #import "BigArms.h"
 #import "BigSeeker.h"
+#import "BigSpinner.h"
 
 @implementation BiggunBag
 
 -(void)reset {
-  [super setItems:[NSArray arrayWithObjects:[BigHordeUnit class], [BigArms class], nil]];
+  [super setItems:[NSArray arrayWithObjects:[BigHordeUnit class], [BigArms class], [BigSeeker class], [BigSpinner class], nil]];
 }
 
 #ifdef DEBUG_BIGGUN

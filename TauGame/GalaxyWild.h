@@ -11,4 +11,4 @@
  */
 
 //#define DEBUG_LEVEL [Dogfight class]
-//#define DEBUG_BIGGUN [BigSeeker class]
+//#define DEBUG_BIGGUN [BigSpinner class]

@@ -8,6 +8,10 @@
 
 #import "Baddie.h"
 
-@interface Spinner : Baddie
+@interface Spinner : Baddie {
+  BOOL slave;
+}
+
+@property BOOL slave;
 
 @end

@@ -11,20 +11,13 @@
 
 @implementation TEShuffleBag
 
--(id)init {
-  self = [super init];
-  if (self) {
-    if ([self respondsToSelector:@selector(reset)])
-      [self performSelector:@selector(reset)];
-  }
-  
-  return self;
-}
-
--(id)initWithItems:(NSArray *)items {
+-(id)initWithItems:(NSArray *)items autoReset:(BOOL)_autoReset {
   self = [super init];
   if (self) {
     [self setItems:items];
+    autoReset = _autoReset;
+    if (autoReset)
+      resetItems = items;
   }
   
   return self;
@@ -34,13 +27,17 @@
   bag = [items mutableCopy];
 }
 
+-(void)reset {
+  [self setItems:resetItems];
+}
+
 -(id)drawItem {
   int i = [TERandom randomTo:[bag count]];
   id item = [bag objectAtIndex:i];
   [bag removeObjectAtIndex:i];
   
-  if ([self respondsToSelector:@selector(reset)] && [bag count] == 0)
-    [self performSelector:@selector(reset)];
+  if (autoReset && [bag count] == 0)
+    [self reset];
   
   return item;
 }

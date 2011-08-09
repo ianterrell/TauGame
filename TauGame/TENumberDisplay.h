@@ -9,11 +9,11 @@
 #import "TEPolygon.h"
 
 @interface TENumberDisplay : TEPolygon {
-  int number, numDigits, padDigit;
+  int number, numDigits, padDigit, decimalPointDigit, hiddenDigits;
   float width;
 }
 
-@property int number, numDigits;
+@property int number, numDigits, hiddenDigits, decimalPointDigit;
 @property(readonly) float height;
 @property float width;
 

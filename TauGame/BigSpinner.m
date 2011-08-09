@@ -34,6 +34,12 @@
   return self;
 }
 
+-(void)setupInGame:(Game *)game {
+  [super setupInGame:game];
+  [leftSlave setupInGame:game];
+  [rightSlave setupInGame:game];
+}
+
 -(float)bounceBufferLeft {
   return [leftSlave dead] ? 0.65 : 1.5;
 }

@@ -92,6 +92,23 @@ static LevelBag *levelBag;
     scoreboard.position = GLKVector2Make(self.bottomLeftVisible.x + scoreboardDisplay.width/2.0, self.topRightVisible.y - scoreboardDisplay.height/2.0);
     [characters addObject:scoreboard];
     
+    // Set up multiplier
+    multiplierDisplay = [[TENumberDisplay alloc] initWithNumDigits:8];
+    multiplierDisplay.hiddenDigits = 5;
+    multiplierDisplay.decimalPointDigit = 1;
+    [self resetMultiplier];
+    
+    TENode *multiplier = [TENode nodeWithDrawable:multiplierDisplay];
+    multiplier.position = GLKVector2Make(self.width/2.0, self.topRightVisible.y - multiplierDisplay.height/2.0);
+    [characters addObject:multiplier];
+    
+    UIFont *xFont = [UIFont fontWithName:@"Courier-Bold" size:16];
+    UIColor *xColor = [UIColor colorWithWhite:1 alpha:1];
+    multiplierX = [TENode nodeWithDrawable:[[TESprite alloc] initWithImage:[TEImage imageFromText:@"x" withFont:xFont color:xColor] pointRatio:POINT_RATIO]];
+    multiplierX.position = GLKVector2Make(self.width/2.0+multiplierDisplay.width/2+0.3, multiplier.position.y);
+    [characters addObject:multiplierX];
+    
+    
     // Set up level
     currentLevelNumber = 0;
     [self loadNextLevel];
@@ -104,6 +121,7 @@ static LevelBag *levelBag;
 
 -(void)loadNextLevel {
   currentLevel = nil;
+  levelLoading = YES;
   currentLevelNumber++;
   
   Class nextLevelClass = [levelBag drawItem];
@@ -118,6 +136,8 @@ static LevelBag *levelBag;
   scaleAnimation.onRemoval = ^(){
     levelName.remove = YES;
     currentLevel = [[nextLevelClass alloc] initWithGame:self];
+    levelLoading = NO;
+    [self resetMultiplierDecayTimer];
   };
   [levelName startAnimation:scaleAnimation];
   
@@ -152,6 +172,7 @@ static LevelBag *levelBag;
     [self addBulletSplashAt:bullet.position];
     
     [(Enemy *)enemy registerHit];
+    [self incrementMultiplier:MULTIPLIER_PER_HIT];
     [self incrementScore:((Enemy *)enemy).pointsPerHit];
   }];
   
@@ -168,6 +189,14 @@ static LevelBag *levelBag;
     [(Powerup*)powerup die];
     [fighter getPowerup:(Powerup*)powerup];
   }];
+  
+  // Update multiplier
+  if (!levelLoading) {
+    if (multiplierTimer > 0)
+      multiplierTimer -= [controller timeSinceLastUpdate];
+    else
+      [self decayMultiplier];
+  }
   
   if (currentLevel != nil) {
     [currentLevel update];
@@ -190,10 +219,49 @@ static LevelBag *levelBag;
     [fighter shootInScene:self];
 }
 
+# pragma mark - Multiplier
+
+-(void)resetMultiplier {
+  [self setMultiplier:10];
+  [self resetMultiplierDecayTimer];
+}
+
+-(void)resetMultiplierDecayTimer {
+  multiplierTimer = MULTIPLIER_DECAY_INTERVAL;
+}
+
+-(void)decayMultiplier {
+  [self incrementMultiplier:-1*MULTIPLIER_DECAY_AMOUNT];
+}
+
+-(void)incrementMultiplier:(int)increment {
+  [self resetMultiplierDecayTimer];
+  [self setMultiplier:multiplierDisplay.number+increment];
+}
+
+-(void)setMultiplier:(int)multiplierNum {
+  multiplierNum = MAX(MIN_MULTIPLIER,MIN(MAX_MULTIPLIER,multiplierNum));
+  int digits = 0;
+  int tmp = multiplierNum;
+  while (tmp > 0) {
+    digits++;
+    tmp /= 10;
+  }
+  multiplierDisplay.hiddenDigits = 8-(digits+1);
+  multiplierDisplay.width = 0.33*(digits+1);
+  multiplierDisplay.number = multiplierNum;
+  
+  multiplierX.position = GLKVector2Make(self.width/2.0+multiplierDisplay.width/2+(digits==2?0.3:0.1),multiplierX.position.y);
+}
+
+-(float)multiplierValue {
+  return ((float)multiplierDisplay.number)/10;
+}
+
 # pragma mark - Score
 
 -(void)incrementScore:(int)score {
-  ((TENumberDisplay *)scoreboard.drawable).number += score * currentLevelNumber;
+  ((TENumberDisplay *)scoreboard.drawable).number += score * currentLevelNumber * [self multiplierValue];
 }
 
 -(void)incrementScoreWithPulse:(int)score {
@@ -257,6 +325,9 @@ static LevelBag *levelBag;
   FighterLife *life = [lives lastObject];
   [lives removeLastObject];
   
+  // Multiplier
+  [self resetMultiplier];
+  
   if (life == nil) {
     // TODO: game over screen, etc
     [self exit];
@@ -281,6 +352,7 @@ static LevelBag *levelBag;
 
 -(void)enemyDestroyed:(NSNotification *)notification {
   Enemy *enemy = notification.object;
+  [self incrementMultiplier:MULTIPLIER_PER_KILL];
   [self incrementScoreWithPulse:enemy.pointsForDestruction];
   [self dropPowerupWithPercentChance:0.1 at:enemy.position];
 }

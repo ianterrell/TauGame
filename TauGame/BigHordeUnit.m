@@ -34,6 +34,11 @@
   return self;
 }
 
+-(void)setupInGame:(Game*)game {
+  [super setupInGame:game];
+  [game.enemyBullets addObject:self]; // for drop
+}
+
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   

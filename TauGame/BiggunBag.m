@@ -14,8 +14,9 @@
 
 @implementation BiggunBag
 
--(void)reset {
-  [super setItems:[NSArray arrayWithObjects:[BigHordeUnit class], [BigArms class], [BigSeeker class], [BigSpinner class], nil]];
+-(id)init {
+  self = [super initWithItems:[NSArray arrayWithObjects:[BigHordeUnit class], [BigArms class], [BigSeeker class], [BigSpinner class], nil] autoReset:YES];
+  return self;
 }
 
 #ifdef DEBUG_BIGGUN

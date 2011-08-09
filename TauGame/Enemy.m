@@ -84,4 +84,9 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
   [[self flashWhiteNode] startAnimation:[self flashWhiteAnimation]];
 }
 
+-(void)setupInGame:(Game*)game {
+  [game addCharacterAfterUpdate:self];
+  [game.enemies addObject:self];
+}
+
 @end

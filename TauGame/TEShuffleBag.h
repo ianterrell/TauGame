@@ -10,10 +10,13 @@
 
 @interface TEShuffleBag : NSObject {
   NSMutableArray *bag;
+  NSArray *resetItems;
+  BOOL autoReset;
 }
 
--(id)initWithItems:(NSArray *)items;
+-(id)initWithItems:(NSArray *)items autoReset:(BOOL)autoReset;
 -(void)setItems:(NSArray *)items;
+-(void)reset;
 -(id)drawItem;
 
 @end

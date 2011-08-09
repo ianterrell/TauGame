@@ -66,6 +66,12 @@ static GLKVector4 colors[NUM_ASTEROID_COLORS];
   return self;
 }
 
+-(void)setupInGame:(Game*)game {
+  [game.characters insertObject:self atIndex:3];
+  [game.enemies addObject:self];
+  [game.enemyBullets addObject:self];
+}
+
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {
   [super update:dt inScene:scene];
   [self removeOutOfScene:scene buffer:2.0];

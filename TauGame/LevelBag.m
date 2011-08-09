@@ -15,8 +15,9 @@
 
 @implementation LevelBag
 
--(void)reset {
-  [super setItems:[NSArray arrayWithObjects:[AsteroidField class], [ClassicHorde class], [Fray class], [Dogfight class], nil]];
+-(id)init {
+  self = [super initWithItems:[NSArray arrayWithObjects:[AsteroidField class], [ClassicHorde class], [Fray class], [Dogfight class], nil] autoReset:YES];
+  return self;
 }
 
 #ifdef DEBUG_LEVEL

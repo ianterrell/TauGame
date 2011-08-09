@@ -40,8 +40,7 @@
   baddie.velocity = GLKVector2Make(0.5+game.currentLevelNumber/10.0,-0.01+game.currentLevelNumber/100.0);
   baddie.acceleration = GLKVector2Make(game.currentLevelNumber/200.0,-1*game.currentLevelNumber/400.0);
   
-  [game addCharacterAfterUpdate:baddie];
-  [game.enemies addObject:baddie];
+  [baddie setupInGame:game];
 }
 
 @end

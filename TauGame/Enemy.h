@@ -7,6 +7,7 @@
 //
 
 #import "TauEngine.h"
+#import "Game.h"
 
 extern NSString *const EnemyDestroyedNotification;// = @"EnemyDestroyedNotification";
 
@@ -24,5 +25,7 @@ extern NSString *const EnemyDestroyedNotification;// = @"EnemyDestroyedNotificat
 
 -(TEAnimation *)flashWhiteAnimation;
 -(void)flashWhite;
+
+-(void)setupInGame:(Game*)game;
 
 @end

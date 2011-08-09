@@ -13,13 +13,16 @@
 @interface Game : TEScene {
   GameLevel *currentLevel;
   int currentLevelNumber;
+  BOOL levelLoading;
   
   Fighter *fighter;
   
   NSMutableArray *powerups, *lives, *shotTimers;
   NSMutableArray *bullets, *enemies, *enemyBullets;
 
-  TENode *scoreboard;
+  TENode *scoreboard, *multiplierX;
+  TENumberDisplay *multiplierDisplay;
+  float multiplierTimer;
 }
 
 @property(readonly) int currentLevelNumber;
@@ -29,6 +32,15 @@
 # pragma mark - Levels
 
 -(void)loadNextLevel;
+
+# pragma mark - Multiplier
+
+-(void)resetMultiplier;
+-(void)resetMultiplierDecayTimer;
+-(void)decayMultiplier;
+-(void)incrementMultiplier:(int)increment;
+-(void)setMultiplier:(int)multiplier;
+-(float)multiplierValue;
 
 # pragma mark - Score
 

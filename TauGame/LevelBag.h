@@ -10,6 +10,4 @@
 
 @interface LevelBag : TEShuffleBag
 
--(void)reset;
-
 @end

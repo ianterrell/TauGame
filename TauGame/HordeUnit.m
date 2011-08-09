@@ -58,6 +58,7 @@ static float blues[]  = {0,0,1,0,1,1};
     column = _column;
     shotDelayMin = min;
     shotDelayMax = max;
+    self.hitPoints = 1;
     
     self.position = GLKVector2Make((column+1)*COLUMN_WIDTH, level.game.top-(row+1)*ROW_HEIGHT-TOP_BUFFER);
     

@@ -17,6 +17,7 @@
 #import "ExtraBullet.h"
 #import "ExtraLife.h"
 #import "ExtraShot.h"
+#import "ScoreBonus.h"
 #import "GameLevel.h"
 
 #import "Enemy.h"
@@ -187,7 +188,12 @@ static LevelBag *levelBag;
   // Detect powerup collisions
   [TECollisionDetector collisionsBetweenNode:fighter andNodes:powerups withBlock:^(TENode *ship, TENode *powerup) {
     [(Powerup*)powerup die];
-    [fighter getPowerup:(Powerup*)powerup];
+    if ([powerup isKindOfClass:[ScoreBonus class]]) {
+      [[TESoundManager sharedManager] play:@"score-bonus"];
+      [self incrementScoreWithPulse:SCORE_BONUS_AMOUNT];
+    }
+    else
+      [fighter getPowerup:(Powerup*)powerup];
   }];
   
   // Update multiplier
@@ -360,8 +366,11 @@ static LevelBag *levelBag;
 # pragma mark - Powerups
 
 -(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position {
-  if ([TERandom randomFraction] < percent) {
+  float randomFraction = [TERandom randomFraction];
+  if (randomFraction < percent) {
     [powerupClasses[[TERandom randomTo:NUM_POWERUPS]] addPowerupToScene:self at:position];
+  } else if (randomFraction < SCORE_BONUS_CHANCE) {
+    [ScoreBonus addPowerupToScene:self at:position];
   }
 }
 

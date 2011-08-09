@@ -1,0 +1,14 @@
+{
+  "score-bonus": {
+    "collide": "yes",
+    "shape": {
+      "geometry": "rectangle",
+      "width": 0.2,
+      "height": 0.2,
+      "color0":[1,0.7,0,1],
+      "color1":[1,  1,0,1],
+      "color2":[1,0.7,0,1],
+      "color3":[1,  1,0,1],
+    },
+  }
+}

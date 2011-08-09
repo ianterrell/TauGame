@@ -25,3 +25,10 @@
 
 #define MULTIPLIER_DECAY_INTERVAL 3
 #define MULTIPLIER_DECAY_AMOUNT   1
+
+/**
+ * Powerups
+ */
+
+#define SCORE_BONUS_CHANCE 0.75
+#define SCORE_BONUS_AMOUNT 100

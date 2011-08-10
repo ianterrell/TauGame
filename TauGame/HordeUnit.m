@@ -49,7 +49,7 @@ static float blues[]  = {0,0,1,0,1,1};
   baddie.shape.color = GLKVector4Make(reds[index], greens[index], blues[index], 1.0); // for bullets
 }
 
--(id)initWithLevel:(id<GriddedGameLevel>)_level row:(int)_row column:(int)_column shotDelayMin:(float)min shotDelayMax:(float)max
+-(id)initWithLevel:(id<GriddedGameLevel>)_level row:(int)_row column:(int)_column
 {
   self = [super init];
   if (self) {
@@ -58,18 +58,31 @@ static float blues[]  = {0,0,1,0,1,1};
     level = _level;
     row = _row;
     column = _column;
-    shotDelayMin = min;
-    shotDelayMax = max;
     self.hitPoints = 1;
     
     self.position = GLKVector2Make((column+1)*COLUMN_WIDTH, level.game.top-(row+1)*ROW_HEIGHT-TOP_BUFFER);
     
     [[self class] colorizeUnit:self index:(row+column)%HORDE_UNIT_NUM_COLORS];
     
+    [self updateShotDelaysInLevel];
     [self resetShotDelay];
   }
   
   return self;
+}
+
+// Maybe shouldn't be here, but what the hell
+-(void)updateShotDelaysInLevel {
+  self.shotDelayMin = MAX(HORDE_SHOT_DELAY_MIN_MIN,HORDE_SHOT_DELAY_MIN_INITIAL-HORDE_SHOT_DELAY_MIN_LEVEL_FACTOR*level.game.currentLevelNumber);
+  self.shotDelayMax = MAX(HORDE_SHOT_DELAY_MAX_MIN,HORDE_SHOT_DELAY_MAX_INITIAL-HORDE_SHOT_DELAY_MAX_LEVEL_FACTOR*level.game.currentLevelNumber);
+  [self resetShotDelay];
+}
+
+-(void)shootInScene:(Game *)scene {
+  if (self == [level.bottoms objectAtIndex:self.column])
+    [super shootInScene:scene];
+  else
+    [self resetShotDelay];
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {

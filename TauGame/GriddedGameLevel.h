@@ -11,7 +11,9 @@
 
 @protocol GriddedGameLevel <NSObject>
 
-@property(readonly) int rows, columns;
+@property int rows, columns;
+@property(strong) NSMutableArray *bottoms;
+
 -(Game*)game;
 
 @end

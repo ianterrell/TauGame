@@ -15,6 +15,8 @@
 
 @implementation Baddie
 
+@synthesize shotDelayMin, shotDelayMax;
+
 - (id)init
 {
   self = [super init];

@@ -11,9 +11,11 @@
 
 @interface ClassicHorde : GameLevel<GriddedGameLevel> {
   int rows, columns;
+  NSMutableArray *bottoms;
 }
 
-@property(readonly) int rows, columns;
+@property int rows, columns;
+@property(strong) NSMutableArray *bottoms;
 
 -(void)addHordeUnitAtRow:(int)row column:(int)col;
 +(void)updateRowsAndColumnsForLevel:(id<GriddedGameLevel>)level inGame:(Game*)game;

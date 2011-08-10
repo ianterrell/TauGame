@@ -13,6 +13,7 @@
   int rows, columns;
 }
 
-@property(readonly) int rows, columns;
+@property int rows, columns;
+@property(strong) NSMutableArray *bottoms;
 
 @end

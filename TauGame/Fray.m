@@ -16,7 +16,7 @@
 
 @implementation Fray
 
-@synthesize rows, columns;
+@synthesize rows, columns, bottoms;
 
 +(NSString *)name {
   return @"Into the Fray";
@@ -30,7 +30,7 @@
   else if (random < 0.5)
     baddie = [[Seeker alloc] init];
   else if (random < 0.75)
-    baddie = [[HordeUnit alloc] initWithLevel:self row:[TERandom randomTo:rows] column:[TERandom randomTo:columns] shotDelayMin:MAX(0.5,(1.5-game.currentLevelNumber/10.0)) shotDelayMax:MAX(1.5,(5.5-game.currentLevelNumber/10.0))];
+    baddie = [[HordeUnit alloc] initWithLevel:self row:[TERandom randomTo:rows] column:[TERandom randomTo:columns]];
   else
     baddie = [[Spinner alloc] init];
   if (![baddie isKindOfClass:[HordeUnit class]])

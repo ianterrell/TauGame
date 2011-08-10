@@ -19,6 +19,7 @@
 +(void)randomlyColorizeUnit:(Baddie *)baddie;
 +(void)colorizeUnit:(Baddie *)baddie index:(int)i;
 
--(id)initWithLevel:(id<GriddedGameLevel>)level row:(int)row column:(int)column shotDelayMin:(float)min shotDelayMax:(float)max;
+-(void)updateShotDelaysInLevel;
+-(id)initWithLevel:(id<GriddedGameLevel>)level row:(int)row column:(int)column;
 
 @end

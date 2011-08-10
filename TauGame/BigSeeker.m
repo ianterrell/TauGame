@@ -25,7 +25,7 @@
 }
 
 -(void)shootInScene:(Game *)scene {
-  if ([self dead])
+  if ([self dead] || scene.gameIsOver)
     return;
   
   [[TESoundManager sharedManager] play:@"shoot"];

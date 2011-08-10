@@ -13,7 +13,7 @@
 @interface Game : TEScene {
   GameLevel *currentLevel;
   int currentLevelNumber;
-  BOOL levelLoading;
+  BOOL levelLoading, gameIsOver, readyToExit;
   
   Fighter *fighter;
   
@@ -26,6 +26,7 @@
 }
 
 @property(readonly) int currentLevelNumber;
+@property(readonly) BOOL gameIsOver;
 @property(strong) Fighter *fighter;
 @property(strong) NSMutableArray *bullets, *powerups, *enemies, *enemyBullets;
 

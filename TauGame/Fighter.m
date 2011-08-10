@@ -15,18 +15,6 @@
 #import "ExtraShot.h"
 #import "ExtraHealth.h"
 
-#define BULLET_X_SPREAD_FACTOR 3.2
-#define BULLET_Y_SPREAD_FACTOR 3.0
-#define BULLET_Y_VELOCITY 6.0
-#define BULLET_X_VELOCITY_FACTOR 0.75
-
-#define MAX_BULLETS 5
-#define MAX_SHOTS 5
-
-#define MAX_VELOCITY 10
-#define ACCELEROMETER_SENSITIVITY 35
-#define TURN_FACTOR 5
-
 static GLKVector4 healthyColor, unhealthyColor;
 
 NSString * const FighterDiedNotification = @"FighterDiedNotification";
@@ -45,6 +33,18 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   unhealthyColor = GLKVector4Make(0.9,0.9,0.9,1.0);
 }
 
++(int)initialLives {
+  return FIGHTER_INITIAL_LIVES;
+}
+
++(int)initialHealth {
+  return FIGHTER_INITIAL_HEALTH;
+}
+
++(int)maxHealth {
+  return FIGHTER_MAX_HEALTH;
+}
+
 - (id)init
 {
   self = [super init];
@@ -52,10 +52,11 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     [TENodeLoader loadCharacter:self fromJSONFile:@"fighter"];
     
     // Set up lives
-    lives = 3;
+    lives = [[self class] initialLives];
     
     // Set up health
-    health = maxHealth = 3;
+    health = [[self class] initialHealth];
+    maxHealth = [[self class] maxHealth];
     healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
@@ -64,7 +65,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     spreadAmount = 0;
     
     numShots = 0;
-    shotTimers = [NSMutableArray arrayWithCapacity:MAX_SHOTS];
+    shotTimers = [NSMutableArray arrayWithCapacity:FIGHTER_MAX_SHOTS];
     [self addExtraShot];
     
     // Root body is for collision only
@@ -73,7 +74,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     
     paused = NO;
     
-    self.maxVelocity = MAX_VELOCITY;
+    self.maxVelocity = FIGHTER_MAX_VELOCITY;
     yRotation = 0.0;
   }
   
@@ -85,8 +86,8 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [self wraparoundXInScene:scene];
   
   if (!paused) {
-    self.velocity = GLKVector2Make(ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
-    yRotation = MIN(1,MAX(-1,self.velocity.x / TURN_FACTOR)) * 1.0/6*M_TAU;
+    self.velocity = GLKVector2Make(FIGHTER_ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
+    yRotation = MIN(1,MAX(-1,self.velocity.x / FIGHTER_TURN_FACTOR)) * 1.0/6*M_TAU;
   }
 }
 
@@ -113,16 +114,16 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     TENode *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,1,1,1)];
 
     float x = self.position.x;
-    float xOffset = -1*((float)(middle-i))/BULLET_X_SPREAD_FACTOR;
-    xOffset += numBullets % 2 == 0 ? 1.0/(2.0*BULLET_X_SPREAD_FACTOR) : 0;
+    float xOffset = -1*((float)(middle-i))/FIGHTER_BULLET_X_SPREAD_FACTOR;
+    xOffset += numBullets % 2 == 0 ? 1.0/(2.0*FIGHTER_BULLET_X_SPREAD_FACTOR) : 0;
     x += xOffset;
     
     float y = self.position.y + 1.1;
-    y -= ABS(((float)(middle-i))/BULLET_Y_SPREAD_FACTOR);
-    y -= (numBullets % 2 == 0) && (i >= middle) ? ABS(1.0/BULLET_Y_SPREAD_FACTOR) : 0;
+    y -= ABS(((float)(middle-i))/FIGHTER_BULLET_Y_SPREAD_FACTOR);
+    y -= (numBullets % 2 == 0) && (i >= middle) ? ABS(1.0/FIGHTER_BULLET_Y_SPREAD_FACTOR) : 0;
     
     bullet.position = GLKVector2Make(x, y);  
-    bullet.velocity = GLKVector2Make(xOffset * spreadAmount * BULLET_X_VELOCITY_FACTOR, BULLET_Y_VELOCITY);
+    bullet.velocity = GLKVector2Make(xOffset * spreadAmount * FIGHTER_BULLET_X_VELOCITY_FACTOR, FIGHTER_BULLET_Y_VELOCITY);
     [scene.characters insertObject:bullet atIndex:3];
     [scene.bullets addObject:bullet];
   }
@@ -245,10 +246,10 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [[TESoundManager sharedManager] play:@"powerup"];
   
   if ([powerup isKindOfClass:[ExtraBullet class]]) {
-    if (numBullets < MAX_BULLETS)
+    if (numBullets < FIGHTER_MAX_BULLETS)
       numBullets++;
     
-    if (numBullets == MAX_BULLETS && spreadAmount < 2)
+    if (numBullets == FIGHTER_MAX_BULLETS && spreadAmount < 2)
       spreadAmount++;
   } else if ([powerup isKindOfClass:[ExtraLife class]]) {
     lives++;
@@ -256,7 +257,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   } else if ([powerup isKindOfClass:[ExtraHealth class]]) {
     [self incrementHealth:1];
   } else if ([powerup isKindOfClass:[ExtraShot class]]) {
-    if (numShots < MAX_SHOTS) {
+    if (numShots < FIGHTER_MAX_SHOTS) {
       [self addExtraShot];
       [self postNotification:FighterExtraShotNotification];
     }

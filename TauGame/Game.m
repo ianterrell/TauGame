@@ -36,7 +36,7 @@ static LevelBag *levelBag;
 @implementation Game
 
 @synthesize fighter, bullets, powerups, enemies, enemyBullets;
-@synthesize currentLevelNumber;
+@synthesize currentLevelNumber, gameIsOver;
 
 +(void)initialize {
   int i = 0;
@@ -113,6 +113,7 @@ static LevelBag *levelBag;
     
     
     // Set up level
+    gameIsOver = readyToExit = NO;
     currentLevelNumber = 0;
     [self loadNextLevel];
   }
@@ -220,8 +221,9 @@ static LevelBag *levelBag;
   CGSize frameSize = self.view.frame.size;
   float fraction = 0.33;
   
-  // Pause or shoot!
-  if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
+  if (readyToExit)
+    [[TESceneController sharedController] displayScene:@"menu"];
+  else if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
     [[TESceneController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
   else
     [fighter shootInScene:self];
@@ -412,8 +414,45 @@ static LevelBag *levelBag;
   [[NSNotificationCenter defaultCenter] removeObserver:self name:EnemyDestroyedNotification object:nil];
 }
 
+# pragma mark - Game Over
+
 -(void)exit {
-  [[TESceneController sharedController] displayScene:@"menu"];
+  gameIsOver = YES;
+  
+  float exitAnimationDuration = 3;
+  
+  // Set up darkening mask
+  TERectangle *rectangle = [[TERectangle alloc] init];
+  rectangle.width = self.width;
+  rectangle.height = self.height;
+  rectangle.color = GLKVector4Make(0,0,0,0);
+  TENode *mask = [TENode nodeWithDrawable:rectangle];
+  mask.position = self.center;
+  [characters addObject:mask];
+  
+  TEColorAnimation *maskAnimation = [[TEColorAnimation alloc] initWithNode:mask];
+  maskAnimation.color = GLKVector4Make(0,0,0,0.5);
+  maskAnimation.duration = exitAnimationDuration;
+  maskAnimation.permanent = YES;
+  [mask startAnimation:maskAnimation];
+  
+  // Set up game over words
+  UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:64];
+  TESprite *gameOver = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"GAME OVER" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+  TENode *gameOverNode = [TENode nodeWithDrawable:gameOver];
+  gameOverNode.scaleX = 0.9;
+  gameOverNode.scaleY = 0.5;
+  gameOverNode.position = GLKVector2Make(self.width/2,self.height+gameOver.height/2);
+  [characters addObject:gameOverNode];
+  
+  TETranslateAnimation *goAnimation = [[TETranslateAnimation alloc] initWithNode:gameOverNode];
+  goAnimation.translation = GLKVector2Make(0,self.height/2-gameOverNode.position.y);
+  goAnimation.duration = exitAnimationDuration;
+  goAnimation.permanent = YES;
+  goAnimation.onComplete = ^() {
+    readyToExit = YES;
+  };
+  [gameOverNode startAnimation:goAnimation];
 }
 
 @end

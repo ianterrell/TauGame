@@ -9,6 +9,8 @@
 #import "GameLevel.h"
 #import "GriddedGameLevel.h"
 
+@class HordeUnit;
+
 @interface ClassicHorde : GameLevel<GriddedGameLevel> {
   int rows, columns;
   NSMutableArray *bottoms;
@@ -18,6 +20,8 @@
 @property(strong) NSMutableArray *bottoms;
 
 -(void)addHordeUnitAtRow:(int)row column:(int)col;
+
++(HordeUnit *)addHordeUnitForLevel:(id<GriddedGameLevel>)level atRow:(int)row column:(int)col;
 +(void)updateRowsAndColumnsForLevel:(id<GriddedGameLevel>)level inGame:(Game*)game;
 
 @end

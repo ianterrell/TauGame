@@ -35,25 +35,31 @@
   return self;
 }
 
+-(void)update {
+  [[self class] updateRowsAndColumnsForLevel:self inGame:game];
+}
+
 -(void)addHordeUnitAtRow:(int)row column:(int)col {
-  HordeUnit *baddie = [[HordeUnit alloc] initWithLevel:self row:row column:col];
-  
-  baddie.velocity = GLKVector2Make(HORDE_X_VELOCITY_INITIAL+HORDE_X_VELOCITY_LEVEL_FACTOR*game.currentLevelNumber,
-                                   -1*(HORDE_Y_VELOCITY_INITIAL+HORDE_Y_VELOCITY_LEVEL_FACTOR*game.currentLevelNumber));
-  
-  baddie.maxVelocity = MIN(HORDE_MAX_VELOCITY_MAX,HORDE_MAX_VELOCITY_FACTOR*baddie.velocity.x);
-  baddie.acceleration = GLKVector2Make(HORDE_X_ACCEL_LEVEL_FACTOR*game.currentLevelNumber,-1*HORDE_Y_ACCEL_LEVEL_FACTOR*game.currentLevelNumber);
-  
-  baddie.hitPoints = 1 + (game.currentLevelNumber-1)/HORDE_LEVELS_PER_HITPOINT;
-  
-  [baddie setupInGame:game];
+  HordeUnit *baddie = [[self class] addHordeUnitForLevel:self atRow:row column:col];
   
   if (row == rows - 1)
     [bottoms addObject:baddie];
 }
 
--(void)update {
-  [[self class] updateRowsAndColumnsForLevel:self inGame:game];
++(HordeUnit *)addHordeUnitForLevel:(id<GriddedGameLevel>)level atRow:(int)row column:(int)col {
+  HordeUnit *baddie = [[HordeUnit alloc] initWithLevel:level row:row column:col];
+  
+  baddie.velocity = GLKVector2Make(HORDE_X_VELOCITY_INITIAL+HORDE_X_VELOCITY_LEVEL_FACTOR*level.game.currentLevelNumber,
+                                   -1*(HORDE_Y_VELOCITY_INITIAL+HORDE_Y_VELOCITY_LEVEL_FACTOR*level.game.currentLevelNumber));
+  
+  baddie.maxVelocity = MIN(HORDE_MAX_VELOCITY_MAX,HORDE_MAX_VELOCITY_FACTOR*baddie.velocity.x);
+  baddie.acceleration = GLKVector2Make(HORDE_X_ACCEL_LEVEL_FACTOR*level.game.currentLevelNumber,-1*HORDE_Y_ACCEL_LEVEL_FACTOR*level.game.currentLevelNumber);
+  
+  baddie.hitPoints = 1 + (level.game.currentLevelNumber-1)/HORDE_LEVELS_PER_HITPOINT;
+  
+  [baddie setupInGame:level.game];
+  
+  return baddie;
 }
 
 +(void)enumerateHordeUnitsInGame:(Game*)game withBlock:(void (^)(HordeUnit *))block {
@@ -72,7 +78,7 @@
     maxColumn = MAX(maxColumn,baddie.column);
     
     HordeUnit *bottom = [level.bottoms objectAtIndex:baddie.column];
-    if ([bottom dead] || baddie.row > bottom.row)
+    if ([bottom isKindOfClass:[NSNull class]] || (![baddie dead] && ([bottom dead] || baddie.row > bottom.row)))
       [level.bottoms replaceObjectAtIndex:baddie.column withObject:baddie];
   }];
   
@@ -80,13 +86,14 @@
   if (colDelta > 0){
     level.columns -= colDelta;
     
-    for (int i = 0; i < colDelta; i++)
-      [level.bottoms removeObjectAtIndex:0];
-    
-    if (minColumn > 0)
+    if (minColumn > 0) {
+      for (int i = 0; i < minColumn; i++) {
+        [level.bottoms removeObjectAtIndex:0];
+      }
       [self enumerateHordeUnitsInGame:game withBlock:^(HordeUnit *baddie){
         baddie.column -= minColumn;
       }];
+    }
   }
   
   int rowDelta = level.rows - (maxRow - minRow + 1);

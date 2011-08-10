@@ -47,12 +47,33 @@
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    rows = 5;
-    columns = 5;
+    int numHorde = MIN(12,2 + (game.currentLevelNumber-1)/2);
+//    int numArms = game.currentLevelNumber > 12 ? 2 : 1;
+//    int numSeekers = game.currentLevelNumber < 5 ? 0 : game.currentLevelNumber < 17 ? 1 : 2;
+//    int numSpinners = game.currentLevelNumber < 9 ? 0 : game.currentLevelNumber < 21 ? 1 : 2;
     
-    int numBaddies = 2 + game.currentLevelNumber / 5;
-    for (int i = 0; i < numBaddies; i++)
-      [self addBaddie];
+    // Setup horde
+    rows = game.currentLevelNumber < 7 ? 1 : game.currentLevelNumber < 15 ? 2 : 3;
+    columns = game.currentLevelNumber < 3 ? 3 : game.currentLevelNumber < 5 ? 5 : game.currentLevelNumber < 13 ? 7 : 8;
+    
+    bottoms = [NSMutableArray arrayWithCapacity:columns];
+    
+    int hordeCount = 0;
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < columns; col++) {
+        id baddie = [NSNull null];
+        if (row % 2 == col % 2) {
+          if (hordeCount < numHorde) {
+            baddie = [[ClassicHorde class] addHordeUnitForLevel:self atRow:row column:col];
+            hordeCount++;
+          }
+        }
+        if (row == 0) // initialize bottoms
+          [bottoms addObject:baddie];
+        else if ([baddie isKindOfClass:[HordeUnit class]]) // keep bottoms up to date
+          [bottoms replaceObjectAtIndex:col withObject:baddie];
+      }
+    }
     
     recurseEnemiesForCollisions = YES;
   }

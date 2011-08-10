@@ -21,6 +21,7 @@
 static float reds[]   = {1,0,0,1,0,1};
 static float greens[] = {0,1,0,1,1,0};
 static float blues[]  = {0,0,1,0,1,1};
+static int colorIndex = 0;
 
 @implementation HordeUnit
 
@@ -62,7 +63,7 @@ static float blues[]  = {0,0,1,0,1,1};
     
     self.position = GLKVector2Make((column+1)*COLUMN_WIDTH, level.game.top-(row+1)*ROW_HEIGHT-TOP_BUFFER);
     
-    [[self class] colorizeUnit:self index:(row+column)%HORDE_UNIT_NUM_COLORS];
+    [[self class] colorizeUnit:self index:(colorIndex++)%HORDE_UNIT_NUM_COLORS];
     
     [self updateShotDelaysInLevel];
     [self resetShotDelay];

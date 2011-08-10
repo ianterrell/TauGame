@@ -22,6 +22,7 @@ extern NSString *const TEPreviousScene;
 @property(strong, readonly) UIView *container;
 @property(strong, readonly) EAGLContext *context;
 @property(strong, readonly) UIViewController *currentScene;
+@property(strong, readonly) NSString *currentSceneName;
 @property(strong, readonly) NSMutableDictionary *scenes;
 
 # pragma mark The Controller
@@ -34,5 +35,8 @@ extern NSString *const TEPreviousScene;
 -(void)removeScene:(NSString *)name;
 -(void)displayScene:(NSString *)name;
 -(void)displayScene:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion;
+
+-(void)replaceCurrentSceneWithScene:(UIViewController *)scene named:(NSString*)name;
+-(void)replaceCurrentSceneWithScene:(UIViewController *)scene named:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion;
 
 @end

@@ -225,7 +225,9 @@ static LevelBag *levelBag;
   float fraction = 0.33;
   
   if (readyToExit)
-    [[TESceneController sharedController] displayScene:@"menu"];
+    [[TESceneController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
+      [[TESceneController sharedController] removeScene:@"game"];
+    }];
   else if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
     [[TESceneController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
   else

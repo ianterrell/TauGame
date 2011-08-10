@@ -67,7 +67,6 @@
 
 -(void)play {
   [TEAccelerometer zero];
-  [[TESceneController sharedController] removeScene:@"game"];
   [[TESceneController sharedController] addScene:[[Game alloc] init] named:@"game"];
   [[TESceneController sharedController] displayScene:@"game"];
 }

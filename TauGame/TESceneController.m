@@ -8,11 +8,14 @@
 
 #import "TESceneController.h"
 
+#define DEFAULT_SCENE_TRANSITION_DURATION 3
+#define DEFAULT_SCENE_TRANSITION_OPTIONS (UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve)
+
 NSString * const TEPreviousScene = @"TEPreviousScene";
 
 @implementation TESceneController
 
-@synthesize container, context, currentScene, scenes;
+@synthesize container, context, currentScene, currentSceneName, scenes;
 
 - (id)init
 {
@@ -58,7 +61,7 @@ NSString * const TEPreviousScene = @"TEPreviousScene";
 }
 
 -(void)displayScene:(NSString *)name {
-  [self displayScene:name duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:NULL];
+  [self displayScene:name duration:DEFAULT_SCENE_TRANSITION_DURATION options:DEFAULT_SCENE_TRANSITION_OPTIONS completion:NULL];
 }
 
 -(void)displayScene:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion {
@@ -70,6 +73,21 @@ NSString * const TEPreviousScene = @"TEPreviousScene";
     [UIView transitionFromView:currentScene.view toView:newScene.view duration:duration options:options completion:completion];
   }
   currentScene = newScene;
+  currentSceneName = name;
+}
+
+-(void)replaceCurrentSceneWithScene:(UIViewController *)scene named:(NSString*)name {
+  [self replaceCurrentSceneWithScene:scene named:name duration:DEFAULT_SCENE_TRANSITION_DURATION options:DEFAULT_SCENE_TRANSITION_OPTIONS completion:NULL];
+}
+
+-(void)replaceCurrentSceneWithScene:(UIViewController *)scene named:(NSString *)name duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion {
+  NSString *oldScene = currentSceneName;
+  [self addScene:scene named:name];
+  [self displayScene:name duration:duration options:options completion:^(BOOL finished){
+    [self removeScene:oldScene];
+    if (completion != NULL)
+      completion(finished);
+  }];
 }
 
 # pragma mark Device Orientation

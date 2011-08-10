@@ -23,8 +23,8 @@
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    rows = MIN(HORDE_MAX_ROWS,HORDE_INITIAL_ROWS + game.currentLevelNumber / HORDE_LEVELS_PER_ROW);
-    columns = MIN(HORDE_MAX_COLS,HORDE_INITIAL_COLS + rows + game.currentLevelNumber % HORDE_LEVELS_PER_COL);
+    rows = MIN(HORDE_MAX_ROWS,HORDE_INITIAL_ROWS + (game.currentLevelNumber-1) / HORDE_LEVELS_PER_ROW);
+    columns = MIN(HORDE_MAX_COLS,HORDE_INITIAL_COLS + rows + (game.currentLevelNumber-1) % HORDE_LEVELS_PER_COL);
     
     bottoms = [NSMutableArray arrayWithCapacity:columns];
     
@@ -43,6 +43,8 @@
   
   baddie.maxVelocity = MIN(HORDE_MAX_VELOCITY_MAX,HORDE_MAX_VELOCITY_FACTOR*baddie.velocity.x);
   baddie.acceleration = GLKVector2Make(HORDE_X_ACCEL_LEVEL_FACTOR*game.currentLevelNumber,-1*HORDE_Y_ACCEL_LEVEL_FACTOR*game.currentLevelNumber);
+  
+  baddie.hitPoints = 1 + (game.currentLevelNumber-1)/HORDE_LEVELS_PER_HITPOINT;
   
   [baddie setupInGame:game];
   

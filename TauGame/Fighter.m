@@ -60,13 +60,14 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
     healthShapes = [self childrenNamed:[NSArray arrayWithObjects:@"health0", @"health1", @"health2", nil]];
     
     // Set up guns
-    shotSpeed = 1.0;
-    numBullets = 1;
+    shotSpeed = FIGHTER_INITIAL_SHOT_SPEED;
+    numBullets = FIGHTER_INITIAL_NUM_BULLETS;
     spreadAmount = 0;
     
     numShots = 0;
     shotTimers = [NSMutableArray arrayWithCapacity:FIGHTER_MAX_SHOTS];
-    [self addExtraShot];
+    for (int i = 0; i < FIGHTER_INITIAL_NUM_SHOTS; i++)
+      [self addExtraShot];
     
     // Root body is for collision only
     self.shape.renderStyle = kTERenderStyleNone;
@@ -87,7 +88,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   
   if (!paused) {
     self.velocity = GLKVector2Make(FIGHTER_ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
-    yRotation = MIN(1,MAX(-1,self.velocity.x / FIGHTER_TURN_FACTOR)) * 1.0/6*M_TAU;
+    yRotation = MIN(1,MAX(-1,self.velocity.x / FIGHTER_TURN_FACTOR)) * FIGHTER_MAX_TURN*M_TAU;
   }
 }
 

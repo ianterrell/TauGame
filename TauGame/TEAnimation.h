@@ -21,7 +21,7 @@ typedef enum {
   TEAnimationEasingType easing;
   double elapsedTime, duration;
   int repeat;
-  BOOL remove, reverse, forward;
+  BOOL remove, reverse, forward, permanent;
   void (^onRemoval)(void);
   void (^onComplete)(void);
   
@@ -33,7 +33,7 @@ typedef enum {
 @property TEAnimationEasingType easing;
 @property double elapsedTime, duration;
 @property int repeat;
-@property BOOL remove, reverse, backward;
+@property BOOL remove, reverse, backward, permanent;
 @property(nonatomic,copy) void (^onRemoval)(void);
 @property(nonatomic,copy) void (^onComplete)(void);
 
@@ -43,5 +43,7 @@ typedef enum {
 -(id)initWithNode:(TENode *)_node;
 
 -(void)incrementElapsedTime:(double)time;
+
+-(void)permanentize;
 
 @end

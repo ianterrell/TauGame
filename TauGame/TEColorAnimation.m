@@ -27,4 +27,8 @@
   return GLKVector4MultiplyScalar(GLKVector4Subtract(self.color, self.previousColor), self.easingFactor);
 }
 
+-(void)permanentize {
+  self.node.shape.color = color;
+}
+
 @end

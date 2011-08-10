@@ -26,4 +26,8 @@
   return GLKVector2MultiplyScalar(translation, self.easingFactor);
 }
 
+-(void)permanentize {
+  self.node.position = GLKVector2Add(self.node.position,translation);
+}
+
 @end

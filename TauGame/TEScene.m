@@ -93,6 +93,10 @@
   return self.topRightVisible.y - self.bottomLeftVisible.y;
 }
 
+-(GLKVector2)center {
+  return GLKVector2Make((self.topRightVisible.x + self.bottomLeftVisible.x)/2, (self.topRightVisible.y + self.bottomLeftVisible.y)/2);
+}
+
 -(GLKVector2)bottomLeftVisible {
   return GLKVector2Make(left, bottom);
 }

@@ -26,4 +26,8 @@
   return self.easingFactor * rotation;
 }
 
+-(void)permanentize {
+  self.node.rotation += rotation;
+}
+
 @end

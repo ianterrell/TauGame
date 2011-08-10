@@ -47,4 +47,9 @@
     easedColorVertices[i] = [self easedColorForVertex:i];
 }
 
+-(void)permanentize {
+  for (int i = 0; i < numVertices; i++)
+    self.node.shape.colorVertices[i] = toColorVertices[i];
+}
+
 @end

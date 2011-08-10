@@ -36,7 +36,7 @@ static LevelBag *levelBag;
 @implementation Game
 
 @synthesize fighter, bullets, powerups, enemies, enemyBullets;
-@synthesize currentLevelNumber, gameIsOver;
+@synthesize currentLevelNumber, gameIsOver, levelLoading;
 
 +(void)initialize {
   int i = 0;
@@ -140,7 +140,6 @@ static LevelBag *levelBag;
   scaleAnimation.onRemoval = ^(){
     levelName.remove = YES;
     currentLevel = [[nextLevelClass alloc] initWithGame:self];
-    levelLoading = NO;
     [self resetMultiplierDecayTimer];
   };
   [levelName startAnimation:scaleAnimation];
@@ -169,24 +168,26 @@ static LevelBag *levelBag;
 -(void)glkViewControllerUpdate:(GLKViewController *)controller {  
   [super glkViewControllerUpdate:controller];
   
-  // Detect collisions with bullets :)
-  BOOL recurseRight = currentLevel == nil ? NO : currentLevel.recurseEnemiesForCollisions;
-  [TECollisionDetector collisionsBetween:bullets andNodes:enemies recurseLeft:NO recurseRight:recurseRight maxPerNode:1 withBlock:^(TENode *bullet, TENode *enemy) {
-    bullet.remove = YES;
-    [self addBulletSplashAt:bullet.position];
+  if (!levelLoading) { // grace period while loading
+    // Detect collisions with bullets :)
+    BOOL recurseRight = currentLevel == nil ? NO : currentLevel.recurseEnemiesForCollisions;
+    [TECollisionDetector collisionsBetween:bullets andNodes:enemies recurseLeft:NO recurseRight:recurseRight maxPerNode:1 withBlock:^(TENode *bullet, TENode *enemy) {
+      bullet.remove = YES;
+      [self addBulletSplashAt:bullet.position];
+      
+      [(Enemy *)enemy registerHit];
+      [self incrementMultiplier:MULTIPLIER_PER_HIT];
+      [self incrementScore:((Enemy *)enemy).pointsPerHit];
+    }];
     
-    [(Enemy *)enemy registerHit];
-    [self incrementMultiplier:MULTIPLIER_PER_HIT];
-    [self incrementScore:((Enemy *)enemy).pointsPerHit];
-  }];
-  
-  // Detect collisions with ship :(
-  [TECollisionDetector collisionsBetweenNode:fighter andNodes:enemyBullets maxPerNode:1 withBlock:^(TENode *ship, TENode *enemyBullet) {
-    [(Fighter *)fighter registerHit];
-    
-    if ([enemyBullet isKindOfClass:[Bullet class]])
-      [(Bullet *)enemyBullet explode];
-  }];
+    // Detect collisions with ship :(
+    [TECollisionDetector collisionsBetweenNode:fighter andNodes:enemyBullets maxPerNode:1 withBlock:^(TENode *ship, TENode *enemyBullet) {
+      [(Fighter *)fighter registerHit];
+      
+      if ([enemyBullet isKindOfClass:[Bullet class]])
+        [(Bullet *)enemyBullet explode];
+    }];
+  }
   
   // Detect powerup collisions -- even if invincible from death or injury
   BOOL previousCollide = fighter.collide;
@@ -202,7 +203,7 @@ static LevelBag *levelBag;
   }];
   fighter.collide = previousCollide;
   
-  // Update multiplier
+  // Decay multiplier
   if (!levelLoading) {
     if (multiplierTimer > 0)
       multiplierTimer -= [controller timeSinceLastUpdate];

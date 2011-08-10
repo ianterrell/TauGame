@@ -28,6 +28,7 @@ typedef enum {
 +(BOOL)shootTowardFighter;
 -(float)bulletVelocity;
 -(GLKVector4)bulletColor;
+-(BOOL)ableToShootInScene:(Game*)scene;
 -(BOOL)readyToShoot;
 -(void)updateShotDelay:(NSTimeInterval)dt;
 -(void)resetShotDelay;

@@ -73,7 +73,7 @@
 }
 
 -(void)shootInScene:(Game *)scene {
-  if ([self dead] || scene.gameIsOver)
+  if (![self ableToShootInScene:scene])
     return;
   
   shooting = numShots;

@@ -10,7 +10,7 @@
  * Debug settings
  */
 
-#define DEBUG_LEVEL  [ClassicHorde class]
+//#define DEBUG_LEVEL  [ClassicHorde class]
 //#define DEBUG_BIGGUN [BigSpinner class]
 
 
@@ -34,11 +34,16 @@
 #define SCORE_BONUS_AMOUNT 100
 
 /**
+ * Levels
+ */
+#define NUM_GAME_LEVELS 4
+
+/**
  * Fighter Config
  */
 
-#define FIGHTER_INITIAL_LIVES  1
-#define FIGHTER_INITIAL_HEALTH 1
+#define FIGHTER_INITIAL_LIVES  3
+#define FIGHTER_INITIAL_HEALTH 3
 #define FIGHTER_MAX_HEALTH     3
 
 #define FIGHTER_INITIAL_SHOT_SPEED 1.0
@@ -66,11 +71,11 @@
 
 #define HORDE_MAX_ROWS 6
 #define HORDE_INITIAL_ROWS 1
-#define HORDE_LEVELS_PER_ROW 4
+#define HORDE_LEVELS_PER_ROW NUM_GAME_LEVELS
 
 #define HORDE_MAX_COLS 8
 #define HORDE_INITIAL_COLS 2
-#define HORDE_LEVELS_PER_COL 4
+#define HORDE_LEVELS_PER_COL NUM_GAME_LEVELS
 
 #define HORDE_SHOT_DELAY_MIN_MIN 0.5
 #define HORDE_SHOT_DELAY_MIN_INITIAL 1.5

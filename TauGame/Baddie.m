@@ -86,15 +86,19 @@
   }
 }
 
+-(BOOL)ableToShootInScene:(Game *)scene {
+  return !([self dead] || scene.gameIsOver || scene.levelLoading);
+}
+
 -(BOOL)readyToShoot {
   return shotDelay <= 0;
 }
 
 -(void)shootInScene:(Game *)scene {
-  if ([self dead] || scene.gameIsOver)
-    return;
-  
   [self resetShotDelay];
+  
+  if (![self ableToShootInScene:scene])
+    return;
   
   [[TESoundManager sharedManager] play:@"shoot"];
   
@@ -153,6 +157,28 @@
   animation.reverse = YES;
   animation.duration = 0.1;
   [eyes startAnimation:animation];
+}
+
+#pragma mark - Entry
+
+-(void)setupInGame:(Game*)game {
+  self.scale = self.scale/100;
+  
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] initWithNode:self];
+  scaleAnimation.scale = 100;
+  scaleAnimation.duration = 0.5;
+  scaleAnimation.permanent = YES;
+  scaleAnimation.onRemoval = ^(){
+    game.levelLoading = NO;
+  };
+  [self startAnimation:scaleAnimation];
+  
+  TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+  rotateAnimation.rotation = M_TAU;
+  rotateAnimation.duration = 0.5;
+  [self startAnimation:rotateAnimation];
+  
+  [super setupInGame:game];
 }
 
 # pragma mark - 'Sploding

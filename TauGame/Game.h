@@ -27,6 +27,7 @@
 
 @property(readonly) int currentLevelNumber;
 @property(readonly) BOOL gameIsOver;
+@property BOOL levelLoading;
 @property(strong) Fighter *fighter;
 @property(strong) NSMutableArray *bullets, *powerups, *enemies, *enemyBullets;
 

@@ -20,6 +20,7 @@
   if (self) {
     frames = 0;
     asteroidInterval = 120/game.currentLevelNumber;
+    game.levelLoading = NO;
   }
   return self;
 }

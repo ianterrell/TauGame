@@ -25,15 +25,15 @@
 }
 
 -(void)shootInScene:(Game *)scene {
-  if ([self dead] || scene.gameIsOver)
+  [self resetShotDelay];
+  
+  if (![self ableToShootInScene:scene])
     return;
   
   [[TESoundManager sharedManager] play:@"shoot"];
   [self shootInDirection:GLKVector2Make(0, -1) inScene:scene xOffset:0];
   [self shootInDirection:GLKVector2Make(0.25, -1) inScene:scene xOffset:0.25];
   [self shootInDirection:GLKVector2Make(-0.25, -1) inScene:scene xOffset:-0.25];    
-  
-  [self resetShotDelay];
 }
 
 

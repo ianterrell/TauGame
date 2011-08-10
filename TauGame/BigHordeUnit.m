@@ -47,7 +47,9 @@
 }
 
 -(void)shootInScene:(Game *)scene {
-  if ([self dead] || scene.gameIsOver)
+  [self resetShotDelay];
+  
+  if (![self ableToShootInScene:scene])
     return;
   
   drop = !drop;
@@ -80,8 +82,6 @@
     [self shootInDirection:GLKVector2Make(0.5, -1) inScene:scene];
     [self shootInDirection:GLKVector2Make(-0.5, -1) inScene:scene];    
   }
-  
-  [self resetShotDelay];
 }
 
 @end

@@ -188,7 +188,9 @@ static LevelBag *levelBag;
       [(Bullet *)enemyBullet explode];
   }];
   
-  // Detect powerup collisions
+  // Detect powerup collisions -- even if invincible from death or injury
+  BOOL previousCollide = fighter.collide;
+  fighter.collide = YES;
   [TECollisionDetector collisionsBetweenNode:fighter andNodes:powerups withBlock:^(TENode *ship, TENode *powerup) {
     [(Powerup*)powerup die];
     if ([powerup isKindOfClass:[ScoreBonus class]]) {
@@ -198,6 +200,7 @@ static LevelBag *levelBag;
     else
       [fighter getPowerup:(Powerup*)powerup];
   }];
+  fighter.collide = previousCollide;
   
   // Update multiplier
   if (!levelLoading) {

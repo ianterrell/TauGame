@@ -7,6 +7,7 @@
 //
 
 #import "Fray.h"
+#import "ClassicHorde.h"
 #import "Baddie.h"
 #import "Seeker.h"
 #import "Arms.h"
@@ -56,6 +57,10 @@
     recurseEnemiesForCollisions = YES;
   }
   return self;
+}
+
+-(void)update {
+  [ClassicHorde updateRowsAndColumnsForLevel:self inGame:game];
 }
 
 @end

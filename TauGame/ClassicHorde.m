@@ -43,4 +43,46 @@
   [baddie setupInGame:game];
 }
 
+-(void)update {
+  [[self class] updateRowsAndColumnsForLevel:self inGame:game];
+}
+
++(void)enumerateHordeUnitsInGame:(Game*)game withBlock:(void (^)(HordeUnit *))block {
+  [game.enemies enumerateObjectsUsingBlock:^(HordeUnit *baddie, NSUInteger idx, BOOL *stop) {
+    if (![baddie isKindOfClass:[HordeUnit class]])
+      return;
+    block(baddie);
+  }];
+}
+
++(void)updateRowsAndColumnsForLevel:(id<GriddedGameLevel>)level inGame:(Game*)game {
+  __block int minRow = level.rows, maxRow = 0, minColumn = level.columns, maxColumn = 0;
+  [self enumerateHordeUnitsInGame:game withBlock:^(HordeUnit *baddie){
+    minRow = MIN(minRow,baddie.row);
+    maxRow = MAX(maxRow,baddie.row);
+    minColumn = MIN(minColumn,baddie.column);
+    maxColumn = MAX(maxColumn,baddie.column);
+  }];
+  
+  int colDelta = level.columns - (maxColumn - minColumn + 1);
+  if (colDelta > 0){
+    level.columns -= colDelta;
+    if (minColumn > 0)
+      [self enumerateHordeUnitsInGame:game withBlock:^(HordeUnit *baddie){
+        baddie.column -= minColumn;
+      }];
+  }
+  
+  int rowDelta = level.rows - (maxRow - minRow + 1);
+  if (rowDelta > 0) {
+    level.rows -= rowDelta;
+    if (minRow > 0)
+      [self enumerateHordeUnitsInGame:game withBlock:^(HordeUnit *baddie){
+        baddie.row -= minRow;
+      }];
+  }
+}
+
+
+
 @end

@@ -16,5 +16,6 @@
 @property(readonly) int rows, columns;
 
 -(void)addHordeUnitAtRow:(int)row column:(int)col;
++(void)updateRowsAndColumnsForLevel:(id<GriddedGameLevel>)level inGame:(Game*)game;
 
 @end

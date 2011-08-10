@@ -14,6 +14,8 @@
   id<GriddedGameLevel> level;
 }
 
+@property int row, column;
+
 +(void)randomlyColorizeUnit:(Baddie *)baddie;
 +(void)colorizeUnit:(Baddie *)baddie index:(int)i;
 

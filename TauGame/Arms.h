@@ -13,10 +13,13 @@
   float shotInterval;
   
   GLKVector2 seekingLocation;
-  float seekingDelay;
+  float seekingDelay, seekingOffset;
   
   NSArray *appendages;
 }
+
+@property int numShots;
+@property float seekingOffset;
 
 -(NSArray*)appendageNames;
 -(void)setupLegs;

@@ -13,8 +13,10 @@
 
 @implementation Arms
 
+@synthesize seekingOffset, numShots;
+
 +(BaddieShootingStyle)shootingStyle {
-  return kBaddieConstantShot;
+  return kBaddieRandomShot;
 }
 
 - (id)init
@@ -24,7 +26,7 @@
     [TENodeLoader loadCharacter:self fromJSONFile:@"arms"];
     
     numShots = 2;
-    shotDelayConstant = 5;
+    seekingOffset = 0;
     shotInterval = 0.2;
     shooting = 0;
     self.velocity = GLKVector2Make(1, 0);
@@ -112,8 +114,8 @@
 }
 
 -(void)seekInScene:(Game*)game {
-  seekingLocation = GLKVector2Make(game.fighter.position.x,[TERandom randomFractionFrom:3 to:7]);
-  seekingDelay = 3;
+  seekingLocation = GLKVector2Make(game.fighter.position.x+seekingOffset,[TERandom randomFractionFrom:(game.bottom+FRAY_ARMS_SEEKING_BOTTOM_OFFSET) to:(game.top-FRAY_ARMS_SEEKING_BOTTOM_OFFSET)]);
+  seekingDelay = [TERandom randomFractionFrom:FRAY_ARMS_SEEKING_TIME_MIN to:FRAY_ARMS_SEEKING_TIME_MAX];
   self.velocity = GLKVector2DivideScalar(GLKVector2Subtract(seekingLocation, self.position),seekingDelay);
 }
 

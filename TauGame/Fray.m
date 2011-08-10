@@ -48,7 +48,7 @@
   self = [super initWithGame:_game];
   if (self) {
     int numHorde = MIN(12,2 + (game.currentLevelNumber-1)/2);
-//    int numArms = game.currentLevelNumber > 12 ? 2 : 1;
+    int numArms = game.currentLevelNumber > 12 ? 2 : 1;
 //    int numSeekers = game.currentLevelNumber < 5 ? 0 : game.currentLevelNumber < 17 ? 1 : 2;
 //    int numSpinners = game.currentLevelNumber < 9 ? 0 : game.currentLevelNumber < 21 ? 1 : 2;
     
@@ -74,6 +74,20 @@
           [bottoms replaceObjectAtIndex:col withObject:baddie];
       }
     }
+    
+    // Setup arms
+    for (int i = 0; i < numArms; i++) {
+      Arms *baddie = [[Arms alloc] init];
+      baddie.shotDelayMin = MAX(FRAY_ARMS_SHOT_DELAY_MIN_MIN,FRAY_ARMS_SHOT_DELAY_MIN_INITIAL-FRAY_ARMS_SHOT_DELAY_MIN_LEVEL_FACTOR*game.currentLevelNumber);
+      baddie.shotDelayMax = MAX(FRAY_ARMS_SHOT_DELAY_MAX_MIN,FRAY_ARMS_SHOT_DELAY_MAX_INITIAL-FRAY_ARMS_SHOT_DELAY_MAX_LEVEL_FACTOR*game.currentLevelNumber);
+      if (numArms == 2)
+        baddie.seekingOffset = -1*FRAY_ARMS_PAIR_OFFSET + 2*i*FRAY_ARMS_PAIR_OFFSET;
+      baddie.position = GLKVector2Make([TERandom randomFractionFrom:game.left to:game.right],[TERandom randomFractionFrom:game.bottom+FRAY_ARMS_SEEKING_BOTTOM_OFFSET to:game.top-FRAY_ARMS_SEEKING_TOP_OFFSET]);
+      baddie.hitPoints = FRAY_ARMS_INITIAL_HITPOINTS + (game.currentLevelNumber-1)/FRAY_ARMS_LEVELS_PER_HITPOINT;
+      baddie.numShots = FRAY_ARMS_INITIAL_NUM_SHOTS + (game.currentLevelNumber-1)/FRAY_ARMS_LEVELS_PER_SHOT;
+      [baddie setupInGame:game];
+    }
+    
     
     recurseEnemiesForCollisions = YES;
   }

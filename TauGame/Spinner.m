@@ -13,7 +13,7 @@
 
 @implementation Spinner
 
-@synthesize slave;
+@synthesize accelerationFactor, slave;
 
 +(BOOL)shootTowardFighter {
   return YES;
@@ -24,9 +24,11 @@
   self = [super init];
   if (self) {
     [TENodeLoader loadCharacter:self fromJSONFile:@"spinner"];
-    shotDelayConstant = 1;
-    self.maxVelocity = 3;
-    self.maxAcceleration = 2;
+    
+    shotDelayConstant = FRAY_SPINNER_SHOT_DELAY_CONSTANT_INITIAL;
+    self.maxVelocity = FRAY_SPINNER_MAX_VELOCITY_INITIAL;
+    accelerationFactor = FRAY_SPINNER_MAX_ACCEL_FACTOR_INITIAL;
+    
     slave = NO;
     
     [self resetShotDelay];
@@ -55,7 +57,6 @@
   
   if (!slave) {
     [self bounceXInScene:scene bufferLeft:[self bounceBufferLeft] bufferRight:[self bounceBufferRight]];
-    float accelerationFactor = 1.0;
     self.acceleration = GLKVector2MultiplyScalar(GLKVector2Make(-scene.width/diff.x,0),accelerationFactor);
   }
   

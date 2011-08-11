@@ -9,9 +9,11 @@
 #import "Baddie.h"
 
 @interface Spinner : Baddie {
+  float accelerationFactor;
   BOOL slave;
 }
 
+@property float accelerationFactor;
 @property BOOL slave;
 
 @end

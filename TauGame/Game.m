@@ -128,6 +128,10 @@ static LevelBag *levelBag;
   levelLoading = YES;
   currentLevelNumber++;
   
+#ifdef DEBUG_SKIP_LEVELS
+  currentLevelNumber += DEBUG_SKIP_LEVELS;
+#endif
+  
   Class nextLevelClass = [levelBag drawItem];
   
   // Set up level name display

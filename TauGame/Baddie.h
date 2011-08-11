@@ -20,7 +20,7 @@ typedef enum {
   float shotDelay, shotDelayConstant, shotDelayMin, shotDelayMax;
 }
 
-@property float shotDelayMin, shotDelayMax;
+@property float shotDelayConstant, shotDelayMin, shotDelayMax;
 
 # pragma mark - Shooting
 

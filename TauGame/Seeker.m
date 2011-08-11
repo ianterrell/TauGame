@@ -14,18 +14,18 @@
 
 @implementation Seeker
 
+@synthesize accelerationFactor, distanceToShoot;
+
 - (id)init
 {
   self = [super init];
   if (self) {
     [TENodeLoader loadCharacter:self fromJSONFile:@"seeker"];
 
-    shotDelayConstant = 1.0;
-    distanceToShoot = 0.5;
-    
-    self.maxVelocity = 2;
-    
-    accelerationFactor = [TERandom randomFractionFrom:0.75 to:3];
+    shotDelayConstant = FRAY_SEEKER_SHOT_DELAY_CONSTANT_INITIAL;
+    distanceToShoot = FRAY_SEEKER_SHOT_DISTANCE_INITIAL;
+    self.maxVelocity = FRAY_SEEKER_MAX_VELOCITY_INITIAL;
+    accelerationFactor = FRAY_SEEKER_MAX_ACCEL_FACTOR_INITIAL;
     
     // Animate!
     TENode *pupil = [self childNamed:@"pupil"];

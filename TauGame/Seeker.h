@@ -12,4 +12,6 @@
   float accelerationFactor, distanceToFighter, distanceToShoot;
 }
 
+@property float accelerationFactor, distanceToShoot;
+
 @end

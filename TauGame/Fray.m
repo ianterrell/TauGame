@@ -49,15 +49,13 @@
   if (self) {
     int numHorde = MIN(12,2 + (game.currentLevelNumber-1)/2);
     int numArms = game.currentLevelNumber > 12 ? 2 : 1;
-//    int numSeekers = game.currentLevelNumber < 5 ? 0 : game.currentLevelNumber < 17 ? 1 : 2;
-//    int numSpinners = game.currentLevelNumber < 9 ? 0 : game.currentLevelNumber < 21 ? 1 : 2;
+    int numSeekers = game.currentLevelNumber < 5 ? 0 : game.currentLevelNumber < 17 ? 1 : 2;
+    int numSpinners = game.currentLevelNumber < 9 ? 0 : game.currentLevelNumber < 21 ? 1 : 2;
     
     // Setup horde
     rows = game.currentLevelNumber < 7 ? 1 : game.currentLevelNumber < 15 ? 2 : 3;
     columns = game.currentLevelNumber < 3 ? 3 : game.currentLevelNumber < 5 ? 5 : game.currentLevelNumber < 13 ? 7 : 8;
-    
     bottoms = [NSMutableArray arrayWithCapacity:columns];
-    
     int hordeCount = 0;
     for (int row = 0; row < rows; row++) {
       for (int col = 0; col < columns; col++) {
@@ -88,6 +86,40 @@
       [baddie setupInGame:game];
     }
     
+    // Setup seekers
+    for (int i = 0; i < numSeekers; i++) {
+      Seeker *baddie = [[Seeker alloc] init];
+      baddie.shotDelayConstant  = MAX(FRAY_SEEKER_SHOT_DELAY_CONSTANT_MIN,FRAY_SEEKER_SHOT_DELAY_CONSTANT_INITIAL-FRAY_SEEKER_SHOT_DELAY_CONSTANT_LEVEL_FACTOR*game.currentLevelNumber);
+      baddie.distanceToShoot    = MAX(FRAY_SEEKER_SHOT_DISTANCE_MIN,      FRAY_SEEKER_SHOT_DISTANCE_INITIAL      -FRAY_SEEKER_SHOT_DISTANCE_LEVEL_FACTOR      *game.currentLevelNumber);
+      baddie.maxVelocity        = MIN(FRAY_SEEKER_MAX_VELOCITY_MAX,       FRAY_SEEKER_MAX_VELOCITY_INITIAL       +FRAY_SEEKER_MAX_VELOCITY_LEVEL_FACTOR       *game.currentLevelNumber);
+      baddie.accelerationFactor = MIN(FRAY_SEEKER_MAX_ACCEL_FACTOR_MAX,   FRAY_SEEKER_MAX_ACCEL_FACTOR_INITIAL   +FRAY_SEEKER_MAX_ACCEL_FACTOR_LEVEL_FACTOR   *game.currentLevelNumber);
+      
+      float y = numSeekers == 1 ? FRAY_SEEKER_MIDDLE_BOTTOM_OFFSET : (i == 0 ? FRAY_SEEKER_BOTTOM_BOTTOM_OFFSET : FRAY_SEEKER_TOP_BOTTOM_OFFSET);
+      if (i == 1) {
+        baddie.accelerationFactor += FRAY_SEEKER_TOP_ACCEL_FACTOR_BONUS;
+        baddie.maxVelocity += FRAY_SEEKER_TOP_MAX_VELOCITY_BONUS;
+      }
+      baddie.position = GLKVector2Make([TERandom randomFractionFrom:game.left to:game.right],y+[TERandom randomFractionFrom:(-1*FRAY_SEEKER_Y_VARIANCE) to:FRAY_SEEKER_Y_VARIANCE]);
+      baddie.hitPoints = FRAY_SEEKER_INITIAL_HITPOINTS + (game.currentLevelNumber-1)/FRAY_SEEKER_LEVELS_PER_HITPOINT;
+      [baddie setupInGame:game];
+    }
+    
+    // Setup spinners
+    for (int i = 0; i < numSpinners; i++) {
+      Spinner *baddie = [[Spinner alloc] init];
+      baddie.shotDelayConstant  = MAX(FRAY_SPINNER_SHOT_DELAY_CONSTANT_MIN,FRAY_SPINNER_SHOT_DELAY_CONSTANT_INITIAL-FRAY_SPINNER_SHOT_DELAY_CONSTANT_LEVEL_FACTOR*game.currentLevelNumber);
+      baddie.maxVelocity        = MIN(FRAY_SPINNER_MAX_VELOCITY_MAX,       FRAY_SPINNER_MAX_VELOCITY_INITIAL       +FRAY_SPINNER_MAX_VELOCITY_LEVEL_FACTOR       *game.currentLevelNumber);
+      baddie.accelerationFactor = MIN(FRAY_SPINNER_MAX_ACCEL_FACTOR_MAX,   FRAY_SPINNER_MAX_ACCEL_FACTOR_INITIAL   +FRAY_SPINNER_MAX_ACCEL_FACTOR_LEVEL_FACTOR   *game.currentLevelNumber);
+      
+      float y = numSpinners == 1 ? FRAY_SPINNER_MIDDLE_BOTTOM_OFFSET : (i == 0 ? FRAY_SPINNER_BOTTOM_BOTTOM_OFFSET : FRAY_SPINNER_TOP_BOTTOM_OFFSET);
+      if (i == 1) {
+        baddie.accelerationFactor += FRAY_SPINNER_TOP_ACCEL_FACTOR_BONUS;
+        baddie.maxVelocity += FRAY_SPINNER_TOP_MAX_VELOCITY_BONUS;
+      }
+      baddie.position = GLKVector2Make([TERandom randomFractionFrom:game.left to:game.right],y+[TERandom randomFractionFrom:(-1*FRAY_SPINNER_Y_VARIANCE) to:FRAY_SPINNER_Y_VARIANCE]);
+      baddie.hitPoints = FRAY_SPINNER_INITIAL_HITPOINTS + (game.currentLevelNumber-1)/FRAY_SPINNER_LEVELS_PER_HITPOINT;
+      [baddie setupInGame:game];
+    }    
     
     recurseEnemiesForCollisions = YES;
   }

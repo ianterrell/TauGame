@@ -175,6 +175,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [self postNotification:FighterDiedNotification];
   BOOL resurrect = ![self gameOver];
   
+#ifndef DEBUG_KEEP_POWERUPS
   numBullets = 1;
   spreadAmount = 0;
   
@@ -182,6 +183,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   numShots = 1;
   while ([shotTimers count] > numShots)
     [shotTimers removeLastObject];
+#endif
   
   self.velocity = GLKVector2Make(0,0);
   collide = NO;
@@ -228,10 +230,17 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 
 -(void)registerHit {
   [[TESoundManager sharedManager] play:@"fighter-hurt"];
+
   [self decrementHealth:1];
   
   if ([self dead]) {
+#ifndef DEBUG_INVINCIBLE
     [self explode];
+#else
+    NSLog(@"Would have died if not for powers!");
+    self.health = maxHealth;
+    [self makeTemporarilyInvincible];
+#endif
   } else {
     TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
     highlight.color = GLKVector4Make(1, 0, 0, 1);

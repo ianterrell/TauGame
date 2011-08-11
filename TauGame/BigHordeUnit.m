@@ -45,7 +45,7 @@
   [super update:dt inScene:scene];
   
   [super bounceXInScene:scene bufferLeft:1 bufferRight:1];
-  [super bounceYInScene:scene bufferTop:1 bufferBottom:2];
+  [super bounceYInScene:scene bufferTop:2 bufferBottom:3];
 }
 
 -(void)shootInScene:(Game *)scene {

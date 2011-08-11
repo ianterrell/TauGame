@@ -14,6 +14,7 @@
 #import "ExtraLife.h"
 #import "ExtraShot.h"
 #import "ExtraHealth.h"
+#import "ScoreBonus.h"
 
 static GLKVector4 healthyColor, unhealthyColor;
 
@@ -170,20 +171,55 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [body.currentAnimations addObject:transparent];  
 }
 
--(void)explode {
+// lotta dupe code
+-(void)flyAwayPowerup:(Powerup*)powerup inScene:(Game *)scene {
+  powerup.position = self.position;
+  
+  TERotateAnimation *rotateAnimation = [[TERotateAnimation alloc] init];
+  rotateAnimation.rotation = [TERandom randomFractionFrom:-2 to:2] * M_TAU;
+  rotateAnimation.duration = 1.5;
+  [powerup startAnimation:rotateAnimation];
+  
+  TETranslateAnimation *translateAnimation = [[TETranslateAnimation alloc] init];
+  translateAnimation.translation = GLKVector2Make([TERandom randomFractionFrom:-3 to:3], [TERandom randomFractionFrom:0 to:3]);
+  translateAnimation.duration = 1.5;
+  [powerup startAnimation:translateAnimation];
+  
+  TEScaleAnimation *scaleAnimation = [[TEScaleAnimation alloc] init];
+  scaleAnimation.scale = 0.0;
+  scaleAnimation.duration = 1.5;
+  scaleAnimation.onRemoval = ^(){
+    powerup.remove = YES;
+  };
+  [powerup startAnimation:scaleAnimation];
+
+  [scene addCharacterAfterUpdate:powerup];
+}
+
+-(void)removePowerupsInScene:(Game *)scene {
+  spreadAmount = 0;
+  
+  if (numBullets > 1) {
+    numBullets--;
+    [self flyAwayPowerup:[[ExtraBullet alloc] init] inScene:scene];
+  }
+
+  if (numShots > 1) {
+    numShots--;
+    ((TENode*)[shotTimers lastObject]).remove = YES;
+    [shotTimers removeLastObject];
+    [self flyAwayPowerup:[[ExtraShot alloc] init] inScene:scene];
+  }
+}
+
+-(void)explodeInScene:(Game *)scene {
   lives--;
   [self postNotification:FighterDiedNotification];
   BOOL resurrect = ![self gameOver];
   
-#ifndef DEBUG_KEEP_POWERUPS
-  numBullets = 1;
-  spreadAmount = 0;
-  
-  // Need numShots/shotTimers to remove from notification above, so notification goes first
-  numShots = 1;
-  while ([shotTimers count] > numShots)
-    [shotTimers removeLastObject];
-#endif
+  #ifndef DEBUG_KEEP_POWERUPS
+    [self removePowerupsInScene:scene];
+  #endif
   
   self.velocity = GLKVector2Make(0,0);
   collide = NO;
@@ -228,19 +264,19 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   }];
 }
 
--(void)registerHit {
+-(void)registerHitInScene:(Game *)scene {
   [[TESoundManager sharedManager] play:@"fighter-hurt"];
 
   [self decrementHealth:1];
   
   if ([self dead]) {
-#ifndef DEBUG_INVINCIBLE
-    [self explode];
-#else
-    NSLog(@"Would have died if not for powers!");
-    self.health = maxHealth;
-    [self makeTemporarilyInvincible];
-#endif
+    #ifndef DEBUG_INVINCIBLE
+      [self explodeInScene:scene];
+    #else
+      NSLog(@"Would have died if not for powers!");
+      self.health = maxHealth;
+      [self makeTemporarilyInvincible];
+    #endif
   } else {
     TEColorAnimation *highlight = [[TEColorAnimation alloc] initWithNode:self];
     highlight.color = GLKVector4Make(1, 0, 0, 1);
@@ -251,27 +287,57 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   }
 }
 
-
--(void)getPowerup:(Powerup *)powerup {
-  [[TESoundManager sharedManager] play:@"powerup"];
+-(void)getPowerup:(Powerup *)powerup inScene:(Game*)scene {
+  NSString *sound = @"powerup";
+  int score = 0;
   
-  if ([powerup isKindOfClass:[ExtraBullet class]]) {
+  // Score Bonus
+  if ([powerup isKindOfClass:[ScoreBonus class]]) 
+  {
+    score = POWERUP_SCORE_SCORE;
+    sound = @"score-bonus";
+  } 
+  
+  // Extra Bullet
+  else if ([powerup isKindOfClass:[ExtraBullet class]]) 
+  {
+    score = POWERUP_WEAPON_SCORE;
     if (numBullets < FIGHTER_MAX_BULLETS)
       numBullets++;
     
-    if (numBullets == FIGHTER_MAX_BULLETS && spreadAmount < 2)
-      spreadAmount++;
-  } else if ([powerup isKindOfClass:[ExtraLife class]]) {
-    lives++;
-    [self postNotification:FighterExtraLifeNotification];
-  } else if ([powerup isKindOfClass:[ExtraHealth class]]) {
-    [self incrementHealth:1];
-  } else if ([powerup isKindOfClass:[ExtraShot class]]) {
+    #ifdef FIGHTER_SPREAD_ENABLED
+      if (numBullets == FIGHTER_MAX_BULLETS && spreadAmount < 2)
+        spreadAmount++;
+    #endif
+  } 
+  
+  // Extra Shot
+  else if ([powerup isKindOfClass:[ExtraShot class]]) 
+  {
+    score = POWERUP_WEAPON_SCORE;
     if (numShots < FIGHTER_MAX_SHOTS) {
       [self addExtraShot];
       [self postNotification:FighterExtraShotNotification];
     }
   }
+  
+  // Extra Life
+  else if ([powerup isKindOfClass:[ExtraLife class]]) 
+  {
+    score = POWERUP_LIFE_SCORE;
+    lives++;
+    [self postNotification:FighterExtraLifeNotification];
+  } 
+  
+  // Extra Health
+  else if ([powerup isKindOfClass:[ExtraHealth class]]) 
+  {
+    score = POWERUP_HEALTH_SCORE;
+    [self incrementHealth:1];
+  } 
+  
+  [scene incrementScoreWithPulse:score];
+  [[TESoundManager sharedManager] play:sound];
 }
 
 -(void)addExtraShot {

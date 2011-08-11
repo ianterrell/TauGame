@@ -24,14 +24,12 @@
 #import "Enemy.h"
 
 #import "LevelBag.h"
-
-#define POWERUP_CHANCE 0.1
-#define NUM_POWERUPS 4
+#import "WeaponPowerupBag.h"
 
 #define POINT_RATIO 40
 
-static Class powerupClasses[NUM_POWERUPS];
 static LevelBag *levelBag;
+static WeaponPowerupBag *weaponPowerupBag;
 
 @implementation Game
 
@@ -39,13 +37,8 @@ static LevelBag *levelBag;
 @synthesize currentLevelNumber, gameIsOver, levelLoading;
 
 +(void)initialize {
-  int i = 0;
-  powerupClasses[i++] = [ExtraBullet class];
-  powerupClasses[i++] = [ExtraLife class];
-  powerupClasses[i++] = [ExtraShot class];
-  powerupClasses[i++] = [ExtraHealth class];
-  
   levelBag = [[LevelBag alloc] init];
+  weaponPowerupBag = [[WeaponPowerupBag alloc] init];
 }
 
 - (id)init
@@ -124,6 +117,9 @@ static LevelBag *levelBag;
 # pragma mark - Levels
 
 -(void)loadNextLevel {
+  if (currentLevelNumber > 0 && currentLevelNumber %2 == 0)
+    [self dropWeaponPowerupAt:GLKVector2Make(self.center.x, self.top)];
+  
   currentLevel = nil;
   levelLoading = YES;
   currentLevelNumber++;
@@ -186,7 +182,7 @@ static LevelBag *levelBag;
     
     // Detect collisions with ship :(
     [TECollisionDetector collisionsBetweenNode:fighter andNodes:enemyBullets maxPerNode:1 withBlock:^(TENode *ship, TENode *enemyBullet) {
-      [(Fighter *)fighter registerHit];
+      [(Fighter *)fighter registerHitInScene:self];
       
       if ([enemyBullet isKindOfClass:[Bullet class]])
         [(Bullet *)enemyBullet explode];
@@ -198,12 +194,7 @@ static LevelBag *levelBag;
   fighter.collide = YES;
   [TECollisionDetector collisionsBetweenNode:fighter andNodes:powerups withBlock:^(TENode *ship, TENode *powerup) {
     [(Powerup*)powerup die];
-    if ([powerup isKindOfClass:[ScoreBonus class]]) {
-      [[TESoundManager sharedManager] play:@"score-bonus"];
-      [self incrementScoreWithPulse:SCORE_BONUS_AMOUNT];
-    }
-    else
-      [fighter getPowerup:(Powerup*)powerup];
+    [fighter getPowerup:(Powerup*)powerup inScene:self];
   }];
   fighter.collide = previousCollide;
   
@@ -337,10 +328,6 @@ static LevelBag *levelBag;
 # pragma mark - Notifications
 
 -(void)fighterDied:(NSNotification *)notification {
-  // Shot Timers
-  for (int i = 1; i < fighter.numShots; i++)
-    [characters removeObject:[fighter.shotTimers objectAtIndex:i]];
-     
   // Lives
   FighterLife *life = [lives lastObject];
   [lives removeLastObject];
@@ -374,18 +361,32 @@ static LevelBag *levelBag;
   Enemy *enemy = notification.object;
   [self incrementMultiplier:MULTIPLIER_PER_KILL];
   [self incrementScoreWithPulse:enemy.pointsForDestruction];
-  [self dropPowerupWithPercentChance:0.1 at:enemy.position];
+  [self potentiallyDropPowerupAt:enemy.position];
 }
 
 # pragma mark - Powerups
 
--(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position {
+-(void)dropWeaponPowerupAt:(GLKVector2)position {
+  [[weaponPowerupBag drawItem] addPowerupToScene:self at:position];
+}
+
+-(void)potentiallyDropPowerupAt:(GLKVector2)position {
   float randomFraction = [TERandom randomFraction];
-  if (randomFraction < percent) {
-    [powerupClasses[[TERandom randomTo:NUM_POWERUPS]] addPowerupToScene:self at:position];
-  } else if (randomFraction < SCORE_BONUS_CHANCE) {
-    [ScoreBonus addPowerupToScene:self at:position];
-  }
+  float threshold = 1.0;
+  Class clazz = nil;
+  if (randomFraction >= (threshold -= POWERUP_SHOT_CHANCE))
+    clazz = [ExtraShot class];
+  else if (randomFraction >= (threshold -= POWERUP_BULLET_CHANCE))
+    clazz = [ExtraBullet class];
+  else if (randomFraction >= (threshold -= POWERUP_LIFE_CHANCE))
+    clazz = [ExtraLife class];
+  else if (randomFraction >= (threshold -= POWERUP_HEALTH_CHANCE))
+    clazz = [ExtraHealth class];
+  else if (randomFraction >= (threshold -= POWERUP_SCORE_CHANCE))
+    clazz = [ScoreBonus class];
+  
+  if (clazz != nil)
+    [clazz addPowerupToScene:self at:position];
 }
 
 # pragma mark - Effects

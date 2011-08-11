@@ -32,6 +32,7 @@
 		3C228AE813E7155000CFE5D1 /* extra-shot-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE713E7155000CFE5D1 /* extra-shot-powerup.json */; };
 		3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE913E7156A00CFE5D1 /* health-powerup.json */; };
 		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
+		3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C264B7913F42709009FC60C /* WeaponPowerupBag.m */; };
 		3C2DE86613D9CB9D000237D2 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* TitleScreen.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -177,6 +178,8 @@
 		3C228AE913E7156A00CFE5D1 /* health-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "health-powerup.json"; sourceTree = "<group>"; };
 		3C228AEB13E7185600CFE5D1 /* ExtraLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraLife.h; sourceTree = "<group>"; };
 		3C228AEC13E7185600CFE5D1 /* ExtraLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraLife.m; sourceTree = "<group>"; };
+		3C264B7813F42709009FC60C /* WeaponPowerupBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponPowerupBag.h; sourceTree = "<group>"; };
+		3C264B7913F42709009FC60C /* WeaponPowerupBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponPowerupBag.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScreen.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScreen.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -752,6 +755,8 @@
 				3C59AB4413F0699F00E35FC3 /* LevelBag.m */,
 				3C59AB4613F06D7100E35FC3 /* BiggunBag.h */,
 				3C59AB4713F06D7100E35FC3 /* BiggunBag.m */,
+				3C264B7813F42709009FC60C /* WeaponPowerupBag.h */,
+				3C264B7913F42709009FC60C /* WeaponPowerupBag.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1009,6 +1014,7 @@
 				3C145EEF13F1845F0095CD5E /* BigSpinner.m in Sources */,
 				3C986E0E13F1B65E004B99AF /* ScoreBonus.m in Sources */,
 				3C986E1313F1BA0B004B99AF /* ExtraHealth.m in Sources */,
+				3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,12 +37,12 @@ extern NSString *const FighterExtraShotNotification;
 -(BOOL)gameOver;
 
 -(void)shootInScene:(Game *)scene;
--(void)registerHit;
+-(void)registerHitInScene:(Game *)scene;
 
 -(void)decrementHealth:(int)amount;
 -(void)incrementHealth:(int)amount;
 
--(void)getPowerup:(Powerup *)powerup;
+-(void)getPowerup:(Powerup *)powerup inScene:(Game*)scene;
 -(void)addExtraShot;
 
 @end

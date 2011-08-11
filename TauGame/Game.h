@@ -56,7 +56,8 @@
 
 # pragma mark - Powerups
 
--(void)dropPowerupWithPercentChance:(float)percent at:(GLKVector2)position;
+-(void)dropWeaponPowerupAt:(GLKVector2)position;
+-(void)potentiallyDropPowerupAt:(GLKVector2)position;
 
 #pragma mark - Effects
 

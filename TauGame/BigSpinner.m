@@ -41,7 +41,7 @@
 }
 
 -(void)setHitPoints:(int)_hitPoints {
-  self.hitPoints = _hitPoints/2;
+  hitPoints = _hitPoints/2;
   leftSlave.hitPoints = _hitPoints/4;
   rightSlave.hitPoints = _hitPoints/4;
 }

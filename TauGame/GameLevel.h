@@ -21,7 +21,7 @@
 +(TENode *)nameSpriteWithPointRatio:(float)pointRatio;
 
 -(id)initWithGame:(Game*)game;
--(void)update;
+-(void)update:(NSTimeInterval)dt;
 -(BOOL)done;
 
 @end

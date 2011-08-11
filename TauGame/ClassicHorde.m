@@ -35,7 +35,7 @@
   return self;
 }
 
--(void)update {
+-(void)update:(NSTimeInterval)dt {
   [[self class] updateRowsAndColumnsForLevel:self inGame:game];
 }
 

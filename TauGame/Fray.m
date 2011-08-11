@@ -126,7 +126,7 @@
   return self;
 }
 
--(void)update {
+-(void)update:(NSTimeInterval)dt {
   [ClassicHorde updateRowsAndColumnsForLevel:self inGame:game];
 }
 

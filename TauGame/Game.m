@@ -117,7 +117,7 @@ static WeaponPowerupBag *weaponPowerupBag;
 # pragma mark - Levels
 
 -(void)loadNextLevel {
-  if (currentLevelNumber > 0 && currentLevelNumber %2 == 0)
+  if (currentLevelNumber > 0 && currentLevelNumber % WEAPON_POWERUP_PER_N_LEVELS == 0)
     [self dropWeaponPowerupAt:GLKVector2Make(self.center.x, self.top)];
   
   currentLevel = nil;
@@ -207,7 +207,7 @@ static WeaponPowerupBag *weaponPowerupBag;
   }
   
   if (currentLevel != nil) {
-    [currentLevel update];
+    [currentLevel update:[controller timeSinceLastUpdate]];
     if ([currentLevel done])
       [self loadNextLevel];
   }

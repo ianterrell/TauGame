@@ -10,13 +10,18 @@
  * Debug settings
  */
 
-//#define DEBUG_LEVEL  [Dogfight class]
+//#define DEBUG_LEVEL  [AsteroidField class]
 //#define DEBUG_BIGGUN [BigSpinner class]
 //#define DEBUG_SKIP_LEVELS 3
 //#define DEBUG_KEEP_POWERUPS
 //#define DEBUG_FIGHTER_POWERFUL
 //#define DEBUG_INVINCIBLE
 
+/**
+ * Levels
+ */
+
+#define NUM_GAME_LEVELS 4
 
 /**
  * Multiplier
@@ -40,16 +45,12 @@
 #define POWERUP_HEALTH_CHANCE 0.06
 #define POWERUP_SCORE_CHANCE  0.25
 
+#define WEAPON_POWERUP_PER_N_LEVELS (NUM_GAME_LEVELS/2)
+
 #define POWERUP_WEAPON_SCORE 50
 #define POWERUP_LIFE_SCORE   50
 #define POWERUP_HEALTH_SCORE 30
 #define POWERUP_SCORE_SCORE  20
-
-/**
- * Levels
- */
-
-#define NUM_GAME_LEVELS 4
 
 /**
  * Fighter Config
@@ -85,6 +86,29 @@
 #define FIGHTER_MAX_TURN (1.0/6)
 
 /**
+ * Asteroid Field
+ */
+
+#define ASTEROIDS_TIME                      10.0
+
+#define ASTEROIDS_NUM_INITIAL               20
+#define ASTEROIDS_NUM_MAX                   60
+#define ASTEROIDS_NUM_LEVEL_FACTOR          2
+
+#define ASTEROIDS_SIZE_MIN_MAX              0.6
+#define ASTEROIDS_SIZE_MIN_INITIAL          0.25
+#define ASTEROIDS_SIZE_MIN_LEVEL_FACTOR     0.01
+
+#define ASTEROIDS_SIZE_MAX_MAX              1.5
+#define ASTEROIDS_SIZE_MAX_INITIAL          0.75
+#define ASTEROIDS_SIZE_MAX_LEVEL_FACTOR     0.02
+
+#define ASTEROIDS_HP_PER_SCALE_MAX          10
+#define ASTEROIDS_HP_PER_SCALE_INITIAL      4
+#define ASTEROIDS_HP_PER_SCALE_LEVEL_FACTOR 0.1
+
+
+/**
  * Classic Horde Mode (and horde in Fray)
  */
 
@@ -115,7 +139,7 @@
 #define HORDE_Y_ACCEL_LEVEL_FACTOR 0.0025
 
 /**
- * Fray
+ * Fray (and most of Dogfight)
  */
 
 // Arms
@@ -201,7 +225,7 @@
 #define DOGFIGHT_TOP_OFFSET 1
 
 #define DOGFIGHT_INITIAL_HITPOINTS 4
-#define DOGFIGHT_LEVELS_PER_HITPOINT (NUM_GAME_LEVELS/2)
+#define DOGFIGHT_LEVELS_PER_HITPOINT 1
 
 /**
  * Helpers

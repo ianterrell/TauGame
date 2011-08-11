@@ -15,31 +15,48 @@
   return @"Asteroid Field";
 }
 
+-(void)setTimeUntilNextAsteroid {
+  timeUntilNextAsteroid = averageInterval + [TERandom randomFractionFrom:-0.5*averageInterval to:0.5*averageInterval];
+}
+
 -(id)initWithGame:(Game*)_game {
   self = [super initWithGame:_game];
   if (self) {
-    frames = 0;
-    asteroidInterval = 120/game.currentLevelNumber;
+    elapsedTime = 0;
+    numAsteroids = MIN(ASTEROIDS_NUM_MAX,ASTEROIDS_NUM_INITIAL + game.currentLevelNumber * ASTEROIDS_NUM_LEVEL_FACTOR);
+    averageInterval = ASTEROIDS_TIME / numAsteroids;
+    [self setTimeUntilNextAsteroid];
     game.levelLoading = NO;
   }
   return self;
 }
 
--(void)update {
-  frames++;
+-(void)update:(NSTimeInterval)dt {
+  elapsedTime += dt;
   
-  if (frames % asteroidInterval == 0 && frames < 10*60)
+  if (timeUntilNextAsteroid > 0)
+    timeUntilNextAsteroid -= dt;
+  else if (numAsteroids > 0)
     [self addAsteroid];
 }
 
 -(BOOL)done {
-  return frames >= 10*60 && [game.enemies count] == 0;
+  return elapsedTime >= ASTEROIDS_TIME && [game.enemies count] == 0 && numAsteroids <= 0;
 }
 
 -(void)addAsteroid {
   Asteroid *asteroid = [[Asteroid alloc] init];
   asteroid.position = GLKVector2Make([TERandom randomFractionFrom:game.bottomLeftVisible.x to:game.topRightVisible.x], game.topRightVisible.y);
+
+  float scaleBottom = MIN(ASTEROIDS_SIZE_MIN_MAX,ASTEROIDS_SIZE_MIN_INITIAL + game.currentLevelNumber * ASTEROIDS_SIZE_MIN_LEVEL_FACTOR);
+  float scaleTop = MIN(ASTEROIDS_SIZE_MAX_MAX,ASTEROIDS_SIZE_MAX_INITIAL + game.currentLevelNumber * ASTEROIDS_SIZE_MAX_LEVEL_FACTOR);  
+  asteroid.scale = [TERandom randomFractionFrom:scaleBottom to:scaleTop];
+  
+  asteroid.hitPoints = asteroid.scale * MIN(ASTEROIDS_HP_PER_SCALE_MAX,ASTEROIDS_HP_PER_SCALE_INITIAL + game.currentLevelNumber * ASTEROIDS_HP_PER_SCALE_LEVEL_FACTOR);  
+  
   [asteroid setupInGame:game];
+  numAsteroids--;
+  [self setTimeUntilNextAsteroid];
 }
 
 @end

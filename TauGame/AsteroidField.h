@@ -9,7 +9,8 @@
 #import "GameLevel.h"
 
 @interface AsteroidField : GameLevel {
-  int frames, asteroidInterval;
+  float elapsedTime, timeUntilNextAsteroid, averageInterval;
+  int numAsteroids;
 }
 
 -(void)addAsteroid;

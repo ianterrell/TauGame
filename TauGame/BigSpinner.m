@@ -40,6 +40,12 @@
   [rightSlave setupInGame:game];
 }
 
+-(void)setHitPoints:(int)_hitPoints {
+  self.hitPoints = _hitPoints/2;
+  leftSlave.hitPoints = _hitPoints/4;
+  rightSlave.hitPoints = _hitPoints/4;
+}
+
 -(float)bounceBufferLeft {
   return [leftSlave dead] ? 0.65 : 1.5;
 }

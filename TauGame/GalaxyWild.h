@@ -10,12 +10,12 @@
  * Debug settings
  */
 
-#define DEBUG_LEVEL  [Fray class]
+//#define DEBUG_LEVEL  [Dogfight class]
 //#define DEBUG_BIGGUN [BigSpinner class]
-#define DEBUG_SKIP_LEVELS 3
-#define DEBUG_KEEP_POWERUPS
-#define DEBUG_FIGHTER_POWERFUL
-#define DEBUG_INVINCIBLE
+//#define DEBUG_SKIP_LEVELS 3
+//#define DEBUG_KEEP_POWERUPS
+//#define DEBUG_FIGHTER_POWERFUL
+//#define DEBUG_INVINCIBLE
 
 
 /**
@@ -181,8 +181,18 @@
 #define FRAY_SPINNER_TOP_BOTTOM_OFFSET    6
 #define FRAY_SPINNER_Y_VARIANCE           0.5
 
-#define FRAY_SPINNER_INITIAL_HITPOINTS 2
+#define FRAY_SPINNER_INITIAL_HITPOINTS 4
 #define FRAY_SPINNER_LEVELS_PER_HITPOINT NUM_GAME_LEVELS
+
+/**
+ * Dogfight
+ */
+
+#define DOGFIGHT_BOTTOM_OFFSET 3
+#define DOGFIGHT_TOP_OFFSET 1
+
+#define DOGFIGHT_INITIAL_HITPOINTS 4
+#define DOGFIGHT_LEVELS_PER_HITPOINT (NUM_GAME_LEVELS/2)
 
 /**
  * Helpers

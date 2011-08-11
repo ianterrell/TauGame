@@ -15,6 +15,11 @@
   return YES;
 }
 
++(BaddieShootingStyle)shootingStyle {
+  return kBaddieRandomShot;
+}
+
+
 - (id)init
 {
   self = [super init];
@@ -24,9 +29,6 @@
 
     self.scale = 2;
     drop = YES;
-    
-    self.velocity = GLKVector2Make(2, 0);
-    self.acceleration = GLKVector2Make(0.001,0.001);
     
     [self resetShotDelay];
   }

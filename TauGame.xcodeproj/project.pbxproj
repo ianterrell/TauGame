@@ -33,6 +33,7 @@
 		3C228AEA13E7156A00CFE5D1 /* health-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C228AE913E7156A00CFE5D1 /* health-powerup.json */; };
 		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
 		3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C264B7913F42709009FC60C /* WeaponPowerupBag.m */; };
+		3C297ED913F57A6600D1D85B /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C297ED813F57A6600D1D85B /* GameController.m */; };
 		3C2DE86613D9CB9D000237D2 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* TitleScreen.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -47,11 +48,12 @@
 		3C37ED5813EF2EF800EF18A9 /* spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C37ED5713EF2EF800EF18A9 /* spinner.json */; };
 		3C37ED5C13EF2F3700EF18A9 /* TEOctagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C37ED5B13EF2F3700EF18A9 /* TEOctagon.m */; };
 		3C37ED5F13EF302F00EF18A9 /* Spinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C37ED5E13EF302F00EF18A9 /* Spinner.m */; };
+		3C39473613F4ACD3002E4A3B /* Slipped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C39473513F4ACD3002E4A3B /* Slipped.mp3 */; };
+		3C39473813F4AD69002E4A3B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C39473713F4AD69002E4A3B /* AVFoundation.framework */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C5507A613CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
 		3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
-		3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */; };
 		3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB3B13F054BC00E35FC3 /* BigArms.m */; };
 		3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */; };
 		3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4413F0699F00E35FC3 /* LevelBag.m */; };
@@ -180,6 +182,8 @@
 		3C228AEC13E7185600CFE5D1 /* ExtraLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraLife.m; sourceTree = "<group>"; };
 		3C264B7813F42709009FC60C /* WeaponPowerupBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponPowerupBag.h; sourceTree = "<group>"; };
 		3C264B7913F42709009FC60C /* WeaponPowerupBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponPowerupBag.m; sourceTree = "<group>"; };
+		3C297ED713F57A6600D1D85B /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
+		3C297ED813F57A6600D1D85B /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScreen.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScreen.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -202,11 +206,11 @@
 		3C37ED5B13EF2F3700EF18A9 /* TEOctagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEOctagon.m; sourceTree = "<group>"; };
 		3C37ED5D13EF302F00EF18A9 /* Spinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spinner.h; sourceTree = "<group>"; };
 		3C37ED5E13EF302F00EF18A9 /* Spinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spinner.m; sourceTree = "<group>"; };
+		3C39473513F4ACD3002E4A3B /* Slipped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slipped.mp3; sourceTree = "<group>"; };
+		3C39473713F4AD69002E4A3B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
 		3C5507A513CE237D00585C40 /* TECollisionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetector.m; sourceTree = "<group>"; };
-		3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAdjustedAttitude.h; sourceTree = "<group>"; };
-		3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAdjustedAttitude.m; sourceTree = "<group>"; };
 		3C59AB3A13F054BC00E35FC3 /* BigArms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigArms.h; sourceTree = "<group>"; };
 		3C59AB3B13F054BC00E35FC3 /* BigArms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigArms.m; sourceTree = "<group>"; };
 		3C59AB4013F068D800E35FC3 /* TEShuffleBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShuffleBag.h; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C39473813F4AD69002E4A3B /* AVFoundation.framework in Frameworks */,
 				3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */,
 				3CB0483D13CBD5960029875B /* UIKit.framework in Frameworks */,
 				3CB0483F13CBD5960029875B /* Foundation.framework in Frameworks */,
@@ -487,8 +492,6 @@
 		3C350E9013E07790002DD35E /* Motion */ = {
 			isa = PBXGroup;
 			children = (
-				3C56687E13D73D6F0011D69E /* TEAdjustedAttitude.h */,
-				3C56687F13D73D6F0011D69E /* TEAdjustedAttitude.m */,
 				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
 				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
 			);
@@ -536,6 +539,14 @@
 				3C986E0D13F1B65E004B99AF /* ScoreBonus.m */,
 			);
 			name = Powerups;
+			sourceTree = "<group>";
+		};
+		3C39473313F4ACBC002E4A3B /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				3C39473513F4ACD3002E4A3B /* Slipped.mp3 */,
+			);
+			name = Music;
 			sourceTree = "<group>";
 		};
 		3C70968F13E1DCB300BF4E83 /* Text */ = {
@@ -616,6 +627,7 @@
 				3CCEB8BE13F1737000825662 /* Utils */,
 				3C138B8C13CCAD94002FC701 /* Character Files */,
 				3CD1F93813DDCEE600F6F035 /* Sounds */,
+				3C39473313F4ACBC002E4A3B /* Music */,
 			);
 			name = "Galaxy Wild";
 			sourceTree = "<group>";
@@ -638,6 +650,8 @@
 		3C8A282B13D70C7E00BB0011 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3C297ED713F57A6600D1D85B /* GameController.h */,
+				3C297ED813F57A6600D1D85B /* GameController.m */,
 				3C2DE86413D9CB9D000237D2 /* TitleScreen.h */,
 				3C2DE86513D9CB9D000237D2 /* TitleScreen.m */,
 				3CD1F94B13DF0E3200F6F035 /* Game.h */,
@@ -673,6 +687,7 @@
 		3CB0483B13CBD5960029875B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C39473713F4AD69002E4A3B /* AVFoundation.framework */,
 				3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */,
 				3C55079413CE0B8D00585C40 /* CoreMotion.framework */,
 				3CB0488913CBD6940029875B /* GLKit.framework */,
@@ -909,6 +924,7 @@
 				3C986E0B13F1B5D6004B99AF /* score-bonus.json in Resources */,
 				3C986E1013F1B8B9004B99AF /* score-bonus.wav in Resources */,
 				3C986E1513F1BA22004B99AF /* extra-health-powerup.json in Resources */,
+				3C39473613F4ACD3002E4A3B /* Slipped.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,7 +978,6 @@
 				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
-				3C56688013D73D700011D69E /* TEAdjustedAttitude.m in Sources */,
 				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
 				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
 				3C01190713D86090004808DA /* Baddie.m in Sources */,
@@ -1015,6 +1030,7 @@
 				3C986E0E13F1B65E004B99AF /* ScoreBonus.m in Sources */,
 				3C986E1313F1BA0B004B99AF /* ExtraHealth.m in Sources */,
 				3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */,
+				3C297ED913F57A6600D1D85B /* GameController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

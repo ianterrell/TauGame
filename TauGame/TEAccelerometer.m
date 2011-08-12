@@ -18,11 +18,9 @@ static CMAcceleration calibration;
   calibration = [TauEngine motionManager].accelerometerData.acceleration;
 }
 
-+(float)horizontal {
++(float)horizontalForOrientation:(UIInterfaceOrientation)orientation {
   CMAcceleration accel = [TauEngine motionManager].accelerometerData.acceleration;
   float horizontal;
-  
-  UIInterfaceOrientation orientation = [TESceneController sharedController].interfaceOrientation;
   
   if (orientation == UIInterfaceOrientationPortrait)
     horizontal = (accel.x - calibration.x);

@@ -15,12 +15,11 @@
 @synthesize clearColor;
 @synthesize characters;
 
-- (id)init {
+- (id)initWithFrame:(CGRect)frame {
   self = [super init];
   if (self) {
     // OPTIMIZATION: configurable multisample
-    CGRect containerFrame = [TESceneController sharedController].container.frame;
-    self.view.frame = CGRectMake(containerFrame.origin.x, containerFrame.origin.y, containerFrame.size.width, containerFrame.size.height);
+    self.view.frame = frame;
     
     self.delegate = self;
     ((GLKView*)self.view).delegate = self;

@@ -6,6 +6,7 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "GameController.h"
 #import "Fighter.h"
 #import "Bullet.h"
 #import "GlowingBullet.h"
@@ -88,7 +89,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   [self wraparoundXInScene:scene];
   
   if (!paused) {
-    self.velocity = GLKVector2Make(FIGHTER_ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontal], 0);
+    self.velocity = GLKVector2Make(FIGHTER_ACCELEROMETER_SENSITIVITY*[TEAccelerometer horizontalForOrientation:[GameController sharedController].interfaceOrientation], 0);
     yRotation = MIN(1,MAX(-1,self.velocity.x / FIGHTER_TURN_FACTOR)) * FIGHTER_MAX_TURN*M_TAU;
   }
 }

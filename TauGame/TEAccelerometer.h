@@ -13,6 +13,6 @@
 
 +(void)zero;
 
-+(float)horizontal;
++(float)horizontalForOrientation:(UIInterfaceOrientation)orientation;
 
 @end

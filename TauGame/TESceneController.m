@@ -11,7 +11,7 @@
 #define DEFAULT_SCENE_TRANSITION_DURATION 3
 #define DEFAULT_SCENE_TRANSITION_OPTIONS (UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve)
 
-NSString * const TEPreviousScene = @"TEPreviousScene";
+NSString * const kTEPreviousScene = @"kTEPreviousScene";
 
 @implementation TESceneController
 
@@ -33,19 +33,11 @@ NSString * const TEPreviousScene = @"TEPreviousScene";
   return self;
 }
 
-# pragma mark The Controller
-
-+(TESceneController *)sharedController {
-  static TESceneController *singleton;
-  
-  @synchronized(self) {
-    if (!singleton)
-      singleton = [[TESceneController alloc] init];
-    return singleton;
-  }
-}
-
 # pragma mark Scene Management
+
+-(void)addSceneOfClass:(Class)sceneClass named:(NSString *)name {
+  [self addScene:[[sceneClass alloc] initWithFrame:self.container.frame] named:name];
+}
 
 -(void)addScene:(UIViewController *)scene named:(NSString *)name {
   [self addChildViewController:scene];
@@ -65,7 +57,7 @@ NSString * const TEPreviousScene = @"TEPreviousScene";
 }
 
 -(void)displayScene:(NSString *)name  duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion {
-  UIViewController *newScene = name == TEPreviousScene ? previousScene : [scenes objectForKey:name];
+  UIViewController *newScene = name == kTEPreviousScene ? previousScene : [scenes objectForKey:name];
   if (currentScene == nil)
     [container addSubview:newScene.view];
   else {

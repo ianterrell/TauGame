@@ -6,6 +6,7 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "GameController.h"
 #import "Game.h"
 #import "Fighter.h"
 #import "FighterLife.h"
@@ -41,12 +42,12 @@ static WeaponPowerupBag *weaponPowerupBag;
   weaponPowerupBag = [[WeaponPowerupBag alloc] init];
 }
 
-- (id)init
+- (id)initWithFrame:(CGRect)frame
 {
-  self = [super init];
+  self = [super initWithFrame:frame];
   if (self) {
     // Set up coordinates
-    CGSize parentSize = [TESceneController sharedController].container.frame.size;
+    CGSize parentSize = frame.size;
     [self setLeft:0 right:parentSize.width/POINT_RATIO bottom:0 top:parentSize.height/POINT_RATIO];
     
     // Set up background
@@ -221,11 +222,11 @@ static WeaponPowerupBag *weaponPowerupBag;
   float fraction = 0.33;
   
   if (readyToExit)
-    [[TESceneController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
-      [[TESceneController sharedController] removeScene:@"game"];
+    [[GameController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
+      [[GameController sharedController] removeScene:@"game"];
     }];
   else if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
-    [[TESceneController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
+    [[GameController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
   else
     [fighter shootInScene:self];
 }

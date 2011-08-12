@@ -6,19 +6,24 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "GameController.h"
 #import "Pause.h"
 
 @implementation Pause
 
+-(id)initWithFrame:(CGRect)frame {
+  return [super init];
+}
+
 -(void)resume {
   [TEAccelerometer zero];
-  [[TESceneController sharedController] displayScene:TEPreviousScene duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
+  [[GameController sharedController] displayScene:kTEPreviousScene duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
 }
 
 - (void)loadView
 {
-  CGSize parentSize = [TESceneController sharedController].container.frame.size;
-  UIView *view = [[UIView alloc] initWithFrame:[TESceneController sharedController].container.frame];
+  CGSize parentSize = [GameController sharedController].container.frame.size;
+  UIView *view = [[UIView alloc] initWithFrame:[GameController sharedController].container.frame];
   self.view = view;
   
   UIButton *resumeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

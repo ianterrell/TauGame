@@ -48,7 +48,6 @@
 
 #import "TECollisionDetector.h"
 
-#import "TEAdjustedAttitude.h"
 #import "TEAccelerometer.h"
 
 #import "TESoundManager.h"

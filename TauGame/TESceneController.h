@@ -9,7 +9,7 @@
 #import <GLKit/GLKit.h>
 #import "TEScene.h"
 
-extern NSString *const TEPreviousScene;
+extern NSString *const kTEPreviousScene;
 
 @interface TESceneController : UIViewController {
   UIView *container;
@@ -25,12 +25,9 @@ extern NSString *const TEPreviousScene;
 @property(strong, readonly) NSString *currentSceneName;
 @property(strong, readonly) NSMutableDictionary *scenes;
 
-# pragma mark The Controller
-
-+(TESceneController *)sharedController;
-
 # pragma mark Scene Management
 
+-(void)addSceneOfClass:(Class)sceneClass named:(NSString *)name;
 -(void)addScene:(UIViewController *)scene named:(NSString *)name;
 -(void)removeScene:(NSString *)name;
 -(void)displayScene:(NSString *)name;

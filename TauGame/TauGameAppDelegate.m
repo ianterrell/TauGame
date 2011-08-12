@@ -7,6 +7,7 @@
 //
 
 #import "TauGameAppDelegate.h"
+#import "GameController.h"
 #import "TitleScreen.h"
 #import "Pause.h"
 
@@ -18,15 +19,17 @@
 {
   [[TauEngine motionManager] startAccelerometerUpdates];
   
-  TESceneController *sceneController = [TESceneController sharedController];
-  [sceneController addScene:[[TitleScreen alloc] init] named:@"menu"];
-  [sceneController addScene:[[Pause alloc] init] named:@"pause"];
-  [sceneController displayScene:@"menu"];
+  GameController *gameController = [GameController sharedController];
+  [gameController addSceneOfClass:[TitleScreen class] named:@"menu"];
+  [gameController addSceneOfClass:[Pause class] named:@"pause"];
+  [gameController displayScene:@"menu"];
+
+  [gameController playMusic];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-  self.window.rootViewController = sceneController;
+  self.window.rootViewController = gameController;
   [self.window makeKeyAndVisible];
-  
+
   return YES;
 }
 

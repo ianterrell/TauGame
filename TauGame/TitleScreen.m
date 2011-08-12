@@ -6,6 +6,7 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
+#import "GameController.h"
 #import "TitleScreen.h"
 #import "Background.h"
 #import "Starfield.h"
@@ -15,12 +16,12 @@
 
 @implementation TitleScreen
 
-- (id)init
+- (id)initWithFrame:(CGRect)frame
 {
-  self = [super init];
+  self = [super initWithFrame:frame];
   if (self) {
     // Set up coordinates
-    CGSize parentSize = [TESceneController sharedController].container.frame.size;
+    CGSize parentSize = frame.size;
     [self setLeft:0 right:parentSize.height/POINT_RATIO bottom:0 top:parentSize.width/POINT_RATIO]; // not sure why container isn't sized properly
     
     // Set up background
@@ -67,8 +68,8 @@
 
 -(void)play {
   [TEAccelerometer zero];
-  [[TESceneController sharedController] addScene:[[Game alloc] init] named:@"game"];
-  [[TESceneController sharedController] displayScene:@"game"];
+  [[GameController sharedController] addSceneOfClass:[Game class] named:@"game"];
+  [[GameController sharedController] displayScene:@"game"];
 }
 
 @end

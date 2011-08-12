@@ -29,21 +29,16 @@
     };
     [self addButton:resume];
     
-    GameButton *options = [[GameButton alloc] initWithText:@"OPTIONS"];
-    options.action = ^() {
-      [self options];
-    };
-    [self addButton:options];
-    
     GameButton *quit = [[GameButton alloc] initWithText:@"QUIT"];
     quit.action = ^() {
       [self quit];
     };
     [self addButton:quit];
     
+    float buffer = 2;
     int numButtons = [buttons count];
     for (int i = 0; i < numButtons; i++)
-      ((TEButton*)[buttons objectAtIndex:i]).position = GLKVector2Make(self.center.x, self.top-(i+1)*self.height/(numButtons+1));
+      ((TEButton*)[buttons objectAtIndex:i]).position = GLKVector2Make(self.center.x, self.top-buffer/2-(i+1)*(self.height-buffer)/(numButtons+1));
   }
   return self;
 }
@@ -51,10 +46,6 @@
 -(void)resume {
   [TEAccelerometer zero];
   [[GameController sharedController] displayScene:@"game" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
-}
-
--(void)options {
-  [[GameController sharedController] displayScene:@"options"];
 }
 
 -(void)quit {

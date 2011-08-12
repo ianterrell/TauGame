@@ -116,7 +116,6 @@
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
 		3CC22AA113EEE42400C64790 /* glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC22AA013EEE42400C64790 /* glow.png */; };
 		3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAA16613F5A19700993EE7 /* GameButton.m */; };
-		3CCAA16A13F5B88B00993EE7 /* Options.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAA16913F5B88A00993EE7 /* Options.m */; };
 		3CCEB8C213F1742400825662 /* BigSeeker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEB8C113F1742400825662 /* BigSeeker.m */; };
 		3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */; };
 		3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93913DDCF0000F6F035 /* hurt.wav */; };
@@ -310,8 +309,6 @@
 		3CC22AA013EEE42400C64790 /* glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glow.png; sourceTree = "<group>"; };
 		3CCAA16513F5A19700993EE7 /* GameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameButton.h; sourceTree = "<group>"; };
 		3CCAA16613F5A19700993EE7 /* GameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameButton.m; sourceTree = "<group>"; };
-		3CCAA16813F5B88900993EE7 /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
-		3CCAA16913F5B88A00993EE7 /* Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Options.m; sourceTree = "<group>"; };
 		3CCEB8C013F1742400825662 /* BigSeeker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigSeeker.h; sourceTree = "<group>"; };
 		3CCEB8C113F1742400825662 /* BigSeeker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigSeeker.m; sourceTree = "<group>"; };
 		3CCEB8C313F175CB00825662 /* GalaxyWild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalaxyWild.h; sourceTree = "<group>"; };
@@ -674,8 +671,6 @@
 				3CD1F94C13DF0E3200F6F035 /* Game.m */,
 				3C7BD27C13E9E13F005895AE /* Pause.h */,
 				3C7BD27D13E9E140005895AE /* Pause.m */,
-				3CCAA16813F5B88900993EE7 /* Options.h */,
-				3CCAA16913F5B88A00993EE7 /* Options.m */,
 				3CCAA16313F5A17100993EE7 /* Menus */,
 			);
 			name = Scenes;
@@ -1062,7 +1057,6 @@
 				3C297EDD13F5881600D1D85B /* TEMenu.m in Sources */,
 				3C5D479513F58C90004DE3CE /* TEButton.m in Sources */,
 				3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */,
-				3CCAA16A13F5B88B00993EE7 /* Options.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

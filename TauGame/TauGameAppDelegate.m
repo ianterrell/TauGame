@@ -10,7 +10,6 @@
 #import "GameController.h"
 #import "TitleScreen.h"
 #import "Pause.h"
-#import "Options.h"
 
 @implementation TauGameAppDelegate
 
@@ -23,7 +22,6 @@
   GameController *gameController = [GameController sharedController];
   [gameController addSceneOfClass:[TitleScreen class] named:@"menu"];
   [gameController addSceneOfClass:[Pause class] named:@"pause"];
-  [gameController addSceneOfClass:[Options class] named:@"options"];
   [gameController displayScene:@"menu"];
 
   [gameController playMusic];

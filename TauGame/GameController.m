@@ -7,6 +7,8 @@
 //
 
 #import "GameController.h"
+#import "Background.h"
+#import "Starfield.h"
 
 @implementation GameController
 
@@ -46,6 +48,11 @@
     NSLog(@"Error: Could not play music.");
 }
 
+-(void)setupBackgroundIn:(TEScene*)scene {
+  scene.clearColor = GLKVector4Make(0, 0, 0, 1);
+  [scene.characters addObject:[[Background alloc] initInScene:scene]];
+  [Starfield addDefaultStarfieldWithWidth:scene.width height:scene.height pixelRatio:POINT_RATIO toScene:scene];
+}
 
 
 @end

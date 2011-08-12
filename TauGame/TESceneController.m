@@ -8,7 +8,7 @@
 
 #import "TESceneController.h"
 
-#define DEFAULT_SCENE_TRANSITION_DURATION 3
+#define DEFAULT_SCENE_TRANSITION_DURATION 1
 #define DEFAULT_SCENE_TRANSITION_OPTIONS (UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve)
 
 NSString * const kTEPreviousScene = @"kTEPreviousScene";

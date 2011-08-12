@@ -8,8 +8,6 @@
 
 #import "GameController.h"
 #import "Pause.h"
-#import "Background.h"
-#import "Starfield.h"
 #import "GameButton.h"
 
 @implementation Pause
@@ -23,21 +21,13 @@
     [self setLeft:0 right:parentSize.height/POINT_RATIO bottom:0 top:parentSize.width/POINT_RATIO]; // not sure why container isn't sized properly
     
     // Set up background
-    clearColor = GLKVector4Make(0, 0, 0, 1);
-    [characters addObject:[[Background alloc] initInScene:self]];
-    [Starfield addDefaultStarfieldWithWidth:self.width height:self.height pixelRatio:POINT_RATIO toScene:self];
+    [[GameController sharedController] setupBackgroundIn:self];
     
     GameButton *resume = [[GameButton alloc] initWithText:@"CONTINUE"];
     resume.action = ^() {
       [self resume];
     };
     [self addButton:resume];
-    
-    GameButton *newGame = [[GameButton alloc] initWithText:@"NEW GAME"];
-    newGame.action = ^() {
-      [self newGame];
-    };
-    [self addButton:newGame];
     
     GameButton *options = [[GameButton alloc] initWithText:@"OPTIONS"];
     options.action = ^() {
@@ -60,20 +50,15 @@
 
 -(void)resume {
   [TEAccelerometer zero];
-  [[GameController sharedController] displayScene:kTEPreviousScene duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
-}
-
--(void)newGame {
-  NSLog(@"new game");
+  [[GameController sharedController] displayScene:@"game" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
 }
 
 -(void)options {
-  NSLog(@"options");
-  ;;;;
+  [[GameController sharedController] displayScene:@"options"];
 }
 
 -(void)quit {
-  [[GameController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
+  [[GameController sharedController] displayScene:@"menu" duration:1 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
     [[GameController sharedController] removeScene:@"game"];
   }];
 }

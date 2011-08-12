@@ -22,4 +22,8 @@
 
 -(void)playMusic;
 
+# pragma mark - Common Scene Stuff
+
+-(void)setupBackgroundIn:(TEScene*)scene;
+
 @end

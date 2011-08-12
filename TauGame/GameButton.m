@@ -86,6 +86,16 @@ static GLKBaseEffect *glowingEffect;
   animation.scale = 1.0/HIGHLIGHT_SCALE;
   animation.duration = HIGHLIGHT_DURATION;
   animation.permanent = YES;
+
+  [self startAnimation:animation];
+}
+
+-(void)fire {
+  TEScaleAnimation *animation = [[TEScaleAnimation alloc] initWithNode:self];
+  animation.duration = HIGHLIGHT_DURATION;
+  animation.onRemoval = ^(){
+    [super fire];
+  };
   [self startAnimation:animation];
 }
 

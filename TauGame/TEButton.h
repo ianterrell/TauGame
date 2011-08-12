@@ -9,12 +9,10 @@
 #import "TENode.h"
 
 @interface TEButton : TENode {
-  id object;
-  SEL action;
+  void (^action)(void);
 }
 
-@property(strong) id object;
-@property SEL action;
+@property(nonatomic,copy) void (^action)(void);
 
 +(TEButton *)buttonWithDrawable:(TEDrawable *)drawable;
 

@@ -10,7 +10,7 @@
 
 @implementation TEButton
 
-@synthesize object, action;
+@synthesize action;
 
 +(TEButton *)buttonWithDrawable:(TEDrawable *)drawable {
   TEButton *node = [[TEButton alloc] init];
@@ -25,7 +25,7 @@
 }
 
 -(void)fire {
-  [object performSelector:action];
+  action();
 }
 
 @end

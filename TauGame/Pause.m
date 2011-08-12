@@ -27,11 +27,33 @@
     [characters addObject:[[Background alloc] initInScene:self]];
     [Starfield addDefaultStarfieldWithWidth:self.width height:self.height pixelRatio:POINT_RATIO toScene:self];
     
-    GameButton *resume = [[GameButton alloc] initWithText:@"RESUME"];
-    resume.object = self;
-    resume.action = @selector(resume);
-    resume.position = self.center;
+    GameButton *resume = [[GameButton alloc] initWithText:@"CONTINUE"];
+    resume.action = ^() {
+      [self resume];
+    };
     [self addButton:resume];
+    
+    GameButton *newGame = [[GameButton alloc] initWithText:@"NEW GAME"];
+    newGame.action = ^() {
+      [self newGame];
+    };
+    [self addButton:newGame];
+    
+    GameButton *options = [[GameButton alloc] initWithText:@"OPTIONS"];
+    options.action = ^() {
+      [self options];
+    };
+    [self addButton:options];
+    
+    GameButton *quit = [[GameButton alloc] initWithText:@"QUIT"];
+    quit.action = ^() {
+      [self quit];
+    };
+    [self addButton:quit];
+    
+    int numButtons = [buttons count];
+    for (int i = 0; i < numButtons; i++)
+      ((TEButton*)[buttons objectAtIndex:i]).position = GLKVector2Make(self.center.x, self.top-(i+1)*self.height/(numButtons+1));
   }
   return self;
 }
@@ -39,6 +61,21 @@
 -(void)resume {
   [TEAccelerometer zero];
   [[GameController sharedController] displayScene:kTEPreviousScene duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom completion:NULL];
+}
+
+-(void)newGame {
+  NSLog(@"new game");
+}
+
+-(void)options {
+  NSLog(@"options");
+  ;;;;
+}
+
+-(void)quit {
+  [[GameController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
+    [[GameController sharedController] removeScene:@"game"];
+  }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

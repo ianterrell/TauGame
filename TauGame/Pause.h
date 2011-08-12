@@ -10,4 +10,9 @@
 
 @interface Pause : TEMenu
 
+-(void)resume;
+-(void)newGame;
+-(void)options;
+-(void)quit;
+
 @end

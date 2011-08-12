@@ -6,9 +6,8 @@
 //  Copyright 2011 Ian Terrell. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "TauEngine.h"
 
-@interface Pause : UIViewController
+@interface Pause : TEMenu
 
 @end

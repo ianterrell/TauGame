@@ -8,6 +8,13 @@
 
 #import "TEPolygon.h"
 
+typedef enum {
+  kTERectangleBottomRight = 0,
+  kTERectangleTopRight    = 1,
+  kTERectangleTopLeft     = 2,
+  kTERectangleBottomLeft  = 3,
+} TERectangleCornerVertex;
+
 @interface TERectangle : TEPolygon {
   GLfloat height, width;
 }

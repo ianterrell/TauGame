@@ -12,8 +12,6 @@
 #import "Starfield.h"
 #import "Game.h"
 
-#define POINT_RATIO 40
-
 @implementation TitleScreen
 
 - (id)initWithFrame:(CGRect)frame

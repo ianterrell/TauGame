@@ -65,7 +65,7 @@
   [self render];
 }
 
-# pragma mark Scene Setup
+# pragma mark - Scene Setup
 
 -(void)setLeft:(GLfloat)_left right:(GLfloat)_right bottom:(GLfloat)_bottom top:(GLfloat)_top {
   left = _left;
@@ -104,7 +104,15 @@
   return GLKVector2Make(right, top);
 }
 
-# pragma mark Scene Transitions
+# pragma mark - Helpers
+
+-(GLKVector2)positionForLocationInView:(CGPoint)location {
+  float xPercent = location.x / self.view.frame.size.width;
+  float yPercent = location.y / self.view.frame.size.height;
+  return GLKVector2Make(left+xPercent*self.width, top-(yPercent*self.height));
+}
+
+# pragma mark - Scene Transitions
 
 - (void)viewWillAppear:(BOOL)animated {
   self.paused = YES;
@@ -114,7 +122,7 @@
   self.paused = NO;
 }
 
-# pragma mark Orientation
+# pragma mark - Orientation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
   return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
@@ -128,7 +136,7 @@
   self.paused = NO;
 }
 
-# pragma mark Rendering
+# pragma mark - Rendering
 
 -(void)markChildrensFullMatricesDirty {
   [characters makeObjectsPerformSelector:@selector(traverseUsingBlock:) withObject:^(TENode *node) {

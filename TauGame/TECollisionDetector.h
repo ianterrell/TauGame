@@ -16,6 +16,11 @@
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2;
 +(BOOL)node:(TENode *)node1 collidesWithNode:(TENode *)node2 recurseLeft:(BOOL)recurseLeft recurseRight:(BOOL)recurseRight;
 
+# pragma mark - Collision detection between a point and a node
+
++(BOOL)point:(GLKVector2)point collidesWithNode:(TENode *)node;
++(BOOL)point:(GLKVector2)point collidesWithNode:(TENode *)node recurseNode:(BOOL)recurseNode;
+
 # pragma mark - Collision detection within an array
 
 +(NSMutableArray *)collisionsIn:(NSArray *)nodes;

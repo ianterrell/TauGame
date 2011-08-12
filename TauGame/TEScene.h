@@ -34,6 +34,10 @@
 @property(readonly) GLKVector2 bottomLeftVisible;
 @property(readonly) GLKVector2 topRightVisible;
 
+# pragma mark - Helpers
+
+-(GLKVector2)positionForLocationInView:(CGPoint)location;
+
 # pragma mark Rendering
 
 -(void)render;

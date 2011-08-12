@@ -27,8 +27,6 @@
 #import "LevelBag.h"
 #import "WeaponPowerupBag.h"
 
-#define POINT_RATIO 40
-
 static LevelBag *levelBag;
 static WeaponPowerupBag *weaponPowerupBag;
 

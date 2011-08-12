@@ -34,8 +34,9 @@
 
 #import "TESprite.h"
 
-#import "TEScene.h"
 #import "TESceneController.h"
+#import "TEScene.h"
+#import "TEMenu.h"
 
 #import "TENodeLoader.h"
 

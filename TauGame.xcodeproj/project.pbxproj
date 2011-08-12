@@ -34,6 +34,7 @@
 		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
 		3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C264B7913F42709009FC60C /* WeaponPowerupBag.m */; };
 		3C297ED913F57A6600D1D85B /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C297ED813F57A6600D1D85B /* GameController.m */; };
+		3C297EDD13F5881600D1D85B /* TEMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C297EDC13F5881600D1D85B /* TEMenu.m */; };
 		3C2DE86613D9CB9D000237D2 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* TitleScreen.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
@@ -58,6 +59,7 @@
 		3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */; };
 		3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4413F0699F00E35FC3 /* LevelBag.m */; };
 		3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4713F06D7100E35FC3 /* BiggunBag.m */; };
+		3C5D479513F58C90004DE3CE /* TEButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D479413F58C90004DE3CE /* TEButton.m */; };
 		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
 		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
@@ -113,6 +115,7 @@
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
 		3CC22AA113EEE42400C64790 /* glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC22AA013EEE42400C64790 /* glow.png */; };
+		3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAA16613F5A19700993EE7 /* GameButton.m */; };
 		3CCEB8C213F1742400825662 /* BigSeeker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEB8C113F1742400825662 /* BigSeeker.m */; };
 		3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */; };
 		3CD1F93B13DDCF0000F6F035 /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CD1F93913DDCF0000F6F035 /* hurt.wav */; };
@@ -184,6 +187,8 @@
 		3C264B7913F42709009FC60C /* WeaponPowerupBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponPowerupBag.m; sourceTree = "<group>"; };
 		3C297ED713F57A6600D1D85B /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		3C297ED813F57A6600D1D85B /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		3C297EDB13F5881600D1D85B /* TEMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEMenu.h; sourceTree = "<group>"; };
+		3C297EDC13F5881600D1D85B /* TEMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEMenu.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScreen.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScreen.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
@@ -219,6 +224,8 @@
 		3C59AB4413F0699F00E35FC3 /* LevelBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelBag.m; sourceTree = "<group>"; };
 		3C59AB4613F06D7100E35FC3 /* BiggunBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiggunBag.h; sourceTree = "<group>"; };
 		3C59AB4713F06D7100E35FC3 /* BiggunBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiggunBag.m; sourceTree = "<group>"; };
+		3C5D479313F58C90004DE3CE /* TEButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEButton.h; sourceTree = "<group>"; };
+		3C5D479413F58C90004DE3CE /* TEButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEButton.m; sourceTree = "<group>"; };
 		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
 		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
 		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
@@ -300,6 +307,8 @@
 		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
 		3CC22AA013EEE42400C64790 /* glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glow.png; sourceTree = "<group>"; };
+		3CCAA16513F5A19700993EE7 /* GameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameButton.h; sourceTree = "<group>"; };
+		3CCAA16613F5A19700993EE7 /* GameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameButton.m; sourceTree = "<group>"; };
 		3CCEB8C013F1742400825662 /* BigSeeker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigSeeker.h; sourceTree = "<group>"; };
 		3CCEB8C113F1742400825662 /* BigSeeker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigSeeker.m; sourceTree = "<group>"; };
 		3CCEB8C313F175CB00825662 /* GalaxyWild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalaxyWild.h; sourceTree = "<group>"; };
@@ -456,15 +465,17 @@
 			name = Animations;
 			sourceTree = "<group>";
 		};
-		3C350E8D13E07757002DD35E /* Characters */ = {
+		3C350E8D13E07757002DD35E /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
 				3CB0487113CBD5C70029875B /* TENode.h */,
 				3CB0487213CBD5C70029875B /* TENode.m */,
+				3C5D479313F58C90004DE3CE /* TEButton.h */,
+				3C5D479413F58C90004DE3CE /* TEButton.m */,
 				3C138B9013CCB15A002FC701 /* TENodeLoader.h */,
 				3C138B9113CCB15A002FC701 /* TENodeLoader.m */,
 			);
-			name = Characters;
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		3C350E8E13E07772002DD35E /* Collision Detection */ = {
@@ -485,6 +496,8 @@
 				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
 				3CB0488F13CBDB440029875B /* TEScene.h */,
 				3CB0489013CBDB440029875B /* TEScene.m */,
+				3C297EDB13F5881600D1D85B /* TEMenu.h */,
+				3C297EDC13F5881600D1D85B /* TEMenu.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -658,6 +671,7 @@
 				3CD1F94C13DF0E3200F6F035 /* Game.m */,
 				3C7BD27C13E9E13F005895AE /* Pause.h */,
 				3C7BD27D13E9E140005895AE /* Pause.m */,
+				3CCAA16313F5A17100993EE7 /* Menus */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -751,7 +765,7 @@
 			children = (
 				3CB0488613CBD6670029875B /* TauEngine.h */,
 				3CFC90D513D72F6F00100C21 /* TauEngine.m */,
-				3C350E8D13E07757002DD35E /* Characters */,
+				3C350E8D13E07757002DD35E /* Nodes */,
 				3C70969613E1EEB600BF4E83 /* Drawables */,
 				3C350E8C13E07746002DD35E /* Animations */,
 				3C350E8E13E07772002DD35E /* Collision Detection */,
@@ -761,6 +775,15 @@
 				3C350E9213E077C4002DD35E /* Utils */,
 			);
 			name = TauEngine;
+			sourceTree = "<group>";
+		};
+		3CCAA16313F5A17100993EE7 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				3CCAA16513F5A19700993EE7 /* GameButton.h */,
+				3CCAA16613F5A19700993EE7 /* GameButton.m */,
+			);
+			name = Menus;
 			sourceTree = "<group>";
 		};
 		3CCEB8BE13F1737000825662 /* Utils */ = {
@@ -1031,6 +1054,9 @@
 				3C986E1313F1BA0B004B99AF /* ExtraHealth.m in Sources */,
 				3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */,
 				3C297ED913F57A6600D1D85B /* GameController.m in Sources */,
+				3C297EDD13F5881600D1D85B /* TEMenu.m in Sources */,
+				3C5D479513F58C90004DE3CE /* TEButton.m in Sources */,
+				3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

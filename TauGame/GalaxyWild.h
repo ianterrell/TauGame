@@ -17,6 +17,8 @@
 //#define DEBUG_FIGHTER_POWERFUL
 //#define DEBUG_INVINCIBLE
 
+#define POINT_RATIO 40
+
 /**
  * Levels
  */

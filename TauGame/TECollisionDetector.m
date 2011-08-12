@@ -12,7 +12,9 @@
 typedef enum {
   TECollisionTypePolygonPolygon,
   TECollisionTypePolygonCircle,
-  TECollisionTypeCircleCircle
+  TECollisionTypeCircleCircle,
+  TECollisionTypePointPolygon,
+  TECollisionTypePointCircle,
 } TECollisionType;
 
 typedef struct {
@@ -105,22 +107,52 @@ typedef struct {
   return YES;
 }
 
++(TEPolygon *)transformedPolygonFrom:(TEPolygon *)drawable {
+  TEPolygon *poly = [[TEPolygon alloc] initWithVertices:drawable.numVertices];
+  for (int i = 0; i < poly.numVertices; i++)
+    poly.vertices[i] = [self transformedPoint:drawable.vertices[i] fromShape:drawable];
+  return poly;
+}
+
 +(BOOL)polygon:(TENode *)node1 collidesWithPolygon:(TENode *)node2 {
   // Check bounding circles first; way faster
   if (![self circle:node1 collidesWithCircle:node2])
     return NO;
   
   // Transform our polygons
-  TEPolygon *poly1 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node1.drawable).numVertices];
-  for (int i = 0; i < poly1.numVertices; i++)
-    poly1.vertices[i] = [self transformedPoint:((TEPolygon *)node1.drawable).vertices[i] fromShape:((TEPolygon *)node1.drawable)];
-
-  TEPolygon *poly2 = [[TEPolygon alloc] initWithVertices:((TEPolygon *)node2.drawable).numVertices];
-  for (int i = 0; i < poly2.numVertices; i++)
-    poly2.vertices[i] = [self transformedPoint:((TEPolygon *)node2.drawable).vertices[i] fromShape:((TEPolygon *)node2.drawable)];
+  TEPolygon *poly1 = [self transformedPolygonFrom:((TEPolygon *)node1.drawable)];
+  TEPolygon *poly2 = [self transformedPolygonFrom:((TEPolygon *)node2.drawable)];
   
   // Test by separating axis theorem
   return [self intersectOnEdgesFirst:poly1 second:poly2];
+}
+
+# pragma mark - Collision detection between point and polygon
+
++(BOOL)point:(GLKVector2)point collidesWithPolygon:(TENode *)node {
+  if (![node.shape isKindOfClass:[TERectangle class]]) {
+    NSLog(@"Point/GenericPolygon collisions not yet implemented. Only rectangles!");
+    return NO;
+  }
+  
+  TEPolygon *rectangle = [self transformedPolygonFrom:((TEPolygon *)node.drawable)];
+  return point.x >= rectangle.vertices[kTERectangleBottomLeft].x && point.x <= rectangle.vertices[kTERectangleTopRight].x && 
+         point.y >= rectangle.vertices[kTERectangleBottomLeft].y && point.y <= rectangle.vertices[kTERectangleTopRight].y;
+}
+
+# pragma mark - Collision detection between point and circle
+
++(BOOL)point:(GLKVector2)point collidesWithCircle:(TENode *)node {
+  GLKVector2 circleCenter  = [self transformedPoint:GLKVector2Make(0,0) fromShape:(TEShape *)node.drawable];
+  GLKVector2 pointOnCircle = [self transformedPoint:GLKVector2Make(0,((TEShape *)node.drawable).radius) fromShape:(TEShape *)node.drawable];
+  float radius = GLKVector2Length(GLKVector2Subtract(pointOnCircle, circleCenter));
+
+  GLKVector2 difference = GLKVector2Subtract(circleCenter, point);
+  float distance = GLKVector2Length(difference);
+  return distance <= radius;
+  
+  // TODO: test optimizations
+  //  return (difference.x * difference.x + difference.y * difference.y) <= (radius1 + radius2) * (radius1 + radius2);
 }
 
 # pragma mark - Collision detection between nodes
@@ -183,6 +215,42 @@ typedef struct {
     }
   }
 
+  return collision;
+}
+
+# pragma mark - Collision detection between a point and a node
+
++(BOOL)point:(GLKVector2)point collidesWithNode:(TENode *)node type:(TECollisionType)type {
+  if (type == TECollisionTypePointPolygon)
+    return [self point:point collidesWithPolygon:node];
+  else
+    return [self point:point collidesWithCircle:node];
+}
+
++(BOOL)point:(GLKVector2)point collidesWithNode:(TENode *)node {
+  if (!node.collide || node.drawable == nil) {
+    return NO;
+  } else {
+    if ([(TEShape *)node.drawable isPolygon])
+      return [self point:point collidesWithNode:node type:TECollisionTypePointPolygon];
+    else
+      return [self point:point collidesWithNode:node type:TECollisionTypePointCircle];
+  }
+}
+
++(BOOL)point:(GLKVector2)point collidesWithNode:(TENode *)node recurseNode:(BOOL)recurseNode {
+  __block BOOL collision = NO;
+  
+  if (recurseNode) {
+    [node traverseUsingBlock:^(TENode *rightNode) {
+      if (!collision && [self point:point collidesWithNode:node])
+        collision = YES;
+    }];
+  } else {
+    if (!collision && [self point:point collidesWithNode:node])
+      collision = YES;
+  }
+  
   return collision;
 }
 

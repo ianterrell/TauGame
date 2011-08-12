@@ -22,10 +22,10 @@
 }
 
 -(void)updateVertices {
-  self.vertices[0] = GLKVector2Make( width/2.0, -height/2.0);
-  self.vertices[1] = GLKVector2Make( width/2.0,  height/2.0);
-  self.vertices[2] = GLKVector2Make(-width/2.0,  height/2.0);
-  self.vertices[3] = GLKVector2Make(-width/2.0, -height/2.0);
+  self.vertices[kTERectangleBottomRight] = GLKVector2Make( width/2.0, -height/2.0);
+  self.vertices[kTERectangleTopRight]    = GLKVector2Make( width/2.0,  height/2.0);
+  self.vertices[kTERectangleTopLeft]     = GLKVector2Make(-width/2.0,  height/2.0);
+  self.vertices[kTERectangleBottomLeft]  = GLKVector2Make(-width/2.0, -height/2.0);
 }
 
 -(GLfloat)height {

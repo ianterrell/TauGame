@@ -10,6 +10,7 @@
 #import "GameController.h"
 #import "TitleScreen.h"
 #import "Pause.h"
+#import "Credits.h"
 
 @implementation TauGameAppDelegate
 
@@ -22,8 +23,14 @@
   GameController *gameController = [GameController sharedController];
   [gameController addSceneOfClass:[TitleScreen class] named:@"menu"];
   [gameController addSceneOfClass:[Pause class] named:@"pause"];
-  [gameController displayScene:@"menu"];
-
+  [gameController addSceneOfClass:[Credits class] named:@"credits"];
+  
+  #ifdef DEBUG_INITIAL_SCENE
+    [gameController displayScene:DEBUG_INITIAL_SCENE];
+  #else
+    [gameController displayScene:@"menu"];
+  #endif
+  
   [gameController playMusic];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];

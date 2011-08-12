@@ -37,6 +37,7 @@
 # pragma mark - Helpers
 
 -(GLKVector2)positionForLocationInView:(CGPoint)location;
+-(CGPoint)locationInViewForPosition:(GLKVector2)position;
 
 # pragma mark Rendering
 

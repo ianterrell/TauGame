@@ -7,6 +7,7 @@
 //
 
 #import "GameController.h"
+#import "GameButton.h"
 #import "TitleScreen.h"
 #import "Game.h"
 
@@ -31,34 +32,47 @@
 //    layer.position = GLKVector2Make(0,0);
 //    [characters insertObject:layer atIndex:0];
     
-    // Set up starting
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(play)];
-    [self.view addGestureRecognizer:tapRecognizer];
-    
     UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:64];
     TESprite *title = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"GALAXY WILD" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
     TENode *titleNode = [TENode nodeWithDrawable:title];
     titleNode.scaleX = 0.9;
     titleNode.scaleY = 0.5;
-    titleNode.position = GLKVector2Make(self.width/2,self.height/2);
+    titleNode.position = GLKVector2Make(self.width/2,self.height/2+0.5);
     [characters addObject:titleNode];
     
-    UIFont *font2 = [UIFont fontWithName:@"Helvetica" size:12];
-    TESprite *tapToPlay = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"tap to play" withFont:font2 color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
-    TENode *tapToPlayNode = [TENode nodeWithDrawable:tapToPlay];
-    tapToPlayNode.position = GLKVector2Make(self.width/2,self.height/2-0.75);
+    GameButton *credits = [[GameButton alloc] initWithText:@"CREDITS" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+    credits.action = ^() {
+      [self credits];
+    };
+    credits.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)credits.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)credits.shape).height/2);
+    [self addButton:credits];
+    
+    GameButton *gameCenter = [[GameButton alloc] initWithText:@"GAME CENTER" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+    gameCenter.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)gameCenter.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)gameCenter.shape).height/2);
+    [self addButton:gameCenter];
+    
+    
+    GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48]];
+    play.action = ^() {
+      [self play];
+    };
+    play.position = GLKVector2Make(self.center.x, self.center.y - 1 + 0.5);
+    [self addButton:play];
+    
     TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
     animation.scale = 1.2;
     animation.duration = 0.5;
     animation.reverse = YES;
     animation.repeat = kTEAnimationRepeatForever;
-    [tapToPlayNode.currentAnimations addObject:animation];
-    [characters addObject:tapToPlayNode];
+    [play.currentAnimations addObject:animation];
   }
   
   return self;
 }
 
+-(void)credits {
+  [[GameController sharedController] displayScene:@"credits"];
+}
 
 -(void)play {
   [TEAccelerometer zero];

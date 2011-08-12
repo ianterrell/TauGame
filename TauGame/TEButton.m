@@ -25,7 +25,8 @@
 }
 
 -(void)fire {
-  action();
+  if (action != nil)
+    action();
 }
 
 @end

@@ -112,6 +112,12 @@
   return GLKVector2Make(left+xPercent*self.width, top-(yPercent*self.height));
 }
 
+-(CGPoint)locationInViewForPosition:(GLKVector2)position {
+  float xPercent = (right - position.x) / (right - left);
+  float yPercent = (top - position.y) / (top - bottom);
+  return CGPointMake(xPercent*self.view.frame.size.width, self.view.frame.size.height-(yPercent*self.view.frame.size.height));
+}
+
 # pragma mark - Scene Transitions
 
 - (void)viewWillAppear:(BOOL)animated {

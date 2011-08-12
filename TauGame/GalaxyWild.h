@@ -16,6 +16,7 @@
 //#define DEBUG_KEEP_POWERUPS
 //#define DEBUG_FIGHTER_POWERFUL
 //#define DEBUG_INVINCIBLE
+//#define DEBUG_INITIAL_SCENE @"credits"
 
 #define POINT_RATIO 40
 

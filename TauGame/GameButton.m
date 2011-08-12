@@ -33,11 +33,13 @@ static GLKBaseEffect *glowingEffect;
   glowingEffect.texture2d0.glName = texture.glName;
 }
 
-
 -(id) initWithText:(NSString *)text {
+  return [self initWithText:text font:[UIFont fontWithName:@"Helvetica-Bold" size:64]];
+}
+
+-(id) initWithText:(NSString *)text font:(UIFont*)font {
   self = [super init];
   if (self) {
-    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:64];
     TESprite *sprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:text withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
     self.drawable = sprite;
     self.collide = YES;

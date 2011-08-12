@@ -8,6 +8,9 @@
 
 #import "TauEngine.h"
 
-@interface TitleScreen : TEScene
+@interface TitleScreen : TEMenu
+
+-(void)credits;
+-(void)play;
 
 @end

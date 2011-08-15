@@ -12,6 +12,8 @@
 
 @implementation GameController
 
+@synthesize localPlayer;
+
 -(id)init {
   self = [super init];
   if (self) {
@@ -42,11 +44,58 @@
   }
 }
 
+# pragma mark - Music
+
 -(void)playMusic {
   [audioPlayer prepareToPlay];
   if (![audioPlayer play])
     NSLog(@"Error: Could not play music.");
 }
+
+# pragma mark - GameKit
+
++(BOOL)canUseGameKit {
+  // TODO: Check if file flag exists for never try again
+  return YES;
+}
+
++(void)neverUseGameKit {
+  // TODO: Set file flag for never try again
+}
+
+-(void)setupGameKit {
+  if ([[self class] canUseGameKit]) {
+    localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+      if (localPlayer.isAuthenticated)
+      {
+        // Perform additional tasks for the authenticated player.
+        GKLeaderboard *query = [[GKLeaderboard alloc] initWithPlayerIDs:[NSArray arrayWithObject:localPlayer.playerID]];
+        [query loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+          if (!error) {
+            NSLog(@"High scores: %@", scores);
+          }
+        }];
+        
+        // TODO: Multitasking support? Do I multitask? -- store player id, check if changed, check if logged out, update values
+      } 
+      else if (error) {
+        NSLog(@"Error authenticating local player with GameKit");
+        if (error.code == GKErrorNotSupported) {
+          [[self class] neverUseGameKit];
+        } else if (error.code == GKErrorGameUnrecognized) {
+          NSLog(@"GKErrorGameUnrecognized -- check iTunes Connect and bundle identifier");
+        }
+      }
+    }];
+  }
+}
+
+-(BOOL)usingGameCenter {
+  return (localPlayer != nil) && localPlayer.isAuthenticated;
+}
+
+# pragma mark - Common Scene Stuff
 
 -(void)setupBackgroundIn:(TEScene*)scene {
   scene.clearColor = GLKVector4Make(0, 0, 0, 1);

@@ -8,9 +8,10 @@
 
 #import "TauEngine.h"
 
-@interface TitleScreen : TEMenu
+@interface TitleScreen : TEMenu <GKLeaderboardViewControllerDelegate>
 
 -(void)credits;
+-(void)leaderboard;
 -(void)play;
 
 @end

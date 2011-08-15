@@ -47,10 +47,14 @@
     credits.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)credits.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)credits.shape).height/2);
     [self addButton:credits];
     
-    GameButton *gameCenter = [[GameButton alloc] initWithText:@"GAME CENTER" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
-    gameCenter.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)gameCenter.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)gameCenter.shape).height/2);
-    [self addButton:gameCenter];
-    
+    if ([GameController canUseGameKit]) {
+      GameButton *leaderboard = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      leaderboard.action = ^() {
+        [self leaderboard];
+      };
+      leaderboard.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboard.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboard.shape).height/2);
+      [self addButton:leaderboard];
+    }
     
     GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48]];
     play.action = ^() {
@@ -72,6 +76,26 @@
 
 -(void)credits {
   [[GameController sharedController] displayScene:@"credits"];
+}
+
+- (void)leaderboard
+{
+  if ([[GameController sharedController] usingGameCenter]) {
+    GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
+    if (leaderboardController != nil)
+    {
+      leaderboardController.leaderboardDelegate = self;
+      [self presentModalViewController: leaderboardController animated: YES];
+    }
+  } else {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ruh roh!" message:@"The leaderboard functionality requires you be logged into Game Center." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+  }
+}
+
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)play {

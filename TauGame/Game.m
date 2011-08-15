@@ -266,6 +266,10 @@ static WeaponPowerupBag *weaponPowerupBag;
 
 # pragma mark - Score
 
+-(int)score {
+  return ((TENumberDisplay *)scoreboard.drawable).number;
+}
+
 -(void)incrementScore:(int)score {
   ((TENumberDisplay *)scoreboard.drawable).number += score * currentLevelNumber * [self multiplierValue];
 }
@@ -423,6 +427,32 @@ static WeaponPowerupBag *weaponPowerupBag;
 # pragma mark - Game Over
 
 -(void)exit {
+  if ([[GameController sharedController] usingGameCenter]) {
+    GKScore *highScoreReporter = [[GKScore alloc] initWithCategory:@"highscore"];
+    highScoreReporter.value = [self score];
+    
+    [highScoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+      NSLog(@"report score callback");
+      if (error != nil)
+      {
+        NSLog(@"Could not report high score!");
+        // TODO: Store score report and resend later
+      }
+    }];
+    
+    GKScore *highLevelReporter = [[GKScore alloc] initWithCategory:@"highlevel"];
+    highLevelReporter.value = currentLevelNumber;
+    
+    [highLevelReporter reportScoreWithCompletionHandler:^(NSError *error) {
+      NSLog(@"report level callback");
+      if (error != nil)
+      {
+        NSLog(@"Could not report high level!");
+        // TODO: Store score report and resend later
+      }
+    }];
+  }
+  
   gameIsOver = YES;
   
   float exitAnimationDuration = 3;

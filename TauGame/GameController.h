@@ -12,7 +12,10 @@
 
 @interface GameController : TESceneController {
   AVAudioPlayer *audioPlayer;
+  GKLocalPlayer *localPlayer;
 }
+
+@property(strong) GKLocalPlayer *localPlayer;
 
 # pragma mark - The Controller
 
@@ -21,6 +24,14 @@
 # pragma mark - Music
 
 -(void)playMusic;
+
+# pragma mark - GameKit
+
++(BOOL)canUseGameKit;
++(void)neverUseGameKit;
+
+-(void)setupGameKit;
+-(BOOL)usingGameCenter;
 
 # pragma mark - Common Scene Stuff
 

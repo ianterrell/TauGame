@@ -32,6 +32,7 @@
   #endif
   
   [gameController playMusic];
+  [gameController setupGameKit];
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
   self.window.rootViewController = gameController;

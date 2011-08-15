@@ -47,14 +47,12 @@
     credits.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)credits.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)credits.shape).height/2);
     [self addButton:credits];
     
-    if ([GameController canUseGameKit]) {
-      GameButton *leaderboard = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
-      leaderboard.action = ^() {
-        [self leaderboard];
-      };
-      leaderboard.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboard.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboard.shape).height/2);
-      [self addButton:leaderboard];
-    }
+    leaderboardButton = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+    TitleScreen *this = self;
+    leaderboardButton.action = ^() {
+      [this leaderboard];
+    };
+    leaderboardButton.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboardButton.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboardButton.shape).height/2);
     
     GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48]];
     play.action = ^() {
@@ -76,6 +74,14 @@
 
 -(void)credits {
   [[GameController sharedController] displayScene:@"credits"];
+}
+
+-(void)showLeaderboardButton {
+  [self addButton:leaderboardButton];
+}
+
+-(void)hideLeaderboardButton {
+  [self removeButton:leaderboardButton];
 }
 
 - (void)leaderboard

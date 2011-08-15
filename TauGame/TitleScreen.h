@@ -7,9 +7,14 @@
 //
 
 #import "TauEngine.h"
+#import "GameButton.h"
 
-@interface TitleScreen : TEMenu <GKLeaderboardViewControllerDelegate>
+@interface TitleScreen : TEMenu <GKLeaderboardViewControllerDelegate> {
+  GameButton *leaderboardButton;
+}
 
+-(void)showLeaderboardButton;
+-(void)hideLeaderboardButton;
 -(void)credits;
 -(void)leaderboard;
 -(void)play;

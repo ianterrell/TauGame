@@ -35,6 +35,10 @@ NSString * const kTEPreviousScene = @"kTEPreviousScene";
 
 # pragma mark Scene Management
 
+-(TEScene *)sceneNamed:(NSString *)name {
+  return [scenes objectForKey:name];
+}
+
 -(void)addSceneOfClass:(Class)sceneClass named:(NSString *)name {
   [self addScene:[[sceneClass alloc] initWithFrame:self.container.frame] named:name];
 }

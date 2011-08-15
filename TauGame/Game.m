@@ -112,6 +112,9 @@ static WeaponPowerupBag *weaponPowerupBag;
 # pragma mark - Levels
 
 -(void)loadNextLevel {
+  if ([fighter dead])
+    return;
+  
   if (currentLevelNumber > 0 && currentLevelNumber % WEAPON_POWERUP_PER_N_LEVELS == 0)
     [self dropWeaponPowerupAt:GLKVector2Make(self.center.x, self.top)];
   
@@ -134,6 +137,10 @@ static WeaponPowerupBag *weaponPowerupBag;
   scaleAnimation.duration = 1;
   scaleAnimation.onRemoval = ^(){
     levelName.remove = YES;
+    
+    if ([fighter dead])
+      return;
+    
     currentLevel = [[nextLevelClass alloc] initWithGame:self];
     [self resetMultiplierDecayTimer];
   };
@@ -428,7 +435,7 @@ static WeaponPowerupBag *weaponPowerupBag;
 
 -(void)exit {
   if ([[GameController sharedController] usingGameCenter]) {
-    GKScore *highScoreReporter = [[GKScore alloc] initWithCategory:@"highscore"];
+    GKScore *highScoreReporter = [[GKScore alloc] initWithCategory:HIGH_SCORE_CATEGORY];
     highScoreReporter.value = [self score];
     
     [highScoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
@@ -440,7 +447,7 @@ static WeaponPowerupBag *weaponPowerupBag;
       }
     }];
     
-    GKScore *highLevelReporter = [[GKScore alloc] initWithCategory:@"highlevel"];
+    GKScore *highLevelReporter = [[GKScore alloc] initWithCategory:HIGH_LEVEL_CATEGORY];
     highLevelReporter.value = currentLevelNumber;
     
     [highLevelReporter reportScoreWithCompletionHandler:^(NSError *error) {
@@ -486,6 +493,45 @@ static WeaponPowerupBag *weaponPowerupBag;
   goAnimation.duration = exitAnimationDuration;
   goAnimation.permanent = YES;
   goAnimation.onComplete = ^() {
+    if ([self score] > [GameController sharedController].highScore) {
+      [GameController sharedController].highScore = [self score];
+      
+      UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:24];
+      TESprite *newHighScore = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"New High Score!" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+      TENode *newHighScoreNode = [TENode nodeWithDrawable:newHighScore];
+      newHighScoreNode.scaleX = 0.9;
+      newHighScoreNode.scaleY = 0.5;
+      newHighScoreNode.position = GLKVector2Make(self.width/2,self.center.y-0.5*gameOver.height/2-1.5*0.5*newHighScore.height/2);
+      [characters addObject:newHighScoreNode];
+      
+      TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
+      animation.scale = 1.2;
+      animation.duration = 0.5;
+      animation.reverse = YES;
+      animation.repeat = kTEAnimationRepeatForever;
+      [newHighScoreNode.currentAnimations addObject:animation];
+    }
+    
+    if (currentLevelNumber > [GameController sharedController].highLevel) {
+      [GameController sharedController].highLevel = currentLevelNumber;
+      
+      UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:24];
+      TESprite *newHighLevel = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"New High Level!" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+      TENode *newHighLevelNode = [TENode nodeWithDrawable:newHighLevel];
+      newHighLevelNode.scaleX = 0.9;
+      newHighLevelNode.scaleY = 0.5;
+      newHighLevelNode.position = GLKVector2Make(self.width/2,self.center.y+0.5*gameOver.height/2+1.5*0.5*newHighLevel.height/2);
+      [characters addObject:newHighLevelNode];
+      
+      TEScaleAnimation *animation = [[TEScaleAnimation alloc] init];
+      animation.scale = 1.2;
+      animation.duration = 0.5;
+      animation.reverse = YES;
+      animation.repeat = kTEAnimationRepeatForever;
+      [newHighLevelNode.currentAnimations addObject:animation];
+    }
+
+    
     readyToExit = YES;
   };
   [gameOverNode startAnimation:goAnimation];

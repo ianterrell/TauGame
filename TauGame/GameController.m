@@ -7,12 +7,13 @@
 //
 
 #import "GameController.h"
+#import "TitleScreen.h"
 #import "Background.h"
 #import "Starfield.h"
 
 @implementation GameController
 
-@synthesize localPlayer;
+@synthesize localPlayer, highScore, highLevel;
 
 -(id)init {
   self = [super init];
@@ -28,6 +29,8 @@
     
     audioPlayer.numberOfLoops = -1;
     audioPlayer.volume = 1;
+    
+    highScore = highLevel = 0;
   }
   return self;
 }
@@ -63,23 +66,36 @@
   // TODO: Set file flag for never try again
 }
 
+-(void)fetchScoreForCategory:(NSString *)category callback:(void (^)(int value))block {
+  GKLeaderboard *query = [[GKLeaderboard alloc] initWithPlayerIDs:[NSArray arrayWithObject:localPlayer.playerID]];
+  query.category = category;
+  [query loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+    if (!error && [scores count] > 0)
+      block(((GKScore *)[scores objectAtIndex:0]).value);
+  }];
+  
+}
+
 -(void)setupGameKit {
   if ([[self class] canUseGameKit]) {
     localPlayer = [GKLocalPlayer localPlayer];
     [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
       if (localPlayer.isAuthenticated)
       {
-        // Perform additional tasks for the authenticated player.
-        GKLeaderboard *query = [[GKLeaderboard alloc] initWithPlayerIDs:[NSArray arrayWithObject:localPlayer.playerID]];
-        [query loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
-          if (!error) {
-            NSLog(@"High scores: %@", scores);
-          }
+        [self fetchScoreForCategory:HIGH_SCORE_CATEGORY callback:^(int value) {
+          highScore = 0;//value;
+        }];
+        [self fetchScoreForCategory:HIGH_LEVEL_CATEGORY callback:^(int value) {
+          highLevel = 0;//value;
         }];
         
+        [(TitleScreen*)[self sceneNamed:@"menu"] showLeaderboardButton];
         // TODO: Multitasking support? Do I multitask? -- store player id, check if changed, check if logged out, update values
-      } 
-      else if (error) {
+      } else {
+        [(TitleScreen*)[self sceneNamed:@"menu"] hideLeaderboardButton];
+      }
+      
+      if (error) {
         NSLog(@"Error authenticating local player with GameKit");
         if (error.code == GKErrorNotSupported) {
           [[self class] neverUseGameKit];

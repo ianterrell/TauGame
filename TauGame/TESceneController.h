@@ -27,6 +27,7 @@ extern NSString *const kTEPreviousScene;
 
 # pragma mark Scene Management
 
+-(TEScene *)sceneNamed:(NSString *)name;
 -(void)addSceneOfClass:(Class)sceneClass named:(NSString *)name;
 -(void)addScene:(UIViewController *)scene named:(NSString *)name;
 -(void)removeScene:(NSString *)name;

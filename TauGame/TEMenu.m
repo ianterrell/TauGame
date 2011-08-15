@@ -25,6 +25,11 @@
   [buttons addObject:button];
 }
 
+-(void)removeButton:(TEButton *)button {
+  [characters removeObject:button];
+  [buttons removeObject:button];
+}
+
 -(void)tap {
   NSLog(@"tapped!");
 }

@@ -18,7 +18,13 @@
 //#define DEBUG_INVINCIBLE
 //#define DEBUG_INITIAL_SCENE @"credits"
 
+/**
+ * Major settings
+ */
+
 #define POINT_RATIO 40
+#define HIGH_SCORE_CATEGORY @"highscore"
+#define HIGH_LEVEL_CATEGORY @"highlevel"
 
 /**
  * Levels

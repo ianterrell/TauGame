@@ -13,9 +13,12 @@
 @interface GameController : TESceneController {
   AVAudioPlayer *audioPlayer;
   GKLocalPlayer *localPlayer;
+  
+  int highScore, highLevel;
 }
 
 @property(strong) GKLocalPlayer *localPlayer;
+@property int highScore, highLevel;
 
 # pragma mark - The Controller
 

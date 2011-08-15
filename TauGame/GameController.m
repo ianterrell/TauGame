@@ -31,6 +31,8 @@
     audioPlayer.volume = 1;
     
     highScore = highLevel = 0;
+    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
   }
   return self;
 }
@@ -109,6 +111,64 @@
 
 -(BOOL)usingGameCenter {
   return (localPlayer != nil) && localPlayer.isAuthenticated;
+}
+
+# pragma mark - StoreKit
+
++(void)markAsUpgraded:(BOOL)upgraded {
+  [[NSUserDefaults standardUserDefaults] setBool:upgraded forKey:UPGRADED_PREFERENCES_KEY];
+  if (upgraded) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks!" message:@"Thanks for upgrading! You'll now start each game with 3 lives and can gain more through powerups." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show]; 
+  }
+}
+
++(BOOL)upgraded {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:UPGRADED_PREFERENCES_KEY] == nil)
+    [self markAsUpgraded:NO];
+  
+  return [defaults boolForKey:UPGRADED_PREFERENCES_KEY];
+}
+
+-(void)upgrade {
+  SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:UPGRADE_PRODUCT_ID]];
+  request.delegate = self;
+  [request start];
+}
+
+-(void)restoreUpgrade {
+  [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+  if ([response.products count] == 1) {
+    SKPayment *payment = [SKPayment paymentWithProduct:[response.products objectAtIndex:0]];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+  }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+  for (SKPaymentTransaction *transaction in transactions) {
+    switch (transaction.transactionState)
+    {
+      case SKPaymentTransactionStatePurchased:
+        [[self class] markAsUpgraded:YES];
+        break;
+      case SKPaymentTransactionStateFailed:
+        if (transaction.error.code != SKErrorPaymentCancelled)
+        {
+          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ruh Roh!" message:@"There was an error upgrading! Please try again. You will NOT be charged twice." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+          [alert show]; 
+        }
+        break;
+      case SKPaymentTransactionStateRestored:
+        [[self class] markAsUpgraded:YES];
+      default:
+        break;
+    }
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+  }
 }
 
 # pragma mark - Common Scene Stuff

@@ -25,6 +25,8 @@
 #define POINT_RATIO 40
 #define HIGH_SCORE_CATEGORY @"highscore"
 #define HIGH_LEVEL_CATEGORY @"highlevel"
+#define UPGRADED_PREFERENCES_KEY @"did-upgrade-app"
+#define UPGRADE_PRODUCT_ID @"upgrade"
 
 /**
  * Levels

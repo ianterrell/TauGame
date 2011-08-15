@@ -10,7 +10,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import <AVFoundation/AVAudioPlayer.h>
 
-@interface GameController : TESceneController {
+@interface GameController : TESceneController <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
   AVAudioPlayer *audioPlayer;
   GKLocalPlayer *localPlayer;
   
@@ -35,6 +35,12 @@
 
 -(void)setupGameKit;
 -(BOOL)usingGameCenter;
+
+# pragma mark - StoreKit
+
++(BOOL)upgraded;
+-(void)upgrade;
+-(void)restoreUpgrade;
 
 # pragma mark - Common Scene Stuff
 

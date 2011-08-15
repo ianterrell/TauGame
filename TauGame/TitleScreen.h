@@ -18,5 +18,7 @@
 -(void)credits;
 -(void)leaderboard;
 -(void)play;
+-(void)upgrade;
+-(void)restoreUpgrade;
 
 @end

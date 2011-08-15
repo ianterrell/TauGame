@@ -54,6 +54,28 @@
     };
     leaderboardButton.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboardButton.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboardButton.shape).height/2);
     
+    if ([SKPaymentQueue canMakePayments])
+    {
+      GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      upgrade.action = ^() {
+        [self upgrade];
+      };
+      upgrade.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)upgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
+      [self addButton:upgrade];
+      
+      GameButton *restoreUpgrade = [[GameButton alloc] initWithText:@"RESTORE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      restoreUpgrade.action = ^() {
+        [self restoreUpgrade];
+      };
+      restoreUpgrade.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)restoreUpgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)restoreUpgrade.shape).height/2);
+      [self addButton:restoreUpgrade];
+    }
+    else
+    {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ruh roh!" message:@"Upgrading to have multiple lives requires that in app purchases be enabled!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [alert show]; 
+    }
+    
     GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48]];
     play.action = ^() {
       [self play];
@@ -108,6 +130,14 @@
   [TEAccelerometer zero];
   [[GameController sharedController] addSceneOfClass:[Game class] named:@"game"];
   [[GameController sharedController] displayScene:@"game"];
+}
+
+-(void)upgrade {
+  [[GameController sharedController] upgrade];
+}
+
+-(void)restoreUpgrade {
+  [[GameController sharedController] restoreUpgrade];
 }
 
 @end

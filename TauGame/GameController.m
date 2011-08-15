@@ -85,10 +85,10 @@
       if (localPlayer.isAuthenticated)
       {
         [self fetchScoreForCategory:HIGH_SCORE_CATEGORY callback:^(int value) {
-          highScore = 0;//value;
+          highScore = value;
         }];
         [self fetchScoreForCategory:HIGH_LEVEL_CATEGORY callback:^(int value) {
-          highLevel = 0;//value;
+          highLevel = value;
         }];
         
         [(TitleScreen*)[self sceneNamed:@"menu"] showLeaderboardButton];

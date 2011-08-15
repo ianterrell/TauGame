@@ -19,6 +19,7 @@
 #import "ExtraHealth.h"
 #import "ScoreBonus.h"
 #import "GameLevel.h"
+#import "GameButton.h"
 
 #import "Enemy.h"
 
@@ -61,16 +62,22 @@ static WeaponPowerupBag *weaponPowerupBag;
     [characters addObject:fighter];
     
     // Set up lives display
-    lives = [[NSMutableArray alloc] initWithCapacity:fighter.lives];
-    for (int i = 0; i < fighter.lives-1; i++)
-      [self addLifeDisplayAtIndex:i];
+    if ([GameController upgraded]) {
+      lives = [[NSMutableArray alloc] initWithCapacity:fighter.lives];
+      for (int i = 0; i < fighter.lives-1; i++)
+        [self addLifeDisplayAtIndex:i];
+    } else {
+      GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      upgrade.position = GLKVector2Make(self.right-0.75*((TESprite*)upgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
+      [characters addObject:upgrade];
+    }
     
     // Set up shot timers display
     for (int i = 0; i < fighter.numShots; i++) {
       [self addShotTimerAtIndex:i];
     }
     
-    // Set up shooting
+    // Set up shooting, etc
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnce:)];
     [self.view addGestureRecognizer:tapRecognizer];
     
@@ -220,13 +227,14 @@ static WeaponPowerupBag *weaponPowerupBag;
 -(void)tappedOnce:(UIGestureRecognizer *)gestureRecognizer {
   CGPoint locationInView = [gestureRecognizer locationInView:self.view];
   CGSize frameSize = self.view.frame.size;
-  float fraction = 0.33;
+  float xfraction = 0.33;
+  float yfraction = 0.2;
   
   if (readyToExit)
     [[GameController sharedController] displayScene:@"menu" duration:3 options:(UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve) completion:^(BOOL finished) {
       [[GameController sharedController] removeScene:@"game"];
     }];
-  else if (locationInView.y < fraction*frameSize.height && locationInView.x > (1-fraction)*frameSize.width)
+  else if (locationInView.y < yfraction*frameSize.height && locationInView.x > (1-xfraction)*frameSize.width)
     [[GameController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
   else
     [fighter shootInScene:self];
@@ -384,7 +392,7 @@ static WeaponPowerupBag *weaponPowerupBag;
     clazz = [ExtraShot class];
   else if (randomFraction >= (threshold -= POWERUP_BULLET_CHANCE))
     clazz = [ExtraBullet class];
-  else if (randomFraction >= (threshold -= POWERUP_LIFE_CHANCE))
+  else if ([GameController upgraded] && randomFraction >= (threshold -= POWERUP_LIFE_CHANCE))
     clazz = [ExtraLife class];
   else if (randomFraction >= (threshold -= POWERUP_HEALTH_CHANCE))
     clazz = [ExtraHealth class];
@@ -439,7 +447,6 @@ static WeaponPowerupBag *weaponPowerupBag;
     highScoreReporter.value = [self score];
     
     [highScoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
-      NSLog(@"report score callback");
       if (error != nil)
       {
         NSLog(@"Could not report high score!");
@@ -451,7 +458,6 @@ static WeaponPowerupBag *weaponPowerupBag;
     highLevelReporter.value = currentLevelNumber;
     
     [highLevelReporter reportScoreWithCompletionHandler:^(NSError *error) {
-      NSLog(@"report level callback");
       if (error != nil)
       {
         NSLog(@"Could not report high level!");

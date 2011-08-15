@@ -67,7 +67,8 @@
  * Fighter Config
  */
 
-#define FIGHTER_INITIAL_LIVES  3
+#define FIGHTER_INITIAL_LIVES  1
+#define FIGHTER_UPGRADE_LIVES  2
 #define FIGHTER_INITIAL_HEALTH 3
 #define FIGHTER_MAX_HEALTH     3
 

@@ -11,6 +11,7 @@
 @interface Pause : TEMenu
 
 -(void)resume;
+-(void)upgrade;
 -(void)quit;
 
 @end

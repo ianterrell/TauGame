@@ -36,7 +36,10 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 }
 
 +(int)initialLives {
-  return FIGHTER_INITIAL_LIVES;
+  int n = FIGHTER_INITIAL_LIVES;
+  if ([GameController upgraded])
+    n += FIGHTER_UPGRADE_LIVES;
+  return n;
 }
 
 +(int)initialHealth {

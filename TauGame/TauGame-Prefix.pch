@@ -14,5 +14,6 @@
 #endif
 
 #import "GalaxyWild.h"
+#import "Sfx.h"
 #import <GameKit/GameKit.h>
 #import <StoreKit/StoreKit.h>

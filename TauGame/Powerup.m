@@ -14,10 +14,6 @@
 
 @implementation Powerup
 
-+(void)initialize {
-  [[TESoundManager sharedManager] load:@"powerup"];
-}
-
 +(void)addPowerupToScene:(Game *)scene at:(GLKVector2)location {
   Powerup *powerup = [[self alloc] init];
   powerup.velocity = GLKVector2Make(0,POWERUP_VELOCITY);

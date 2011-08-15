@@ -28,9 +28,6 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 @synthesize lives, numShots, shotTimers;
 
 +(void)initialize {
-  [[TESoundManager sharedManager] load:@"fighter-hurt"];
-  [[TESoundManager sharedManager] load:@"shoot"];
-  
   healthyColor = GLKVector4Make(0.188,0.761,0.0,1.0);
   unhealthyColor = GLKVector4Make(0.9,0.9,0.9,1.0);
 }
@@ -114,7 +111,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   if (!fired)
     return;
   
-  [[TESoundManager sharedManager] play:@"shoot"];
+  [Sfx shoot];
   int middle = numBullets / 2;
   for (int i = 0; i < numBullets; i++) {
     TENode *bullet = [[GlowingBullet alloc] initWithColor:GLKVector4Make(1,1,1,1)];
@@ -269,7 +266,7 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 }
 
 -(void)registerHitInScene:(Game *)scene {
-  [[TESoundManager sharedManager] play:@"fighter-hurt"];
+  [Sfx hurt];
 
   [self decrementHealth:1];
   
@@ -292,14 +289,14 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
 }
 
 -(void)getPowerup:(Powerup *)powerup inScene:(Game*)scene {
-  NSString *sound = @"powerup";
+  BOOL scoreBonusSound = NO;
   int score = 0;
   
   // Score Bonus
   if ([powerup isKindOfClass:[ScoreBonus class]]) 
   {
     score = POWERUP_SCORE_SCORE;
-    sound = @"score-bonus";
+    scoreBonusSound = YES;
   } 
   
   // Extra Bullet
@@ -341,7 +338,11 @@ NSString * const FighterExtraShotNotification = @"FighterExtraShotNotification";
   } 
   
   [scene incrementScoreWithPulse:score];
-  [[TESoundManager sharedManager] play:sound];
+  
+  if (scoreBonusSound)
+    [Sfx scoreBonus];
+  else
+    [Sfx powerup];
 }
 
 -(void)addExtraShot {

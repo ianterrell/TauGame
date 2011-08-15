@@ -75,11 +75,14 @@
     shake.duration = 0.1;
     shake.reverse = YES;
     shake.repeat = 2;
-    shake.next = dropAnimation;
+    shake.onRemoval = ^() {
+      [Sfx baddieDrop];
+      [self startAnimation:dropAnimation];
+    };
     
     [self startAnimation:shake];
   } else {
-    [[TESoundManager sharedManager] play:@"shoot"];
+    [Sfx baddieShoot];
     [self shootInDirection:GLKVector2Make(0, -1) inScene:scene];
     [self shootInDirection:GLKVector2Make(0.5, -1) inScene:scene];
     [self shootInDirection:GLKVector2Make(-0.5, -1) inScene:scene];    

@@ -10,10 +10,6 @@
 
 @implementation ScoreBonus
 
-+(void)initialize {
-  [[TESoundManager sharedManager] load:@"score-bonus"];
-}
-
 - (id)init
 {
   self = [super init];

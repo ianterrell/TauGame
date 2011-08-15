@@ -30,7 +30,7 @@
   if (![self ableToShootInScene:scene])
     return;
   
-  [[TESoundManager sharedManager] play:@"shoot"];
+  [Sfx baddieShoot];
   [self shootInDirection:GLKVector2Make(0, -1) inScene:scene xOffset:0];
   [self shootInDirection:GLKVector2Make(0.25, -1) inScene:scene xOffset:0.25];
   [self shootInDirection:GLKVector2Make(-0.25, -1) inScene:scene xOffset:-0.25];    

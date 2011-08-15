@@ -100,7 +100,7 @@
   if (![self ableToShootInScene:scene])
     return;
   
-  [[TESoundManager sharedManager] play:@"shoot"];
+  [Sfx baddieShoot];
   
   if ([[self class] shootTowardFighter])
     [self shootInDirection:[self vectorToNode:scene.fighter] inScene:scene];

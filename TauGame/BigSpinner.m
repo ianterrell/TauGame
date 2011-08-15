@@ -64,7 +64,7 @@
   if ([leftSlave dead] && [rightSlave dead])
     [super registerHit];
   else
-    [[TESoundManager sharedManager] play:@"hurt2"]; // TODO: invulnerable sound
+    [Sfx baddieInvulnerable];
 }
 
 @end

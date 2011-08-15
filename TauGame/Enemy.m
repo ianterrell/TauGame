@@ -14,10 +14,6 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
 
 @synthesize hitPoints;
 
-+(void)initialize {
-  [[TESoundManager sharedManager] load:@"explosion"];
-}
-
 - (id)init
 {
   self = [super init];
@@ -38,7 +34,7 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
 }
 
 -(void)registerHit {
-  [[TESoundManager sharedManager] play:@"hurt2"];
+  [Sfx baddieHurt];
   [self flashWhite];
   
   hitPoints--;
@@ -48,7 +44,7 @@ NSString *const EnemyDestroyedNotification = @"EnemyDestroyedNotification";
 
 -(void)die {
   [self postNotification:EnemyDestroyedNotification];
-  [[TESoundManager sharedManager] play:@"explosion"];
+  [Sfx baddieDie];
   [self explode];
 }
 

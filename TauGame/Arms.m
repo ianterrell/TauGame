@@ -65,13 +65,16 @@
 }
 
 -(void)emitBulletsInScene:(Game *)scene {
+  [self resetShotDelay];
+  shooting--;
+  
+  if (![self ableToShootInScene:scene])
+    return;
+  
   [[TESoundManager sharedManager] play:@"shoot"];
   
   for (TENode *node in appendages)
     [self shootInDirection:GLKVector2Make(0,-1) inScene:scene xOffset:scaleX*node.position.x];
-  
-  [self resetShotDelay];
-  shooting--;
 }
 
 -(void)shootInScene:(Game *)scene {

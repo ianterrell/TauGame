@@ -25,10 +25,9 @@
 
 +(GLKBaseEffect *)effectWithTexture:(GLKTextureInfo *)texture {
   GLKBaseEffect *effect = [[GLKBaseEffect alloc] init];
-  effect.texturingEnabled = YES;
   effect.texture2d0.envMode = GLKTextureEnvModeReplace;
   effect.texture2d0.target = GLKTextureTarget2D;
-  effect.texture2d0.glName = texture.glName;
+  effect.texture2d0.name = texture.name;
   return effect;
 }
 

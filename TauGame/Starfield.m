@@ -159,10 +159,9 @@ static GLKVector4 colors[NUM_STAR_COLORS];
     
     self.renderStyle = kTERenderStyleTexture | kTERenderStyleVertexColors;
     effect = [[GLKBaseEffect alloc] init];
-    effect.texturingEnabled = YES;
     effect.texture2d0.envMode = GLKTextureEnvModeModulate;
     effect.texture2d0.target = GLKTextureTarget2D;
-    effect.texture2d0.glName = texture.glName;
+    effect.texture2d0.name = texture.name;
     
     
     self.vertices[0] = GLKVector2Make(width, height);

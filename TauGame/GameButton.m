@@ -27,10 +27,9 @@ static GLKBaseEffect *glowingEffect;
   }
   
   glowingEffect = [[GLKBaseEffect alloc] init];
-  glowingEffect.texturingEnabled = YES;
   glowingEffect.texture2d0.envMode = GLKTextureEnvModeModulate;
   glowingEffect.texture2d0.target = GLKTextureTarget2D;
-  glowingEffect.texture2d0.glName = texture.glName;
+  glowingEffect.texture2d0.name = texture.name;
 }
 
 -(id) initWithText:(NSString *)text {

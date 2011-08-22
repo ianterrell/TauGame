@@ -10,6 +10,9 @@
 #import "TitleScreen.h"
 #import "Background.h"
 #import "Starfield.h"
+#import "TERectangle.h"
+
+TENode *upgradeMask, *upgradeWords;
 
 @implementation GameController
 
@@ -31,6 +34,8 @@
     audioPlayer.volume = 1;
     
     highScore = highLevel = 0;
+
+    upgradeCount = 0;
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
   }
@@ -131,7 +136,42 @@
   return [defaults boolForKey:UPGRADED_PREFERENCES_KEY];
 }
 
+-(void)showUpgradingDisplay {
+  ((TEMenu*)currentScene).enabled = NO;
+  
+  if (upgradeMask == nil) {
+    TERectangle *rectangle = [[TERectangle alloc] init];
+    rectangle.width = ((TEScene*)currentScene).width;
+    rectangle.height = ((TEScene*)currentScene).height;
+    rectangle.color = GLKVector4Make(0,0,0,0.75);
+    upgradeMask = [TENode nodeWithDrawable:rectangle];
+    upgradeMask.position = ((TEScene*)currentScene).center;
+  }
+  upgradeMask.remove = NO;
+  [((TEScene*)currentScene) addCharacterAfterUpdate:upgradeMask];
+  
+  if (upgradeWords == nil) {
+    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    TESprite *upgradeSprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"upgrading..." withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
+    upgradeWords = [TENode nodeWithDrawable:upgradeSprite];
+    upgradeWords.scaleX = 0.9;
+    upgradeWords.scaleY = 0.5;
+    upgradeWords.position = ((TEScene*)currentScene).center;
+  }
+  upgradeWords.remove = NO;
+  [((TEScene*)currentScene) addCharacterAfterUpdate:upgradeWords];
+}
+
+-(void)teardownUpgradeDisplay {
+  upgradeMask.remove = YES;
+  upgradeWords.remove = YES;
+  ((TEMenu*)currentScene).enabled = YES;
+}
+
 -(void)upgrade {
+  upgradeCount++;
+  [self showUpgradingDisplay];
+  
   SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:UPGRADE_PRODUCT_ID]];
   request.delegate = self;
   [request start];
@@ -142,7 +182,7 @@
 }
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-  if ([response.products count] == 1) {
+  if ([response.products count] > 0) {
     SKPayment *payment = [SKPayment paymentWithProduct:[response.products objectAtIndex:0]];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
   }
@@ -167,7 +207,14 @@
       default:
         break;
     }
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+    if (transaction.transactionState != SKPaymentTransactionStatePurchasing) {
+      [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+      upgradeCount--;
+      if (upgradeCount <= 0) {
+        [self teardownUpgradeDisplay];
+        ((TEMenu*)currentScene).enabled = YES;
+      }
+    }
   }
 }
 

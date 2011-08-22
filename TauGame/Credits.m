@@ -24,7 +24,7 @@
 //    clearColor = GLKVector4Make(0,0,0,1);
     [[GameController sharedController] setupBackgroundIn:self];
     
-    GameButton *back = [[GameButton alloc] initWithText:@"BACK"];
+    GameButton *back = [[GameButton alloc] initWithText:@"BACK" touchScale:GLKVector2Make(2, 3)];
     
     float backHeight = ((TESprite*)back.drawable).height;
     

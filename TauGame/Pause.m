@@ -23,21 +23,21 @@
     // Set up background
     [[GameController sharedController] setupBackgroundIn:self];
     
-    GameButton *resume = [[GameButton alloc] initWithText:@"CONTINUE"];
+    GameButton *resume = [[GameButton alloc] initWithText:@"CONTINUE" touchScale:GLKVector2Make(2, 2)];
     resume.action = ^() {
       [self resume];
     };
     [self addButton:resume];
     
     if (![GameController upgraded]) {
-      GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE GAME"];
+      GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE GAME" touchScale:GLKVector2Make(2, 2)];
       upgrade.action = ^() {
         [self upgrade];
       };
       [self addButton:upgrade];
     }
     
-    GameButton *quit = [[GameButton alloc] initWithText:@"QUIT"];
+    GameButton *quit = [[GameButton alloc] initWithText:@"QUIT" touchScale:GLKVector2Make(2, 2)];
     quit.action = ^() {
       [self quit];
     };

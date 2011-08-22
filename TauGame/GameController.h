@@ -15,6 +15,7 @@
   GKLocalPlayer *localPlayer;
   
   int highScore, highLevel;
+  int upgradeCount;
 }
 
 @property(strong) GKLocalPlayer *localPlayer;

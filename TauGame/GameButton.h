@@ -15,4 +15,7 @@
 -(id) initWithText:(NSString *)text;
 -(id) initWithText:(NSString *)text font:(UIFont*)font;
 
+-(id) initWithText:(NSString *)text touchScale:(GLKVector2)scale;
+-(id) initWithText:(NSString *)text font:(UIFont*)font touchScale:(GLKVector2)scale;
+
 @end

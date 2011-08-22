@@ -11,11 +11,13 @@
 
 @implementation TEMenu
 
+@synthesize enabled;
+
 -(id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
     buttons = [NSMutableArray arrayWithCapacity:5];
-    
+    enabled = YES;
   }
   return self;
 }
@@ -35,11 +37,14 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  if (!enabled)
+    return;
+  
   currentButton = nil;
   UITouch *touch = [touches anyObject];
   GLKVector2 location = [self positionForLocationInView:[touch locationInView:self.view]];
   [buttons enumerateObjectsUsingBlock:^(TEButton *button, NSUInteger idx, BOOL *stop) {
-    if ([TECollisionDetector point:location collidesWithNode:button]) {
+    if ([TECollisionDetector point:location collidesWithNode:button recurseNode:YES]) {
       currentButton = button;
       [button highlight];
       *stop = YES;
@@ -51,7 +56,7 @@
   if (currentButton) {
     UITouch *touch = [touches anyObject];
     GLKVector2 location = [self positionForLocationInView:[touch locationInView:self.view]];
-    if (![TECollisionDetector point:location collidesWithNode:currentButton]) {
+    if (![TECollisionDetector point:location collidesWithNode:currentButton recurseNode:YES]) {
       [currentButton unhighlight];
       currentButton = nil;
     }

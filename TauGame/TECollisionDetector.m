@@ -243,7 +243,7 @@ typedef struct {
   
   if (recurseNode) {
     [node traverseUsingBlock:^(TENode *rightNode) {
-      if (!collision && [self point:point collidesWithNode:node])
+      if (!collision && [self point:point collidesWithNode:rightNode])
         collision = YES;
     }];
   } else {

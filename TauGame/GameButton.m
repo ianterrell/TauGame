@@ -32,16 +32,24 @@ static GLKBaseEffect *glowingEffect;
   glowingEffect.texture2d0.name = texture.name;
 }
 
--(id) initWithText:(NSString *)text {
-  return [self initWithText:text font:[UIFont fontWithName:@"Helvetica-Bold" size:64]];
+-(id)initWithText:(NSString *)text {
+  return [self initWithText:text touchScale:GLKVector2Make(1,1)];
 }
 
--(id) initWithText:(NSString *)text font:(UIFont*)font {
+-(id) initWithText:(NSString *)text touchScale:(GLKVector2)scale {
+  return [self initWithText:text font:[UIFont fontWithName:@"Helvetica-Bold" size:64] touchScale:scale];
+}
+
+-(id)initWithText:(NSString *)text font:(UIFont*)font {
+  return [self initWithText:text font:font touchScale:GLKVector2Make(1,1)];
+}
+
+-(id) initWithText:(NSString *)text font:(UIFont*)font touchScale:(GLKVector2)scale {
   self = [super init];
   if (self) {
     TESprite *sprite = [[TESprite alloc] initWithImage:[TEImage imageFromText:text withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
     self.drawable = sprite;
-    self.collide = YES;
+    self.collide = NO;
     self.scaleX = 0.75;
     self.scaleY = 0.375;
     
@@ -66,6 +74,16 @@ static GLKBaseEffect *glowingEffect;
     rectangle.textureCoordinates[3] = GLKVector2Make(0, 0);
     
     [self addChild:glowNode];
+    
+    TERectangle *touchRect = [[TERectangle alloc] init];
+    touchRect.height = ((TESprite*)self.shape).height * scale.y;
+    touchRect.width = ((TESprite*)self.shape).width * scale.x;
+    touchRect.renderStyle = kTERenderStyleNone;
+    touchRect.color = GLKVector4Make(1, 0, 0, 1);
+    TENode *touchNode = [TENode nodeWithDrawable:touchRect];
+    touchNode.drawable = touchRect;
+    touchNode.collide = YES;
+    [self addChild:touchNode];
   }
   return self;
 }

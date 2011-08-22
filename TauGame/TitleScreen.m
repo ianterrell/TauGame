@@ -23,14 +23,6 @@
     
     // Set up background
     [[GameController sharedController] setupBackgroundIn:self];
-        
-//    layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
-//    layer.position = GLKVector2Make(0,0);
-//    [characters insertObject:layer atIndex:0];
-//    
-//    layer = [[StarfieldLayer alloc] initWithWidth:self.width height:self.height pixelRatio:POINT_RATIO numStars:500];
-//    layer.position = GLKVector2Make(0,0);
-//    [characters insertObject:layer atIndex:0];
     
     UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:64];
     TESprite *title = [[TESprite alloc] initWithImage:[TEImage imageFromText:@"GALAXY WILD" withFont:font color:[UIColor whiteColor]] pointRatio:POINT_RATIO];
@@ -40,14 +32,14 @@
     titleNode.position = GLKVector2Make(self.width/2,self.height/2+0.5);
     [characters addObject:titleNode];
     
-    GameButton *credits = [[GameButton alloc] initWithText:@"CREDITS" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+    GameButton *credits = [[GameButton alloc] initWithText:@"CREDITS" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
     credits.action = ^() {
       [self credits];
     };
     credits.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)credits.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)credits.shape).height/2);
     [self addButton:credits];
     
-    leaderboardButton = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+    leaderboardButton = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
     TitleScreen *this = self;
     leaderboardButton.action = ^() {
       [this leaderboard];
@@ -57,14 +49,14 @@
     if (![GameController upgraded]) {
       if ([SKPaymentQueue canMakePayments])
       {
-        GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+        GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
         upgrade.action = ^() {
           [self upgrade];
         };
         upgrade.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)upgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
         [self addButton:upgrade];
         
-        GameButton *restoreUpgrade = [[GameButton alloc] initWithText:@"RESTORE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+        GameButton *restoreUpgrade = [[GameButton alloc] initWithText:@"RESTORE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
         restoreUpgrade.action = ^() {
           [self restoreUpgrade];
         };
@@ -78,7 +70,7 @@
       }
     }
     
-    GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48]];
+    GameButton *play = [[GameButton alloc] initWithText:@"tap to play" font:[UIFont fontWithName:@"Helvetica" size:48] touchScale:GLKVector2Make(1.5, 5)];
     play.action = ^() {
       [self play];
     };

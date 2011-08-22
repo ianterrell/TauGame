@@ -12,7 +12,10 @@
 @interface TEMenu : TEScene {
   NSMutableArray *buttons;
   TEButton *currentButton;
+  BOOL enabled;
 }
+
+@property BOOL enabled;
 
 -(void)addButton:(TEButton*)button;
 -(void)removeButton:(TEButton*)button;

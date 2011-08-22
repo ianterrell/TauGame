@@ -23,7 +23,7 @@
     
     self.delegate = self;
     ((GLKView*)self.view).delegate = self;
-    ((GLKView*)self.view).drawableMultisample = GLKViewDrawableMultisample4X;
+    ((GLKView*)self.view).drawableMultisample = GLKViewDrawableMultisampleNone;// 4X;
     self.preferredFramesPerSecond = 60;
     
     characters = [[NSMutableArray alloc] init];

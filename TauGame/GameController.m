@@ -125,9 +125,10 @@ TENode *upgradeMask, *upgradeWords;
 
 # pragma mark - StoreKit
 
-+(void)markAsUpgraded:(BOOL)upgraded {
+-(void)markAsUpgraded:(BOOL)upgraded {
   [[NSUserDefaults standardUserDefaults] setBool:upgraded forKey:UPGRADED_PREFERENCES_KEY];
   if (upgraded) {
+    [(TitleScreen*)[self sceneNamed:@"menu"] removeUpgradeButtons];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks!" message:@"Thanks for upgrading! You'll now start each game with 3 lives and can gain more through powerups." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show]; 
   }
@@ -136,7 +137,7 @@ TENode *upgradeMask, *upgradeWords;
 +(BOOL)upgraded {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   if ([defaults objectForKey:UPGRADED_PREFERENCES_KEY] == nil)
-    [self markAsUpgraded:NO];
+    [defaults setBool:NO forKey:UPGRADED_PREFERENCES_KEY];
   
   return [defaults boolForKey:UPGRADED_PREFERENCES_KEY];
 }
@@ -198,7 +199,7 @@ TENode *upgradeMask, *upgradeWords;
     switch (transaction.transactionState)
     {
       case SKPaymentTransactionStatePurchased:
-        [[self class] markAsUpgraded:YES];
+        [self markAsUpgraded:YES];
         break;
       case SKPaymentTransactionStateFailed:
         if (transaction.error.code != SKErrorPaymentCancelled)
@@ -208,7 +209,7 @@ TENode *upgradeMask, *upgradeWords;
         }
         break;
       case SKPaymentTransactionStateRestored:
-        [[self class] markAsUpgraded:YES];
+        [self markAsUpgraded:YES];
       default:
         break;
     }

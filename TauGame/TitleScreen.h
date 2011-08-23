@@ -10,7 +10,7 @@
 #import "GameButton.h"
 
 @interface TitleScreen : TEMenu <GKLeaderboardViewControllerDelegate> {
-  GameButton *leaderboardButton;
+  GameButton *leaderboardButton, *restoreButton, *upgradeButton;
 }
 
 -(void)showLeaderboardButton;
@@ -20,5 +20,6 @@
 -(void)play;
 -(void)upgrade;
 -(void)restoreUpgrade;
+-(void)removeUpgradeButtons;
 
 @end

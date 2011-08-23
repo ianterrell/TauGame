@@ -33,6 +33,8 @@
     titleNode.position = GLKVector2Make(self.width/2,self.height/2+0.5);
     [characters addObject:titleNode];
     
+    TitleScreen *this = self;
+    
     GameButton *credits = [[GameButton alloc] initWithText:@"CREDITS" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
     credits.action = ^() {
       [self credits];
@@ -41,7 +43,6 @@
     [self addButton:credits];
     
     leaderboardButton = [[GameButton alloc] initWithText:@"LEADERBOARD" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
-    TitleScreen *this = self;
     leaderboardButton.action = ^() {
       [this leaderboard];
     };
@@ -52,19 +53,19 @@
     if (![GameController upgraded]) {
       if ([SKPaymentQueue canMakePayments])
       {
-        GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
-        upgrade.action = ^() {
-          [self upgrade];
+        upgradeButton = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
+        upgradeButton.action = ^() {
+          [this upgrade];
         };
-        upgrade.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)upgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
-        [self addButton:upgrade];
+        upgradeButton.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)upgradeButton.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgradeButton.shape).height/2);
+        [self addButton:upgradeButton];
         
-        GameButton *restoreUpgrade = [[GameButton alloc] initWithText:@"RESTORE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
-        restoreUpgrade.action = ^() {
-          [self restoreUpgrade];
+        restoreButton = [[GameButton alloc] initWithText:@"RESTORE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
+        restoreButton.action = ^() {
+          [this restoreUpgrade];
         };
-        restoreUpgrade.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)restoreUpgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)restoreUpgrade.shape).height/2);
-        [self addButton:restoreUpgrade];
+        restoreButton.position = GLKVector2Make(self.left+1.25*0.75*((TESprite*)restoreButton.shape).width/2, self.top - 1.25*0.5*((TESprite*)restoreButton.shape).height/2);
+        [self addButton:restoreButton];
       }
       else
       {
@@ -135,6 +136,11 @@
 
 -(void)restoreUpgrade {
   [[GameController sharedController] restoreUpgrade];
+}
+
+-(void)removeUpgradeButtons {
+  [self removeButton:restoreButton];
+  [self removeButton:upgradeButton];
 }
 
 @end

@@ -68,9 +68,12 @@ static WeaponPowerupBag *weaponPowerupBag;
       for (int i = 0; i < fighter.lives-1; i++)
         [self addLifeDisplayAtIndex:i];
     } else {
-      GameButton *upgrade = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
-      upgrade.position = GLKVector2Make(self.right-0.75*((TESprite*)upgrade.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
+      GameButton *upgrade  = [[GameButton alloc] initWithText:@"UPGRADE" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      GameButton *upgrade2 = [[GameButton alloc] initWithText:@"FOR LIVES" font:[UIFont fontWithName:@"Helvetica-Bold" size:32]];
+      upgrade.position  = GLKVector2Make(self.right-0.75*((TESprite*)upgrade2.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height/2);
+      upgrade2.position = GLKVector2Make(self.right-0.75*((TESprite*)upgrade2.shape).width/2, self.top - 1.25*0.5*((TESprite*)upgrade.shape).height);
       [characters addObject:upgrade];
+      [characters addObject:upgrade2];
     }
     
     // Set up shot timers display

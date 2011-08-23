@@ -45,7 +45,8 @@ static WeaponPowerupBag *weaponPowerupBag;
   if (self) {
     // Set up coordinates
     CGSize parentSize = frame.size;
-    [self setLeft:0 right:parentSize.width/POINT_RATIO bottom:0 top:parentSize.height/POINT_RATIO];
+    float extraScale = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2 : 1;
+    [self setLeft:0 right:parentSize.width/(extraScale*POINT_RATIO) bottom:0 top:parentSize.height/(extraScale*POINT_RATIO)];
     
     // Set up background
     [[GameController sharedController] setupBackgroundIn:self];

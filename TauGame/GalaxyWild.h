@@ -10,7 +10,7 @@
  * Debug settings
  */
 
-//#define DEBUG_LEVEL  [Dogfight class]
+//#define DEBUG_LEVEL  [ClassicHorde class]
 //#define DEBUG_BIGGUN [BigHordeUnit class]
 //#define DEBUG_SKIP_LEVELS 3
 //#define DEBUG_KEEP_POWERUPS

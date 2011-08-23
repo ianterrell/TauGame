@@ -49,7 +49,7 @@
 }
 
 -(void)shootInScene:(Game *)scene {
-  [self resetShotDelay];
+  shotDelay = 1; // tmp to not shoot during animation, reset on actual shoot
   
   if (![self ableToShootInScene:scene])
     return;
@@ -76,6 +76,7 @@
     shake.reverse = YES;
     shake.repeat = 2;
     shake.onRemoval = ^() {
+      [self resetShotDelay];
       [Sfx baddieDrop];
       [self startAnimation:dropAnimation];
     };
@@ -89,6 +90,7 @@
     TENode *rightEye = [self childNamed:@"right eye"];
     TEAnimation *rightEyeRed = [self redEyeAnimationForNode:rightEye];
     rightEyeRed.onComplete = ^() {
+      [self resetShotDelay];
       [Sfx baddieShoot];
       [self shootInDirection:GLKVector2Make(0, -1) inScene:scene];
       [self shootInDirection:GLKVector2Make(0.5, -1) inScene:scene];

@@ -80,10 +80,22 @@ static int colorIndex = 0;
 }
 
 -(void)shootInScene:(Game *)scene {
-  if (self == [level.bottoms objectAtIndex:self.column])
-    [super shootInScene:scene];
-  else
+  if (self == [level.bottoms objectAtIndex:self.column]) {
+    shotDelay = 1; // tmp to not shoot during animation, reset on actual shoot
+    
+    TENode *leftEye = [self childNamed:@"left eye"];
+    TEAnimation *leftEyeRed = [self redEyeAnimationForNode:leftEye];
+    [leftEye startAnimation:leftEyeRed];
+    
+    TENode *rightEye = [self childNamed:@"right eye"];
+    TEAnimation *rightEyeRed = [self redEyeAnimationForNode:rightEye];
+    rightEyeRed.onComplete = ^() {
+      [super shootInScene:scene];
+    };
+    [rightEye startAnimation:rightEyeRed];
+  } else {
     [self resetShotDelay];
+  }
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {

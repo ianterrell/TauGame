@@ -19,7 +19,8 @@
   if (self) {
     // Set up coordinates
     CGSize parentSize = frame.size;
-    [self setLeft:0 right:parentSize.height/POINT_RATIO bottom:0 top:parentSize.width/POINT_RATIO]; // not sure why container isn't sized properly
+    float extraScale = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2 : 1;
+    [self setLeft:0 right:parentSize.height/(extraScale*POINT_RATIO) bottom:0 top:parentSize.width/(extraScale*POINT_RATIO)]; // not sure why container isn't sized properly
     
     // Set up background
     [[GameController sharedController] setupBackgroundIn:self];
@@ -45,7 +46,8 @@
       [this leaderboard];
     };
     leaderboardButton.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboardButton.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboardButton.shape).height/2);
-    [self addButton:leaderboardButton];
+    if ([GameController canUseGameKit])
+      [self addButton:leaderboardButton];
     
     if (![GameController upgraded]) {
       if ([SKPaymentQueue canMakePayments])

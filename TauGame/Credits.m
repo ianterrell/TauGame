@@ -18,7 +18,8 @@
   if (self) {
     // Set up coordinates
     CGSize parentSize = frame.size;
-    [self setLeft:0 right:parentSize.height/POINT_RATIO bottom:0 top:parentSize.width/POINT_RATIO]; // not sure why container isn't sized properly
+    float extraScale = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2 : 1;
+    [self setLeft:0 right:parentSize.height/(extraScale*POINT_RATIO) bottom:0 top:parentSize.width/(extraScale*POINT_RATIO)]; // not sure why container isn't sized properly
     
     // Set up background
 //    clearColor = GLKVector4Make(0,0,0,1);

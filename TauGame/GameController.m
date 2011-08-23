@@ -103,13 +103,14 @@ TENode *upgradeMask, *upgradeWords;
 //        [(TitleScreen*)[self sceneNamed:@"menu"] showLeaderboardButton];
         // TODO: Multitasking support? Do I multitask? -- store player id, check if changed, check if logged out, update values
       } else {
-        [(TitleScreen*)[self sceneNamed:@"menu"] hideLeaderboardButton];
+//        [(TitleScreen*)[self sceneNamed:@"menu"] hideLeaderboardButton];
       }
       
       if (error) {
         NSLog(@"Error authenticating local player with GameKit");
         if (error.code == GKErrorNotSupported) {
           [[self class] neverUseGameKit];
+          [(TitleScreen*)[self sceneNamed:@"menu"] hideLeaderboardButton];
         } else if (error.code == GKErrorGameUnrecognized) {
           NSLog(@"GKErrorGameUnrecognized -- check iTunes Connect and bundle identifier");
         }

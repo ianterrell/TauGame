@@ -45,6 +45,7 @@
       [this leaderboard];
     };
     leaderboardButton.position = GLKVector2Make(self.right-1.25*0.75*((TESprite*)leaderboardButton.shape).width/2, self.bottom + 1.25*0.5*((TESprite*)leaderboardButton.shape).height/2);
+    [self addButton:leaderboardButton];
     
     if (![GameController upgraded]) {
       if ([SKPaymentQueue canMakePayments])

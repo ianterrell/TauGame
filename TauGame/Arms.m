@@ -77,12 +77,7 @@
     [self shootInDirection:GLKVector2Make(0,-1) inScene:scene xOffset:scaleX*node.position.x];
 }
 
--(void)shootInScene:(Game *)scene {
-  if (![self ableToShootInScene:scene])
-    return;
-  
-  shooting = numShots;
-  
+-(void)startFiringInScene:(Game *)scene {
   TENode *arms = [self childNamed:@"arms"];
   TETranslateAnimation *animation = [[TETranslateAnimation alloc] init];
   animation.translation = GLKVector2Make(0, 0.15);
@@ -103,6 +98,24 @@
     animation2.repeat = numShots-1;
     [legs startAnimation:animation2];
   }
+}
+
+-(void)shootInScene:(Game *)scene {
+  if (![self ableToShootInScene:scene])
+    return;
+
+  shooting = numShots;
+  
+  TENode *leftEye = [self childNamed:@"left eye"];
+  TEAnimation *leftEyeRed = [self redEyeAnimationForNode:leftEye];
+  [leftEye startAnimation:leftEyeRed];
+  
+  TENode *rightEye = [self childNamed:@"right eye"];
+  TEAnimation *rightEyeRed = [self redEyeAnimationForNode:rightEye];
+  rightEyeRed.onComplete = ^() {
+    [self startFiringInScene:scene];
+  };
+  [rightEye startAnimation:rightEyeRed];
 }
 
 -(void)update:(NSTimeInterval)dt inScene:(TEScene *)scene {

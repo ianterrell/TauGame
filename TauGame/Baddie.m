@@ -132,7 +132,7 @@
   [scene.enemyBullets addObject:bullet];
 }
 
-# pragma mark - Blinking
+# pragma mark - Eyes
 
 +(BOOL)blinks {
   return NO;
@@ -157,6 +157,14 @@
   animation.reverse = YES;
   animation.duration = 0.1;
   [eyes startAnimation:animation];
+}
+
+
+-(TEColorAnimation *)redEyeAnimationForNode:(TENode *)node {
+  TEColorAnimation *colorAnimation = [[TEColorAnimation alloc] initWithNode:node];
+  colorAnimation.color = GLKVector4Make(1,0,0,1);  
+  colorAnimation.duration = 0.3;
+  return colorAnimation;
 }
 
 #pragma mark - Entry

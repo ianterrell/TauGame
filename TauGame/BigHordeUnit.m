@@ -82,10 +82,19 @@
     
     [self startAnimation:shake];
   } else {
-    [Sfx baddieShoot];
-    [self shootInDirection:GLKVector2Make(0, -1) inScene:scene];
-    [self shootInDirection:GLKVector2Make(0.5, -1) inScene:scene];
-    [self shootInDirection:GLKVector2Make(-0.5, -1) inScene:scene];    
+    TENode *leftEye = [self childNamed:@"left eye"];
+    TEAnimation *leftEyeRed = [self redEyeAnimationForNode:leftEye];
+    [leftEye startAnimation:leftEyeRed];
+    
+    TENode *rightEye = [self childNamed:@"right eye"];
+    TEAnimation *rightEyeRed = [self redEyeAnimationForNode:rightEye];
+    rightEyeRed.onComplete = ^() {
+      [Sfx baddieShoot];
+      [self shootInDirection:GLKVector2Make(0, -1) inScene:scene];
+      [self shootInDirection:GLKVector2Make(0.5, -1) inScene:scene];
+      [self shootInDirection:GLKVector2Make(-0.5, -1) inScene:scene];
+    };
+    [rightEye startAnimation:rightEyeRed];
   }
 }
 

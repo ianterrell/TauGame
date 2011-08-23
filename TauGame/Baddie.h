@@ -37,11 +37,12 @@ typedef enum {
 -(void)shootInDirection:(GLKVector2)direction inScene:(Game*)scene xOffset:(float)xOffset;
 -(void)fire:(Bullet *)bullet in:(Game*)scene;
 
-# pragma mark - Blinking
+# pragma mark - Eyes
 
 +(BOOL)blinks;
 -(void)resetBlinkDelay;
 -(void)updateBlink:(NSTimeInterval)dt;
 -(void)blink;
+-(TEColorAnimation *)redEyeAnimationForNode:(TENode *)node;
 
 @end

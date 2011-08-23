@@ -10,8 +10,8 @@
  * Debug settings
  */
 
-//#define DEBUG_LEVEL  [AsteroidField class]
-//#define DEBUG_BIGGUN [BigSpinner class]
+//#define DEBUG_LEVEL  [Dogfight class]
+//#define DEBUG_BIGGUN [BigHordeUnit class]
 //#define DEBUG_SKIP_LEVELS 3
 //#define DEBUG_KEEP_POWERUPS
 //#define DEBUG_FIGHTER_POWERFUL
@@ -23,10 +23,14 @@
  */
 
 #define POINT_RATIO 40
+
 #define HIGH_SCORE_CATEGORY @"highscore"
 #define HIGH_LEVEL_CATEGORY @"highlevel"
-#define UPGRADED_PREFERENCES_KEY @"did-upgrade-app"
+
 #define UPGRADE_PRODUCT_ID @"upgrade"
+#define UPGRADED_PREFERENCES_KEY @"did-upgrade-app"
+
+#define CAN_USE_GK_PREFERENCES_KEY @"can-use-gk"
 
 /**
  * Levels

@@ -65,12 +65,16 @@ TENode *upgradeMask, *upgradeWords;
 # pragma mark - GameKit
 
 +(BOOL)canUseGameKit {
-  // TODO: Check if file flag exists for never try again
-  return YES;
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:CAN_USE_GK_PREFERENCES_KEY] == nil)
+    [defaults setBool:YES forKey:CAN_USE_GK_PREFERENCES_KEY];
+  
+  return [defaults boolForKey:CAN_USE_GK_PREFERENCES_KEY];
+
 }
 
 +(void)neverUseGameKit {
-  // TODO: Set file flag for never try again
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CAN_USE_GK_PREFERENCES_KEY];
 }
 
 -(void)fetchScoreForCategory:(NSString *)category callback:(void (^)(int value))block {
@@ -96,7 +100,7 @@ TENode *upgradeMask, *upgradeWords;
           highLevel = value;
         }];
         
-        [(TitleScreen*)[self sceneNamed:@"menu"] showLeaderboardButton];
+//        [(TitleScreen*)[self sceneNamed:@"menu"] showLeaderboardButton];
         // TODO: Multitasking support? Do I multitask? -- store player id, check if changed, check if logged out, update values
       } else {
         [(TitleScreen*)[self sceneNamed:@"menu"] hideLeaderboardButton];

@@ -9,8 +9,12 @@
 #import "TauGameAppDelegate.h"
 #import "GameController.h"
 #import "TitleScreen.h"
+#import "Game.h"
 #import "Pause.h"
 #import "Credits.h"
+#import "Icons.h"
+
+GameController *gameController;
 
 @implementation TauGameAppDelegate
 
@@ -20,7 +24,7 @@
 {
   [[TauEngine motionManager] startAccelerometerUpdates];
   
-  GameController *gameController = [GameController sharedController];
+  gameController = [GameController sharedController];
   [gameController addSceneOfClass:[TitleScreen class] named:@"menu"];
   [gameController addSceneOfClass:[Pause class] named:@"pause"];
   [gameController addSceneOfClass:[Credits class] named:@"credits"];
@@ -28,7 +32,12 @@
   #ifdef DEBUG_INITIAL_SCENE
     [gameController displayScene:DEBUG_INITIAL_SCENE];
   #else
-    [gameController displayScene:@"menu"];
+    #ifdef MAKING_ICONS
+      [gameController addSceneOfClass:[Icons class] named:@"icons"];
+      [gameController displayScene:@"icons"];
+    #else
+      [gameController displayScene:@"menu"];
+    #endif
   #endif
   
   [gameController playMusic];
@@ -55,6 +64,7 @@
    Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
    If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
    */
+    NSLog(@"will enter background");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -62,6 +72,7 @@
   /*
    Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
    */
+  NSLog(@"will enter foreground");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -69,6 +80,12 @@
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
+  NSLog(@"did become active");
+  GLKViewController *scene = (GLKViewController*)gameController.currentScene;
+  if ([scene isKindOfClass:[Game class]])
+    [(Game*)scene pauseGame];
+  else
+    scene.paused = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -78,6 +95,7 @@
    Save data if appropriate.
    See also applicationDidEnterBackground:.
    */
+    NSLog(@"will terminate");
 }
 
 @end

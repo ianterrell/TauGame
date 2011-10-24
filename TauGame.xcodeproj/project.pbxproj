@@ -111,6 +111,16 @@
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
 		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
+		3CB500E61455AF610081C76C /* Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB500E51455AF610081C76C /* Icons.m */; };
+		3CB500EF1455C8F80081C76C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500E81455C8F80081C76C /* Icon-72.png */; };
+		3CB500F01455C8F80081C76C /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500E91455C8F80081C76C /* Icon-Small-50.png */; };
+		3CB500F11455C8F80081C76C /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500EA1455C8F80081C76C /* Icon-Small.png */; };
+		3CB500F21455C8F80081C76C /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500EB1455C8F80081C76C /* Icon-Small@2x.png */; };
+		3CB500F31455C8F80081C76C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500EC1455C8F80081C76C /* Icon.png */; };
+		3CB500F41455C8F80081C76C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500ED1455C8F80081C76C /* Icon@2x.png */; };
+		3CB500F51455C8F80081C76C /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500EE1455C8F80081C76C /* iTunesArtwork */; };
+		3CB500FB1455CA6A0081C76C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500FA1455CA6A0081C76C /* Default@2x.png */; };
+		3CB500FD1455CA880081C76C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500FC1455CA880081C76C /* Default.png */; };
 		3CC22AA113EEE42400C64790 /* glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC22AA013EEE42400C64790 /* glow.png */; };
 		3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAA16613F5A19700993EE7 /* GameButton.m */; };
 		3CCAA16D13F5C02900993EE7 /* Credits.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAA16C13F5C02800993EE7 /* Credits.m */; };
@@ -324,6 +334,17 @@
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
 		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
+		3CB500E41455AF610081C76C /* Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icons.h; sourceTree = "<group>"; };
+		3CB500E51455AF610081C76C /* Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icons.m; sourceTree = "<group>"; };
+		3CB500E81455C8F80081C76C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		3CB500E91455C8F80081C76C /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		3CB500EA1455C8F80081C76C /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		3CB500EB1455C8F80081C76C /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		3CB500EC1455C8F80081C76C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		3CB500ED1455C8F80081C76C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		3CB500EE1455C8F80081C76C /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		3CB500FA1455CA6A0081C76C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3CB500FC1455CA880081C76C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3CC22AA013EEE42400C64790 /* glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glow.png; sourceTree = "<group>"; };
 		3CCAA16513F5A19700993EE7 /* GameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameButton.h; sourceTree = "<group>"; };
 		3CCAA16613F5A19700993EE7 /* GameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameButton.m; sourceTree = "<group>"; };
@@ -724,6 +745,8 @@
 				3C7BD27D13E9E140005895AE /* Pause.m */,
 				3CCAA16B13F5C02800993EE7 /* Credits.h */,
 				3CCAA16C13F5C02800993EE7 /* Credits.m */,
+				3CB500E41455AF610081C76C /* Icons.h */,
+				3CB500E51455AF610081C76C /* Icons.m */,
 				3CCAA16313F5A17100993EE7 /* Menus */,
 			);
 			name = Scenes;
@@ -792,6 +815,15 @@
 				3CB0484813CBD5960029875B /* main.m */,
 				3CB0484A13CBD5960029875B /* TauGame-Prefix.pch */,
 				3C2DE86913D9DAA3000237D2 /* credits.txt */,
+				3CB500E81455C8F80081C76C /* Icon-72.png */,
+				3CB500E91455C8F80081C76C /* Icon-Small-50.png */,
+				3CB500EA1455C8F80081C76C /* Icon-Small.png */,
+				3CB500EB1455C8F80081C76C /* Icon-Small@2x.png */,
+				3CB500EC1455C8F80081C76C /* Icon.png */,
+				3CB500ED1455C8F80081C76C /* Icon@2x.png */,
+				3CB500EE1455C8F80081C76C /* iTunesArtwork */,
+				3CB500FC1455CA880081C76C /* Default.png */,
+				3CB500FA1455CA6A0081C76C /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1038,6 +1070,15 @@
 				3CCFF88213F9B05F00616AA8 /* shoot1.wav in Resources */,
 				3CCFF88313F9B05F00616AA8 /* shoot2.wav in Resources */,
 				3CCFF88513F9B0FA00616AA8 /* scorebonus.wav in Resources */,
+				3CB500EF1455C8F80081C76C /* Icon-72.png in Resources */,
+				3CB500F01455C8F80081C76C /* Icon-Small-50.png in Resources */,
+				3CB500F11455C8F80081C76C /* Icon-Small.png in Resources */,
+				3CB500F21455C8F80081C76C /* Icon-Small@2x.png in Resources */,
+				3CB500F31455C8F80081C76C /* Icon.png in Resources */,
+				3CB500F41455C8F80081C76C /* Icon@2x.png in Resources */,
+				3CB500F51455C8F80081C76C /* iTunesArtwork in Resources */,
+				3CB500FB1455CA6A0081C76C /* Default@2x.png in Resources */,
+				3CB500FD1455CA880081C76C /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,6 +1190,7 @@
 				3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */,
 				3CCAA16D13F5C02900993EE7 /* Credits.m in Sources */,
 				3CA279D013F9A6DB00C87E98 /* Sfx.m in Sources */,
+				3CB500E61455AF610081C76C /* Icons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1313,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ian Terrell";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TauGame/TauGame-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1280,6 +1324,7 @@
 				);
 				INFOPLIST_FILE = "TauGame/TauGame-Info.plist";
 				PRODUCT_NAME = "Galaxy Wild";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ABE4DC28-66A7-4188-BAB1-42D02A502483";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

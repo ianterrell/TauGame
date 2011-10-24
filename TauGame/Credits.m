@@ -41,7 +41,7 @@
     textView.textColor = [UIColor whiteColor];
     textView.editable = NO;
     textView.dataDetectorTypes = UIDataDetectorTypeLink;
-    textView.text = @"All design and development was done by Ian Terrell in Richmond, Virginia.\n\nFeel free to email me at ian.terrell@gmail.com.\n\nThe music is \"Slipped\" by Matt McFarland, used with his generous Creative Commons license.\nwww.mattmcfarland.com";
+    textView.text = @"Tap to shoot, tap in the upper right to pause.\n\nCrafted by Ian Terrell in Richmond, Virginia. Feel free to email me at ian.terrell@gmail.com.\n\nThe music is \"Slipped\" by Matt McFarland, used with his generous Creative Commons license.\nwww.mattmcfarland.com";
     [self.view addSubview:textView];
   }
   return self;

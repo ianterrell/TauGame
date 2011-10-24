@@ -87,7 +87,11 @@
 }
 
 -(BOOL)ableToShootInScene:(Game *)scene {
-  return !([self dead] || scene.gameIsOver || scene.levelLoading);
+  #ifdef MAKING_ICONS
+    return NO;
+  #else
+    return !([self dead] || scene.gameIsOver || scene.levelLoading);
+  #endif
 }
 
 -(BOOL)readyToShoot {

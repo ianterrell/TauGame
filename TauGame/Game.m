@@ -239,7 +239,7 @@ static WeaponPowerupBag *weaponPowerupBag;
       [[GameController sharedController] removeScene:@"game"];
     }];
   else if (locationInView.y < yfraction*frameSize.height && locationInView.x > (1-xfraction)*frameSize.width)
-    [[GameController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
+    [self pauseGame];
   else
     [fighter shootInScene:self];
 }
@@ -443,7 +443,11 @@ static WeaponPowerupBag *weaponPowerupBag;
   [[NSNotificationCenter defaultCenter] removeObserver:self name:EnemyDestroyedNotification object:nil];
 }
 
-# pragma mark - Game Over
+# pragma mark - Scene Transitions
+
+-(void)pauseGame {
+  [[GameController sharedController] displayScene:@"pause" duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop completion:NULL];
+}
 
 -(void)exit {
   if ([[GameController sharedController] usingGameCenter]) {

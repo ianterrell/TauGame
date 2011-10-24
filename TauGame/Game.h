@@ -65,6 +65,7 @@
 
 # pragma mark - Scene Transitioning
 
+-(void)pauseGame;
 -(void)exit;
 
 @end

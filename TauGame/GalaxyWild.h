@@ -18,6 +18,8 @@
 //#define DEBUG_INVINCIBLE
 //#define DEBUG_INITIAL_SCENE @"credits"
 
+//#define MAKING_ICONS
+
 /**
  * Major settings
  */

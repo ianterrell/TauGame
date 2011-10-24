@@ -121,10 +121,12 @@
 # pragma mark - Scene Transitions
 
 - (void)viewWillAppear:(BOOL)animated {
+  NSLog(@"scene view will appear");
   self.paused = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+  NSLog(@"scene view did appear");
   self.paused = NO;
 }
 

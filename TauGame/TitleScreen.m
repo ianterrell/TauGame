@@ -35,7 +35,7 @@
     
     TitleScreen *this = self;
     
-    GameButton *credits = [[GameButton alloc] initWithText:@"CREDITS" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
+    GameButton *credits = [[GameButton alloc] initWithText:@"INFO" font:[UIFont fontWithName:@"Helvetica-Bold" size:32] touchScale:GLKVector2Make(1.5, 5)];
     credits.action = ^() {
       [self credits];
     };

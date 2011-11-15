@@ -13,14 +13,9 @@
 		3C10727313EC35380062986D /* Fray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10727213EC35380062986D /* Fray.m */; };
 		3C10727613EC55BE0062986D /* Arms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10727513EC55BD0062986D /* Arms.m */; };
 		3C10727913EC560D0062986D /* arms.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C10727813EC560D0062986D /* arms.json */; };
-		3C138B9213CCB15B002FC701 /* TENodeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TENodeLoader.m */; };
-		3C138B9313CCB15B002FC701 /* TENodeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9113CCB15A002FC701 /* TENodeLoader.m */; };
-		3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
-		3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138B9513CCC7E0002FC701 /* TEAnimation.m */; };
 		3C145EEF13F1845F0095CD5E /* BigSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C145EEE13F1845F0095CD5E /* BigSpinner.m */; };
 		3C20D40E13E3ACDF00A90FEB /* bullet-splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */; };
 		3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41113E3AD4C00A90FEB /* BulletSplash.m */; };
-		3C20D41513E443A400A90FEB /* TEVertexColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41413E443A400A90FEB /* TEVertexColorAnimation.m */; };
 		3C20D41F13E6003100A90FEB /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D41E13E6002F00A90FEB /* Background.m */; };
 		3C20D42213E6162600A90FEB /* FighterLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20D42113E6162500A90FEB /* FighterLife.m */; };
 		3C20D42413E6164F00A90FEB /* fighter-life.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C20D42313E6164F00A90FEB /* fighter-life.json */; };
@@ -32,43 +27,28 @@
 		3C228AED13E7185600CFE5D1 /* ExtraLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C228AEC13E7185600CFE5D1 /* ExtraLife.m */; };
 		3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C264B7913F42709009FC60C /* WeaponPowerupBag.m */; };
 		3C297ED913F57A6600D1D85B /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C297ED813F57A6600D1D85B /* GameController.m */; };
-		3C297EDD13F5881600D1D85B /* TEMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C297EDC13F5881600D1D85B /* TEMenu.m */; };
 		3C2DE86613D9CB9D000237D2 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DE86513D9CB9D000237D2 /* TitleScreen.m */; };
 		3C2DE86813D9DA93000237D2 /* main-menu-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */; };
 		3C2DE86A13D9DAA3000237D2 /* credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C2DE86913D9DAA3000237D2 /* credits.txt */; };
-		3C350E8313E07316002DD35E /* TEHexagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8213E07316002DD35E /* TEHexagon.m */; };
-		3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8613E07622002DD35E /* TERegularPolygon.m */; };
-		3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E8913E07701002DD35E /* TEHeptagon.m */; };
+		3C313C611456FAED008399C0 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C313C601456FAED008399C0 /* Default-Landscape~ipad.png */; };
 		3C350E9413E079A6002DD35E /* extra-bullet-powerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */; };
 		3C350E9A13E07B1F002DD35E /* Powerup.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E9913E07B1F002DD35E /* Powerup.m */; };
 		3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C350E9C13E07B33002DD35E /* ExtraBullet.m */; };
 		3C37ED5813EF2EF800EF18A9 /* spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C37ED5713EF2EF800EF18A9 /* spinner.json */; };
-		3C37ED5C13EF2F3700EF18A9 /* TEOctagon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C37ED5B13EF2F3700EF18A9 /* TEOctagon.m */; };
 		3C37ED5F13EF302F00EF18A9 /* Spinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C37ED5E13EF302F00EF18A9 /* Spinner.m */; };
 		3C39473613F4ACD3002E4A3B /* Slipped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C39473513F4ACD3002E4A3B /* Slipped.mp3 */; };
 		3C39473813F4AD69002E4A3B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C39473713F4AD69002E4A3B /* AVFoundation.framework */; };
 		3C55079513CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
 		3C55079613CE0B8D00585C40 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55079413CE0B8D00585C40 /* CoreMotion.framework */; };
-		3C5507A613CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
-		3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5507A513CE237D00585C40 /* TECollisionDetector.m */; };
 		3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB3B13F054BC00E35FC3 /* BigArms.m */; };
-		3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */; };
 		3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4413F0699F00E35FC3 /* LevelBag.m */; };
 		3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C59AB4713F06D7100E35FC3 /* BiggunBag.m */; };
-		3C5D479513F58C90004DE3CE /* TEButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D479413F58C90004DE3CE /* TEButton.m */; };
-		3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
-		3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B2A6413D47A6C00061EC7 /* TESceneController.m */; };
-		3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948513D74DB6000F7988 /* TEAccelerometer.m */; };
+		3C6CBDDE1472CA3100FD6E59 /* libTauEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6CBDDD1472CA3100FD6E59 /* libTauEngine.a */; };
 		3C6E948913D76D53000F7988 /* bullet.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C6E948813D76D53000F7988 /* bullet.json */; };
 		3C6E948C13D771A7000F7988 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E948B13D771A7000F7988 /* Bullet.m */; };
-		3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */; };
-		3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70969413E1DD1200BF4E83 /* TEImage.m */; };
-		3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */; };
 		3C7BD27313E9C697005895AE /* Seeker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27213E9C697005895AE /* Seeker.m */; };
 		3C7BD27E13E9E140005895AE /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD27D13E9E140005895AE /* Pause.m */; };
 		3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28213EADB41005895AE /* GlowingBullet.m */; };
-		3C7BD28613EB00B6005895AE /* TESprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28513EB00B6005895AE /* TESprite.m */; };
-		3C7BD28A13EB0158005895AE /* TETexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7BD28913EB0158005895AE /* TETexture.m */; };
 		3C80617313EB142100EF4929 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80617213EB142100EF4929 /* Enemy.m */; };
 		3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80617413EB2D4B00EF4929 /* GameLevel.m */; };
 		3C8405EC13F95D5400B25172 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8405EB13F95D5400B25172 /* GameKit.framework */; };
@@ -76,12 +56,6 @@
 		3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283113D70CBC00BB0011 /* AsteroidField.m */; };
 		3C8A283913D70D6200BB0011 /* fighter.json in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
 		3C8A283A13D70D9E00BB0011 /* fighter.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C8A283713D70D6200BB0011 /* fighter.json */; };
-		3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
-		3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */; };
-		3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
-		3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */; };
-		3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
-		3C8F913D13CDE30900820FC5 /* TETranslateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */; };
 		3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C975B6A13EB654700CAEB6D /* HordeUnit.m */; };
 		3C986E0B13F1B5D6004B99AF /* score-bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C986E0A13F1B5D6004B99AF /* score-bonus.json */; };
 		3C986E0E13F1B65E004B99AF /* ScoreBonus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C986E0D13F1B65E004B99AF /* ScoreBonus.m */; };
@@ -101,16 +75,9 @@
 		3CB0486013CBD5970029875B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0485E13CBD5970029875B /* InfoPlist.strings */; };
 		3CB0486213CBD5970029875B /* TauGameTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0486113CBD5970029875B /* TauGameTests.h */; };
 		3CB0486413CBD5970029875B /* TauGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486313CBD5970029875B /* TauGameTests.m */; };
-		3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0486F13CBD5B80029875B /* TEDrawable.m */; };
-		3CB0487313CBD5C70029875B /* TENode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487213CBD5C70029875B /* TENode.m */; };
-		3CB0487613CBD5D20029875B /* TEShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487513CBD5D20029875B /* TEShape.m */; };
-		3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487813CBD5DF0029875B /* TETriangle.m */; };
-		3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487B13CBD5E90029875B /* TEEllipse.m */; };
-		3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0487E13CBD5F20029875B /* TERectangle.m */; };
 		3CB0488C13CBD6940029875B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488913CBD6940029875B /* GLKit.framework */; };
 		3CB0488D13CBD6940029875B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488A13CBD6940029875B /* OpenGLES.framework */; };
 		3CB0488E13CBD6940029875B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0488B13CBD6940029875B /* QuartzCore.framework */; };
-		3CB0489113CBDB440029875B /* TEScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0489013CBDB440029875B /* TEScene.m */; };
 		3CB500E61455AF610081C76C /* Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB500E51455AF610081C76C /* Icons.m */; };
 		3CB500EF1455C8F80081C76C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500E81455C8F80081C76C /* Icon-72.png */; };
 		3CB500F01455C8F80081C76C /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB500E91455C8F80081C76C /* Icon-Small-50.png */; };
@@ -149,21 +116,15 @@
 		3CCFF88213F9B05F00616AA8 /* shoot1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CCFF86C13F9B05F00616AA8 /* shoot1.wav */; };
 		3CCFF88313F9B05F00616AA8 /* shoot2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CCFF86D13F9B05F00616AA8 /* shoot2.wav */; };
 		3CCFF88513F9B0FA00616AA8 /* scorebonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CCFF88413F9B0FA00616AA8 /* scorebonus.wav */; };
-		3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */; };
 		3CD1F93E13DDD17200F6F035 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */; };
-		3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94013DDD33F00F6F035 /* TESoundManager.m */; };
 		3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94313DE311F00F6F035 /* Asteroid.m */; };
 		3CD1F94713DE313A00F6F035 /* ClassicHorde.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94613DE313A00F6F035 /* ClassicHorde.m */; };
-		3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94913DF03CB00F6F035 /* TERandom.m */; };
 		3CD1F94D13DF0E3300F6F035 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F94C13DF0E3200F6F035 /* Game.m */; };
-		3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */; };
-		3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1F95513DF55EF00F6F035 /* TEPolygon.m */; };
 		3CED2CB413F026A300254302 /* BigHordeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED2CB313F026A300254302 /* BigHordeUnit.m */; };
 		3CED2CB713F0274400254302 /* Dogfight.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED2CB613F0274400254302 /* Dogfight.m */; };
 		3CF3675313E723CD008A1A4A /* ExtraShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675213E723CD008A1A4A /* ExtraShot.m */; };
 		3CF3675613E72FB3008A1A4A /* Fighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3675513E72FB3008A1A4A /* Fighter.m */; };
 		3CF3679813E99D58008A1A4A /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3679713E99D58008A1A4A /* Starfield.m */; };
-		3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC90D513D72F6F00100C21 /* TauEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,17 +148,11 @@
 		3C10727513EC55BD0062986D /* Arms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arms.m; sourceTree = "<group>"; };
 		3C10727813EC560D0062986D /* arms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arms.json; sourceTree = "<group>"; };
 		3C10727A13EC6AE10062986D /* GriddedGameLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GriddedGameLevel.h; sourceTree = "<group>"; };
-		3C138B9013CCB15A002FC701 /* TENodeLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENodeLoader.h; sourceTree = "<group>"; };
-		3C138B9113CCB15A002FC701 /* TENodeLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENodeLoader.m; sourceTree = "<group>"; };
-		3C138B9413CCC7DF002FC701 /* TEAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAnimation.h; sourceTree = "<group>"; };
-		3C138B9513CCC7E0002FC701 /* TEAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAnimation.m; sourceTree = "<group>"; };
 		3C145EED13F1845F0095CD5E /* BigSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigSpinner.h; sourceTree = "<group>"; };
 		3C145EEE13F1845F0095CD5E /* BigSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigSpinner.m; sourceTree = "<group>"; };
 		3C20D40D13E3ACDF00A90FEB /* bullet-splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bullet-splash.json"; sourceTree = "<group>"; };
 		3C20D41013E3AD4C00A90FEB /* BulletSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletSplash.h; sourceTree = "<group>"; };
 		3C20D41113E3AD4C00A90FEB /* BulletSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletSplash.m; sourceTree = "<group>"; };
-		3C20D41313E443A400A90FEB /* TEVertexColorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEVertexColorAnimation.h; sourceTree = "<group>"; };
-		3C20D41413E443A400A90FEB /* TEVertexColorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEVertexColorAnimation.m; sourceTree = "<group>"; };
 		3C20D41D13E6002E00A90FEB /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		3C20D41E13E6002F00A90FEB /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		3C20D42013E6162400A90FEB /* FighterLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FighterLife.h; sourceTree = "<group>"; };
@@ -215,66 +170,38 @@
 		3C264B7913F42709009FC60C /* WeaponPowerupBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponPowerupBag.m; sourceTree = "<group>"; };
 		3C297ED713F57A6600D1D85B /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		3C297ED813F57A6600D1D85B /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
-		3C297EDB13F5881600D1D85B /* TEMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEMenu.h; sourceTree = "<group>"; };
-		3C297EDC13F5881600D1D85B /* TEMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEMenu.m; sourceTree = "<group>"; };
 		3C2DE86413D9CB9D000237D2 /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScreen.h; sourceTree = "<group>"; };
 		3C2DE86513D9CB9D000237D2 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScreen.m; sourceTree = "<group>"; };
 		3C2DE86713D9DA93000237D2 /* main-menu-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-menu-background.jpg"; sourceTree = "<group>"; };
 		3C2DE86913D9DAA3000237D2 /* credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credits.txt; sourceTree = "<group>"; };
-		3C350E8113E07316002DD35E /* TEHexagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEHexagon.h; sourceTree = "<group>"; };
-		3C350E8213E07316002DD35E /* TEHexagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEHexagon.m; sourceTree = "<group>"; };
-		3C350E8513E07622002DD35E /* TERegularPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERegularPolygon.h; sourceTree = "<group>"; };
-		3C350E8613E07622002DD35E /* TERegularPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERegularPolygon.m; sourceTree = "<group>"; };
-		3C350E8813E07701002DD35E /* TEHeptagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEHeptagon.h; sourceTree = "<group>"; };
-		3C350E8913E07701002DD35E /* TEHeptagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEHeptagon.m; sourceTree = "<group>"; };
+		3C313C601456FAED008399C0 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		3C350E9313E079A6002DD35E /* extra-bullet-powerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "extra-bullet-powerup.json"; sourceTree = "<group>"; };
 		3C350E9813E07B1E002DD35E /* Powerup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Powerup.h; sourceTree = "<group>"; };
 		3C350E9913E07B1F002DD35E /* Powerup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Powerup.m; sourceTree = "<group>"; };
 		3C350E9B13E07B33002DD35E /* ExtraBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraBullet.h; sourceTree = "<group>"; };
 		3C350E9C13E07B33002DD35E /* ExtraBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraBullet.m; sourceTree = "<group>"; };
 		3C37ED5713EF2EF800EF18A9 /* spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spinner.json; sourceTree = "<group>"; };
-		3C37ED5A13EF2F3700EF18A9 /* TEOctagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEOctagon.h; sourceTree = "<group>"; };
-		3C37ED5B13EF2F3700EF18A9 /* TEOctagon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEOctagon.m; sourceTree = "<group>"; };
 		3C37ED5D13EF302F00EF18A9 /* Spinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spinner.h; sourceTree = "<group>"; };
 		3C37ED5E13EF302F00EF18A9 /* Spinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spinner.m; sourceTree = "<group>"; };
 		3C39473513F4ACD3002E4A3B /* Slipped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slipped.mp3; sourceTree = "<group>"; };
 		3C39473713F4AD69002E4A3B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3C55079413CE0B8D00585C40 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		3C5507A413CE237D00585C40 /* TECollisionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetector.h; sourceTree = "<group>"; };
-		3C5507A513CE237D00585C40 /* TECollisionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetector.m; sourceTree = "<group>"; };
 		3C59AB3A13F054BC00E35FC3 /* BigArms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigArms.h; sourceTree = "<group>"; };
 		3C59AB3B13F054BC00E35FC3 /* BigArms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigArms.m; sourceTree = "<group>"; };
-		3C59AB4013F068D800E35FC3 /* TEShuffleBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShuffleBag.h; sourceTree = "<group>"; };
-		3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEShuffleBag.m; sourceTree = "<group>"; };
 		3C59AB4313F0699F00E35FC3 /* LevelBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelBag.h; sourceTree = "<group>"; };
 		3C59AB4413F0699F00E35FC3 /* LevelBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelBag.m; sourceTree = "<group>"; };
 		3C59AB4613F06D7100E35FC3 /* BiggunBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiggunBag.h; sourceTree = "<group>"; };
 		3C59AB4713F06D7100E35FC3 /* BiggunBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiggunBag.m; sourceTree = "<group>"; };
-		3C5D479313F58C90004DE3CE /* TEButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEButton.h; sourceTree = "<group>"; };
-		3C5D479413F58C90004DE3CE /* TEButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEButton.m; sourceTree = "<group>"; };
-		3C6B2A6313D47A6C00061EC7 /* TESceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESceneController.h; sourceTree = "<group>"; };
-		3C6B2A6413D47A6C00061EC7 /* TESceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESceneController.m; sourceTree = "<group>"; };
-		3C6E948413D74DB6000F7988 /* TEAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAccelerometer.h; sourceTree = "<group>"; };
-		3C6E948513D74DB6000F7988 /* TEAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEAccelerometer.m; sourceTree = "<group>"; };
+		3C6CBDDD1472CA3100FD6E59 /* libTauEngine.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libTauEngine.a; path = "../TauEngine/build/Release-iphoneos/libTauEngine.a"; sourceTree = "<group>"; };
 		3C6E948813D76D53000F7988 /* bullet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bullet.json; sourceTree = "<group>"; };
 		3C6E948A13D771A7000F7988 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		3C6E948B13D771A7000F7988 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
-		3C70968C13E1DBC400BF4E83 /* TENumberDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENumberDisplay.h; sourceTree = "<group>"; };
-		3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENumberDisplay.m; sourceTree = "<group>"; };
-		3C70969313E1DD1200BF4E83 /* TEImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEImage.h; sourceTree = "<group>"; };
-		3C70969413E1DD1200BF4E83 /* TEImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEImage.m; sourceTree = "<group>"; };
-		3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandomPolygon.h; sourceTree = "<group>"; };
-		3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandomPolygon.m; sourceTree = "<group>"; };
 		3C7BD27113E9C696005895AE /* Seeker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seeker.h; sourceTree = "<group>"; };
 		3C7BD27213E9C697005895AE /* Seeker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seeker.m; sourceTree = "<group>"; };
 		3C7BD27C13E9E13F005895AE /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		3C7BD27D13E9E140005895AE /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
 		3C7BD28113EADB41005895AE /* GlowingBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowingBullet.h; sourceTree = "<group>"; };
 		3C7BD28213EADB41005895AE /* GlowingBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowingBullet.m; sourceTree = "<group>"; };
-		3C7BD28413EB00B5005895AE /* TESprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESprite.h; sourceTree = "<group>"; };
-		3C7BD28513EB00B6005895AE /* TESprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESprite.m; sourceTree = "<group>"; };
-		3C7BD28813EB0158005895AE /* TETexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETexture.h; sourceTree = "<group>"; };
-		3C7BD28913EB0158005895AE /* TETexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETexture.m; sourceTree = "<group>"; };
 		3C80617013EB10F700EF4929 /* GameLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevel.h; sourceTree = "<group>"; };
 		3C80617113EB142100EF4929 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		3C80617213EB142100EF4929 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
@@ -284,12 +211,6 @@
 		3C8A283013D70CBC00BB0011 /* AsteroidField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidField.h; sourceTree = "<group>"; };
 		3C8A283113D70CBC00BB0011 /* AsteroidField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidField.m; sourceTree = "<group>"; };
 		3C8A283713D70D6200BB0011 /* fighter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fighter.json; sourceTree = "<group>"; };
-		3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScaleAnimation.h; sourceTree = "<group>"; };
-		3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScaleAnimation.m; sourceTree = "<group>"; };
-		3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERotateAnimation.h; sourceTree = "<group>"; };
-		3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERotateAnimation.m; sourceTree = "<group>"; };
-		3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETranslateAnimation.h; sourceTree = "<group>"; };
-		3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETranslateAnimation.m; sourceTree = "<group>"; };
 		3C975B6913EB654700CAEB6D /* HordeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HordeUnit.h; sourceTree = "<group>"; };
 		3C975B6A13EB654700CAEB6D /* HordeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HordeUnit.m; sourceTree = "<group>"; };
 		3C986E0A13F1B5D6004B99AF /* score-bonus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "score-bonus.json"; sourceTree = "<group>"; };
@@ -316,24 +237,9 @@
 		3CB0485F13CBD5970029875B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CB0486113CBD5970029875B /* TauGameTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TauGameTests.h; sourceTree = "<group>"; };
 		3CB0486313CBD5970029875B /* TauGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TauGameTests.m; sourceTree = "<group>"; };
-		3CB0486E13CBD5B80029875B /* TEDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEDrawable.h; sourceTree = "<group>"; };
-		3CB0486F13CBD5B80029875B /* TEDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDrawable.m; sourceTree = "<group>"; };
-		3CB0487113CBD5C70029875B /* TENode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENode.h; sourceTree = "<group>"; };
-		3CB0487213CBD5C70029875B /* TENode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENode.m; sourceTree = "<group>"; };
-		3CB0487413CBD5D20029875B /* TEShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEShape.h; sourceTree = "<group>"; };
-		3CB0487513CBD5D20029875B /* TEShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEShape.m; sourceTree = "<group>"; };
-		3CB0487713CBD5DF0029875B /* TETriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TETriangle.h; sourceTree = "<group>"; };
-		3CB0487813CBD5DF0029875B /* TETriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TETriangle.m; sourceTree = "<group>"; };
-		3CB0487A13CBD5E90029875B /* TEEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEEllipse.h; sourceTree = "<group>"; };
-		3CB0487B13CBD5E90029875B /* TEEllipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEEllipse.m; sourceTree = "<group>"; };
-		3CB0487D13CBD5F20029875B /* TERectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERectangle.h; sourceTree = "<group>"; };
-		3CB0487E13CBD5F20029875B /* TERectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERectangle.m; sourceTree = "<group>"; };
-		3CB0488613CBD6670029875B /* TauEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TauEngine.h; sourceTree = "<group>"; };
 		3CB0488913CBD6940029875B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		3CB0488A13CBD6940029875B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3CB0488B13CBD6940029875B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3CB0488F13CBDB440029875B /* TEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEScene.h; sourceTree = "<group>"; };
-		3CB0489013CBDB440029875B /* TEScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEScene.m; sourceTree = "<group>"; };
 		3CB500E41455AF610081C76C /* Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icons.h; sourceTree = "<group>"; };
 		3CB500E51455AF610081C76C /* Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icons.m; sourceTree = "<group>"; };
 		3CB500E81455C8F80081C76C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -377,23 +283,13 @@
 		3CCFF86C13F9B05F00616AA8 /* shoot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot1.wav; path = "sound-dev/shoot1.wav"; sourceTree = SOURCE_ROOT; };
 		3CCFF86D13F9B05F00616AA8 /* shoot2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot2.wav; path = "sound-dev/shoot2.wav"; sourceTree = SOURCE_ROOT; };
 		3CCFF88413F9B0FA00616AA8 /* scorebonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = scorebonus.wav; path = "sound-dev/scorebonus.wav"; sourceTree = SOURCE_ROOT; };
-		3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEColorAnimation.h; sourceTree = "<group>"; };
-		3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEColorAnimation.m; sourceTree = "<group>"; };
 		3CD1F93D13DDD17200F6F035 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESoundManager.h; sourceTree = "<group>"; };
-		3CD1F94013DDD33F00F6F035 /* TESoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESoundManager.m; sourceTree = "<group>"; };
 		3CD1F94213DE311F00F6F035 /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		3CD1F94313DE311F00F6F035 /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		3CD1F94513DE313A00F6F035 /* ClassicHorde.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassicHorde.h; sourceTree = "<group>"; };
 		3CD1F94613DE313A00F6F035 /* ClassicHorde.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassicHorde.m; sourceTree = "<group>"; };
-		3CD1F94813DF03C600F6F035 /* TERandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TERandom.h; sourceTree = "<group>"; };
-		3CD1F94913DF03CB00F6F035 /* TERandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TERandom.m; sourceTree = "<group>"; };
 		3CD1F94B13DF0E3200F6F035 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		3CD1F94C13DF0E3200F6F035 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TECollisionDetectorTest.h; sourceTree = "<group>"; };
-		3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TECollisionDetectorTest.m; sourceTree = "<group>"; };
-		3CD1F95413DF55EC00F6F035 /* TEPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEPolygon.h; sourceTree = "<group>"; };
-		3CD1F95513DF55EF00F6F035 /* TEPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEPolygon.m; sourceTree = "<group>"; };
 		3CED2CB213F026A300254302 /* BigHordeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigHordeUnit.h; sourceTree = "<group>"; };
 		3CED2CB313F026A300254302 /* BigHordeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigHordeUnit.m; sourceTree = "<group>"; };
 		3CED2CB513F0274400254302 /* Dogfight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dogfight.h; sourceTree = "<group>"; };
@@ -403,7 +299,6 @@
 		3CF3675513E72FB3008A1A4A /* Fighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fighter.m; sourceTree = "<group>"; };
 		3CF3679613E99D58008A1A4A /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starfield.h; sourceTree = "<group>"; };
 		3CF3679713E99D58008A1A4A /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starfield.m; sourceTree = "<group>"; };
-		3CFC90D513D72F6F00100C21 /* TauEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TauEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +306,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C6CBDDE1472CA3100FD6E59 /* libTauEngine.a in Frameworks */,
 				3CCF41D013F98AEF00425BFD /* StoreKit.framework in Frameworks */,
 				3C8405EC13F95D5400B25172 /* GameKit.framework in Frameworks */,
 				3C39473813F4AD69002E4A3B /* AVFoundation.framework in Frameworks */,
@@ -484,122 +380,6 @@
 			name = "Character Files";
 			sourceTree = "<group>";
 		};
-		3C350E8B13E0770D002DD35E /* Shapes */ = {
-			isa = PBXGroup;
-			children = (
-				3CB0487413CBD5D20029875B /* TEShape.h */,
-				3CB0487513CBD5D20029875B /* TEShape.m */,
-				3CD1F95413DF55EC00F6F035 /* TEPolygon.h */,
-				3CD1F95513DF55EF00F6F035 /* TEPolygon.m */,
-				3CB0487713CBD5DF0029875B /* TETriangle.h */,
-				3CB0487813CBD5DF0029875B /* TETriangle.m */,
-				3CB0487D13CBD5F20029875B /* TERectangle.h */,
-				3CB0487E13CBD5F20029875B /* TERectangle.m */,
-				3C350E8513E07622002DD35E /* TERegularPolygon.h */,
-				3C350E8613E07622002DD35E /* TERegularPolygon.m */,
-				3C7096A413E37E0100BF4E83 /* TERandomPolygon.h */,
-				3C7096A513E37E0300BF4E83 /* TERandomPolygon.m */,
-				3C350E8113E07316002DD35E /* TEHexagon.h */,
-				3C350E8213E07316002DD35E /* TEHexagon.m */,
-				3C350E8813E07701002DD35E /* TEHeptagon.h */,
-				3C350E8913E07701002DD35E /* TEHeptagon.m */,
-				3C37ED5A13EF2F3700EF18A9 /* TEOctagon.h */,
-				3C37ED5B13EF2F3700EF18A9 /* TEOctagon.m */,
-				3CB0487A13CBD5E90029875B /* TEEllipse.h */,
-				3CB0487B13CBD5E90029875B /* TEEllipse.m */,
-			);
-			name = Shapes;
-			sourceTree = "<group>";
-		};
-		3C350E8C13E07746002DD35E /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				3C138B9413CCC7DF002FC701 /* TEAnimation.h */,
-				3C138B9513CCC7E0002FC701 /* TEAnimation.m */,
-				3C8F913113CDE2F300820FC5 /* TEScaleAnimation.h */,
-				3C8F913213CDE2F300820FC5 /* TEScaleAnimation.m */,
-				3C8F913613CDE2FD00820FC5 /* TERotateAnimation.h */,
-				3C8F913713CDE2FD00820FC5 /* TERotateAnimation.m */,
-				3C8F913A13CDE30900820FC5 /* TETranslateAnimation.h */,
-				3C8F913B13CDE30900820FC5 /* TETranslateAnimation.m */,
-				3CD1F93513DDB5A600F6F035 /* TEColorAnimation.h */,
-				3CD1F93613DDB5A600F6F035 /* TEColorAnimation.m */,
-				3C20D41313E443A400A90FEB /* TEVertexColorAnimation.h */,
-				3C20D41413E443A400A90FEB /* TEVertexColorAnimation.m */,
-			);
-			name = Animations;
-			sourceTree = "<group>";
-		};
-		3C350E8D13E07757002DD35E /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				3CB0487113CBD5C70029875B /* TENode.h */,
-				3CB0487213CBD5C70029875B /* TENode.m */,
-				3C5D479313F58C90004DE3CE /* TEButton.h */,
-				3C5D479413F58C90004DE3CE /* TEButton.m */,
-				3C138B9013CCB15A002FC701 /* TENodeLoader.h */,
-				3C138B9113CCB15A002FC701 /* TENodeLoader.m */,
-			);
-			name = Nodes;
-			sourceTree = "<group>";
-		};
-		3C350E8E13E07772002DD35E /* Collision Detection */ = {
-			isa = PBXGroup;
-			children = (
-				3C5507A413CE237D00585C40 /* TECollisionDetector.h */,
-				3C5507A513CE237D00585C40 /* TECollisionDetector.m */,
-				3CD1F95113DF1FE200F6F035 /* TECollisionDetectorTest.h */,
-				3CD1F95213DF1FE400F6F035 /* TECollisionDetectorTest.m */,
-			);
-			name = "Collision Detection";
-			sourceTree = "<group>";
-		};
-		3C350E8F13E07788002DD35E /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				3C6B2A6313D47A6C00061EC7 /* TESceneController.h */,
-				3C6B2A6413D47A6C00061EC7 /* TESceneController.m */,
-				3CB0488F13CBDB440029875B /* TEScene.h */,
-				3CB0489013CBDB440029875B /* TEScene.m */,
-				3C297EDB13F5881600D1D85B /* TEMenu.h */,
-				3C297EDC13F5881600D1D85B /* TEMenu.m */,
-			);
-			name = Scenes;
-			sourceTree = "<group>";
-		};
-		3C350E9013E07790002DD35E /* Motion */ = {
-			isa = PBXGroup;
-			children = (
-				3C6E948413D74DB6000F7988 /* TEAccelerometer.h */,
-				3C6E948513D74DB6000F7988 /* TEAccelerometer.m */,
-			);
-			name = Motion;
-			sourceTree = "<group>";
-		};
-		3C350E9113E0779D002DD35E /* Sound */ = {
-			isa = PBXGroup;
-			children = (
-				3CD1F93F13DDD33E00F6F035 /* TESoundManager.h */,
-				3CD1F94013DDD33F00F6F035 /* TESoundManager.m */,
-			);
-			name = Sound;
-			sourceTree = "<group>";
-		};
-		3C350E9213E077C4002DD35E /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3CD1F94813DF03C600F6F035 /* TERandom.h */,
-				3CD1F94913DF03CB00F6F035 /* TERandom.m */,
-				3C59AB4013F068D800E35FC3 /* TEShuffleBag.h */,
-				3C59AB4113F068D900E35FC3 /* TEShuffleBag.m */,
-				3C70969313E1DD1200BF4E83 /* TEImage.h */,
-				3C70969413E1DD1200BF4E83 /* TEImage.m */,
-				3C7BD28813EB0158005895AE /* TETexture.h */,
-				3C7BD28913EB0158005895AE /* TETexture.m */,
-			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
 		3C350E9E13E07B38002DD35E /* Powerups */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,27 +407,6 @@
 			name = Music;
 			sourceTree = "<group>";
 		};
-		3C70968F13E1DCB300BF4E83 /* Text */ = {
-			isa = PBXGroup;
-			children = (
-				3C70968C13E1DBC400BF4E83 /* TENumberDisplay.h */,
-				3C70968D13E1DBC400BF4E83 /* TENumberDisplay.m */,
-			);
-			name = Text;
-			sourceTree = "<group>";
-		};
-		3C70969613E1EEB600BF4E83 /* Drawables */ = {
-			isa = PBXGroup;
-			children = (
-				3CB0486E13CBD5B80029875B /* TEDrawable.h */,
-				3CB0486F13CBD5B80029875B /* TEDrawable.m */,
-				3C350E8B13E0770D002DD35E /* Shapes */,
-				3C70968F13E1DCB300BF4E83 /* Text */,
-				3C7BD28713EB00BB005895AE /* Sprites */,
-			);
-			name = Drawables;
-			sourceTree = "<group>";
-		};
 		3C7BD27413E9C6A9005895AE /* Weapons */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,15 +427,6 @@
 			name = Effects;
 			sourceTree = "<group>";
 		};
-		3C7BD28713EB00BB005895AE /* Sprites */ = {
-			isa = PBXGroup;
-			children = (
-				3C7BD28413EB00B5005895AE /* TESprite.h */,
-				3C7BD28513EB00B6005895AE /* TESprite.m */,
-			);
-			name = Sprites;
-			sourceTree = "<group>";
-		};
 		3C80616F13EB10E100EF4929 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,28 +443,6 @@
 				3CED2CB613F0274400254302 /* Dogfight.m */,
 			);
 			name = Levels;
-			sourceTree = "<group>";
-		};
-		3C8405E913F95CF300B25172 /* GameKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = GameKit;
-			sourceTree = "<group>";
-		};
-		3C8A282413D70AC300BB0011 /* Galaxy Wild */ = {
-			isa = PBXGroup;
-			children = (
-				3CCEB8C313F175CB00825662 /* GalaxyWild.h */,
-				3C8A282B13D70C7E00BB0011 /* Scenes */,
-				3C80616F13EB10E100EF4929 /* Levels */,
-				3C8A282A13D70C7300BB0011 /* Characters */,
-				3CCEB8BE13F1737000825662 /* Utils */,
-				3C138B8C13CCAD94002FC701 /* Character Files */,
-				3CD1F93813DDCEE600F6F035 /* Sounds */,
-				3C39473313F4ACBC002E4A3B /* Music */,
-			);
-			name = "Galaxy Wild";
 			sourceTree = "<group>";
 		};
 		3C8A282A13D70C7300BB0011 /* Characters */ = {
@@ -755,6 +483,7 @@
 		3CB0482D13CBD5960029875B = {
 			isa = PBXGroup;
 			children = (
+				3C6CBDDD1472CA3100FD6E59 /* libTauEngine.a */,
 				3CB0484213CBD5960029875B /* TauGame */,
 				3CB0485B13CBD5970029875B /* TauGameTests */,
 				3CB0483B13CBD5960029875B /* Frameworks */,
@@ -796,8 +525,14 @@
 		3CB0484213CBD5960029875B /* TauGame */ = {
 			isa = PBXGroup;
 			children = (
-				3CB0486D13CBD5A10029875B /* TauEngine */,
-				3C8A282413D70AC300BB0011 /* Galaxy Wild */,
+				3CCEB8C313F175CB00825662 /* GalaxyWild.h */,
+				3C8A282B13D70C7E00BB0011 /* Scenes */,
+				3C80616F13EB10E100EF4929 /* Levels */,
+				3C8A282A13D70C7300BB0011 /* Characters */,
+				3CCEB8BE13F1737000825662 /* Utils */,
+				3C138B8C13CCAD94002FC701 /* Character Files */,
+				3CD1F93813DDCEE600F6F035 /* Sounds */,
+				3C39473313F4ACBC002E4A3B /* Music */,
 				3CB0484B13CBD5960029875B /* TauGameAppDelegate.h */,
 				3CB0484C13CBD5960029875B /* TauGameAppDelegate.m */,
 				3CB0484313CBD5960029875B /* Supporting Files */,
@@ -824,6 +559,7 @@
 				3CB500EE1455C8F80081C76C /* iTunesArtwork */,
 				3CB500FC1455CA880081C76C /* Default.png */,
 				3CB500FA1455CA6A0081C76C /* Default@2x.png */,
+				3C313C601456FAED008399C0 /* Default-Landscape~ipad.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -845,24 +581,6 @@
 				3CB0485E13CBD5970029875B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3CB0486D13CBD5A10029875B /* TauEngine */ = {
-			isa = PBXGroup;
-			children = (
-				3CB0488613CBD6670029875B /* TauEngine.h */,
-				3CFC90D513D72F6F00100C21 /* TauEngine.m */,
-				3C350E8D13E07757002DD35E /* Nodes */,
-				3C70969613E1EEB600BF4E83 /* Drawables */,
-				3C350E8C13E07746002DD35E /* Animations */,
-				3C350E8E13E07772002DD35E /* Collision Detection */,
-				3C350E8F13E07788002DD35E /* Scenes */,
-				3C350E9013E07790002DD35E /* Motion */,
-				3C350E9113E0779D002DD35E /* Sound */,
-				3C350E9213E077C4002DD35E /* Utils */,
-				3C8405E913F95CF300B25172 /* GameKit */,
-			);
-			name = TauEngine;
 			sourceTree = "<group>";
 		};
 		3CCAA16313F5A17100993EE7 /* Menus */ = {
@@ -1079,6 +797,7 @@
 				3CB500F51455C8F80081C76C /* iTunesArtwork in Resources */,
 				3CB500FB1455CA6A0081C76C /* Default@2x.png in Resources */,
 				3CB500FD1455CA880081C76C /* Default.png in Resources */,
+				3C313C611456FAED008399C0 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,44 +835,16 @@
 			files = (
 				3CB0484913CBD5960029875B /* main.m in Sources */,
 				3CB0484D13CBD5960029875B /* TauGameAppDelegate.m in Sources */,
-				3CB0487013CBD5B80029875B /* TEDrawable.m in Sources */,
-				3CB0487313CBD5C70029875B /* TENode.m in Sources */,
-				3CB0487613CBD5D20029875B /* TEShape.m in Sources */,
-				3CB0487913CBD5DF0029875B /* TETriangle.m in Sources */,
-				3CB0487C13CBD5E90029875B /* TEEllipse.m in Sources */,
-				3CB0487F13CBD5F20029875B /* TERectangle.m in Sources */,
-				3CB0489113CBDB440029875B /* TEScene.m in Sources */,
-				3C138B9213CCB15B002FC701 /* TENodeLoader.m in Sources */,
-				3C138B9613CCC7E0002FC701 /* TEAnimation.m in Sources */,
-				3C8F913313CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
-				3C8F913813CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
-				3C8F913C13CDE30900820FC5 /* TETranslateAnimation.m in Sources */,
-				3C5507A613CE237D00585C40 /* TECollisionDetector.m in Sources */,
-				3C6B2A6513D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A283213D70CBC00BB0011 /* AsteroidField.m in Sources */,
-				3CFC90D613D72F6F00100C21 /* TauEngine.m in Sources */,
-				3C6E948613D74DB6000F7988 /* TEAccelerometer.m in Sources */,
 				3C6E948C13D771A7000F7988 /* Bullet.m in Sources */,
 				3C01190713D86090004808DA /* Baddie.m in Sources */,
 				3C2DE86613D9CB9D000237D2 /* TitleScreen.m in Sources */,
-				3CD1F93713DDB5A600F6F035 /* TEColorAnimation.m in Sources */,
-				3CD1F94113DDD34100F6F035 /* TESoundManager.m in Sources */,
 				3CD1F94413DE311F00F6F035 /* Asteroid.m in Sources */,
 				3CD1F94713DE313A00F6F035 /* ClassicHorde.m in Sources */,
-				3CD1F94A13DF03CE00F6F035 /* TERandom.m in Sources */,
 				3CD1F94D13DF0E3300F6F035 /* Game.m in Sources */,
-				3CD1F95313DF1FE700F6F035 /* TECollisionDetectorTest.m in Sources */,
-				3CD1F95613DF55F400F6F035 /* TEPolygon.m in Sources */,
-				3C350E8313E07316002DD35E /* TEHexagon.m in Sources */,
-				3C350E8713E07623002DD35E /* TERegularPolygon.m in Sources */,
-				3C350E8A13E07701002DD35E /* TEHeptagon.m in Sources */,
 				3C350E9A13E07B1F002DD35E /* Powerup.m in Sources */,
 				3C350E9D13E07B34002DD35E /* ExtraBullet.m in Sources */,
-				3C70968E13E1DBC400BF4E83 /* TENumberDisplay.m in Sources */,
-				3C70969513E1DD1200BF4E83 /* TEImage.m in Sources */,
-				3C7096A613E37E0600BF4E83 /* TERandomPolygon.m in Sources */,
 				3C20D41213E3AD4C00A90FEB /* BulletSplash.m in Sources */,
-				3C20D41513E443A400A90FEB /* TEVertexColorAnimation.m in Sources */,
 				3C20D41F13E6003100A90FEB /* Background.m in Sources */,
 				3C20D42213E6162600A90FEB /* FighterLife.m in Sources */,
 				3C228AE213E708F200CFE5D1 /* ShotTimer.m in Sources */,
@@ -1164,19 +855,15 @@
 				3C7BD27313E9C697005895AE /* Seeker.m in Sources */,
 				3C7BD27E13E9E140005895AE /* Pause.m in Sources */,
 				3C7BD28313EADB42005895AE /* GlowingBullet.m in Sources */,
-				3C7BD28613EB00B6005895AE /* TESprite.m in Sources */,
-				3C7BD28A13EB0158005895AE /* TETexture.m in Sources */,
 				3C80617313EB142100EF4929 /* Enemy.m in Sources */,
 				3C80617513EB2D4B00EF4929 /* GameLevel.m in Sources */,
 				3C975B6B13EB654700CAEB6D /* HordeUnit.m in Sources */,
 				3C10727313EC35380062986D /* Fray.m in Sources */,
 				3C10727613EC55BE0062986D /* Arms.m in Sources */,
-				3C37ED5C13EF2F3700EF18A9 /* TEOctagon.m in Sources */,
 				3C37ED5F13EF302F00EF18A9 /* Spinner.m in Sources */,
 				3CED2CB413F026A300254302 /* BigHordeUnit.m in Sources */,
 				3CED2CB713F0274400254302 /* Dogfight.m in Sources */,
 				3C59AB3C13F054BC00E35FC3 /* BigArms.m in Sources */,
-				3C59AB4213F068D900E35FC3 /* TEShuffleBag.m in Sources */,
 				3C59AB4513F0699F00E35FC3 /* LevelBag.m in Sources */,
 				3C59AB4813F06D7200E35FC3 /* BiggunBag.m in Sources */,
 				3CCEB8C213F1742400825662 /* BigSeeker.m in Sources */,
@@ -1185,8 +872,6 @@
 				3C986E1313F1BA0B004B99AF /* ExtraHealth.m in Sources */,
 				3C264B7A13F42709009FC60C /* WeaponPowerupBag.m in Sources */,
 				3C297ED913F57A6600D1D85B /* GameController.m in Sources */,
-				3C297EDD13F5881600D1D85B /* TEMenu.m in Sources */,
-				3C5D479513F58C90004DE3CE /* TEButton.m in Sources */,
 				3CCAA16713F5A19700993EE7 /* GameButton.m in Sources */,
 				3CCAA16D13F5C02900993EE7 /* Credits.m in Sources */,
 				3CA279D013F9A6DB00C87E98 /* Sfx.m in Sources */,
@@ -1199,13 +884,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB0486413CBD5970029875B /* TauGameTests.m in Sources */,
-				3C138B9313CCB15B002FC701 /* TENodeLoader.m in Sources */,
-				3C138B9713CCC7E0002FC701 /* TEAnimation.m in Sources */,
-				3C8F913413CDE2F300820FC5 /* TEScaleAnimation.m in Sources */,
-				3C8F913913CDE2FD00820FC5 /* TERotateAnimation.m in Sources */,
-				3C8F913D13CDE30900820FC5 /* TETranslateAnimation.m in Sources */,
-				3C5507A713CE237D00585C40 /* TECollisionDetector.m in Sources */,
-				3C6B2A6613D47A6C00061EC7 /* TESceneController.m in Sources */,
 				3C8A283313D70CBC00BB0011 /* AsteroidField.m in Sources */,
 				3C8A283913D70D6200BB0011 /* fighter.json in Sources */,
 			);
@@ -1294,6 +972,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ian Terrell (F795349HT3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TauGame/TauGame-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1303,6 +982,8 @@
 				);
 				INFOPLIST_FILE = "TauGame/TauGame-Info.plist";
 				PRODUCT_NAME = "Galaxy Wild";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D43ACBD-41CF-4518-9454-02B4C6103819";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1314,7 +995,7 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ian Terrell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TauGame/TauGame-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1324,7 +1005,8 @@
 				);
 				INFOPLIST_FILE = "TauGame/TauGame-Info.plist";
 				PRODUCT_NAME = "Galaxy Wild";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ABE4DC28-66A7-4188-BAB1-42D02A502483";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
